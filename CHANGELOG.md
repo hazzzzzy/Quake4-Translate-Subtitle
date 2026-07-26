@@ -1,5 +1,34 @@
 # Changelog
 
+## v1.2.0 — 2026-07-26
+
+### 英文原版 + 英文字幕模式
+
+- 安装器新增互斥安装模式：`完整简体中文汉化` / `英文原版 + 英文字幕`。
+  英文模式保留原版菜单、HUD、面板与字体，只增加语音字幕
+- 引擎 `Subtitles.cpp` 按 `sys_lang` 分支三处表现：说话人冒号（全角`：`/半角`: `）、
+  无名友军兜底名（士兵/Marine）、断行度量字库路径（`fonts/<sys_lang>/lowpixel_24.fontdat`）；
+  挂钩侧中文语义前缀（无线电/广播）在英文模式映射为 Radio/PA，触发、
+  可听性门控、时长、队列与面板行为两种模式完全一致
+- 新增 `english_lipsadd.lang`（`build_lang.py` 从 TSV `english` 列生成，979 条）：
+  仅补自建 id（无线电 253 + AI 语音 726）；主线对白 3962 条原版
+  `english_lips.lang` 已全覆盖。命名刻意避开原版同名文件防 savepath 遮蔽
+- 英文模式为纯静态部署：跳过全部四类正版资产现场生成，也不部署语音路径
+  别名包（decl 按声音名查找，与 `vo_chinese` 路径无关）
+- 启动器单二进制按文件名分流：`Quake4英文字幕启动器.exe` 以
+  `sys_lang english` + 独立存档目录 `savedata-english` 启动，
+  与中文版及原版存档三方隔离；存档管理界面同步展示三套存档
+- 安装器测试新增英文模式部署子集与载荷校验用例（12 用例全绿）
+
+### 修复与工程
+
+- `.gitignore` 与打包审计补齐 v1.1.x 新增运行时生成物
+  （`r_strogg_*.tga`、`hud_strogg.gui`、`guis/common|monitors|movers/`、
+  引擎首启落盘文件），防止误入库/误打包
+- 打包审计 required 清单加入英文字幕载荷（`english_lipsadd.lang`、`subtitles.gui`）
+- `docs/english-subtitles-plan.md` 勘误：`english_lips.lang` 同名遮蔽风险、
+  别名包依赖判断错误
+
 ## v1.1.1 — 2026-07-23
 
 ### 单文件安装器

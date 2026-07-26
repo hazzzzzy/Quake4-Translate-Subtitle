@@ -271,6 +271,95 @@ windowDef highvoltage
             with self.assertRaises(installer.InstallError):
                 installer.validate_game_directory(game)
 
+    def test_validate_payload_english_mode_requires_subtitle_assets(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            payload = root / "payload"
+            launcher = root / "launcher.exe"
+            (payload / "engine").mkdir(parents=True)
+            (payload / "engine" / "Quake4.exe").touch()
+            (payload / "engine" / "q4game.dll").touch()
+            launcher.touch()
+            # 中文载荷齐全但缺英文字幕资产 -> 英文模式校验必须失败
+            strings = payload / "savedata" / "q4base" / "strings"
+            strings.mkdir(parents=True)
+            (strings / "chinese_guis.lang").touch()
+
+            installer.validate_payload(payload, launcher)
+            with self.assertRaises(installer.InstallError):
+                installer.validate_payload(payload, launcher, mode="english")
+
+            (payload / "savedata" / "q4base" / "guis").mkdir(parents=True)
+            (payload / "savedata" / "q4base" / "guis" / "subtitles.gui").touch()
+            (strings / "english_lipsadd.lang").touch()
+            with self.assertRaisesRegex(installer.InstallError, "lipsync"):
+                installer.validate_payload(payload, launcher, mode="english")
+
+            lipsync = payload / "savedata" / "q4base" / "lipsync"
+            lipsync.mkdir(parents=True)
+            (lipsync / "zz_chinese_radio.lipsync").touch()
+            installer.validate_payload(payload, launcher, mode="english")
+
+    def test_install_english_mode_deploys_subtitle_subset_without_generation(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            game = root / "Quake 4"
+            payload = root / "payload"
+            launcher = root / "launcher.exe"
+            (game / "q4base").mkdir(parents=True)
+            (game / "Quake4.exe").touch()
+            for name in installer.REQUIRED_PAKS:
+                (game / "q4base" / name).touch()
+            (payload / "engine").mkdir(parents=True)
+            (payload / "engine" / "Quake4.exe").touch()
+            (payload / "engine" / "q4game.dll").touch()
+            savedata = payload / "savedata" / "q4base"
+            (savedata / "strings").mkdir(parents=True)
+            (savedata / "strings" / "chinese_guis.lang").touch()
+            (savedata / "strings" / "english_lipsadd.lang").touch()
+            (savedata / "guis").mkdir(parents=True)
+            (savedata / "guis" / "subtitles.gui").touch()
+            (savedata / "lipsync").mkdir(parents=True)
+            (savedata / "lipsync" / "zz_chinese_radio.lipsync").touch()
+            (savedata / "lipsync" / "zz_chinese_aivo.lipsync").touch()
+            # 中文专属资产：英文模式绝不能部署
+            (savedata / "fonts" / "chinese").mkdir(parents=True)
+            (savedata / "fonts" / "chinese" / "marine_48.fontdat").touch()
+            launcher.write_bytes(b"launcher")
+
+            with mock.patch.object(installer, "application_directory", return_value=payload), \
+                 mock.patch.object(installer, "bundled_launcher", return_value=launcher), \
+                 mock.patch.object(installer, "build_assets", return_value=0) as build, \
+                 mock.patch.object(installer, "grant_install_access"), \
+                 mock.patch.object(installer, "apply_game_icon"):
+                target = installer.install_localization(
+                    game,
+                    False,
+                    lambda _line: None,
+                    mode="english",
+                )
+
+            resolved_game = game.resolve()
+            install_root = resolved_game / installer.INSTALL_DIRECTORY_NAME
+            english_root = install_root / installer.ENGLISH_SAVEDATA_DIRECTORY_NAME
+            self.assertEqual(
+                target, resolved_game / installer.LAUNCHER_NAME_ENGLISH)
+            build.assert_not_called()
+            self.assertTrue((install_root / "engine" / "Quake4.exe").is_file())
+            self.assertTrue(
+                (english_root / "q4base" / "guis" / "subtitles.gui").is_file())
+            self.assertTrue(
+                (english_root / "q4base" / "strings" / "english_lipsadd.lang").is_file())
+            self.assertTrue(
+                (english_root / "q4base" / "lipsync" / "zz_chinese_radio.lipsync").is_file())
+            self.assertTrue(
+                (english_root / "q4base" / "lipsync" / "zz_chinese_aivo.lipsync").is_file())
+            # 英文模式不得部署中文资产，也不得动中文模式的 savedata
+            self.assertFalse((english_root / "q4base" / "fonts").exists())
+            self.assertFalse(
+                (english_root / "q4base" / "strings" / "chinese_guis.lang").exists())
+            self.assertFalse((install_root / "savedata").exists())
+
     def test_install_uses_separate_localization_directory(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

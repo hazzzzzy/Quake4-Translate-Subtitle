@@ -34,15 +34,27 @@ tmp_*.json
 # Runtime artifacts (玩家运行 postinstall 生成，不入库)
 dist/savedata/q4base/fonts/chinese/strogg_*.fontdat
 dist/savedata/q4base/fonts/chinese/strogg_*.tga
+dist/savedata/q4base/fonts/chinese/r_strogg_*.tga
 dist/savedata/q4base/guis/hud.gui
 dist/savedata/q4base/guis/mainmenu.gui
 dist/savedata/q4base/guis/wristcomm.gui
+dist/savedata/q4base/guis/hud_strogg.gui
+dist/savedata/q4base/guis/wristcomm_strogg.gui
 dist/savedata/q4base/guis/maps/
+dist/savedata/q4base/guis/common/
+dist/savedata/q4base/guis/monitors/
+dist/savedata/q4base/guis/movers/
 dist/savedata/q4base/zzz_vo_chinese_alias.pk4
 dist/savedata/savegames/
 dist/savedata/**/qconsole*.log
 dist/savedata/**/Quake4Config.cfg
 dist/savedata/**/screenshots/
+# 引擎运行时落盘（首启生成）
+dist/savedata/q4base/config.spec
+dist/savedata/q4base/quake4key
+dist/savedata/q4base/xpkey
+dist/savedata/q4base/noninteractive-before
+dist/savedata/**/.console_history.dat
 
 # Screenshots （根目录效果图人工挑选进 screenshots/，不自动入库）
 /tests/

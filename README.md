@@ -6,7 +6,7 @@
 
 基于 [idTech4A++](https://github.com/glKarin/com.n0n3m4.diii4a) 开源引擎（GPL），运行时不修改玩家的原版游戏目录。
 
-仓库以 `Quake4-Translate-Subtitle` 为统一名称；后续英文模式只补充英文字幕，保留原版英文界面和字体。
+仓库以 `Quake4-Translate-Subtitle` 为统一名称。安装器提供两种互斥模式：**完整简体中文汉化**（菜单+字幕全中文），或 **英文原版 + 英文字幕**（保留原版英文界面和字体，只增加原版没有的语音字幕）。
 
 ---
 
@@ -53,17 +53,22 @@ cd Quake4-Translate-Subtitle\dist
 
 1. 双击下载的 `Quake4-Chinese-Installer-vX.Y.Z.exe`。
 2. 确认自动识别的 Quake 4 1.4.2 游戏目录，或点“浏览”自行选择。
-3. 按需勾选“创建桌面快捷方式”，然后点“安装汉化”。安装器会从玩家自己的 `pak001.pk4 / pak014.pk4 / pak021.pk4 / zpak_english*.pk4` 现场生成不随汉化分发的运行资产：
+3. 选择安装模式：
+   - **完整简体中文汉化**（默认）：菜单、HUD、剧情文本与字幕全部中文
+   - **英文原版 + 英文字幕**：界面、字体保持原版英文，只添加语音字幕
+4. 按需勾选“创建桌面快捷方式”，然后点“安装汉化”。
+
+   中文模式会从玩家自己的 `pak001.pk4 / pak014.pk4 / pak021.pk4 / zpak_english*.pk4` 现场生成不随汉化分发的运行资产（约 1–3 分钟）：
    - Strogg 外星文字体（原版）
    - HUD 无线电两行 rect 数值补丁
    - 神经细胞植入转译动画（中文化）
    - 中文语音路径别名 pk4（英文原声）
 
-   耗时约 1–3 分钟。原版 EXE 和原版 `q4base` 文件保持原样。
+   英文字幕模式为纯静态部署，数秒完成，无现场生成步骤。两种模式可先后安装并共存。原版 EXE 和原版 `q4base` 文件始终保持原样。
 
 ### 3. 启动
 
-双击游戏目录中的 `Quake4中文启动器.exe`，或使用安装时创建的桌面快捷方式。
+双击游戏目录中的 `Quake4中文启动器.exe`（中文模式）或 `Quake4英文字幕启动器.exe`（英文模式），或使用安装时创建的桌面快捷方式。
 
 需要便携目录的维护者仍可使用 `dist\postinstall.cmd` 和 `dist\启动汉化版.cmd` 手动部署。
 
@@ -73,9 +78,9 @@ cd Quake4-Translate-Subtitle\dist
 
 ### 存档
 
-- 图形安装模式的存档位于 `<游戏目录>\Quake4-Chinese\savedata\q4base\savegames\`
-- 原版与汉化版使用不同的 `fs_savepath`，两套存档可以同时保留
-- 安装器的“存档管理”会分别显示两套存档的数量和最近更新时间，可打开目录或备份到 `<游戏目录>\Quake4-Chinese\save-backups\`
+- 图形安装模式的存档位于 `<游戏目录>\Quake4-Chinese\savedata\q4base\savegames\`（中文版）与 `<游戏目录>\Quake4-Chinese\savedata-english\q4base\savegames\`（英文字幕版）
+- 原版、中文版、英文字幕版使用各自独立的 `fs_savepath`，三套存档互不影响
+- 安装器的“存档管理”会分别显示三套存档的数量和最近更新时间，可打开目录或备份到 `<游戏目录>\Quake4-Chinese\save-backups\`
 - 便携模式的存档仍位于 `dist\savedata\q4base\savegames\`
 
 ### 常见问题

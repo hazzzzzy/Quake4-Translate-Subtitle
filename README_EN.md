@@ -6,7 +6,7 @@ A complete Simplified Chinese localization for Quake 4 (2005), including transla
 
 The project runs legitimate Quake 4 1.4.2 game data through the open-source [idTech4A++](https://github.com/glKarin/com.n0n3m4.diii4a) engine. It keeps the original executable and `q4base` data unchanged.
 
-The current release is the Chinese localization. A separate English-subtitles-only mode is planned; it will preserve the original English UI, HUD, panels, and fonts.
+The installer offers two mutually exclusive modes: the **full Simplified Chinese localization** (menus + subtitles in Chinese), or **English original + English subtitles** — the game keeps its stock English UI, HUD, panels, and fonts, and only gains the real-time subtitle system the original game never had.
 
 ## Features
 
@@ -33,17 +33,18 @@ The graphical installer is self-contained and does not require a separate Python
 1. Download the latest `Quake4-Chinese-Installer-vX.Y.Z.exe` from [Releases](https://github.com/hazzzzzy/Quake4-Translate-Subtitle/releases). It is a standalone installer containing the public engine and localization payload, so the portable ZIP is not required.
 2. Run the downloaded installer.
 3. Confirm the detected Quake 4 directory or select it manually.
-4. Optionally enable the desktop shortcut, then start the installation.
-5. Launch the game with `Quake4中文启动器.exe` in the original game directory or through the desktop shortcut.
+4. Pick the install mode: full Chinese localization (default) or English original + English subtitles.
+5. Optionally enable the desktop shortcut, then start the installation.
+6. Launch the game with `Quake4中文启动器.exe` (Chinese mode) or `Quake4英文字幕启动器.exe` (English-subtitles mode) in the original game directory, or through the desktop shortcut.
 
-During installation, the program derives several runtime assets from the player's own game files:
+In Chinese mode, the installer derives several runtime assets from the player's own game files (1-3 minutes):
 
 - Original Strogg font data
 - HUD layout patches
 - Post-transformation translation animation and panel layouts
 - An English-voice path alias package used by the Chinese language mode
 
-These derived assets are not distributed by this repository.
+These derived assets are not distributed by this repository. The English-subtitles mode is a purely static deployment — no runtime asset generation, done in seconds. Both modes can be installed side by side; each keeps its own save directory (`savedata` / `savedata-english`), isolated from the stock game's saves.
 
 The versioned ZIP remains available as a complete portable package for maintainers and manual deployments.
 

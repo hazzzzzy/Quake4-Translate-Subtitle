@@ -48,9 +48,20 @@ from build_dist_extras import build_assets  # noqa: E402
 APP_NAME = "Quake 4 简体中文汉化安装器"
 INSTALL_DIRECTORY_NAME = "Quake4-Chinese"
 LAUNCHER_NAME = "Quake4中文启动器.exe"
+# 英文模式共用同一启动器二进制，按文件名含"英文"分流（见 launcher/main.cpp）
+LAUNCHER_NAME_ENGLISH = "Quake4英文字幕启动器.exe"
 BUNDLED_LAUNCHER_NAME = "Q4CNLauncher.exe"
 BUNDLED_PAYLOAD_DIRECTORY_NAME = "payload"
 SHORTCUT_NAME = "Quake 4 简体中文汉化.lnk"
+SHORTCUT_NAME_ENGLISH = "Quake 4 英文原版+字幕.lnk"
+# 英文模式独立存档目录：避免存档序列化的 GUI 状态跨语言互相覆盖
+ENGLISH_SAVEDATA_DIRECTORY_NAME = "savedata-english"
+# 英文模式部署子集：引擎 + 字幕 GUI + lipsync decl + 自建 id 英文文本；
+# 不含中文字体/GUI/lang，也不做四类正版资产现场生成
+ENGLISH_SAVEDATA_FILES = (
+    "q4base/guis/subtitles.gui",
+    "q4base/strings/english_lipsadd.lang",
+)
 REQUIRED_PAKS = ("pak001.pk4", "pak014.pk4", "pak021.pk4", "zpak_english.pk4")
 CREATE_NO_WINDOW = 0x08000000
 RT_ICON = 3
@@ -119,16 +130,28 @@ def validate_game_directory(game_directory: Path) -> None:
         raise InstallError("所选目录缺少原版 Quake4.exe，游戏图标来源未找到。")
 
 
-def validate_payload(payload_directory: Path, launcher: Path) -> None:
-    required = (
+def validate_payload(payload_directory: Path, launcher: Path, mode: str = "chinese") -> None:
+    required = [
         payload_directory / "engine" / "Quake4.exe",
         payload_directory / "engine" / "q4game.dll",
-        payload_directory / "savedata" / "q4base" / "strings" / "chinese_guis.lang",
         launcher,
-    )
+    ]
+    if mode == "english":
+        required.extend(
+            payload_directory / "savedata" / relative
+            for relative in ENGLISH_SAVEDATA_FILES
+        )
+    else:
+        required.append(
+            payload_directory / "savedata" / "q4base" / "strings" / "chinese_guis.lang"
+        )
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
         raise InstallError("安装包文件不完整：\n" + "\n".join(missing))
+    if mode == "english":
+        lipsync_directory = payload_directory / "savedata" / "q4base" / "lipsync"
+        if not any(lipsync_directory.glob("*.lipsync")):
+            raise InstallError(f"安装包文件不完整：\n{lipsync_directory} 缺少 lipsync decl")
 
 
 def desktop_directory() -> Path:
@@ -347,8 +370,8 @@ def apply_game_icon(game_executable: Path, launcher: Path) -> None:
             end_update(update_handle, True)
 
 
-def create_shortcut(launcher: Path) -> Path:
-    shortcut = desktop_directory() / SHORTCUT_NAME
+def create_shortcut(launcher: Path, shortcut_name: str = SHORTCUT_NAME) -> Path:
+    shortcut = desktop_directory() / shortcut_name
     process = subprocess.run(
         [str(launcher), "--create-shortcut", str(shortcut)],
         check=False,
@@ -368,6 +391,13 @@ def save_directories(game_directory: Path) -> dict[str, Path]:
             game_directory
             / INSTALL_DIRECTORY_NAME
             / "savedata"
+            / "q4base"
+            / "savegames"
+        ),
+        "english": (
+            game_directory
+            / INSTALL_DIRECTORY_NAME
+            / ENGLISH_SAVEDATA_DIRECTORY_NAME
             / "q4base"
             / "savegames"
         ),
@@ -416,55 +446,88 @@ def backup_savegames(
     return target
 
 
+def stage_english_savedata(payload_directory: Path, staging_root: Path) -> None:
+    """英文模式静态子集：字幕 GUI + 自建英文 lang + lipsync decl，全部来自载荷。"""
+    for relative in ENGLISH_SAVEDATA_FILES:
+        source = payload_directory / "savedata" / relative
+        target = staging_root / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+    lipsync_target = staging_root / "q4base" / "lipsync"
+    lipsync_target.mkdir(parents=True, exist_ok=True)
+    for decl in sorted((payload_directory / "savedata" / "q4base" / "lipsync").glob("*.lipsync")):
+        shutil.copy2(decl, lipsync_target / decl.name)
+
+
 def install_localization(
     game_directory: Path,
     create_desktop_shortcut: bool,
     report,
     progress=lambda _value, _message: None,
+    mode: str = "chinese",
 ) -> Path:
     game_directory = game_directory.resolve()
     payload_directory = application_directory()
     launcher_source = bundled_launcher()
     validate_game_directory(game_directory)
-    validate_payload(payload_directory, launcher_source)
+    validate_payload(payload_directory, launcher_source, mode)
 
+    english_mode = mode == "english"
+    savedata_name = ENGLISH_SAVEDATA_DIRECTORY_NAME if english_mode else "savedata"
+    launcher_name = LAUNCHER_NAME_ENGLISH if english_mode else LAUNCHER_NAME
     install_directory = game_directory / INSTALL_DIRECTORY_NAME
     staging_directory = Path(tempfile.mkdtemp(
         prefix=".Quake4-Chinese-install-",
         dir=game_directory,
     ))
     try:
-        report("正在复制开源引擎和汉化资源……")
-        copy_directories(
-            (
-                (payload_directory / "engine", staging_directory / "engine"),
-                (payload_directory / "savedata", staging_directory / "savedata"),
-            ),
-            lambda done, total: progress(
-                20 * done / max(total, 1), "正在复制汉化资源"
-            ),
-        )
-
-        report("正在从正版游戏数据生成补齐资源……")
-        writer = CallbackWriter(report)
-        with contextlib.redirect_stdout(writer), contextlib.redirect_stderr(writer):
-            result = build_assets(
-                game_directory,
-                staging_directory / "savedata" / "q4base",
-                progress=lambda value, message: progress(20 + 55 * value, message),
+        if english_mode:
+            report("正在复制开源引擎和英文字幕资源……")
+            stage_english_savedata(payload_directory, staging_directory / savedata_name)
+            copy_directories(
+                (
+                    (payload_directory / "engine", staging_directory / "engine"),
+                ),
+                lambda done, total: progress(
+                    45 * done / max(total, 1), "正在复制英文字幕资源"
+                ),
             )
-        writer.flush()
-        if result != 0:
-            raise InstallError(f"补齐资源生成失败，返回码：{result}")
+            # 英文模式不做正版资产现场生成：原版界面/字体原样保留
+        else:
+            report("正在复制开源引擎和汉化资源……")
+            copy_directories(
+                (
+                    (payload_directory / "engine", staging_directory / "engine"),
+                    (payload_directory / "savedata", staging_directory / "savedata"),
+                ),
+                lambda done, total: progress(
+                    20 * done / max(total, 1), "正在复制汉化资源"
+                ),
+            )
 
+            report("正在从正版游戏数据生成补齐资源……")
+            writer = CallbackWriter(report)
+            with contextlib.redirect_stdout(writer), contextlib.redirect_stderr(writer):
+                result = build_assets(
+                    game_directory,
+                    staging_directory / "savedata" / "q4base",
+                    progress=lambda value, message: progress(20 + 55 * value, message),
+                )
+            writer.flush()
+            if result != 0:
+                raise InstallError(f"补齐资源生成失败，返回码：{result}")
+
+        deploy_base = 45 if english_mode else 75
+        deploy_span = 50 if english_mode else 20
         install_directory.mkdir(parents=True, exist_ok=True)
         copy_directories(
             (
                 (staging_directory / "engine", install_directory / "engine"),
-                (staging_directory / "savedata", install_directory / "savedata"),
+                (staging_directory / savedata_name, install_directory / savedata_name),
             ),
             lambda done, total: progress(
-                75 + 20 * done / max(total, 1), "正在部署汉化文件"
+                deploy_base + deploy_span * done / max(total, 1),
+                "正在部署英文字幕文件" if english_mode else "正在部署汉化文件",
             ),
         )
     finally:
@@ -475,7 +538,7 @@ def install_localization(
     grant_install_access(install_directory)
     progress(97, "汉化目录权限设置完成")
 
-    launcher_target = game_directory / LAUNCHER_NAME
+    launcher_target = game_directory / launcher_name
     shutil.copy2(launcher_source, launcher_target)
     if not launcher_target.is_file():
         raise InstallError("汉化资源已生成，但游戏目录中的启动器未写入。")
@@ -484,11 +547,14 @@ def install_localization(
 
     if create_desktop_shortcut:
         report("正在创建桌面快捷方式……")
-        shortcut = create_shortcut(launcher_target)
+        shortcut = create_shortcut(
+            launcher_target,
+            SHORTCUT_NAME_ENGLISH if english_mode else SHORTCUT_NAME,
+        )
         report(f"桌面快捷方式：{shortcut}")
 
-    report(f"汉化启动器：{launcher_target}")
-    progress(100, "汉化安装完成")
+    report(f"启动器：{launcher_target}")
+    progress(100, "英文字幕安装完成" if english_mode else "汉化安装完成")
     return launcher_target
 
 
@@ -576,7 +642,7 @@ class SaveManagerWindow:
             table,
             columns=("version", "count", "latest", "directory"),
             show="headings",
-            height=2,
+            height=3,
         )
         self.tree.heading("version", text="版本")
         self.tree.heading("count", text="存档数")
@@ -617,6 +683,11 @@ class SaveManagerWindow:
             text="备份汉化存档",
             command=lambda: self.backup("localized"),
         ).pack(side=LEFT, padx=(8, 0))
+        ttk.Button(
+            buttons,
+            text="备份英文版存档",
+            command=lambda: self.backup("english"),
+        ).pack(side=LEFT, padx=(20, 0))
         ttk.Button(buttons, text="刷新", command=self.refresh).pack(side=RIGHT)
 
         self.status = StringVar(value="")
@@ -626,8 +697,8 @@ class SaveManagerWindow:
     def refresh(self) -> None:
         for item in self.tree.get_children():
             self.tree.delete(item)
-        labels = {"official": "原版", "localized": "汉化版"}
-        for key in ("official", "localized"):
+        labels = {"official": "原版", "localized": "汉化版", "english": "英文版"}
+        for key in ("official", "localized", "english"):
             directory = self.paths[key]
             count, latest = save_directory_summary(directory)
             self.tree.insert(
@@ -649,7 +720,7 @@ class SaveManagerWindow:
         os.startfile(directory)
 
     def backup(self, key: str) -> None:
-        labels = {"official": "original", "localized": "chinese"}
+        labels = {"official": "original", "localized": "chinese", "english": "english"}
         backup_directory = (
             self.game_directory / INSTALL_DIRECTORY_NAME / "save-backups"
         )
@@ -674,6 +745,7 @@ class InstallerWindow:
         self.events: queue.Queue[tuple[str, object]] = queue.Queue()
         self.game_directory = StringVar()
         self.desktop_shortcut = BooleanVar(value=True)
+        self.install_mode = StringVar(value="chinese")
         self.status = StringVar(value="请选择 Quake 4 1.4.2 游戏目录")
         self.installed_launcher: Path | None = None
 
@@ -694,6 +766,25 @@ class InstallerWindow:
         self.path_entry.pack(side=LEFT, fill=X, expand=True)
         self.browse_button = ttk.Button(path_row, text="浏览…", command=self.browse)
         self.browse_button.pack(side=RIGHT, padx=(8, 0))
+
+        # 游戏模式与安装器界面语言互相独立（见 docs/english-subtitles-plan.md）
+        ttk.Label(main, text="安装模式").pack(anchor="w", pady=(14, 6))
+        mode_row = ttk.Frame(main)
+        mode_row.pack(fill=X)
+        self.mode_chinese = ttk.Radiobutton(
+            mode_row,
+            text="完整简体中文汉化（菜单 + 字幕）",
+            variable=self.install_mode,
+            value="chinese",
+        )
+        self.mode_chinese.pack(side=LEFT)
+        self.mode_english = ttk.Radiobutton(
+            mode_row,
+            text="英文原版 + 英文字幕（仅加字幕）",
+            variable=self.install_mode,
+            value="english",
+        )
+        self.mode_english.pack(side=LEFT, padx=(18, 0))
 
         self.desktop_check = ttk.Checkbutton(
             main,
@@ -744,8 +835,13 @@ class InstallerWindow:
             self.set_existing_install(Path(selected))
 
     def set_existing_install(self, game_directory: Path) -> None:
-        launcher = game_directory / LAUNCHER_NAME
-        self.installed_launcher = launcher if launcher.is_file() else None
+        # 两种模式任一已安装即可启用操作按钮；启动按钮优先指向中文启动器
+        self.installed_launcher = None
+        for name in (LAUNCHER_NAME, LAUNCHER_NAME_ENGLISH):
+            launcher = game_directory / name
+            if launcher.is_file():
+                self.installed_launcher = launcher
+                break
         action_state = "normal" if self.installed_launcher is not None else "disabled"
         self.launch_button.configure(state=action_state)
         self.save_button.configure(state=action_state)
@@ -760,6 +856,8 @@ class InstallerWindow:
         state = "disabled" if busy else "normal"
         self.path_entry.configure(state=state)
         self.browse_button.configure(state=state)
+        self.mode_chinese.configure(state=state)
+        self.mode_english.configure(state=state)
         self.desktop_check.configure(state=state)
         self.install_button.configure(state=state)
         if busy:
@@ -793,20 +891,21 @@ class InstallerWindow:
             if not proceed:
                 return
 
+        mode = self.install_mode.get()
         self.installed_launcher = None
         self.launch_button.configure(state="disabled")
         self.progress.configure(value=0)
         self.set_busy(True)
-        self.status.set("正在安装汉化……")
-        self.append_log("开始安装")
+        self.status.set("正在安装英文字幕……" if mode == "english" else "正在安装汉化……")
+        self.append_log("开始安装（英文原版 + 英文字幕）" if mode == "english" else "开始安装")
         thread = threading.Thread(
             target=self.install_worker,
-            args=(game_directory, self.desktop_shortcut.get()),
+            args=(game_directory, self.desktop_shortcut.get(), mode),
             daemon=True,
         )
         thread.start()
 
-    def install_worker(self, game_directory: Path, desktop_shortcut: bool) -> None:
+    def install_worker(self, game_directory: Path, desktop_shortcut: bool, mode: str) -> None:
         try:
             launcher = install_localization(
                 game_directory,
@@ -815,6 +914,7 @@ class InstallerWindow:
                 lambda value, message: self.events.put(
                     ("progress", (value, message))
                 ),
+                mode=mode,
             )
             self.events.put(("success", launcher))
         except Exception as error:
@@ -835,13 +935,18 @@ class InstallerWindow:
                     self.status.set(str(message))
                 elif event == "success":
                     self.installed_launcher = Path(payload)
+                    done_text = (
+                        "英文字幕安装完成"
+                        if self.install_mode.get() == "english"
+                        else "汉化安装完成"
+                    )
                     self.set_busy(False)
-                    self.status.set("汉化安装完成")
+                    self.status.set(done_text)
                     self.progress.configure(value=100)
-                    self.append_log("汉化安装完成")
+                    self.append_log(done_text)
                     messagebox.showinfo(
                         APP_NAME,
-                        f"汉化安装完成。\n\n启动器：\n{self.installed_launcher}",
+                        f"{done_text}。\n\n启动器：\n{self.installed_launcher}",
                         parent=self.root,
                     )
                 elif event == "failure":

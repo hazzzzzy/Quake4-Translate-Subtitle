@@ -14,7 +14,9 @@ $required = @(
     "Quake4-Chinese-Installer.exe",
     "engine\Quake4.exe",
     "engine\q4game.dll",
-    "savedata\q4base\strings\chinese_guis.lang"
+    "savedata\q4base\strings\chinese_guis.lang",
+    "savedata\q4base\strings\english_lipsadd.lang",
+    "savedata\q4base\guis\subtitles.gui"
 )
 foreach ($relativePath in $required) {
     $path = Join-Path $distribution $relativePath
@@ -27,11 +29,12 @@ $forbidden = Get-ChildItem -LiteralPath $distribution -Recurse -Force -File | Wh
     $relativePath = $_.FullName.Substring($distribution.Length + 1).Replace("\", "/")
     $relativePath -match "^savedata/q4base/fonts/chinese/strogg_" -or
     $relativePath -match "^savedata/q4base/fonts/chinese/r_strogg_.*\.tga$" -or
-    $relativePath -match "^savedata/q4base/guis/(hud|mainmenu|wristcomm)\.gui$" -or
-    $relativePath -match "^savedata/q4base/guis/maps/" -or
+    $relativePath -match "^savedata/q4base/guis/(hud|mainmenu|wristcomm|hud_strogg|wristcomm_strogg)\.gui$" -or
+    $relativePath -match "^savedata/q4base/guis/(maps|common|monitors|movers)/" -or
     $relativePath -match "(^|/)(savegames|screenshots)/" -or
     $relativePath -match "(^|/)qconsole.*\.log$" -or
     $relativePath -match "(^|/)Quake4Config\.cfg$" -or
+    $relativePath -match "(^|/)(config\.spec|quake4key|xpkey|noninteractive-before|\.console_history\.dat)$" -or
     $relativePath -match "^savedata/q4base/zzz_vo_chinese_alias\.pk4$"
 }
 if ($forbidden) {

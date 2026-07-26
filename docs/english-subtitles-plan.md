@@ -1,5 +1,15 @@
 # 英文字幕独立模式设计
 
+> **状态：已实现（v1.2.0）。** 实现与本文两处出入（勘误）：
+>
+> 1. 英文补充语言包命名为 `english_lipsadd.lang` 而非 `english_lips.lang`——
+>    原版 `zpak_english.pk4` 内已有同名 `strings/english_lips.lang`（6085 条），
+>    savepath 同名文件会整体遮蔽 pak 内文件导致主线对白字幕全灭；
+>    且实测原版 english lang 已覆盖 `dialogue_lips.tsv` 全部 3962 条主线 id，
+>    补充包只需自建 id（无线电 `str_380xxx` 253 条 + AI 补齐 `str_385xxx` 726 条）。
+> 2. 英文模式**不需要**语音路径别名包——decl 按声音名（`FindLipSync(sound)`）
+>    查找，与 `vo_chinese` 路径无关；`sys_lang english` 下引擎直接用原版音频路径。
+
 ## 目标
 
 英文模式只为原版英文游戏补充字幕，继续使用原版英文菜单、HUD、面板和字体。它与完整简体中文汉化并列为安装器中的独立选项，不共享语言覆盖文件。
@@ -26,12 +36,12 @@ flowchart LR
     E --> EI["原版英文 + 英文字幕"]
 ```
 
-英文模式仅部署以下新增内容：
+英文模式仅部署以下新增内容（全部为静态载荷，无正版资产现场生成步骤）：
 
-- 公共字幕版 `q4game.dll`。
-- 字幕 GUI 与 lipsync decl。
-- 从 TSV `en` 列生成的 `english_lips.lang`。
-- 语音路径别名包。
+- 公共字幕版 `q4game.dll`（与中文模式同一 DLL，运行时按 `sys_lang` 分支）。
+- 字幕 GUI（`guis/subtitles.gui`，语言中立：`font "fonts/lowpixel"` 在
+  `sys_lang english` 下自动加载原版英文字库）与 lipsync decl。
+- 从 TSV `english` 列生成的 `english_lipsadd.lang`（仅自建 id，979 条）。
 
 中文字体、中文菜单、中文 HUD 和 Strogg 中文转译资源不进入英文模式。
 

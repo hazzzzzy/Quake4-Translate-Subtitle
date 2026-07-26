@@ -32,6 +32,13 @@ static const int   FADE_OUT_MS	= 300;
 
 rvSubtitles gameSubtitles;
 
+// —— 英文字幕模式（sys_lang english）——
+// 触发/门控/时长/队列/面板/断行全部与中文共用，仅三处表现按语言分支：
+// 说话人冒号、无名友军兜底名、度量字库路径（见下）。
+static bool SUB_IsChineseLang( void ) {
+	return idStr::Icmp( cvarSystem->GetCVarString( "sys_lang" ), "chinese" ) == 0;
+}
+
 // —— 行宽度量（与引擎 DrawText 同款推进公式：xSkip * useScale）——
 // 首次使用时从字幕 GUI 同款 fontdat 读取真实字形步进，文件缺失时退回估值
 static const float SUB_TEXT_W		= 356.0f;					// 行像素预算（gui 文本区宽 368，留行首禁则并入余量）
@@ -40,7 +47,9 @@ static const float SUB_TEXT_W		= 356.0f;					// 行像素预算（gui 文本区�
 // 尺寸不变、度量分辨率翻倍——fontdat 步进是整数，12 号下拉丁字母 4~6px 的
 // ±0.5 舍入误差屏显达 ±1.1px（"gg"/"ss" 忽缝忽挤的根因），24 号相对误差减半
 static const float SUB_USE_SCALE	= 0.19f * 48.0f / 24.0f;	// textscale 0.19 → 24 号字库（smallFontLimit=0）
-static const char *SUB_FONT_DAT		= "fonts/chinese/lowpixel_24.fontdat";
+// 度量字库随 sys_lang 走引擎字体目录惯例（fonts/chinese/、fonts/english/…），
+// 与 subtitles.gui 的 font "fonts/lowpixel" 实际加载的字库保持同源
+static const char *SUB_FONT_DAT_FMT	= "fonts/%s/lowpixel_24.fontdat";
 static const float SUB_ASCII_FALLBACK	= 15.0f;				// 估值：ASCII 平均步进（字库像素）
 static const float SUB_WIDE_FALLBACK	= 26.0f;				// 估值：全角步进（字库像素）
 
@@ -66,10 +75,16 @@ static void SUB_LoadFontMetrics( void ) {
 		subAsciiAdv[i] = SUB_ASCII_FALLBACK;
 	}
 
+	const char *lang = cvarSystem->GetCVarString( "sys_lang" );
+	if ( !lang || !lang[0] ) {
+		lang = "english";
+	}
+	idStr fontDat = va( SUB_FONT_DAT_FMT, lang );
+
 	void *buf = NULL;
-	int len = fileSystem->ReadFile( SUB_FONT_DAT, &buf );
+	int len = fileSystem->ReadFile( fontDat.c_str(), &buf );
 	if ( len <= 0 || !buf ) {
-		gameLocal.Warning( "rvSubtitles: %s not found, using fallback metrics", SUB_FONT_DAT );
+		gameLocal.Warning( "rvSubtitles: %s not found, using fallback metrics", fontDat.c_str() );
 		return;
 	}
 	const byte *p = ( const byte * )buf;
@@ -303,12 +318,27 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 		return;
 	}
 
+	// 挂钩侧（LipSync.cpp/Misc.cpp）传入的中文语义前缀在英文模式下换英文：
+	// 映射收敛在本文件，挂钩文件不因语言分支产生补丁噪声
+	if ( speaker && !SUB_IsChineseLang() ) {
+		if ( idStr::Cmp( speaker, "\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5" ) == 0 ) {
+			speaker = "Radio";		// 无线电
+		} else if ( idStr::Cmp( speaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) == 0 ) {
+			speaker = "PA";			// 广播
+		}
+	}
+
 	idStr full;
 	if ( speaker && speaker[0] && speaker[0] != '#' ) {
-		// 2026-07-18 用户要求：说话人与内容之间用全角中文冒号，不留空格
-		// （原半角冒号 + 空格视觉突兀）。UTF-8 转义 \xEF\xBC\x9A = U+FF1A "："
-		// MSVC 窄字符字面量按系统码页编译，必须写转义否则等价 GBK 字节序列。
-		full = va( "%s\xEF\xBC\x9A%s", speaker, clean.c_str() );
+		if ( SUB_IsChineseLang() ) {
+			// 2026-07-18 用户要求：说话人与内容之间用全角中文冒号，不留空格
+			// （原半角冒号 + 空格视觉突兀）。UTF-8 转义 \xEF\xBC\x9A = U+FF1A "："
+			// MSVC 窄字符字面量按系统码页编译，必须写转义否则等价 GBK 字节序列。
+			full = va( "%s\xEF\xBC\x9A%s", speaker, clean.c_str() );
+		} else {
+			// 英文模式：半角冒号 + 空格（原版英文排版惯例）
+			full = va( "%s: %s", speaker, clean.c_str() );
+		}
 	} else {
 		full = clean;
 	}
@@ -461,11 +491,11 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 			}
 		}
 		// 2026-07-18 用户要求字幕都有来源：无名友军 AI 兜底为"士兵"
-		// （中文必须写 UTF-8 转义，MSVC GBK 码页坑）
+		// （中文必须写 UTF-8 转义，MSVC GBK 码页坑）；英文模式用 Marine
 		if ( !speaker.Length() && !fallbackSpeaker && bodyEnt->IsType( idActor::GetClassType() ) ) {
 			idPlayer *pl = gameLocal.GetLocalPlayer();
 			if ( pl && static_cast<idActor *>( bodyEnt )->team == pl->team ) {
-				speaker = "\xE5\xA3\xAB\xE5\x85\xB5";	// 士兵
+				speaker = SUB_IsChineseLang() ? "\xE5\xA3\xAB\xE5\x85\xB5" : "Marine";	// 士兵
 			}
 		}
 	}

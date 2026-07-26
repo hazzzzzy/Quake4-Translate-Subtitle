@@ -13,6 +13,15 @@ namespace {
 
 constexpr wchar_t kProductName[] = L"Quake 4 简体中文汉化";
 constexpr wchar_t kInstallDirectory[] = L"Quake4-Chinese";
+// 同一二进制按自身文件名分流：含"英文"= 英文原版+英文字幕模式
+// （安装器将本 EXE 复制为 Quake4中文启动器.exe / Quake4英文字幕启动器.exe）
+constexpr wchar_t kEnglishMarker[] = L"英文";
+constexpr wchar_t kEnglishSaveDirectory[] = L"savedata-english";
+
+bool IsEnglishMode(const fs::path& launcherPath) {
+    return launcherPath.filename().wstring().find(kEnglishMarker) !=
+           std::wstring::npos;
+}
 
 void ShowError(const std::wstring& message) {
     MessageBoxW(nullptr, message.c_str(), kProductName, MB_OK | MB_ICONERROR);
@@ -58,13 +67,15 @@ std::wstring QuoteArgument(const std::wstring& value) {
 std::wstring BuildCommandLine(
     const fs::path& engine,
     const fs::path& gameDirectory,
-    const fs::path& saveDirectory) {
+    const fs::path& saveDirectory,
+    bool englishMode) {
+    // 英文模式：原版界面/字体原样，仅开字幕；宽字符 GUI 仅中文需要
     const std::vector<std::wstring> arguments = {
         engine.wstring(),
         L"+set", L"fs_basepath", gameDirectory.wstring(),
         L"+set", L"fs_savepath", saveDirectory.wstring(),
-        L"+set", L"sys_lang", L"chinese",
-        L"+set", L"harm_gui_wideCharLang", L"1",
+        L"+set", L"sys_lang", englishMode ? L"english" : L"chinese",
+        L"+set", L"harm_gui_wideCharLang", englishMode ? L"0" : L"1",
         L"+set", L"gui_smallFontLimit", L"0",
         L"+set", L"image_forceDownSize", L"0",
         L"+set", L"harm_g_subtitles", L"1",
@@ -141,12 +152,14 @@ HRESULT CreateDesktopShortcut(
 }
 
 int LaunchGame(const fs::path& launcherPath) {
+    const bool englishMode = IsEnglishMode(launcherPath);
     const fs::path gameDirectory = launcherPath.parent_path();
     const fs::path installDirectory = gameDirectory / kInstallDirectory;
     const fs::path engineDirectory = installDirectory / L"engine";
     const fs::path engine = engineDirectory / L"Quake4.exe";
     const fs::path gameModule = engineDirectory / L"q4game.dll";
-    const fs::path saveDirectory = installDirectory / L"savedata";
+    const fs::path saveDirectory =
+        installDirectory / (englishMode ? kEnglishSaveDirectory : L"savedata");
 
     const std::vector<fs::path> requiredFiles = {
         gameDirectory / L"q4base" / L"pak001.pk4",
@@ -172,7 +185,7 @@ int LaunchGame(const fs::path& launcherPath) {
     }
 
     std::wstring commandLine =
-        BuildCommandLine(engine, gameDirectory, saveDirectory);
+        BuildCommandLine(engine, gameDirectory, saveDirectory, englishMode);
     STARTUPINFOW startupInfo{};
     startupInfo.cb = sizeof(startupInfo);
     PROCESS_INFORMATION processInfo{};

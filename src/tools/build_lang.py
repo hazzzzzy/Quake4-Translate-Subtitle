@@ -61,3 +61,24 @@ for tsv, lang in TABLES.items():
     total += n
     total_zh += n_zh
 print(f"合计 {total} 条，已汉化 {total_zh}（{total_zh / total:.0%}）")
+
+# —— 英文字幕模式：english_lipsadd.lang ——
+# 只补自建 id（radio str_380xxx / ai_vo str_385xxx）：主线对白 3962 条
+# 原版 zpak_english.pk4 的 english_lips.lang 已全覆盖，无需重复生成。
+# 文件名必须与原版不同名：savepath 的 strings/english_lips.lang 会整体
+# 遮蔽 pak 内同名文件（丢原版 6085 条），independent 名按语言前缀合并加载。
+en_out = ["// string table", "// english (subtitle additions for custom decls)", "//", "", "{"]
+n_en = 0
+for extra in ("radio_chatter.tsv", "ai_vo_gap.tsv"):
+    path = TRANS / extra
+    if not path.exists():
+        continue
+    for l in path.read_text(encoding="utf-8-sig").splitlines()[1:]:
+        cols = l.split("\t")
+        if len(cols) < 5 or not cols[0].startswith("str_"):
+            continue
+        en_out.append(f'\t"#{cols[0]}"\t"{cols[3]}"')
+        n_en += 1
+en_out.append("}")
+(OUT / "english_lipsadd.lang").write_text("\n".join(en_out) + "\n", encoding="utf-8-sig")
+print(f"english_lipsadd.lang: {n_en} 条（英文字幕模式自建 id 补充）")
