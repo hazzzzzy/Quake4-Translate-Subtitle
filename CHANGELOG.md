@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.2.1 — 2026-08-01
+
+### 字幕颜色 + 驾驶员映射修正 + 专有名词「」格式
+
+- 字幕按说话人类型着色：广播/地点播报=黄、无线电=青、角色对白=白，统一正常亮度（不再淡色）。`Subtitles.h/cpp` 加 `subColor_t` 枚举取代旧 `dimmed` 二态；`subtitles.gui` 文本控件 `forecolor` 改读 `subTxtR/G/B` 状态变量
+- walker bay 驾驶员映射修正：70 段驾驶员不再错配"Morois 下士"（实为测试员）→"机甲驾驶员"；40 段驾驶员从"广播"→"机甲驾驶员"；Check 译"收到"→"检测通过"
+- 专有名词统一「译名」（英文原词）格式：walker「步行者」、Stroyent「斯托伊文特」、Tetranode「四元节点」、Gladiator/Harvester/Gunner/Hover Tank/Failed Transfer/Repair Bot/Stream Protector 同款；番号"机甲小队/机甲师"保留不拆；Strogg/Makron/Nexus 仍保留英文
+- 消毒室 PA 广播（原版用 func_radiochatter 实现，字幕误显"无线电"）配"消毒室播报"映射；颜色判断含"播报"→黄
+- `glossary.md` 更新 walker 条目 + 「」排版规范
+- CI 修复：patch 验证 sparse-checkout 补 Entity.cpp（c7b653a 引入的遗漏）
+
 ## v1.2.0 — 2026-07-26
 
 ### 英文原版 + 英文字幕模式
