@@ -1,77 +1,77 @@
-﻿﻿str_id	sound	map	english	chinese	source
-str_386000	vo_1_1_11_220_2	mcc_1	Report to life support services immediately - they're having a problem with a purification unit.	立即到生命维持部门报到——净化装置出故障了。	sndshd
-str_386001	vo_1_1_11_230_2	mcc_1	Reroute the energy stabilizers. Wait two seconds and then purge 'em. The hit will cause the system to depolarize.	重新路由能量稳定器。等两秒再排空。这一下会让系统退磁。	sndshd
-str_386002	vo_1_1_11_230_4	mcc_1	Kid, I know what this ship can and can't do.	小子,这艘船能干什么不能干什么,我心里有数。	sndshd
-str_386003	vo_1_1_11_230_6	mcc_1	Power restored in 3... 2... 1.	动力恢复:3……2……1。	sndshd
-str_386004	vo_1_1_11_230_8	mcc_1	Of course it worked. Now recalibrate that console, then get back here.	当然成。现在重新校准那个控制台,然后回来。	sndshd
-str_386005	vo_1_1_11_250_4	mcc_1	The glitch is in that sector.	故障在那个区域。	sndshd
-str_386006	vo_1_1_11_260_2	mcc_1	Nope. It's at 54%.	不对。54%。	sndshd
-str_386007	vo_1_1_11_260_4	mcc_1	74%.	74%。	sndshd
-str_386008	vo_1_1_11_260_6	mcc_1	Now it's at 83%.	现在 83%。	sndshd
-str_386009	vo_1_1_11_300_1	mcc_1	Private Mark Lorenzi, please report to medical bay 3.	Mark Lorenzi 列兵,请到三号医疗舱报到。	sndshd
-str_386010	vo_1_1_11_310_1	mcc_1	Lt.Voss, report to briefing room 8.	Voss 中尉,到八号简报室报到。	sndshd
-str_386011	vo_1_1_11_320_1	mcc_1	Memorial Services for Colonel Westmore will be held at oh eight hundred hours.	Westmore 上校的追悼会将于八点整举行。	sndshd
-str_386012	vo_1_1_11_330_1	mcc_1	Bison Squad, report to walker deck 2 immediately.	野牛小队,立即到二号 walker 甲板报到。	sndshd
-str_386013	vo_1_1_11_332_1	mcc_1	Testing launch PODs 1 and 2.	测试一号、二号发射舱。	sndshd
-str_386014	vo_1_1_11_340_2	mcc_1	My team is pinned down by heavy fire. I'm requesting an artillery strike on a Strogg bunker.	我小队被猛烈火力压制。请求对 Strogg 碉堡实施炮击。	sndshd
-str_386015	vo_1_1_11_350_2	mcc_1	Great, so where's my squad located?	好,那我小队在哪儿?	sndshd
-str_386016	vo_1_1_11_350_4	mcc_1	Okay, let 'em know I'm on my way.	行,告诉他们我马上到。	sndshd
-str_386017	vo_1_1_11_350_6	mcc_1	Thanks for the help. Looms out.	多谢帮忙。Looms 完毕。	sndshd
-str_386018	vo_1_1_11_35_1	mcc_1	Crew Chief Hammond, report to walker bay 8D immediately.	Hammond 轮机长,立即到 8D walker 舱报到。	sndshd
-str_386019	vo_1_1_11_35_2	mcc_1	A welding crew is needed in armament.	武器舱需要一组焊接工。	sndshd
-str_386020	vo_1_1_11_35_3	mcc_1	All walkers for Bison Squad will need to be pre-prepped by oh four hundred hours.	野牛小队的所有 walker 须在四点整前完成预备整备。	sndshd
-str_386021	vo_1_1_11_35_4	mcc_1	Specialist Herman Ways, report to the main office immediately.	Herman Ways 专业兵,立即到总办公室报到。	sndshd
-str_386022	vo_1_1_11_35_5	mcc_1	A computer tech is needed in walker bay 6C.	6C walker 舱需要一名计算机技术员。	sndshd
-str_386023	vo_1_1_11_35_6	mcc_1	Crew Chief Hanks, call 232. Crew Chief Hanks, call 232.	Hanks 轮机长,呼叫 232。Hanks 轮机长,呼叫 232。	sndshd
-str_386024	vo_1_1_11_380_1	mcc_1	Signal check for pestilence.	「瘟疫」信号检查。	sndshd
-str_386025	vo_1_1_11_380_3	mcc_1	Roger that. Switching to 4 6 1.	收到。切换到 461。	sndshd
-str_386026	vo_1_1_11_395_1	mcc_1	I'm a scout on special assignment.	我是执行特殊任务的侦察兵。	sndshd
-str_386027	vo_1_1_11_395_3	mcc_1	Tell General Harper that there should be no problem entering the Hub from the lower level.	告诉 Harper 将军,从下层进入枢纽应该不会有问题。	sndshd
-str_386028	vo_1_1_11_40_4	mcc_1	The back shields cut out.	后部护盾断了。	sndshd
-str_386029	vo_1_1_11_40_6	mcc_1	Primary emitter is in the green.	主发射器状态正常。	sndshd
-str_386030	vo_1_1_11_40_8	mcc_1	Secondary emitters check out.	副发射器检查通过。	sndshd
-str_386031	vo_1_1_11_70_2	mcc_1	18 hours, Chief.	18 小时,长官。	sndshd
-str_386032	vo_1_1_11_70_5	mcc_1	Check.	收到。	sndshd
-str_386033	vo_1_1_11_70_7	mcc_1	Check.	收到。	sndshd
-str_386034	vo_1_1_11_70_9	mcc_1	Check.	收到。	sndshd
-str_386035	vo_1_1_1_15_1	airdefense1	You're needed ASAP. Colonel Westmore has been wounded in the leg.	急需你过来。Westmore 上校腿部负伤。	sndshd
-str_386036	vo_1_1_1_15_3	airdefense1	Westmore demanded you.	Westmore 点名要你。	sndshd
-str_386037	vo_1_1_1_28_1	airdefense1	Are you picking up our medical chips?	你能收到我们的医疗芯片信号吗?	sndshd
-str_386038	vo_1_1_1_28_3	airdefense1	Good. Now establish an uplink with HQ. Voss out.	好。现在与总部建立上行链路。Voss 完毕。	sndshd
-str_386039	vo_1_1_7_110_2	mcc_landing	Nein. I don't know how to make it any simpler, you have to engage the primary override first.	不。我不知道还能说得多简单,你得先启动主控覆写。	sndshd
-str_386040	vo_1_1_7_110_4	mcc_landing	I shouldn't have to. It's plainly obvious. Do I have to come down there and walk you through it?	用不着我说。这明摆着的事。非得我下去手把手教你吗?	sndshd
-str_386041	vo_1_1_7_110_6	mcc_landing	Very well, Strauss out.	很好,Strauss 完毕。	sndshd
-str_386042	vo_1_1_7_140_2	mcc_landing	Strauss, we've been over this - it's not gonna happen.	Strauss,这事我们说过了——不可能。	sndshd
-str_386043	vo_1_1_7_140_4	mcc_landing	Thank you, Private Strauss. Your grievance is noted.	谢谢你,Strauss 列兵。你的不满我记下了。	sndshd
-str_386044	vo_1_2_12_30_1	convoy2b	Zebra 2, this is Bison 8. See anything?	斑马 2,我是野牛 8。看到什么了吗?	sndshd
-str_386045	vo_1_2_12_30_2	convoy2b	I got nothing.	什么也没有。	sndshd
-str_386046	vo_1_2_12_30_3	convoy2b	Wait a second. I've got a reading.	等等。我有读数了。	sndshd
-str_386047	vo_1_2_12_30_4	convoy2b	Holy shit! What IS that?!	我操!那他妈是什么?!	sndshd
-str_386048	vo_2_2_10_195_1	mcc_1	On Venus, the city of Portsmith is scheduled to have temperatures in the low to mid 70's with rain from seven to eight am.	金星方面,Portsmith 市气温预计 70 度出头,上午七点至八点有雨。	sndshd
-str_386049	vo_2_2_10_195_2	mcc_1	The city of New Berlin be in the mid to upper 70's and clear.	New Berlin 市,75 度上下,晴。	sndshd
-str_386050	vo_2_2_10_195_3	mcc_1	And the spaceport, Aldrin, is still under repair from the meteor storm so the average temperature will be in the mid to upper 400's.	航天港 Aldrin 受流星风暴损毁仍在维修,平均气温将达 400 多度。	sndshd
-str_386051	vo_2_2_10_251_1	mcc_2	Exterior shields sustaining heavy damage.	外层护盾遭受严重破坏。	sndshd
-str_386052	vo_2_2_10_251_10	mcc_2	Danger! Hull has been breached on decks two and three. Danger! Hull has been breached.	危险!二、三号甲板船体破损。危险!船体已破损。	sndshd
-str_386053	vo_2_2_10_251_2	mcc_2	Shields are at 86%.	护盾 86%。	sndshd
-str_386054	vo_2_2_10_251_3	mcc_2	Shields at 72%, rerouting power from propulsion.	护盾 72%,从推进系统重新供电。	sndshd
-str_386055	vo_2_2_10_251_4	mcc_2	Shields currently at 63%	护盾当前 63%。	sndshd
-str_386056	vo_2_2_10_251_5	mcc_2	Warning. Exterior shields are at 48%.	警告。外层护盾 48%。	sndshd
-str_386057	vo_2_2_10_251_6	mcc_2	Aft shields intermittent. Damage reported on Decks 2 and 3.	后部护盾时断时续。二、三号甲板报告受损。	sndshd
-str_386058	vo_2_2_10_251_7	mcc_2	Warning. Shields have dropped to 29%.	警告。护盾降至 29%。	sndshd
-str_386059	vo_2_2_10_251_8	mcc_2	Danger. Exterior shields are at 13%.	危险。外层护盾 13%。	sndshd
-str_386060	vo_2_2_10_251_9	mcc_2	Exterior shields are down.	外层护盾失效。	sndshd
-str_386061	vo_2_2_10_265_1	mcc_2	Paging Private Herman. Paging Private Paul Herman. Please report to General Harper's office.	呼叫 Herman 列兵。呼叫 Paul Herman 列兵。请到 Harper 将军办公室报到。	sndshd
-str_386062	vo_2_2_10_270_1	mcc_2	Evac drills for decks 4 and 5 to commence at oh two hundred hours.	四、五号甲板撤离演习于两点整开始。	sndshd
-str_386063	vo_2_2_10_280_1	mcc_2	Security, report to deck 2. A Strogg Warrior has been sighted.	安保注意,到二号甲板报到。发现一名 Strogg 战士。	sndshd
-str_386064	vo_2_2_10_290_1	mcc_2	Condor squad, report to briefing room 4.	神鹰小队,到四号简报室报到。	sndshd
-str_386065	vo_2_2_10_326_2	mcc_2	That's Matthew Kane. He's not a Strogg and he's been given full clearance.	那是 Matthew Kane。他不是 Strogg,已获完全通行许可。	sndshd
-str_386066	vo_2_2_20_10_1	mcc_2	Wolf squad, report to engineering and repel boarding parties.	野狼小队,到轮机舱报到,击退登舰的敌人。	sndshd
-str_386067	vo_2_2_20_20_2	mcc_2	Roger that, control.	收到,指挥。	sndshd
-str_386068	vo_2_2_20_40_2	mcc_2	I will be prepped for launch in two minutes, control.	我两分钟后准备发射,指挥。	sndshd
-str_386069	vo_2_2_20_50_4	mcc_2	This is Bay 42. The pod is away. Running diagnostics for next launch cycle.	这里是 42 号舱。发射舱已离舰。正在为下一轮发射做诊断。	sndshd
-str_386070	vo_2_2_20_60_1	mcc_2	Control, I'm having a little trouble with navigation.	指挥,我的导航有点问题。	sndshd
-str_386071	vo_2_2_20_60_2	mcc_2	I confirm that. Re-transmitting pod flight plan.	我确认。重新发送发射舱飞行计划。	sndshd
-str_386072	vo_3_1_20_30_1	network1	What has he been up to?	他最近有什么动向?	sndshd
-str_386073	vo_3_1_20_30_3	network1	Does he represent a threat?	他构成威胁吗?	sndshd
-str_386074	vo_3_1_20_30_5	network1	Keep a close eye on him. Section 13, out.	盯紧他。13 区,完毕。	sndshd
-str_386075	vo_3_1_2_10_2	storage1	Don't let the Strogg makeup fool ya - he's a damn fine Marine.	别被那副 Strogg 模样骗了——他是个顶呱呱的陆战队员。	sndshd
+﻿﻿str_id	sound	map	english	chinese	source	speaker
+str_386000	vo_1_1_11_220_2	mcc_1	Report to life support services immediately - they're having a problem with a purification unit.	立即到生命维持部门报到——净化装置出故障了。	sndshd	
+str_386001	vo_1_1_11_230_2	mcc_1	Reroute the energy stabilizers. Wait two seconds and then purge 'em. The hit will cause the system to depolarize.	重新路由能量稳定器。等两秒再排空。这一下会让系统退磁。	sndshd	
+str_386002	vo_1_1_11_230_4	mcc_1	Kid, I know what this ship can and can't do.	小子,这艘船能干什么不能干什么,我心里有数。	sndshd	
+str_386003	vo_1_1_11_230_6	mcc_1	Power restored in 3... 2... 1.	动力恢复:3……2……1。	sndshd	
+str_386004	vo_1_1_11_230_8	mcc_1	Of course it worked. Now recalibrate that console, then get back here.	当然成。现在重新校准那个控制台,然后回来。	sndshd	
+str_386005	vo_1_1_11_250_4	mcc_1	The glitch is in that sector.	故障在那个区域。	sndshd	
+str_386006	vo_1_1_11_260_2	mcc_1	Nope. It's at 54%.	不对。54%。	sndshd	
+str_386007	vo_1_1_11_260_4	mcc_1	74%.	74%。	sndshd	
+str_386008	vo_1_1_11_260_6	mcc_1	Now it's at 83%.	现在 83%。	sndshd	
+str_386009	vo_1_1_11_300_1	mcc_1	Private Mark Lorenzi, please report to medical bay 3.	Mark Lorenzi 列兵,请到三号医疗舱报到。	sndshd	
+str_386010	vo_1_1_11_310_1	mcc_1	Lt.Voss, report to briefing room 8.	Voss 中尉,到八号简报室报到。	sndshd	
+str_386011	vo_1_1_11_320_1	mcc_1	Memorial Services for Colonel Westmore will be held at oh eight hundred hours.	Westmore 上校的追悼会将于八点整举行。	sndshd	
+str_386012	vo_1_1_11_330_1	mcc_1	Bison Squad, report to walker deck 2 immediately.	野牛小队,立即到二号 walker 甲板报到。	sndshd	
+str_386013	vo_1_1_11_332_1	mcc_1	Testing launch PODs 1 and 2.	测试一号、二号发射舱。	sndshd	
+str_386014	vo_1_1_11_340_2	mcc_1	My team is pinned down by heavy fire. I'm requesting an artillery strike on a Strogg bunker.	我小队被猛烈火力压制。请求对 Strogg 碉堡实施炮击。	sndshd	Looms
+str_386015	vo_1_1_11_350_2	mcc_1	Great, so where's my squad located?	好,那我小队在哪儿?	sndshd	Looms
+str_386016	vo_1_1_11_350_4	mcc_1	Okay, let 'em know I'm on my way.	行,告诉他们我马上到。	sndshd	Looms
+str_386017	vo_1_1_11_350_6	mcc_1	Thanks for the help. Looms out.	多谢帮忙。Looms 完毕。	sndshd	Looms
+str_386018	vo_1_1_11_35_1	mcc_1	Crew Chief Hammond, report to walker bay 8D immediately.	Hammond 轮机长,立即到 8D walker 舱报到。	sndshd	
+str_386019	vo_1_1_11_35_2	mcc_1	A welding crew is needed in armament.	武器舱需要一组焊接工。	sndshd	
+str_386020	vo_1_1_11_35_3	mcc_1	All walkers for Bison Squad will need to be pre-prepped by oh four hundred hours.	野牛小队的所有 walker 须在四点整前完成预备整备。	sndshd	
+str_386021	vo_1_1_11_35_4	mcc_1	Specialist Herman Ways, report to the main office immediately.	Herman Ways 专业兵,立即到总办公室报到。	sndshd	
+str_386022	vo_1_1_11_35_5	mcc_1	A computer tech is needed in walker bay 6C.	6C walker 舱需要一名计算机技术员。	sndshd	
+str_386023	vo_1_1_11_35_6	mcc_1	Crew Chief Hanks, call 232. Crew Chief Hanks, call 232.	Hanks 轮机长,呼叫 232。Hanks 轮机长,呼叫 232。	sndshd	
+str_386024	vo_1_1_11_380_1	mcc_1	Signal check for pestilence.	「瘟疫」信号检查。	sndshd	
+str_386025	vo_1_1_11_380_3	mcc_1	Roger that. Switching to 4 6 1.	收到。切换到 461。	sndshd	
+str_386026	vo_1_1_11_395_1	mcc_1	I'm a scout on special assignment.	我是执行特殊任务的侦察兵。	sndshd	侦察兵
+str_386027	vo_1_1_11_395_3	mcc_1	Tell General Harper that there should be no problem entering the Hub from the lower level.	告诉 Harper 将军,从下层进入枢纽应该不会有问题。	sndshd	侦察兵
+str_386028	vo_1_1_11_40_4	mcc_1	The back shields cut out.	后部护盾断了。	sndshd	
+str_386029	vo_1_1_11_40_6	mcc_1	Primary emitter is in the green.	主发射器状态正常。	sndshd	
+str_386030	vo_1_1_11_40_8	mcc_1	Secondary emitters check out.	副发射器检查通过。	sndshd	
+str_386031	vo_1_1_11_70_2	mcc_1	18 hours, Chief.	18 小时,长官。	sndshd	Morois 下士
+str_386032	vo_1_1_11_70_5	mcc_1	Check.	收到。	sndshd	Morois 下士
+str_386033	vo_1_1_11_70_7	mcc_1	Check.	收到。	sndshd	Morois 下士
+str_386034	vo_1_1_11_70_9	mcc_1	Check.	收到。	sndshd	Morois 下士
+str_386035	vo_1_1_1_15_1	airdefense1	You're needed ASAP. Colonel Westmore has been wounded in the leg.	急需你过来。Westmore 上校腿部负伤。	sndshd	Voss
+str_386036	vo_1_1_1_15_3	airdefense1	Westmore demanded you.	Westmore 点名要你。	sndshd	Voss
+str_386037	vo_1_1_1_28_1	airdefense1	Are you picking up our medical chips?	你能收到我们的医疗芯片信号吗?	sndshd	Voss
+str_386038	vo_1_1_1_28_3	airdefense1	Good. Now establish an uplink with HQ. Voss out.	好。现在与总部建立上行链路。Voss 完毕。	sndshd	Voss
+str_386039	vo_1_1_7_110_2	mcc_landing	Nein. I don't know how to make it any simpler, you have to engage the primary override first.	不。我不知道还能说得多简单,你得先启动主控覆写。	sndshd	Strauss
+str_386040	vo_1_1_7_110_4	mcc_landing	I shouldn't have to. It's plainly obvious. Do I have to come down there and walk you through it?	用不着我说。这明摆着的事。非得我下去手把手教你吗?	sndshd	Strauss
+str_386041	vo_1_1_7_110_6	mcc_landing	Very well, Strauss out.	很好,Strauss 完毕。	sndshd	Strauss
+str_386042	vo_1_1_7_140_2	mcc_landing	Strauss, we've been over this - it's not gonna happen.	Strauss,这事我们说过了——不可能。	sndshd	
+str_386043	vo_1_1_7_140_4	mcc_landing	Thank you, Private Strauss. Your grievance is noted.	谢谢你,Strauss 列兵。你的不满我记下了。	sndshd	
+str_386044	vo_1_2_12_30_1	convoy2b	Zebra 2, this is Bison 8. See anything?	斑马 2,我是野牛 8。看到什么了吗?	sndshd	野牛 8
+str_386045	vo_1_2_12_30_2	convoy2b	I got nothing.	什么也没有。	sndshd	
+str_386046	vo_1_2_12_30_3	convoy2b	Wait a second. I've got a reading.	等等。我有读数了。	sndshd	
+str_386047	vo_1_2_12_30_4	convoy2b	Holy shit! What IS that?!	我操!那他妈是什么?!	sndshd	
+str_386048	vo_2_2_10_195_1	mcc_1	On Venus, the city of Portsmith is scheduled to have temperatures in the low to mid 70's with rain from seven to eight am.	金星方面,Portsmith 市气温预计 70 度出头,上午七点至八点有雨。	sndshd	
+str_386049	vo_2_2_10_195_2	mcc_1	The city of New Berlin be in the mid to upper 70's and clear.	New Berlin 市,75 度上下,晴。	sndshd	
+str_386050	vo_2_2_10_195_3	mcc_1	And the spaceport, Aldrin, is still under repair from the meteor storm so the average temperature will be in the mid to upper 400's.	航天港 Aldrin 受流星风暴损毁仍在维修,平均气温将达 400 多度。	sndshd	
+str_386051	vo_2_2_10_251_1	mcc_2	Exterior shields sustaining heavy damage.	外层护盾遭受严重破坏。	sndshd	
+str_386052	vo_2_2_10_251_10	mcc_2	Danger! Hull has been breached on decks two and three. Danger! Hull has been breached.	危险!二、三号甲板船体破损。危险!船体已破损。	sndshd	
+str_386053	vo_2_2_10_251_2	mcc_2	Shields are at 86%.	护盾 86%。	sndshd	
+str_386054	vo_2_2_10_251_3	mcc_2	Shields at 72%, rerouting power from propulsion.	护盾 72%,从推进系统重新供电。	sndshd	
+str_386055	vo_2_2_10_251_4	mcc_2	Shields currently at 63%	护盾当前 63%。	sndshd	
+str_386056	vo_2_2_10_251_5	mcc_2	Warning. Exterior shields are at 48%.	警告。外层护盾 48%。	sndshd	
+str_386057	vo_2_2_10_251_6	mcc_2	Aft shields intermittent. Damage reported on Decks 2 and 3.	后部护盾时断时续。二、三号甲板报告受损。	sndshd	
+str_386058	vo_2_2_10_251_7	mcc_2	Warning. Shields have dropped to 29%.	警告。护盾降至 29%。	sndshd	
+str_386059	vo_2_2_10_251_8	mcc_2	Danger. Exterior shields are at 13%.	危险。外层护盾 13%。	sndshd	
+str_386060	vo_2_2_10_251_9	mcc_2	Exterior shields are down.	外层护盾失效。	sndshd	
+str_386061	vo_2_2_10_265_1	mcc_2	Paging Private Herman. Paging Private Paul Herman. Please report to General Harper's office.	呼叫 Herman 列兵。呼叫 Paul Herman 列兵。请到 Harper 将军办公室报到。	sndshd	
+str_386062	vo_2_2_10_270_1	mcc_2	Evac drills for decks 4 and 5 to commence at oh two hundred hours.	四、五号甲板撤离演习于两点整开始。	sndshd	
+str_386063	vo_2_2_10_280_1	mcc_2	Security, report to deck 2. A Strogg Warrior has been sighted.	安保注意,到二号甲板报到。发现一名 Strogg 战士。	sndshd	
+str_386064	vo_2_2_10_290_1	mcc_2	Condor squad, report to briefing room 4.	神鹰小队,到四号简报室报到。	sndshd	
+str_386065	vo_2_2_10_326_2	mcc_2	That's Matthew Kane. He's not a Strogg and he's been given full clearance.	那是 Matthew Kane。他不是 Strogg,已获完全通行许可。	sndshd	
+str_386066	vo_2_2_20_10_1	mcc_2	Wolf squad, report to engineering and repel boarding parties.	野狼小队,到轮机舱报到,击退登舰的敌人。	sndshd	
+str_386067	vo_2_2_20_20_2	mcc_2	Roger that, control.	收到,指挥。	sndshd	
+str_386068	vo_2_2_20_40_2	mcc_2	I will be prepped for launch in two minutes, control.	我两分钟后准备发射,指挥。	sndshd	
+str_386069	vo_2_2_20_50_4	mcc_2	This is Bay 42. The pod is away. Running diagnostics for next launch cycle.	这里是 42 号舱。发射舱已离舰。正在为下一轮发射做诊断。	sndshd	42 号舱
+str_386070	vo_2_2_20_60_1	mcc_2	Control, I'm having a little trouble with navigation.	指挥,我的导航有点问题。	sndshd	
+str_386071	vo_2_2_20_60_2	mcc_2	I confirm that. Re-transmitting pod flight plan.	我确认。重新发送发射舱飞行计划。	sndshd	
+str_386072	vo_3_1_20_30_1	network1	What has he been up to?	他最近有什么动向?	sndshd	
+str_386073	vo_3_1_20_30_3	network1	Does he represent a threat?	他构成威胁吗?	sndshd	
+str_386074	vo_3_1_20_30_5	network1	Keep a close eye on him. Section 13, out.	盯紧他。13 区,完毕。	sndshd	
+str_386075	vo_3_1_2_10_2	storage1	Don't let the Strogg makeup fool ya - he's a damn fine Marine.	别被那副 Strogg 模样骗了——他是个顶呱呱的陆战队员。	sndshd	

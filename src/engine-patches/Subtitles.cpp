@@ -50,6 +50,12 @@ static float	subAsciiAdv[128];
 static byte *	subWideAdv = NULL;		// charcode → xSkip（字库像素，0=缺字形）
 static int		subWideNum = 0;
 
+// 声音 shader 名 → 说话人 映射（speaker_map.txt，build_lang.py 生成）
+// speaker 实体/无线电播放的语音：有映射=角色台词(带角色名)，无映射=环境广播("广播"/"无线电")
+static idDict	subSpeakerMap;
+static bool		subSpeakerMapLoaded = false;
+static void		SUB_LoadSpeakerMap( void );
+
 /*
 ================
 SUB_LoadFontMetrics
@@ -134,6 +140,44 @@ static float SUB_CharAdvance( unsigned int cp ) {
 		adv = SUB_WIDE_FALLBACK;
 	}
 	return adv * SUB_USE_SCALE;
+}
+
+/*
+================
+SUB_LoadSpeakerMap
+
+加载声音 shader 名 → 说话人 映射（speaker_map.txt，build_lang.py 生成）。
+格式：每行 "shader\tspeaker"，# 开头为注释。
+用于区分 speaker 实体/无线电播放的是角色台词还是环境广播。
+================
+*/
+static void SUB_LoadSpeakerMap( void ) {
+	subSpeakerMapLoaded = true;
+	void *buf = NULL;
+	int len = fileSystem->ReadFile( "speaker_map.txt", &buf );
+	if ( len <= 0 || !buf ) {
+		return;
+	}
+	idStr data( ( const char * )buf );
+	fileSystem->FreeFile( buf );
+	int start = 0;
+	while ( start < data.Length() ) {
+		int end = data.Find( '\n', start );
+		if ( end < 0 ) end = data.Length();
+		idStr line = data.Mid( start, end - start );
+		start = end + 1;
+		line.StripTrailingWhitespace();
+		if ( !line.Length() || line[0] == '#' ) continue;
+		int tab = line.Find( '\t' );
+		if ( tab < 0 ) continue;
+		idStr shader = line.Left( tab );
+		idStr name = line.Right( line.Length() - tab - 1 );
+		shader.StripTrailingWhitespace();
+		name.StripLeading( ' ' );
+		if ( shader.Length() && name.Length() ) {
+			subSpeakerMap.Set( shader, name );
+		}
+	}
 }
 
 /*
@@ -444,12 +488,28 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 
 /*
 ================
+rvSubtitles::LookupSpeaker
+
+查声音 shader 名 → 说话人映射（speaker_map.txt）。供 Sound.cpp/Misc.cpp 挂钩区分
+角色台词 vs 环境广播：有映射返回角色名，无映射返回 NULL（调用方 fallback 到默认前缀）。
+================
+*/
+const char *rvSubtitles::LookupSpeaker( const char *shaderName ) {
+	if ( !shaderName || !shaderName[0] ) return NULL;
+	if ( !subSpeakerMapLoaded ) SUB_LoadSpeakerMap();
+	const char *mapped = subSpeakerMap.GetString( shaderName );
+	return ( mapped && mapped[0] ) ? mapped : NULL;
+}
+
+/*
+================
 rvSubtitles::AddFromEntity
 
 从说话实体推断说话人名：
 1. npc_name 有效且非占位名（Unnamed/未命名）→ 用之（本地化后）
 2. 否则在实体名里识别已知角色（过场演出实体常以角色命名，如 cin_voss）
-3. 都失败 → 不加前缀
+3. speaker 实体(广播/画面外角色)按 shader 名查 speaker_map → 角色名
+4. 都失败 → 用 fallbackSpeaker（如"广播"）或留空
 ================
 */
 void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durationMs, const idSoundShader *shader, const char *fallbackSpeaker ) {
@@ -497,6 +557,12 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 			if ( pl && static_cast<idActor *>( bodyEnt )->team == pl->team ) {
 				speaker = "\xE5\xA3\xAB\xE5\x85\xB5";	// 士兵
 			}
+		}
+		// speaker 实体(广播 PA / 画面外角色如机甲检修 Morois)按 shader 名查角色映射:
+		// 有映射=角色台词(如"Morois 下士",正常亮色), 无映射=环境广播(fallback"广播"+淡色)
+		if ( !speaker.Length() && shader && bodyEnt->IsType( idSound::GetClassType() ) ) {
+			const char *mapped = LookupSpeaker( shader->GetName() );
+			if ( mapped ) speaker = mapped;
 		}
 	}
 	if ( !speaker.Length() && fallbackSpeaker && fallbackSpeaker[0] ) {

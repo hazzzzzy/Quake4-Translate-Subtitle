@@ -82,3 +82,19 @@ for extra in ("radio_chatter.tsv", "ai_vo_gap.tsv", "broadcast_pa.tsv", "speaker
 en_out.append("}")
 (OUT / "english_lipsadd.lang").write_text("\n".join(en_out) + "\n", encoding="utf-8-sig")
 print(f"english_lipsadd.lang: {n_en} 条（英文字幕模式自建 id 补充）")
+
+# —— speaker_map.txt：声音 shader 名 → 说话人 映射 ——
+# 供引擎字幕系统区分 speaker 实体/无线电播放的是"角色台词"还是"环境广播"：
+# 有映射 → 用角色名（如 "Voss：..."，正常亮色），无映射 → fallback 到"广播"/"无线电"默认前缀（淡色）。
+# 源：radio_chatter / broadcast_pa / speaker_chatter 三个 tsv 的 speaker 列（留空=不收入）
+speaker_map = []
+for extra in ("radio_chatter.tsv", "broadcast_pa.tsv", "speaker_chatter.tsv"):
+    path = TRANS / extra
+    if not path.exists():
+        continue
+    for l in path.read_text(encoding="utf-8-sig").splitlines()[1:]:
+        cols = l.split("\t")
+        if len(cols) >= 7 and cols[1] and cols[6].strip():
+            speaker_map.append(f"{cols[1]}\t{cols[6].strip()}")
+(OUT.parent / "speaker_map.txt").write_text("\n".join(speaker_map) + "\n", encoding="utf-8")
+print(f"speaker_map.txt: {len(speaker_map)} 条角色映射（部署到 {OUT.parent}）")

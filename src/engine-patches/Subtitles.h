@@ -17,6 +17,9 @@ public:
 	// 从说话实体推断说话人名后加入；shader 非 NULL 时做可听性门控；
 	// fallbackSpeaker：推断不出名字时的兜底前缀（如 speaker 实体传"广播"）
 	void				AddFromEntity( idEntity *bodyEnt, const char *text, int durationMs, const idSoundShader *shader = NULL, const char *fallbackSpeaker = NULL );
+	// 查声音 shader 名 → 说话人映射（speaker_map.txt）。返回非空=角色台词（用角色名），
+	// 返回 NULL=环境音（fallback 到"广播"/"无线电"默认前缀+淡色）。供 Sound.cpp/Misc.cpp 挂钩调用
+	static const char *	LookupSpeaker( const char *shaderName );
 	// 每帧在 idGameLocal::Draw 尾部调用
 	void				Draw( void );
 

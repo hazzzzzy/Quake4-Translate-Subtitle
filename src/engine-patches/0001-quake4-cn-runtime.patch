@@ -1,34 +1,45 @@
-diff --git a/Q3E/src/main/jni/doom3/neo/CMakeLists.txt b/Q3E/src/main/jni/doom3/neo/CMakeLists.txt
-index dadf7c489..40e43dceb 100644
---- a/Q3E/src/main/jni/doom3/neo/CMakeLists.txt
-+++ b/Q3E/src/main/jni/doom3/neo/CMakeLists.txt
-@@ -391,6 +391,10 @@ include_directories(${OPENAL_INCLUDE_DIR})]]
+diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
+index 6331dede4..18da98915 100644
+--- a/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
++++ b/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
+@@ -10,6 +10,9 @@
+ #include "ai/AI_Manager.h"
+ // RAVEN END
  
++// karin: 汉化项目语音字幕
++#include "Subtitles.h"
++
+ /*
+ ===============================================================================
  
- if(WIN32)
-+	# GLES/KHR 等厂商头文件（纯头文件，游戏 DLL 也需要）
-+	include_directories("${CMAKE_CURRENT_SOURCE_DIR}/externlibs/include")
-+endif()
-+if(WIN32 AND (CORE OR RAVEN OR HUMANHEAD OR SPLASHDAMAGE))
- 	# skip SDL2main
- 	if(APPLE OR WIN32)
- 		set(SDL2_BUILDING_LIBRARY TRUE)
-@@ -399,7 +403,6 @@ if(WIN32)
- 	include_directories(${SDL2_INCLUDE_DIR})
- 	set(SDLx_LIBRARY ${SDL2_LIBRARIES})
- 	add_definitions(-D_SDL)
--	include_directories("${CMAKE_CURRENT_SOURCE_DIR}/externlibs/include")
- 	set(sys_libs ${sys_libs} ${SDLx_LIBRARY})
- endif()
+@@ -5166,8 +5169,26 @@ idEntity::Event_StartSound
+ */
+ void idEntity::Event_StartSound( const char *soundName, int channel, int netSync ) {
+ 	int time;
+-	
+ 	StartSound( soundName, ( s_channelType )channel, 0, ( netSync != 0 ), &time );
++
++	// karin: 汉化项目 —— script 通过 startSound 播放的语音(如 mcc_1 简报过场 Voss 的
++	// briefingVoss1/2/5/6/7)不走 aiSpeak/StartLipSyncing 字幕挂钩,导致无字幕。
++	// Event_StartSound 是 script event handler,只抓 script 显式调的 startSound,不与
++	// StartLipSyncing(aiSpeak) 或 speaker 实体(Sound.cpp DoSound) 重复。
++	// 门控:lipsync_ 前缀(预缓存语音) + 有 lipsync decl 才出字幕
++	if ( time > 0 && soundName && idStr::Cmpn( soundName, "lipsync_", 8 ) == 0 ) {
++		const char *declName = soundName + 8;
++		const rvDeclLipSync *ls = declManager->FindLipSync( declName, false );
++		if ( ls ) {
++			const char *subText = ls->GetTranscribeText();
++			if ( subText && subText[0] ) {
++				gameSubtitles.AddFromEntity( this, subText, time );
++			}
++		} else if ( harm_g_subtitleDebug.GetBool() ) {
++			gameLocal.Printf( "[SUB] startSound: no decl for '%s'\n", soundName );
++		}
++	}
++
+ 	idThread::ReturnFloat( MS2SEC( time ) );
+ }
  
-@@ -1230,6 +1233,7 @@ list(REMOVE_ITEM base_q4game_src
- list(APPEND base_q4game_src
- 		Effect.cpp
- 		FreeView.cpp
-+		Subtitles.cpp
- 		Game_Debug.cpp
- 		Game_Log.cpp
- 		Healing_Station.cpp
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
 index fbb6731ab..3e70a73c7 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
@@ -96,7 +107,7 @@ index 2854fcf06..c85cbb394 100644
  		// Start the default emotion
  		anim = "emotion_";
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Misc.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Misc.cpp
-index 5c4464026..02958f6cf 100644
+index 5c4464026..db60ef681 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Misc.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Misc.cpp
 @@ -1,4 +1,4 @@
@@ -113,7 +124,7 @@ index 5c4464026..02958f6cf 100644
  
  /*
  ===============================================================================
-@@ -4026,6 +4027,17 @@ void idFuncRadioChatter::Event_Activate( idEntity *activator ) {
+@@ -4026,6 +4027,18 @@ void idFuncRadioChatter::Event_Activate( idEntity *activator ) {
  		}
  		player->StartSoundShader( shader, SND_CHANNEL_RADIO, SSF_GLOBAL, false, &length );
  		time = MS2SEC( length + 150 );
@@ -123,8 +134,9 @@ index 5c4464026..02958f6cf 100644
 +		// 此类台词无文本来源，字幕缺失属资产缺口而非代码缺陷
 +		const rvDeclLipSync *radioLipSync = declManager->FindLipSync( sound, false );
 +		if ( radioLipSync ) {
-+			// 来源前缀"无线电"（UTF-8 转义，2026-07-18 用户要求字幕都有来源）
-+			gameSubtitles.Add( "\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5", radioLipSync->GetTranscribeText(), length );
++			// 查角色映射:有映射=角色台词(如"Voss",正常亮色), 无映射=环境无线电("无线电"+淡色)
++			const char *radioSpeaker = rvSubtitles::LookupSpeaker( sound );
++			gameSubtitles.Add( radioSpeaker ? radioSpeaker : "\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5", radioLipSync->GetTranscribeText(), length );
 +		} else if ( harm_g_subtitleDebug.GetBool() ) {
 +			gameLocal.Printf( "[SUB] radio: no lipsync decl for '%s'\n", sound );
 +		}
@@ -296,10 +308,10 @@ index 5c9d2262c..051cc1010 100644
  		StopSound( SND_CHANNEL_ANY, true );
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
 new file mode 100644
-index 000000000..5323c39d2
+index 000000000..1275cdea0
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
-@@ -0,0 +1,611 @@
+@@ -0,0 +1,677 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— 语音字幕（Apex/HL2 风格整块面板）
 +// 面板底部锚定，新行从下方顶入，高度平滑伸缩，行淡入淡出
 +// GUI 资产: guis/subtitles.gui
@@ -351,6 +363,12 @@ index 000000000..5323c39d2
 +static float	subAsciiAdv[128];
 +static byte *	subWideAdv = NULL;		// charcode → xSkip（字库像素，0=缺字形）
 +static int		subWideNum = 0;
++
++// 声音 shader 名 → 说话人 映射（speaker_map.txt，build_lang.py 生成）
++// speaker 实体/无线电播放的语音：有映射=角色台词(带角色名)，无映射=环境广播("广播"/"无线电")
++static idDict	subSpeakerMap;
++static bool		subSpeakerMapLoaded = false;
++static void		SUB_LoadSpeakerMap( void );
 +
 +/*
 +================
@@ -436,6 +454,44 @@ index 000000000..5323c39d2
 +		adv = SUB_WIDE_FALLBACK;
 +	}
 +	return adv * SUB_USE_SCALE;
++}
++
++/*
++================
++SUB_LoadSpeakerMap
++
++加载声音 shader 名 → 说话人 映射（speaker_map.txt，build_lang.py 生成）。
++格式：每行 "shader\tspeaker"，# 开头为注释。
++用于区分 speaker 实体/无线电播放的是角色台词还是环境广播。
++================
++*/
++static void SUB_LoadSpeakerMap( void ) {
++	subSpeakerMapLoaded = true;
++	void *buf = NULL;
++	int len = fileSystem->ReadFile( "speaker_map.txt", &buf );
++	if ( len <= 0 || !buf ) {
++		return;
++	}
++	idStr data( ( const char * )buf );
++	fileSystem->FreeFile( buf );
++	int start = 0;
++	while ( start < data.Length() ) {
++		int end = data.Find( '\n', start );
++		if ( end < 0 ) end = data.Length();
++		idStr line = data.Mid( start, end - start );
++		start = end + 1;
++		line.StripTrailingWhitespace();
++		if ( !line.Length() || line[0] == '#' ) continue;
++		int tab = line.Find( '\t' );
++		if ( tab < 0 ) continue;
++		idStr shader = line.Left( tab );
++		idStr name = line.Right( line.Length() - tab - 1 );
++		shader.StripTrailingWhitespace();
++		name.StripLeading( ' ' );
++		if ( shader.Length() && name.Length() ) {
++			subSpeakerMap.Set( shader, name );
++		}
++	}
 +}
 +
 +/*
@@ -746,12 +802,28 @@ index 000000000..5323c39d2
 +
 +/*
 +================
++rvSubtitles::LookupSpeaker
++
++查声音 shader 名 → 说话人映射（speaker_map.txt）。供 Sound.cpp/Misc.cpp 挂钩区分
++角色台词 vs 环境广播：有映射返回角色名，无映射返回 NULL（调用方 fallback 到默认前缀）。
++================
++*/
++const char *rvSubtitles::LookupSpeaker( const char *shaderName ) {
++	if ( !shaderName || !shaderName[0] ) return NULL;
++	if ( !subSpeakerMapLoaded ) SUB_LoadSpeakerMap();
++	const char *mapped = subSpeakerMap.GetString( shaderName );
++	return ( mapped && mapped[0] ) ? mapped : NULL;
++}
++
++/*
++================
 +rvSubtitles::AddFromEntity
 +
 +从说话实体推断说话人名：
 +1. npc_name 有效且非占位名（Unnamed/未命名）→ 用之（本地化后）
 +2. 否则在实体名里识别已知角色（过场演出实体常以角色命名，如 cin_voss）
-+3. 都失败 → 不加前缀
++3. speaker 实体(广播/画面外角色)按 shader 名查 speaker_map → 角色名
++4. 都失败 → 用 fallbackSpeaker（如"广播"）或留空
 +================
 +*/
 +void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durationMs, const idSoundShader *shader, const char *fallbackSpeaker ) {
@@ -799,6 +871,12 @@ index 000000000..5323c39d2
 +			if ( pl && static_cast<idActor *>( bodyEnt )->team == pl->team ) {
 +				speaker = "\xE5\xA3\xAB\xE5\x85\xB5";	// 士兵
 +			}
++		}
++		// speaker 实体(广播 PA / 画面外角色如机甲检修 Morois)按 shader 名查角色映射:
++		// 有映射=角色台词(如"Morois 下士",正常亮色), 无映射=环境广播(fallback"广播"+淡色)
++		if ( !speaker.Length() && shader && bodyEnt->IsType( idSound::GetClassType() ) ) {
++			const char *mapped = LookupSpeaker( shader->GetName() );
++			if ( mapped ) speaker = mapped;
 +		}
 +	}
 +	if ( !speaker.Length() && fallbackSpeaker && fallbackSpeaker[0] ) {
@@ -913,10 +991,10 @@ index 000000000..5323c39d2
 +}
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h
 new file mode 100644
-index 000000000..1791ff2f3
+index 000000000..4b2705858
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h
-@@ -0,0 +1,49 @@
+@@ -0,0 +1,52 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— HL 风格语音字幕
 +// 文本来源: rvDeclLipSync::GetTranscribeText()（经 GetLocalizedString 本地化）
 +#ifndef __GAME_SUBTITLES_H__
@@ -936,6 +1014,9 @@ index 000000000..1791ff2f3
 +	// 从说话实体推断说话人名后加入；shader 非 NULL 时做可听性门控；
 +	// fallbackSpeaker：推断不出名字时的兜底前缀（如 speaker 实体传"广播"）
 +	void				AddFromEntity( idEntity *bodyEnt, const char *text, int durationMs, const idSoundShader *shader = NULL, const char *fallbackSpeaker = NULL );
++	// 查声音 shader 名 → 说话人映射（speaker_map.txt）。返回非空=角色台词（用角色名），
++	// 返回 NULL=环境音（fallback 到"广播"/"无线电"默认前缀+淡色）。供 Sound.cpp/Misc.cpp 挂钩调用
++	static const char *	LookupSpeaker( const char *shaderName );
 +	// 每帧在 idGameLocal::Draw 尾部调用
 +	void				Draw( void );
 +
