@@ -40,7 +40,7 @@ for tsv, lang in TABLES.items():
     # 无线电台词与 AI 对话缺口台词并入 lips
     # （列: str_id/sound/map/english/chinese/source，id 无 # 前缀）
     if tsv == "dialogue_lips.tsv":
-        for extra in ("radio_chatter.tsv", "ai_vo_gap.tsv"):
+        for extra in ("radio_chatter.tsv", "ai_vo_gap.tsv", "broadcast_pa.tsv", "speaker_chatter.tsv"):
             path = TRANS / extra
             if not path.exists():
                 continue
@@ -69,7 +69,7 @@ print(f"合计 {total} 条，已汉化 {total_zh}（{total_zh / total:.0%}）")
 # 遮蔽 pak 内同名文件（丢原版 6085 条），independent 名按语言前缀合并加载。
 en_out = ["// string table", "// english (subtitle additions for custom decls)", "//", "", "{"]
 n_en = 0
-for extra in ("radio_chatter.tsv", "ai_vo_gap.tsv"):
+for extra in ("radio_chatter.tsv", "ai_vo_gap.tsv", "broadcast_pa.tsv", "speaker_chatter.tsv"):
     path = TRANS / extra
     if not path.exists():
         continue

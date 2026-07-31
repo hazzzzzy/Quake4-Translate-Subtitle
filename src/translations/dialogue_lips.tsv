@@ -1,4 +1,4 @@
-id	en	zh	context	status
+﻿id	en	zh	context	status
 #str_300000	Unh... errrg... arrhhh... AAAAAAAAHHHH!!!	呃……唔……啊……啊啊啊——！！！		review
 #str_300001	Fall back! RETREAT!!!	后撤！快撤退！！！	airdefense @ airdefense	review
 #str_300002	Time ta die!	受死吧！		review
@@ -66,9 +66,9 @@ id	en	zh	context	status
 #str_300064	My arm! Where's my arm?	我的胳膊！我的胳膊哪儿去了？		review
 #str_300065	Medic! Meeediiiic!	医疗兵！医——疗——兵——！		review
 #str_300066	Heeelp! I need a medic!	救命！我需要医疗兵！		review
-#str_300067	Huuuuuuh, cough.	呼……咳咳。		review
+#str_300067	Huuuuuuh, cough.	（受伤音）		done
 #str_300068	Huuuuuuh, aaaahh, huuuuuuh aaahh.	呼……啊……呼……啊……		review
-#str_300069	Cough... cough, cough.	咳……咳咳。		review
+#str_300069	Cough... cough, cough.	（受伤音）		done
 #str_300070	This is Sargent Miller. I'm takin' Badger Squad in to clear out the facility.	我是 Miller 中士。我这就带猛獾小队进去清剿这处设施。		review
 #str_300071	Mayday! Mayday! This is the U.S.S. Patton. We have sustained heavy damage...	求救！求救！这里是巴顿号。我舰受创严重……	airdefense @ airdefense	review
 #str_300072	... aircraft loss of 65 percent. We're taking a lot of heat from the air defense cannon. Ground based troops...	……战机损失 65%。防空炮的火力压得我们抬不起头。地面部队……		review
@@ -247,7 +247,7 @@ id	en	zh	context	status
 #str_300245	Another moment sir. Got it!	再等一下，长官。开了！		review
 #str_300246	Good job. Lets go, Marines!	干得好。出发，陆战队员们！		review
 #str_300247	Hey, back it up. The torch is here.	嘿，都让让，切割枪来了。		review
-#str_300248	Ahhh... aaaaah... uuuuh...	啊……啊……呃……	building_b @ building_b	review
+#str_300248	Ahhh... aaaaah... uuuuh...	（死亡音）	building_b @ building_b	done
 #str_300249	Hang on. Helps comin.	撑住，救援就来。	building_b @ building_b	review
 #str_300250	{scared}Medic! I NEED A MEDIC!	{scared}医疗兵！快来医疗兵！		review
 #str_300251	Seal it! Seal the damn window now!	封上！马上把那扇该死的窗户封上！	building_b @ building_b	review
@@ -267,7 +267,7 @@ id	en	zh	context	status
 #str_300265	War. Come in. War, please respond.	「战争」车队，请回答。「战争」车队，请回应。	building_b @ building_b	review
 #str_300266	Kane, we're movin out before the Strogg finds our convoy. We've left a hover tank for you. Grab it and you'll be able to rendezvous with us in no time. Bidwell, out.	Kane，趁 Strogg 还没发现车队，我们先行出发了。给你留了一辆悬浮坦克，开上它很快就能赶上我们。Bidwell 完毕。	building_b @ building_b	review
 #str_300267	Wait here. Jones, you take point.	在这儿等着。Jones，你打头。	building_b @ building_b	review
-#str_300268	Gaahhh!	嘎啊！		review
+#str_300268	Gaahhh!	（受伤音）		done
 #str_300269	Primary lock is cut.	主锁已切开。	building_b @ building_b	review
 #str_300270	Secondary lock is cut.	副锁已切开。	building_b @ building_b	review
 #str_300271	Cutting final interlock.	正在切最后一道联锁。	building_b @ building_b	review
@@ -1437,7 +1437,7 @@ id	en	zh	context	status
 #str_301435	Corporal Kane, this is Strauss. You are now only one floor beneath your objective. Walk up to the roof and disable the security station.	Kane 下士，我是 Strauss。你现在离目标只差一层。上到楼顶，解除那座安保站。		review
 #str_301436	The Guardian has landed on the side of the tower.	守卫已经落在塔身侧面。	network_2 @ network_2	review
 #str_301437	Ah, the Core security station is finally deactivated. I won't bother asking what took you so long. Quickly make your way to the Core Teleporter.	啊，核心区安保站总算解除了。我就不问你为什么磨蹭了这么久了。赶快前往核心区传送器。	network_2 @ network_2	review
-#str_301438	Gaaaaaahhh	嘎啊——		review
+#str_301438	Gaaaaaahhh	（死亡音）		done
 #str_301439	He's dead! Barrister's dead!	他死了！Barrister 死了！	network_2 @ network_2	review
 #str_301440	I told him not to go through.	我早跟他说了别过去。	network_2 @ network_2	review
 #str_301441	H Q, we have a Marine down at the Core teleporter.	总部，核心区传送器这边有一名陆战队员阵亡。	network_2 @ network_2	review
@@ -1550,7 +1550,7 @@ id	en	zh	context	status
 #str_301548	Yes! It's working!! Get back here on the double.	成了！系统好使了！！快跑步回来。	recomp @ recomp	review
 #str_301549	Kane, I got company. Get your ass back here now!	Kane，有敌人摸过来了。赶紧给我滚回来！	recomp @ recomp	review
 #str_301550	Aaaaahhh! AAAAAAAAAAHHHHHHH!	啊——！啊——————！！	recomp @ recomp	review
-#str_301551	Aaah! Aaaaaaaaaahhhhhh!	啊！啊————！	recomp @ recomp	review
+#str_301551	Aaah! Aaaaaaaaaahhhhhh!	（死亡音）	recomp @ recomp	done
 #str_301552	{furrow}Hey! You up there! Let me out!	{furrow}嘿！上面的！放我出去！		review
 #str_301553	{furrow}Help me! I'm down here!	{furrow}救命！我在下面！		review
 #str_301554	{furrow}Damn it, get me out of here!	{furrow}该死的，快放我出去！		review
@@ -1631,7 +1631,7 @@ id	en	zh	context	status
 #str_301629	Aaaah. Aaaaah! Damn it hurts.	啊……啊——！该死，疼死了。	storage_1  @ storage_1	review
 #str_301630	Hold on. I gave you something to dull the pain.	撑住。我给你打了点止痛的。	storage_1  @ storage_1	review
 #str_301631	This is...... Badger Squad in the hangar. We're being...... slaughtered.	这里是……机库的猛獾小队。我们正……遭到屠杀。		review
-#str_301632	Aaaaaahhh.	啊——……	storage_1  @ storage_1	review
+#str_301632	Aaaaaahhh.	（死亡音）	storage_1  @ storage_1	done
 #str_301633	Kane. This is Rhodes. Find me, we gotta get moving.	Kane，我是 Rhodes。来找我，咱们得赶紧行动。	storage_1  @ storage_1	review
 #str_301634	Kane, where are you? Find me so we can get the hell out of here.	Kane，你在哪儿？快来找我，咱们好离开这鬼地方。	storage_1  @ storage_1	review
 #str_301635	Kane, this is Rhodes. What are you doin'? Find me so we can get on with our mission.	Kane，我是 Rhodes。你磨蹭什么呢？快来找我，咱们好继续执行任务。	storage_1  @ storage_1	review
@@ -1816,7 +1816,7 @@ id	en	zh	context	status
 #str_301814	I can't!	我下不了手！		review
 #str_301815	{furrow}Do it! Kill me!	{furrow}动手！杀了我！		review
 #str_301816	{confused}Are you Kane? {idle}You've got no idea how happy I am to see you.	{confused}你是 Kane？{idle}你不知道见到你我有多高兴。		review
-#str_301817	Gaaah	嘎啊……		review
+#str_301817	Gaaah	（受伤音）		done
 #str_301818	No! My grenade!	不！我的手雷！		review
 #str_301819	I heard the voice again. It was Cowell!	我又听见那个声音了。是 Cowell！	waste @ waste	review
 #str_301820	Marines, this is Krimpkey. It's imperative we regroup. Each man take a... No! Noooooooooo!	弟兄们，我是 Krimpkey。我们必须马上集结。每人负责一……不！不——！		review
@@ -1951,12 +1951,12 @@ id	en	zh	context	status
 #str_301949	Hey, ah Kane... you feelin' all right?	嘿，呃，Kane……你感觉还好吧？	anderson @ ai	review
 #str_301950	You'd let us know if you were startin' to think like a Strogg, wouldn't you?	你要是开始像 Strogg 那样思考了，会跟我们说一声的，对吧？	anderson @ ai	review
 #str_301951	You aren't becoming a Strogg, are you?	你不会正在变成 Strogg 吧？	anderson @ ai	review
-#str_301952	ugh	呃……		review
-#str_301953	Ow!	嗷！	anderson @ ai	review
+#str_301952	ugh	（受伤音）		done
+#str_301953	Ow!	（受伤音）	anderson @ ai	done
 #str_301954	Hey!	嘿！	anderson @ ai	review
 #str_301955	Ouch!	哎哟！	anderson @ ai	review
-#str_301956	aaargh	啊呃……		review
-#str_301957	oof	呜呃……		review
+#str_301956	aaargh	（受伤音）		done
+#str_301957	oof	（受伤音）		done
 #str_301958	I'll be right there to fix you up, Kane.	我马上过来给你处理伤口，Kane。	anderson @ ai	review
 #str_301959	Here's a medpack.	给，医疗包。	anderson @ ai	review
 #str_301960	Corporal, I'm travelin' with you. Move out.	下士，我跟你一起走。出发。		review
@@ -2045,11 +2045,11 @@ id	en	zh	context	status
 #str_302043	Yeah?	干嘛？	bidwell @ ai	review
 #str_302044	{furrow}Get outta my face!	{furrow}从我眼前消失！		review
 #str_302045	{furrow}You really wanna do this, Corporal?	{furrow}你真想来这套吗，下士？		review
-#str_302046	ug	呃		review
+#str_302046	ug	（受伤音）		done
 #str_302047	Damn!	该死！	bidwell @ ai	review
 #str_302048	Shit!	妈的！	bidwell @ ai	review
 #str_302049	Ah!	啊！	bidwell @ ai	review
-#str_302050	(oof	（呃		review
+#str_302050	(oof	（受伤音）		done
 #str_302051	I will accompany you. Lead the way.	我会与你同行。带路吧。		review
 #str_302052	You lead, Kane. And I will follow.	你带路，Kane。我跟着你。		review
 #str_302053	I will join you. Let's go.	我跟你一起行动。走吧。		review
@@ -3356,7 +3356,7 @@ id	en	zh	context	status
 #str_303354	If you did feel the Strogg were trying to control you you would warn us, right?	如果你觉察到 Strogg 想控制你，你会提醒我们的，对吧？		review
 #str_303355	If you warned us in time we could perhaps save you.	只要你及时提醒，我们或许还能救你。		review
 #str_303356	Guvno!	Guvno！	sledge @ ai	review
-#str_303357	aargh	呃啊——		review
+#str_303357	aargh	（受伤音）		done
 #str_303358	I have been instructed to accompany you Corporal Kane. So lead the way.	我接到指令与你同行，Kane 下士。带路吧。		review
 #str_303359	I must travel with you. But you may go first.	我必须与你同行。不过你先请。		review
 #str_303360	Corporal Kane, we are to travel together, but you are to take point.	Kane 下士，我们要一起行动，但由你打头阵。		review
@@ -3534,7 +3534,7 @@ id	en	zh	context	status
 #str_303532	Corporal, you're important to HQ, so why don't you give us a little distance?	下士，总部拿你当个宝，你就离我们稍微远点，成吗？		review
 #str_303533	Strogg or human, you don't want to get on my bad side.	不管你是 Strogg 还是人类，最好都别惹到我头上。		review
 #str_303534	Corporal, maybe you don't understand you're pissing off your Lieutenant.	下士，你大概还没意识到，你已经把你的中尉惹毛了。		review
-#str_303535	aaaaargh	啊啊啊——！		review
+#str_303535	aaaaargh	（死亡音）		done
 #str_303536	Sorry we have orders to stay here. And you have orders to find your squad.	抱歉，我们奉命守在这里。而你的命令，是去找你的小队。		review
 #str_303537	You better get movin if you want to find your squad.	想找到你的小队，就赶紧动身吧。	airdefense @ airdefense	review
 #str_303538	We cant go with you. Were under orders to help secure this area.	我们不能跟你走。我们奉命协助防守这片区域。		review
@@ -3735,7 +3735,7 @@ id	en	zh	context	status
 #str_303733	Oh, this is not good!	哦，这下糟了！	building_b @ building_b	review
 #str_303734	I can't see a thing!	我什么都看不见！	building_b @ building_b	review
 #str_303735	Someone get these lights back on ASAP!	谁快去把灯重新打开，马上！	building_b @ building_b	review
-#str_303736	Gaaaaahhhh!	嘎啊啊啊——！	building_b @ building_b	review
+#str_303736	Gaaaaahhhh!	（死亡音）	building_b @ building_b	done
 #str_303737	What are you standing around for? take me to the door they want opened!	你们还愣着干什么？带我去他们要打开的那扇门！	building_b @ building_b	review
 #str_303738	Damn it! Get me to that door!	该死！快带我去那扇门！	building_b @ building_b	review
 #str_303739	Come on Doyle! Get us out of here!	快啊，Doyle！带我们离开这儿！	convoy @ convoy	review

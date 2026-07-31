@@ -1,4 +1,4 @@
-str_id	sound	map	english	chinese	source
+﻿str_id	sound	map	english	chinese	source
 str_385000	vo_1_1_12_0001	building_b	What the hell? They got to main power!	搞什么鬼？它们把主电源弄断了！	sndshd
 str_385001	vo_1_1_12_0003	building_b	Watch the ceilings.	注意天花板。	sndshd
 str_385002	vo_1_1_12_0005	building_b	Gimme a second.	等我一下。	sndshd
@@ -142,13 +142,13 @@ str_385139	vo_9_10_240_6_h	persona	Target acquired!	锁定目标！	sndshd
 str_385140	vo_9_10_250_1_h	persona	Did you want something soldier?	有事吗，士兵？	sndshd
 str_385141	vo_9_10_250_2_h	persona	Haven't you got something better to do?	你就没点正事可干吗？	sndshd
 str_385142	vo_9_10_250_3_h	persona	You better move along.	你最好赶紧走开。	sndshd
-str_385143	vo_9_10_260_1_h	persona	(pain grunt)	呃……	sndshd
-str_385144	vo_9_10_260_2_h	persona	(pain grunt)	呃啊……	sndshd
-str_385145	vo_9_10_260_3_h	persona	(pain grunt)	唔……	sndshd
-str_385146	vo_9_10_260_4_h	persona	(pain grunt)	嗯啊……	sndshd
-str_385147	vo_9_10_270_1_h	persona	(death yell)	啊——！	sndshd
-str_385148	vo_9_10_270_2_h	persona	(death yell)	啊啊——！	sndshd
-str_385149	vo_9_10_270_3_h	persona	(death yell)	呃啊——！	sndshd
+str_385143	vo_9_10_260_1_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385144	vo_9_10_260_2_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385145	vo_9_10_260_3_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385146	vo_9_10_260_4_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385147	vo_9_10_270_1_h	persona	(death yell)	（死亡音）	sndshd
+str_385148	vo_9_10_270_2_h	persona	(death yell)	（死亡音）	sndshd
+str_385149	vo_9_10_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385150	vo_9_10_290_1_h	persona	Hold up, Marine. I'm a medic.	站住别动，弟兄。我是医疗兵。	sndshd
 str_385151	vo_9_10_290_2_h	persona	Stay right there. I'll give you a medpack.	待在原地。我给你上个医疗包。	sndshd
 str_385152	vo_9_10_290_3_h	persona	Don't move from there. I'll heal you.	别乱动，我来给你治疗。	sndshd
@@ -225,13 +225,13 @@ str_385222	vo_9_11_240_4_h	persona	You're in the wrong place, squib!	你来错�
 str_385223	vo_9_11_240_5_h	persona	You've had it, squib!	你完蛋了，杂碎！	sndshd
 str_385224	vo_9_11_240_6_h	persona	Just you and me, Strogg!	咱俩单挑，Strogg！	sndshd
 str_385225	vo_9_11_250_1_h	persona	Something troubling you, Marine?	有什么心事吗，大兵？	sndshd
-str_385226	vo_9_11_260_1_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385227	vo_9_11_260_2_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385228	vo_9_11_260_3_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385229	vo_9_11_260_4_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385230	vo_9_11_270_1_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385231	vo_9_11_270_2_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385232	vo_9_11_270_3_h	persona	(death yell)	（死亡惨叫）	sndshd
+str_385226	vo_9_11_260_1_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385227	vo_9_11_260_2_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385228	vo_9_11_260_3_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385229	vo_9_11_260_4_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385230	vo_9_11_270_1_h	persona	(death yell)	（死亡音）	sndshd
+str_385231	vo_9_11_270_2_h	persona	(death yell)	（死亡音）	sndshd
+str_385232	vo_9_11_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385233	vo_9_11_290_1_h	persona	Soldier, stay there! I'll fix you up.	士兵，待在那儿！我来给你包扎。	sndshd
 str_385234	vo_9_11_290_2_h	persona	Don't move, Marine! You're hurt!	别动，弟兄！你受伤了！	sndshd
 str_385235	vo_9_11_290_3_h	persona	Stay down! I'm a medic!	趴着别动！我是医疗兵！	sndshd
@@ -298,13 +298,13 @@ str_385295	vo_9_12_240_3_h	persona	It's ass kickin' time!	揍人时间到！	snd
 str_385296	vo_9_12_240_4_h	persona	Bring it on!	放马过来！	sndshd
 str_385297	vo_9_12_240_5_h	persona	Come on, freak!	来啊，怪胎！	sndshd
 str_385298	vo_9_12_240_6_h	persona	You eyeballin' me, squib?	你瞅我干嘛，杂碎？	sndshd
-str_385299	vo_9_12_260_1_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385300	vo_9_12_260_2_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385301	vo_9_12_260_3_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385302	vo_9_12_260_4_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385303	vo_9_12_270_1_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385304	vo_9_12_270_2_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385305	vo_9_12_270_3_h	persona	(death yell)	（死亡惨叫）	sndshd
+str_385299	vo_9_12_260_1_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385300	vo_9_12_260_2_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385301	vo_9_12_260_3_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385302	vo_9_12_260_4_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385303	vo_9_12_270_1_h	persona	(death yell)	（死亡音）	sndshd
+str_385304	vo_9_12_270_2_h	persona	(death yell)	（死亡音）	sndshd
+str_385305	vo_9_12_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385306	vo_9_12_290_1_h	persona	Wait a minute! I'm a medic!	等等！我是医疗兵！	sndshd
 str_385307	vo_9_12_290_2_h	persona	Don't go anywhere! I'll heal you up.	哪儿也别去！我来给你治伤。	sndshd
 str_385308	vo_9_12_290_3_h	persona	Stay there! I've got a medpack for you!	待在那儿！我这有医疗包！	sndshd
@@ -379,13 +379,13 @@ str_385376	vo_9_13_240_6_h	persona	You're dead meat, squib!	你死定了，杂�
 str_385377	vo_9_13_250_1_h	persona	Hmmm?	嗯……？	sndshd
 str_385378	vo_9_13_250_2_h	persona	Yeah?	干嘛？	sndshd
 str_385379	vo_9_13_250_3_h	persona	What?	干嘛？	sndshd
-str_385380	vo_9_13_260_1_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385381	vo_9_13_260_2_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385382	vo_9_13_260_3_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385383	vo_9_13_260_4_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385384	vo_9_13_270_1_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385385	vo_9_13_270_2_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385386	vo_9_13_270_3_h	persona	(death yell)	（死亡惨叫）	sndshd
+str_385380	vo_9_13_260_1_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385381	vo_9_13_260_2_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385382	vo_9_13_260_3_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385383	vo_9_13_260_4_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385384	vo_9_13_270_1_h	persona	(death yell)	（死亡音）	sndshd
+str_385385	vo_9_13_270_2_h	persona	(death yell)	（死亡音）	sndshd
+str_385386	vo_9_13_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385387	vo_9_13_290_1_h	persona	Stay right there! I'll heal you!	就待在那儿！我来治你！	sndshd
 str_385388	vo_9_13_290_2_h	persona	Keep down! I'll be right there to patch you up!	趴低点！我马上过来给你包扎！	sndshd
 str_385389	vo_9_13_290_3_h	persona	Don't move! I'm a medic!	别动！我是医疗兵！	sndshd
@@ -461,13 +461,13 @@ str_385458	vo_9_14_240_3_h	persona	Got a freak right here!	这儿有个怪胎！
 str_385459	vo_9_14_240_4_h	persona	What do ya got, squib?	你有几斤几两，杂碎？	sndshd
 str_385460	vo_9_14_240_5_h	persona	You're all mine!	你是我的了！	sndshd
 str_385461	vo_9_14_240_6_h	persona	I hope you like pain, freak!	但愿你喜欢吃苦头，怪胎！	sndshd
-str_385462	vo_9_14_260_1_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385463	vo_9_14_260_2_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385464	vo_9_14_260_3_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385465	vo_9_14_260_4_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385466	vo_9_14_270_1_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385467	vo_9_14_270_2_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385468	vo_9_14_270_3_h	persona	(death yell)	（死亡惨叫）	sndshd
+str_385462	vo_9_14_260_1_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385463	vo_9_14_260_2_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385464	vo_9_14_260_3_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385465	vo_9_14_260_4_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385466	vo_9_14_270_1_h	persona	(death yell)	（死亡音）	sndshd
+str_385467	vo_9_14_270_2_h	persona	(death yell)	（死亡音）	sndshd
+str_385468	vo_9_14_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385469	vo_9_14_290_1_h	persona	Remain there, soldier! I've got a medpack!	待在那儿，大兵！我有医疗包！	sndshd
 str_385470	vo_9_14_290_2_h	persona	Stay put! I'll fix you up!	别动！我来治好你！	sndshd
 str_385471	vo_9_14_290_3_h	persona	Marine! Hold up!	陆战队员！停一下！	sndshd
@@ -534,13 +534,13 @@ str_385531	vo_9_15_240_4_h	persona	I'm gonna bust you up!	我要把你拆成零�
 str_385532	vo_9_15_240_5_h	persona	You're dead!	你死定了！	sndshd
 str_385533	vo_9_15_240_6_h	persona	Got a squib right here!	这儿就有个杂碎！	sndshd
 str_385534	vo_9_15_250_1_h	persona	You want something?	想干嘛？	sndshd
-str_385535	vo_9_15_260_1_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385536	vo_9_15_260_2_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385537	vo_9_15_260_3_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385538	vo_9_15_260_4_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385539	vo_9_15_270_1_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385540	vo_9_15_270_2_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385541	vo_9_15_270_3_h	persona	(death yell)	（死亡惨叫）	sndshd
+str_385535	vo_9_15_260_1_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385536	vo_9_15_260_2_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385537	vo_9_15_260_3_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385538	vo_9_15_260_4_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385539	vo_9_15_270_1_h	persona	(death yell)	（死亡音）	sndshd
+str_385540	vo_9_15_270_2_h	persona	(death yell)	（死亡音）	sndshd
+str_385541	vo_9_15_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385542	vo_9_15_290_1_h	persona	Stay at your position! I'm a medic!	待在原地！我是医疗兵！	sndshd
 str_385543	vo_9_15_290_2_h	persona	I've got a medpack for you!	我这有医疗包给你！	sndshd
 str_385544	vo_9_15_290_3_h	persona	Don't move, Marine! I'll fix you up!	别动，陆战队员！我来治好你！	sndshd
@@ -607,13 +607,13 @@ str_385604	vo_9_16_240_3_h	persona	Bring it, Strogg!	放马过来，Strogg！	sn
 str_385605	vo_9_16_240_4_h	persona	This one's mine!	这个归我！	sndshd
 str_385606	vo_9_16_240_5_h	persona	You're dead meat, freak!	你死定了，怪胎！	sndshd
 str_385607	vo_9_16_240_6_h	persona	I got this one!	这个我来搞定！	sndshd
-str_385608	vo_9_16_260_1_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385609	vo_9_16_260_2_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385610	vo_9_16_260_3_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385611	vo_9_16_260_4_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385612	vo_9_16_270_1_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385613	vo_9_16_270_2_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385614	vo_9_16_270_3_h	persona	(death yell)	（死亡惨叫）	sndshd
+str_385608	vo_9_16_260_1_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385609	vo_9_16_260_2_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385610	vo_9_16_260_3_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385611	vo_9_16_260_4_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385612	vo_9_16_270_1_h	persona	(death yell)	（死亡音）	sndshd
+str_385613	vo_9_16_270_2_h	persona	(death yell)	（死亡音）	sndshd
+str_385614	vo_9_16_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385615	vo_9_16_290_1_h	persona	Stay put, Soldier! I'll patch you up.	别动，大兵！我来给你包扎。	sndshd
 str_385616	vo_9_16_290_2_h	persona	Don't move. I'm on my way!	别动。我这就来！	sndshd
 str_385617	vo_9_16_290_3_h	persona	Hold up. I've got medpacks!	停一下。我有医疗包！	sndshd
@@ -679,13 +679,13 @@ str_385676	vo_9_17_240_3_h	persona	This freak's mine!	这只怪胎归我！	snds
 str_385677	vo_9_17_240_4_h	persona	Got a Strogg in my sights!	一只 Strogg 进我准星了！	sndshd
 str_385678	vo_9_17_240_5_h	persona	Die, squib!	去死吧，杂碎！	sndshd
 str_385679	vo_9_17_240_6_h	persona	Stand back, this one's mine!	都让开，这只是我的！	sndshd
-str_385680	vo_9_17_260_1_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385681	vo_9_17_260_2_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385682	vo_9_17_260_3_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385683	vo_9_17_260_4_h	persona	(pain grunt)	（痛苦闷哼）	sndshd
-str_385684	vo_9_17_270_1_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385685	vo_9_17_270_2_h	persona	(death yell)	（死亡惨叫）	sndshd
-str_385686	vo_9_17_270_3_h	persona	(death yell)	（死亡惨叫）	sndshd
+str_385680	vo_9_17_260_1_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385681	vo_9_17_260_2_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385682	vo_9_17_260_3_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385683	vo_9_17_260_4_h	persona	(pain grunt)	（受伤音）	sndshd
+str_385684	vo_9_17_270_1_h	persona	(death yell)	（死亡音）	sndshd
+str_385685	vo_9_17_270_2_h	persona	(death yell)	（死亡音）	sndshd
+str_385686	vo_9_17_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385687	vo_9_17_290_1_h	persona	I'm on my way, Marine!	我这就过来，坚持住！	sndshd
 str_385688	vo_9_17_290_2_h	persona	Stay down! I'm a medic!	趴着别动！我是医疗兵！	sndshd
 str_385689	vo_9_17_290_3_h	persona	Remain there. I'll fix you up!	待在原地，我来给你处理！	sndshd

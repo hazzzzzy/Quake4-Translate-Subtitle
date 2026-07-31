@@ -1,4 +1,4 @@
-str_id	sound	map	english	chinese	source
+﻿str_id	sound	map	english	chinese	source
 str_380000	vo_1_1_1_68_1	airdefense1	This is Sgt. Miller. I'm takin' Condor Squad in to clear out the facility.	我是 Miller 中士。我带神鹰小队进去清剿这处设施。（基地警报：警告！敌方来袭！）	sndshd
 str_380001	vo_1_1_2_06_1	airdefense1	We're a lost cause! Do not attempt to evac us.	我们没救了！不要试图撤离我们。	sndshd
 str_380002	vo_1_1_3_51_1	airdefense1	Armadillo Squad, you have to flank left. Flank left, damn it!	犰狳小队，你们得从左翼包抄。从左翼包抄，妈的！	sndshd
@@ -252,3 +252,44 @@ str_380249	vo_2_2_7_50_1	waste	There are freakin' zombies down here. I just kill
 str_380250	vo_2_2_7_60_1	waste	Where the hell is everyone? I can't get readings on any medchips. We gotta regroup or they're gonna pick us apart.	人都他妈哪儿去了？所有医疗芯片都读不到信号。再不集结，我们就要被它们一个个撕碎了。	sndshd
 str_380251	vo_1_1_0_01_2	airdefense_intro	Warning!  Incoming attack!	警告！敌方来袭！	sndshd
 str_380254	vo_1_1_0_01_21	airdefense_intro	We're hit! Another missile's locked on. Firing counter measures.	我们中弹了！又一枚导弹锁定，正在发射干扰弹。	sndshd
+str_385726	vo_1_2_0_10_1	convoy1	Kane, this is Voss. Grab a ride with Corporal Spencer. He's in a truck nearby. Report to Sergeant Bidwell when you get to the Death convoy. Voss, out.	Kane，我是 Voss。搭 Spencer 下士的车过去，他就在附近的卡车上。到死亡车队后向 Bidwell 中士报到。Voss，完毕。	sndshd
+str_385727	vo_1_2_0_11_1	convoy1	This is Eagle 3 on flyby, if there's Strogg in the area, they're keeping out of sight.	这里是雄鹰 3 号正在飞越，如果这区域有 Strogg，他们藏得很隐蔽。	sndshd
+str_385728	vo_1_2_0_16_1	convoy1	This is Walker 4 of Bison Squad on patrol. All clear.	这里是野牛小队机甲 4 号，正在巡逻。一切正常。	sndshd
+str_385729	vo_1_2_0_65_1	convoy1	I've got signal lock. He's not gettin' away from me this time.	信号已锁定。这次他跑不掉了。	sndshd
+str_385730	vo_1_2_0_66_1	convoy1	Where the hell did he go?	他妈的跑哪儿去了？	sndshd
+str_385731	vo_1_2_0_90_1	convoy1	Kane, this is voss. We can't move forward until you take out the turrets defending this area.	Kane，我是 Voss。在你摧毁这一带的防御炮台之前，我们无法前进。	sndshd
+str_385732	vo_1_2_1_100_1	convoy1	Kane, we got landmines ahead. You're gonna have to shoot 'em to detonate 'em.	Kane，前方有地雷。你得射击它们来引爆。	sndshd
+str_385733	vo_1_2_1_102_1	convoy1	Crap, that must be one of those drop turrets. They're dropped by stealth air units flying in low orbit. Intel says these buggers are nasty.	糟了，那是空投炮塔。低轨道隐形飞行器投下的，情报说这玩意儿不好对付。	sndshd
+str_385734	vo_1_2_1_105_1	convoy1	HQ, this is Famine. We are in transit now.	总部，这里是饥荒车队。我们已出发。	sndshd
+str_385735	vo_1_2_1_105_2	convoy1	Roger that, Famine. Pestilence is already underway. Godspeed.	收到，饥荒。瘟疫车队已经上路了。祝好运。	sndshd
+str_385736	vo_1_2_1_108_1	convoy1	Rhodes! Get up here pronto and disarm these land mines.	Rhodes！马上上来，把这些地雷拆掉。	sndshd
+str_385737	vo_1_2_1_109_1	convoy1	Kane, protect Rhodes! He's the only one who can disarm those mines.	Kane，掩护 Rhodes！只有他能拆这些地雷。	sndshd
+str_385738	vo_1_2_1_115_1	convoy1	HQ, this is War.	总部，这里是战争车队。	sndshd
+str_385739	vo_1_2_1_115_2	convoy1	This is HQ, go ahead.	总部收到，请讲。	sndshd
+str_385740	vo_1_2_1_115_3	convoy1	We are proceeding to checkpoint one.	我们正向一号检查点推进。	sndshd
+str_385741	vo_1_2_1_120_1	convoy1	Kane, this is Voss. Keep your eyes open. Intelligence just is reporting a high concentration of Strogg in your vicinity.	Kane，我是 Voss。保持警惕。情报显示你附近有大量 Strogg 集结。	sndshd
+str_385742	vo_1_2_1_125_1	convoy1	HQ, this is Eagle 8. We are doing a flyby of Famine. Everything is in the green.	总部，这里是雄鹰 8 号。我们正飞越饥荒车队。一切正常。	sndshd
+str_385743	vo_1_2_1_135_1	convoy1	HQ, this is Death. We are moving forward and will keep you apprised of our status.	总部，这里是死亡车队。我们正在前进，会随时报告状况。	sndshd
+str_385744	vo_1_2_1_140_1	convoy1	You're doing a great job, Corporal. But keep sharp - there's still reports of Strogg in the area.	干得不错，下士。但保持警觉，这一带仍有 Strogg 出没的报告。	sndshd
+str_385745	vo_1_2_1_145_1	convoy1	HQ, HQ, this is War. We are under attack from Strogg infantry.	总部，总部，这里是战争车队。我们遭到 Strogg 步兵攻击。	sndshd
+str_385746	vo_1_2_1_145_2	convoy1	Roger that, War. Air support has been dispatched.	收到，战争。空中支援已经派出。	sndshd
+str_385747	vo_1_2_1_147_1	convoy1	War, this is Eagle 9. You might want to duck and cover 'cause this is gonna get messy.	战争车队，这里是雄鹰 9 号。你们最好趴下找掩护，因为接下来会很猛烈。	sndshd
+str_385748	vo_1_2_1_147_2	convoy1	Woo hoo! Nice shootin', Eagle 9.	好嘞！干得漂亮，雄鹰 9 号。	sndshd
+str_385749	vo_1_2_1_147_3	convoy1	My pleasure.	乐意效劳。	sndshd
+str_385750	vo_1_2_1_147_4	convoy1	HQ, this is War. We are resuming our mission.	总部，这里是战争车队。我们恢复执行任务。	sndshd
+str_385751	vo_1_2_1_150_1	convoy1	HQ, this is Pestilence. We have reached check point one and are proceeding to check point two.	总部，这里是瘟疫车队。我们已到达一号检查点，正继续向二号检查点推进。	sndshd
+str_385752	vo_1_2_1_170_1	convoy1	Death, this is HQ. What is your status?	死亡车队，这里是总部。你们情况如何？	sndshd
+str_385753	vo_1_2_1_170_2	convoy1	We are in the green and proceeding forward.	一切正常，正在继续前进。	sndshd
+str_385754	vo_1_2_1_170_3	convoy1	Very good. HQ out.	很好。总部完毕。	sndshd
+str_385755	vo_1_2_1_180_1	convoy1	Good job back there, Kane. You kept 'em off us. Here's your stop. Go ahead and get off.	干得好，Kane。你帮我们挡住了它们。你到站了，下车吧。	sndshd
+str_385756	vo_1_2_1_190_1	convoy1	It's been a pleasure, Kane. Watch yourself.	很荣幸与你同行，Kane。多加小心。	sndshd
+str_385757	vo_1_2_1_200_1	convoy1	Kane, this is Voss. You see that laser fence in front of you? We're gonna need your help taking it down.	Kane，我是 Voss。看到你前面的激光栅栏了吗？我们需要你的帮忙把它打掉。	sndshd
+str_385758	vo_1_2_1_200_2	convoy1	HQ! HQ! This is the convoy Famine!! The Strogg have launched missiles on us.	总部！总部！这里是饥荒车队！Strogg 向我们发射了导弹！	sndshd
+str_385759	vo_1_2_1_200_3	convoy1	Famine, this is HQ. Air support is on its way.	饥荒，这里是总部。空中支援正在路上。	sndshd
+str_385760	vo_1_2_1_200_4	convoy1	Negative. Do not send back up. The area is swarming with Strogg. We're a lost cause.	不用了。不要派增援。这片区域到处是 Strogg。我们没救了。	sndshd
+str_385761	vo_1_2_1_200_5	convoy1	Kane, you still there? We're down to three convoys so haul ass meet me at the building just up ahead. We need you to take down that fence. Voss, out.	Kane，你还在吗？我们只剩下三支车队了，赶紧到前面那栋建筑和我会合。我们需要你打掉那个栅栏。Voss，完毕。	sndshd
+str_385762	vo_1_2_1_40_2	convoy1	Affirmative Death. Now switching to frequency 5 1 2.	收到，死亡。现在切换到 512 频率。	sndshd
+str_385763	vo_1_2_1_80_1	convoy1	Welcome aboard, Corporal Kane. I hope you're handy with that weapon. We're gonna traveling through some pretty hot zones.	欢迎登车，Kane 下士。希望你那把武器用得顺手。我们要穿过几个交战激烈的区域。	sndshd
+str_385764	vo_1_2_1_92_1	convoy1	To the right!	右边！	sndshd
+str_385765	vo_1_2_3_30_1	convoy1	Kane, this is Lt.Voss. Head towards the facility dead ahead. See you there. Voss, out.	Kane，我是 Voss 中尉。朝正前方的设施前进。那里见。Voss，完毕。	sndshd
+str_385844	vo_1_1_11_30_1	mcc_1	You are... Corporal Kane of Rhino Squad. Welcome aboard the Hannibal. You aren't expected at the briefing for a while. Feel free to look around the ship.	你是……犀牛小队的 Kane 下士。欢迎登上汉尼拔号。离汇报还有一阵子，你可以随便转转。	sndshd
