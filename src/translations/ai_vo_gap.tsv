@@ -46,7 +46,7 @@ str_385043	vo_1_2_0_46_2	convoy1	Same as usual. Soldiers are fightin and dyin�
 str_385044	vo_1_2_0_46_3	convoy1	The thing is though, we cant keep this battle up much longer. Weve got to win it soon or were just gonna run out of men.	可问题是，这场仗我们撑不了多久了。必须尽快赢下来，不然人手就要打光了。	sndshd
 str_385045	vo_1_2_0_46_4	convoy1	And thats exactly why these convoys are going out - to tip the scales in our favor.	而这正是派出这些车队的原因——把天平扳向我们这边。	sndshd
 str_385046	vo_1_2_0_49_1	convoy1	Our guys are really cleaning up the fliers since you blew up the hangars, Kane.	{happy}自打你把机库炸了，咱们的人收拾起飞行器来那叫一个痛快，Kane。	sndshd
-str_385047	vo_1_2_0_64_1	convoy1	This is Walker 12 of Bison squad. Got a bogie at 6 oclock.	这里是野牛小队 Walker 12。六点钟方向发现不明目标。	sndshd
+str_385047	vo_1_2_0_64_1	convoy1	This is Walker 12 of Bison squad. Got a bogie at 6 oclock.	这里是野牛小队 「步行者」（walker） 12。六点钟方向发现不明目标。	sndshd
 str_385048	vo_1_2_0_70_10	convoy1	You can get off, Kane. This is your stop.	可以下车了，Kane。你到站了。	sndshd
 str_385049	vo_1_2_0_80_10	convoy1	See you around.	回头见。	sndshd
 str_385050	vo_1_2_14_40_3	hub1	Kane, youre assigned to Strauss. Voss out.	Kane，你被派给 Strauss 了。Voss 完毕。	sndshd

@@ -1,7 +1,7 @@
 // Quake 4 简体中文汉化项目 —— 语音字幕层（整块面板，Apex/HL2 风格）
 // 由 q4game.dll 的 rvSubtitles 每帧驱动：
 //   subBgY/subBgH/subBgA 面板位置/高度/透明度
-//   subText0..3 / subTxtA0..3 / subRowY0..3 行文本/透明度/纵坐标
+//   subText0..3 / subTxtR0..3,G,B / subTxtA0..3 / subRowY0..3 行文本/透明度/纵坐标
 windowDef Desktop
 {
 	rect	0,0,640,480
@@ -21,7 +21,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA0"
+		forecolor	"gui::subTxtR0","gui::subTxtG0","gui::subTxtB0","gui::subTxtA0"
 		text	"gui::subText0"
 		visible	1
 	}
@@ -31,7 +31,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA1"
+		forecolor	"gui::subTxtR1","gui::subTxtG1","gui::subTxtB1","gui::subTxtA1"
 		text	"gui::subText1"
 		visible	1
 	}
@@ -41,7 +41,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA2"
+		forecolor	"gui::subTxtR2","gui::subTxtG2","gui::subTxtB2","gui::subTxtA2"
 		text	"gui::subText2"
 		visible	1
 	}
@@ -51,7 +51,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA3"
+		forecolor	"gui::subTxtR3","gui::subTxtG3","gui::subTxtB3","gui::subTxtA3"
 		text	"gui::subText3"
 		visible	1
 	}

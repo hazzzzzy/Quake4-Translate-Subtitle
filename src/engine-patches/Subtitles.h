@@ -5,6 +5,13 @@
 
 #define MAX_SUBTITLE_LINES	8
 
+// 字幕配色类型：按说话人来源区分前景色（取代旧的 dimmed 二态淡色）
+enum subColor_t {
+	SUB_COLOR_NORMAL = 0,	// 角色对白 / 无名环境音 — 白
+	SUB_COLOR_BROADCAST,	// 广播(PA) — 黄
+	SUB_COLOR_RADIO			// 无线电 — 青
+};
+
 class idSoundShader;
 
 class rvSubtitles {
@@ -24,7 +31,7 @@ public:
 	void				Draw( void );
 
 private:
-	void				AddLine( const char *text, int endTime, bool dimmed );
+	void				AddLine( const char *text, int endTime, subColor_t color );
 	// 说话点相对玩家是否可听（距离超出声音衰减半径 / 近距离外不在 PVS 内则不可听）
 	bool				IsAudible( idEntity *bodyEnt, const idSoundShader *shader ) const;
 	// 剥离 {emotion} 标记并折叠多余空格
@@ -34,7 +41,7 @@ private:
 		idStr			text;
 		int				startTime;
 		int				endTime;
-		bool			dimmed;		// 环境音(广播/无线电/无名)用淡色,角色对白用正常亮色
+		subColor_t		color;		// 字幕配色类型(角色白/广播黄/无线电青)
 	};
 
 	subLine_t			lines[MAX_SUBTITLE_LINES];

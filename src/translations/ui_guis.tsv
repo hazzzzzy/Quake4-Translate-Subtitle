@@ -482,7 +482,7 @@
 #str_200496	> processor <\nsystem error	> 处理器 <\n系统错误		review
 #str_200497	stomach contents at:	胃内容物达：		review
 #str_200498	safety mechanisms prevent overfeeding	安全机制防止过度喂食		review
-#str_200499	of primary stroyent processor.	主 Stroyent 处理器。		review
+#str_200499	of primary stroyent processor.	主 「斯托伊文特」（Stroyent） 处理器。		review
 #str_200500	override?	强制执行？		review
 #str_200501	feeding status	喂食状态		review
 #str_200502	nominal	正常		review
@@ -494,7 +494,7 @@
 #str_200508	lr	lr		review
 #str_200509	vk-3	vk-3		review
 #str_200510	n-4	n-4		review
-#str_200511	raw stroyent input	Stroyent 原料输入		review
+#str_200511	raw stroyent input	「斯托伊文特」（Stroyent） 原料输入		review
 #str_200512	auxilliary	辅助		review
 #str_200513	tank capacity	储罐容量		review
 #str_200514	output	输出		review
@@ -519,7 +519,7 @@
 #str_200533	>> secondary source x5b	>> 副来源 x5b		review
 #str_200534	activate barrel process	激活储桶流程		review
 #str_200535	> sorting process active <	> 分拣流程运行中 <		review
-#str_200536	stroyent filling control 34-k	Stroyent 灌装控制 34-k		review
+#str_200536	stroyent filling control 34-k	「斯托伊文特」（Stroyent） 灌装控制 34-k		review
 #str_200537	holding cells	拘禁室		review
 #str_200538	cell 1	1 号室		review
 #str_200539	cell 3	3 号室		review
@@ -813,7 +813,7 @@
 #str_200827	>transport failure<	>运输故障<		review
 #str_200828	barrel transport	桶体运输		review
 #str_200829	system error	系统错误		review
-#str_200830	stroyent flow	Stroyent 流量		review
+#str_200830	stroyent flow	「斯托伊文特」（Stroyent） 流量		review
 #str_200831	flowrate	流速		review
 #str_200832	console	控制台		review
 #str_200833	sys.chk	sys.chk		review
@@ -943,7 +943,7 @@
 #str_200957	MAINTENANCE	维护		review
 #str_200958	VERIFICATION	验证		review
 #str_200959	Voice Chat	语音聊天		review
-#str_200960	stroyent	Stroyent		review
+#str_200960	stroyent	「斯托伊文特」（Stroyent）		review
 #str_200961	health	生命值		review
 #str_200962	DEPLETED	已耗尽		review
 #str_200963	track maintenance 7xj	轨道维护 7xj		review

@@ -1,5 +1,5 @@
 ﻿str_id	sound	map	english	chinese	source	speaker
-str_385766	vo_pa_dispersal_10	broadcast	Stroyent transfer process initiated.	Stroyent 输运流程已启动。	sndshd	
+str_385766	vo_pa_dispersal_10	broadcast	Stroyent transfer process initiated.	「斯托伊文特」（Stroyent） 输运流程已启动。	sndshd	
 str_385767	vo_pa_dispersal_100	broadcast	Critical fluctuation detected in matter intake levels. Investigate Transfer Station Three.	物质摄入水平检测到严重波动。检查三号输送站。	sndshd	
 str_385768	vo_pa_dispersal_20	broadcast	Tactical units dispatched to dispersal facility.	战术部队已派遣至分散设施。	sndshd	
 str_385769	vo_pa_dispersal_30	broadcast	Warning! Pulminary system failure. Drainage malfunction.	警告！肺循环系统故障。排放失灵。	sndshd	
@@ -7,7 +7,7 @@ str_385770	vo_pa_dispersal_40	broadcast	Facility breech. Hostile entity at acces
 str_385771	vo_pa_dispersal_50	broadcast	Digestive conduit array at ninety percent capacity. Auxiliary infusion units, online.	消化管道阵列已达百分之九十容量。辅助注入单元已上线。	sndshd	
 str_385772	vo_pa_dispersal_60	broadcast	Matter Intake levels, normal.	物质摄入水平正常。	sndshd	
 str_385773	vo_pa_dispersal_70	broadcast	Anomaly detected in Stabilization Injection Chamber.	稳定注射舱检测到异常。	sndshd	
-str_385774	vo_pa_dispersal_80	broadcast	Stroyent Dispersal Systems online. Maintain full capacity.	Stroyent 分散系统在线。保持满负荷运转。	sndshd	
+str_385774	vo_pa_dispersal_80	broadcast	Stroyent Dispersal Systems online. Maintain full capacity.	「斯托伊文特」（Stroyent） 分散系统在线。保持满负荷运转。	sndshd	
 str_385775	vo_pa_dispersal_90	broadcast	Bio-chemical Fluidic Transfer Station Three has been breached.	生化流体输送站三号已被攻破。	sndshd	
 str_385776	vo_pa_med_10	broadcast	Transfer, approved.	转化已批准。	sndshd	
 str_385777	vo_pa_med_20	broadcast	Warning: Scanning system breech detected.	警告：扫描系统检测到入侵。	sndshd	
@@ -36,7 +36,7 @@ str_385799	vo_pa_process2_30	broadcast	Initiating teleportation interface.	正�
 str_385800	vo_pa_process2_40	broadcast	Teleportation interchange established.	传送交换已建立。	sndshd	
 str_385801	vo_pa_process2_50	broadcast	Unable to process data due to node alignment error.	节点校准错误导致无法处理数据。	sndshd	
 str_385802	vo_pa_process2_60	broadcast	Node alignment error corrected.	节点校准错误已修正。	sndshd	
-str_385803	vo_pa_putra_10	broadcast	Stroyent digestive cycle initiated.	Stroyent 消化循环已启动。	sndshd	
+str_385803	vo_pa_putra_10	broadcast	Stroyent digestive cycle initiated.	「斯托伊文特」（Stroyent） 消化循环已启动。	sndshd	
 str_385804	vo_pa_putra_20	broadcast	Service required on belt 36-C.	36-C 传送带需要维护。	sndshd	
 str_385805	vo_pa_putra_30	broadcast	Sector 6C compromised. Activate defense protocol.	6C 区域被攻破。启动防御协议。	sndshd	
 str_385806	vo_pa_putra_40	broadcast	Enzyme Distribution sequence initiated.	酶分配序列已启动。	sndshd	
@@ -45,7 +45,7 @@ str_385808	vo_pa_putra_60	broadcast	Enzyme Distribution failure. Transport syste
 str_385809	vo_pa_putra_70	broadcast	Structural disturbance detected in Bioform Sublevels.	生物体下层检测到结构扰动。	sndshd	
 str_385810	vo_pa_recomp_10	broadcast	Error: Containment production, offline.	错误：容置生产系统离线。	sndshd	
 str_385811	vo_pa_recomp_20	broadcast	System: online.	系统：上线。	sndshd	
-str_385812	vo_pa_recomp_30	broadcast	System: offline. Stroyent production suspended.	系统：离线。Stroyent 生产已暂停。	sndshd	
+str_385812	vo_pa_recomp_30	broadcast	System: offline. Stroyent production suspended.	系统：离线。「斯托伊文特」（Stroyent） 生产已暂停。	sndshd	
 str_385813	vo_pa_storage1_10	broadcast	Hull shell has sustained multiple breaches.	外壳已承受多处破损。	sndshd	
 str_385814	vo_pa_storage1_100	broadcast	Intruders detected on decks 2 through 4.	2 至 4 层检测到入侵者。	sndshd	
 str_385815	vo_pa_storage1_110	broadcast	Primary defenses on floor 83 reduced to zero percent.	83 层主防御已降至零。	sndshd	

@@ -45,7 +45,7 @@
 #str_400045	D.4 Genetic Research	D.4 基因研究室		review
 #str_400046	D.4 Neurosurgery	D.4 神经外科		review
 #str_400047	D.4 Drop Pods 1-15	D.4 空投舱 1-15		review
-#str_400048	D.4 Walker Hangar	D.4 步行机甲机库		review
+#str_400048	D.4 Walker Hangar	D.4 「步行者」（walker）机库		review
 #str_400049	D.4 Med Bay | Central Command	D.4 医疗舱 | 中央指挥部		review
 #str_400050	D.4 Rhino Quarters	D.4 Rhino 小队宿舍		review
 #str_400051	D.4 Drop Pod Launch Bay	D.4 空投舱发射区		review
@@ -71,7 +71,7 @@
 #str_400071	Shut Down the Defense Grid	关闭防御网		review
 #str_400072	Find a way to the Perimeter Control Room and shut down the laser grid to allow the convoy to proceed to the Nexus Hub.	设法抵达外围控制室，关闭激光网，让车队得以继续前往 Nexus 枢纽。		review
 #str_400073	Canyons	峡谷		review
-#str_400074	Destroy the Tetranode with Strauss	与 Strauss 一起摧毁四元节点（Tetranode）		review
+#str_400074	Destroy the Tetranode with Strauss	与 Strauss 一起摧毁「四元节点」（Tetranode）		review
 #str_400075	Take the crawlspace to meet up with Strauss and destroy the Tetranode by hand.	钻过检修通道与 Strauss 会合，亲手摧毁四元节点。		review
 #str_400076	Destroy the Tetranode	摧毁四元节点		review
 #str_400077	Escort the EMP to directly under the Tetranode and destroy it.	护送 EMP 装置至四元节点正下方，将其摧毁。		review
@@ -96,15 +96,15 @@
 #str_400096	Extend the Bridge	展开桥梁		review
 #str_400097	Find the command overlook that is used to extend the bridge.	找到用于展开桥梁的指挥瞭望台。		review
 #str_400098	Regroup	会合		review
-#str_400099	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 Stroyent 疏散设施的废料区与其余陆战队员会合。		review
+#str_400099	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」（Stroyent） 疏散设施的废料区与其余陆战队员会合。		review
 #str_400100	Dispersal	疏散设施		review
 #str_400101	Injection Interjection	中断注入		review
-#str_400102	Reset the Stroyent Injection System--you wouldn't survive the process.	重置 Stroyent 注入系统——你可挺不过那道工序。		review
+#str_400102	Reset the Stroyent Injection System--you wouldn't survive the process.	重置 「斯托伊文特」（Stroyent） 注入系统——你可挺不过那道工序。		review
 #str_400103	Destroy Fluid Pump	摧毁流体泵		review
 #str_400104	The mutated heart seems to pump fluid throughout the pipes in the dispersal facility.  Overcharge it to drain the pool and exit deeper into the building.	这颗变异的心脏似乎在为疏散设施中的管道泵送流体。让它过载以排空水池，然后深入建筑内部。		review
-#str_400105	Destroy the Stroyent Processing Creature	摧毁 Stroyent 加工生物		review
-#str_400106	Find a way to destroy the creature that controls the flow of fluids through the Stroyent Dispersal Facility.	设法摧毁控制 Stroyent 疏散设施内流体输送的生物。		review
-#str_400107	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 Stroyent 疏散设施的废料区与其余陆战队员会合。		review
+#str_400105	Destroy the Stroyent Processing Creature	摧毁 「斯托伊文特」（Stroyent） 加工生物		review
+#str_400106	Find a way to destroy the creature that controls the flow of fluids through the Stroyent Dispersal Facility.	设法摧毁控制 「斯托伊文特」（Stroyent） 疏散设施内流体输送的生物。		review
+#str_400107	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」（Stroyent） 疏散设施的废料区与其余陆战队员会合。		review
 #str_400108	Recomposition	再造中心		review
 #str_400109	Activate Process	启动工序		review
 #str_400110	Find the barrel sterilization controls and reboot the system	找到料桶消毒控制装置并重启系统。		review

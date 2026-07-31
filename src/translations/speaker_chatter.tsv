@@ -11,29 +11,30 @@ str_386008	vo_1_1_11_260_6	mcc_1	Now it's at 83%.	现在 83%。	sndshd
 str_386009	vo_1_1_11_300_1	mcc_1	Private Mark Lorenzi, please report to medical bay 3.	Mark Lorenzi 列兵,请到三号医疗舱报到。	sndshd	
 str_386010	vo_1_1_11_310_1	mcc_1	Lt.Voss, report to briefing room 8.	Voss 中尉,到八号简报室报到。	sndshd	
 str_386011	vo_1_1_11_320_1	mcc_1	Memorial Services for Colonel Westmore will be held at oh eight hundred hours.	Westmore 上校的追悼会将于八点整举行。	sndshd	
-str_386012	vo_1_1_11_330_1	mcc_1	Bison Squad, report to walker deck 2 immediately.	野牛小队,立即到二号 walker 甲板报到。	sndshd	
+str_386012	vo_1_1_11_330_1	mcc_1	Bison Squad, report to walker deck 2 immediately.	野牛小队,立即到二号 「步行者」（walker） 甲板报到。	sndshd	
 str_386013	vo_1_1_11_332_1	mcc_1	Testing launch PODs 1 and 2.	测试一号、二号发射舱。	sndshd	
 str_386014	vo_1_1_11_340_2	mcc_1	My team is pinned down by heavy fire. I'm requesting an artillery strike on a Strogg bunker.	我小队被猛烈火力压制。请求对 Strogg 碉堡实施炮击。	sndshd	Looms
 str_386015	vo_1_1_11_350_2	mcc_1	Great, so where's my squad located?	好,那我小队在哪儿?	sndshd	Looms
 str_386016	vo_1_1_11_350_4	mcc_1	Okay, let 'em know I'm on my way.	行,告诉他们我马上到。	sndshd	Looms
 str_386017	vo_1_1_11_350_6	mcc_1	Thanks for the help. Looms out.	多谢帮忙。Looms 完毕。	sndshd	Looms
-str_386018	vo_1_1_11_35_1	mcc_1	Crew Chief Hammond, report to walker bay 8D immediately.	Hammond 轮机长,立即到 8D walker 舱报到。	sndshd	
+str_386018	vo_1_1_11_35_1	mcc_1	Crew Chief Hammond, report to walker bay 8D immediately.	Hammond 轮机长,立即到 8D 「步行者」（walker） 舱报到。	sndshd	
 str_386019	vo_1_1_11_35_2	mcc_1	A welding crew is needed in armament.	武器舱需要一组焊接工。	sndshd	
-str_386020	vo_1_1_11_35_3	mcc_1	All walkers for Bison Squad will need to be pre-prepped by oh four hundred hours.	野牛小队的所有 walker 须在四点整前完成预备整备。	sndshd	
+str_386020	vo_1_1_11_35_3	mcc_1	All walkers for Bison Squad will need to be pre-prepped by oh four hundred hours.	野牛小队的所有 「步行者」（walker） 须在四点整前完成预备整备。	sndshd	
 str_386021	vo_1_1_11_35_4	mcc_1	Specialist Herman Ways, report to the main office immediately.	Herman Ways 专业兵,立即到总办公室报到。	sndshd	
-str_386022	vo_1_1_11_35_5	mcc_1	A computer tech is needed in walker bay 6C.	6C walker 舱需要一名计算机技术员。	sndshd	
+str_386022	vo_1_1_11_35_5	mcc_1	A computer tech is needed in walker bay 6C.	6C 「步行者」（walker） 舱需要一名计算机技术员。	sndshd	
 str_386023	vo_1_1_11_35_6	mcc_1	Crew Chief Hanks, call 232. Crew Chief Hanks, call 232.	Hanks 轮机长,呼叫 232。Hanks 轮机长,呼叫 232。	sndshd	
 str_386024	vo_1_1_11_380_1	mcc_1	Signal check for pestilence.	「瘟疫」信号检查。	sndshd	
 str_386025	vo_1_1_11_380_3	mcc_1	Roger that. Switching to 4 6 1.	收到。切换到 461。	sndshd	
 str_386026	vo_1_1_11_395_1	mcc_1	I'm a scout on special assignment.	我是执行特殊任务的侦察兵。	sndshd	侦察兵
 str_386027	vo_1_1_11_395_3	mcc_1	Tell General Harper that there should be no problem entering the Hub from the lower level.	告诉 Harper 将军,从下层进入枢纽应该不会有问题。	sndshd	侦察兵
-str_386028	vo_1_1_11_40_4	mcc_1	The back shields cut out.	后部护盾断了。	sndshd	
-str_386029	vo_1_1_11_40_6	mcc_1	Primary emitter is in the green.	主发射器状态正常。	sndshd	
-str_386030	vo_1_1_11_40_8	mcc_1	Secondary emitters check out.	副发射器检查通过。	sndshd	
-str_386031	vo_1_1_11_70_2	mcc_1	18 hours, Chief.	18 小时,长官。	sndshd	Morois 下士
-str_386032	vo_1_1_11_70_5	mcc_1	Check.	收到。	sndshd	Morois 下士
-str_386033	vo_1_1_11_70_7	mcc_1	Check.	收到。	sndshd	Morois 下士
-str_386034	vo_1_1_11_70_9	mcc_1	Check.	收到。	sndshd	Morois 下士
+str_386028	vo_1_1_11_40_4	mcc_1	The back shields cut out.	后部护盾断了。	sndshd	机甲驾驶员
+str_386029	vo_1_1_11_40_6	mcc_1	Primary emitter is in the green.	主发射器状态正常。	sndshd	机甲驾驶员
+str_386030	vo_1_1_11_40_8	mcc_1	Secondary emitters check out.	副发射器检查通过。	sndshd	机甲驾驶员
+str_386076	vo_1_1_11_40_10	mcc_1	At 95%.	百分之九十五。	sndshd	机甲驾驶员
+str_386031	vo_1_1_11_70_2	mcc_1	18 hours, Chief.	18 小时,长官。	sndshd	机甲驾驶员
+str_386032	vo_1_1_11_70_5	mcc_1	Check.	检测通过。	sndshd	机甲驾驶员
+str_386033	vo_1_1_11_70_7	mcc_1	Check.	检测通过。	sndshd	机甲驾驶员
+str_386034	vo_1_1_11_70_9	mcc_1	Check.	检测通过。	sndshd	机甲驾驶员
 str_386035	vo_1_1_1_15_1	airdefense1	You're needed ASAP. Colonel Westmore has been wounded in the leg.	急需你过来。Westmore 上校腿部负伤。	sndshd	Voss
 str_386036	vo_1_1_1_15_3	airdefense1	Westmore demanded you.	Westmore 点名要你。	sndshd	Voss
 str_386037	vo_1_1_1_28_1	airdefense1	Are you picking up our medical chips?	你能收到我们的医疗芯片信号吗?	sndshd	Voss

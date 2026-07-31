@@ -212,7 +212,7 @@ void rvSubtitles::Clear( void ) {
 rvSubtitles::AddLine
 ================
 */
-void rvSubtitles::AddLine( const char *text, int endTime, bool dimmed ) {
+void rvSubtitles::AddLine( const char *text, int endTime, subColor_t color ) {
 	// 满员时挤掉最旧一条
 	if ( numLines == MAX_SUBTITLE_LINES ) {
 		int i;
@@ -226,7 +226,7 @@ void rvSubtitles::AddLine( const char *text, int endTime, bool dimmed ) {
 	sl.text = text;
 	sl.startTime = gameLocal.time;
 	sl.endTime = endTime;
-	sl.dimmed = dimmed;
+	sl.color = color;
 }
 
 /*
@@ -376,15 +376,19 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 		full = clean;
 	}
 
-	// 环境音(广播/无线电/无名)用淡色,角色对白用正常亮色(2026-07-31 用户要求区分)
-	bool dimmed;
+	// 按说话人来源分配字幕配色(2026-08-01 用户要求：广播黄/无线电青/其余白,统一正常亮度)
+	subColor_t color;
 	if ( !speaker || !speaker[0] || speaker[0] == '#' ) {
-		dimmed = true;	// 无说话人(无名环境音)
+		color = SUB_COLOR_NORMAL;	// 无说话人(无名环境音) — 白
+	} else if ( idStr::Cmp( speaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) == 0			// 广播
+	        || idStr::Icmp( speaker, "PA" ) == 0
+	        || strstr( speaker, "\xE6\x92\xAD\xE6\x8A\xA5" ) != NULL ) {		// 含"播报"(消毒室播报等地点播报)
+		color = SUB_COLOR_BROADCAST;	// 广播类 — 黄
+	} else if ( idStr::Cmp( speaker, "\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5" ) == 0	// 无线电
+	        || idStr::Icmp( speaker, "Radio" ) == 0 ) {
+		color = SUB_COLOR_RADIO;		// 无线电 — 青
 	} else {
-		dimmed = ( idStr::Cmp( speaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) == 0			// 广播
-		        || idStr::Cmp( speaker, "\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5" ) == 0		// 无线电
-		        || idStr::Icmp( speaker, "PA" ) == 0
-		        || idStr::Icmp( speaker, "Radio" ) == 0 );
+		color = SUB_COLOR_NORMAL;	// 角色对白 — 白
 	}
 
 	if ( harm_g_subtitleDebug.GetBool() ) {
@@ -477,7 +481,7 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 		idStr seg = full.Mid( pos, cut - pos );
 		seg.StripTrailingWhitespace();
 		if ( seg.Length() ) {
-			AddLine( seg.c_str(), endTime, dimmed );
+			AddLine( seg.c_str(), endTime, color );
 		}
 		pos = cut;
 		while ( pos < len && s[pos] == ' ' ) {
@@ -665,7 +669,18 @@ void rvSubtitles::Draw( void ) {
 			float slideY = panelTop + SUB_PAD + i * SUB_ROW_H + SUB_ROW_ADJ;
 			float rowY = ( restY > slideY ) ? restY : slideY;
 			gui->SetStateString( va( "subText%d", i ), lines[i].text.c_str() );
-			gui->SetStateFloat( va( "subTxtA%d", i ), a * 0.97f * ( lines[i].dimmed ? 0.62f : 1.0f ) );
+			// 按配色类型设前景色 R/G/B(subtitles.gui forecolor 读这些变量)
+			// 广播黄 / 无线电青 / 其余白;alpha 不再因类型打折(2026-08-01 用户要求统一亮度)
+			float subR, subG, subB;
+			switch ( lines[i].color ) {
+				case SUB_COLOR_BROADCAST: subR = 1.0f;  subG = 0.80f; subB = 0.15f; break;
+				case SUB_COLOR_RADIO:     subR = 0.35f; subG = 0.85f; subB = 1.0f;  break;
+				default:                   subR = 0.95f; subG = 0.95f; subB = 0.95f; break;
+			}
+			gui->SetStateFloat( va( "subTxtR%d", i ), subR );
+			gui->SetStateFloat( va( "subTxtG%d", i ), subG );
+			gui->SetStateFloat( va( "subTxtB%d", i ), subB );
+			gui->SetStateFloat( va( "subTxtA%d", i ), a * 0.97f );
 			gui->SetStateFloat( va( "subRowY%d", i ), rowY );
 		} else {
 			gui->SetStateString( va( "subText%d", i ), "" );

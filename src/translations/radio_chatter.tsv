@@ -85,17 +85,17 @@ str_380082	vo_1_2_22_40_1	hub2	Corporal Kane, this is Strauss. I have detected a
 str_380083	vo_1_2_22_40_2	hub2	Kane... It can't be! ... It's the Makron!!	Kane……不可能！……是 Makron！！	sndshd	
 str_380084	vo_1_2_22_40_3	hub2	Get out of there, Kane! Get out!! Suddenly a loud thud can be heard over the comlink.	快离开那里，Kane！快出去！！突然，通讯频道里传来一声巨响。	sndshd	
 str_380085	vo_1_2_22_40_4	hub2	... who is there?	……谁在那里？	sndshd	
-str_380086	vo_1_1_11_100_2	mcc_1	Flooding chamber with trichlorite and septazine. After a few seconds.	正在向舱内注入三氯酸盐和七氮嗪。几秒钟后。	sndshd	
-str_380087	vo_1_1_11_100_3	mcc_1	Chamber at maximum saturation.	舱内已达到最大饱和度。	sndshd	
-str_380088	vo_1_1_11_100_4	mcc_1	Purging chamber.	正在排空舱室。	sndshd	
-str_380089	vo_1_1_11_100_5	mcc_1	Decontamination cycle complete.	消毒流程完成。	sndshd	
+str_380086	vo_1_1_11_100_2	mcc_1	Flooding chamber with trichlorite and septazine. After a few seconds.	正在向舱内注入三氯酸盐和七氮嗪。几秒钟后。	sndshd	消毒室播报
+str_380087	vo_1_1_11_100_3	mcc_1	Chamber at maximum saturation.	舱内已达到最大饱和度。	sndshd	消毒室播报
+str_380088	vo_1_1_11_100_4	mcc_1	Purging chamber.	正在排空舱室。	sndshd	消毒室播报
+str_380089	vo_1_1_11_100_5	mcc_1	Decontamination cycle complete.	消毒流程完成。	sndshd	消毒室播报
 str_380090	vo_1_1_11_360_2	mcc_1	But a Strogg unit is headed directly for Cougar squad.	但有一支 Strogg 部队正直扑美洲狮小队。	sndshd	
 str_380091	vo_1_1_11_360_4	mcc_1	Then they're all dead men. Richards out.	那他们就死定了。Richards 完毕。	sndshd	Richards
 str_380092	vo_2_2_10_253_0	mcc_2	Kane, I would remind you the existence of all humanity rests on your shoulders - but I wouldn't want you to feel any pressure. So all I will say, is don't get yourself killed, my friend.	Kane，我本该提醒你，全人类的存亡都系于你一身——不过我可不想给你压力。所以我只说一句：别把自己弄死了，我的朋友。	sndshd	
 str_380093	vo_2_2_10_253_1	mcc_2	Good luck, sir. Automated navigation will take you right to the Data Storage Terminal. Have a safe flight.	祝你好运，长官。自动导航会把你直接送到数据存储终端。祝飞行顺利。	sndshd	
 str_380094	vo_2_2_10_254_1	mcc_2	My turret�s been hit . . . aaaah, I'm on fire. Heeeelp meeee!	我的炮塔被击中了……啊啊，我着火了。救救我——！	sndshd	
-str_380095	vo_2_2_10_255_1	mcc_2	Harvesters approaching on the left flank.  We need walkers over there ASAP!	收割者正从左翼逼近。马上派步行机甲过去支援！	sndshd	
-str_380096	vo_2_2_10_256_1	mcc_2	Walker Bison 5 is on fire!  Get Banks out of there!	野牛 5 号步行机甲着火了！快把 Banks 救出来！	sndshd	
+str_380095	vo_2_2_10_255_1	mcc_2	Harvesters approaching on the left flank.  We need walkers over there ASAP!	收割者正从左翼逼近。马上派「步行者」（walker）过去支援！	sndshd	
+str_380096	vo_2_2_10_256_1	mcc_2	Walker Bison 5 is on fire!  Get Banks out of there!	野牛 5 号「步行者」（walker）着火了！快把 Banks 救出来！	sndshd	
 str_380097	vo_2_2_10_257_1	mcc_2	HQ, this Bison commander. Get us some air support right now or we�re all dead men.	总部，我是野牛小队指挥官。立刻给我们空中支援，不然我们全都得死。	sndshd	野牛小队指挥官
 str_380098	vo_2_2_10_258_1	mcc_2	Badger squad, this is HQ. Set up a defensive position at coordinates 43,82. Render assistance to Bison squad.	猛獾小队，这里是总部。在坐标 43, 82 建立防御阵地，支援野牛小队。	sndshd	总部
 str_380099	vo_2_2_10_258_2	mcc_2	Roger that, HQ. Advancing to coordinates 43, 82.	收到，总部。正在向坐标 43, 82 推进。	sndshd	
@@ -254,7 +254,7 @@ str_380251	vo_1_1_0_01_2	airdefense_intro	Warning!  Incoming attack!	警告！�
 str_380254	vo_1_1_0_01_21	airdefense_intro	We're hit! Another missile's locked on. Firing counter measures.	我们中弹了！又一枚导弹锁定，正在发射干扰弹。	sndshd	
 str_385726	vo_1_2_0_10_1	convoy1	Kane, this is Voss. Grab a ride with Corporal Spencer. He's in a truck nearby. Report to Sergeant Bidwell when you get to the Death convoy. Voss, out.	Kane，我是 Voss。搭 Spencer 下士的车过去，他就在附近的卡车上。到死亡车队后向 Bidwell 中士报到。Voss，完毕。	sndshd	Voss
 str_385727	vo_1_2_0_11_1	convoy1	This is Eagle 3 on flyby, if there's Strogg in the area, they're keeping out of sight.	这里是雄鹰 3 号正在飞越，如果这区域有 Strogg，他们藏得很隐蔽。	sndshd	雄鹰 3 号
-str_385728	vo_1_2_0_16_1	convoy1	This is Walker 4 of Bison Squad on patrol. All clear.	这里是野牛小队机甲 4 号，正在巡逻。一切正常。	sndshd	野牛小队
+str_385728	vo_1_2_0_16_1	convoy1	This is Walker 4 of Bison Squad on patrol. All clear.	这里是野牛小队「步行者」（walker） 4 号，正在巡逻。一切正常。	sndshd	野牛小队
 str_385729	vo_1_2_0_65_1	convoy1	I've got signal lock. He's not gettin' away from me this time.	信号已锁定。这次他跑不掉了。	sndshd	
 str_385730	vo_1_2_0_66_1	convoy1	Where the hell did he go?	他妈的跑哪儿去了？	sndshd	
 str_385731	vo_1_2_0_90_1	convoy1	Kane, this is voss. We can't move forward until you take out the turrets defending this area.	Kane，我是 Voss。在你摧毁这一带的防御炮台之前，我们无法前进。	sndshd	Voss
