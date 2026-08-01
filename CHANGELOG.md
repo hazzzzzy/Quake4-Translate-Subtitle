@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.2.3 — 2026-08-01
+
+### 字幕标点全角化 + 专名去英文括号 + GUI 加载机制文档
+
+- 字幕半角标点全角化：speaker_chatter/radio_chatter 中文列 38 条半角标点（逗号/冒号/问号/感叹号/分号）转全角，修复字幕混入英文标点
+- 专名去英文括号：全部 tsv 约 50 处 `「译名」（英文）` 去掉英文括号，只保留 `「中文译名」`（斯托伊文特 21 处、四元节点 4 处等）
+- CLAUDE.md/AGENTS.md 新增「GUI 加载机制与字体共用约束」章节：viewmodel 武器弹药 GUI + cursor.gui 只从 pak 加载不走 savepath；marine 被枪身弹药数字/准心人名/终端数字三处共用、字形无法分别；改这些数字位置走 fontdat top/xSkip 不走 GUI rect
+- build_dist_extras 清理无效 patch_cursor_gui（cursor.gui 不走 savepath，补丁不生效）
+
 ## v1.2.2 — 2026-08-01
 
 ### 枪身弹药数字字体恢复原版 + 位置修正
