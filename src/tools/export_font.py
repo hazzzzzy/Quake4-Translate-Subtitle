@@ -345,19 +345,24 @@ def export(fam, size, chars):
     base_tops = [r[3] for r in base_rec]
     buf = io.BytesIO()
     if use_original_base:
-        # 原版基础段：256×36 记录（度量/UV 一律原版，数字/字母保持原版视觉）
-        buf.write(eng_dat[:256 * 36])
-        # 头（5float）：chain/r_strogg 主要显数字，沿用原版头（patch_hud 已据此
-        # 调好 HUD 数字位置）；marine 大量用于中文文本，原版 maxHeight(~15) 远小于
-        # 思源宽表字形(~23)，纯原版头会让中文基线偏高/行高塌缩，故取
-        # max(原版maxHeight, 宽表maxTop) 维持原思源 marine 的行高（2026-08-01）。
-        wide_tops = [r[4] for r in records if r[5] >= 0]
-        _pts, _mw, _mh, _d, _ = struct.unpack_from("<5f", eng_dat, 256 * 36)
-        if fam == "marine" and wide_tops:
-            _mh = max(_mh, max(wide_tops))
-            buf.write(struct.pack("<5f", _pts, _mw, _mh, _mw - _mh, 0.0))
-        else:
-            buf.write(eng_dat[256 * 36 : 256 * 36 + 20])
+        # 原版基础段（拷贝，marine 数字叠加位置补偿）+ 原版头（含 maxHeight）。
+        # 数字/字母字形、度量、maxHeight 一律原版：武器 viewmodel 弹药 GUI 的数字
+        # 控件按原版头做垂直居中，maxHeight 必须与原版一致(marine 14.95)，否则大
+        # 字号数字明显位移。marine 中文多为 textscale≤0.5 单行文本，头差经小 textscale
+        # 缩放后位移仅 2~3px，可接受。
+        base = bytearray(eng_dat[:256 * 36])
+        if fam == "marine":
+            # 武器弹药计数(方正粗体数字)位置补偿：原版数字 xSkip(~37)远大于思源(~21)，
+            # center 后整体偏左；top 略偏上。GUI rect 改动实测不生效(viewmodel GUI 不
+            # 从 savepath 加载)，但 fontdat 的 top/xSkip 是 PaintChar 直接读取的，改
+            # 数字字形即可移动枪身数字。V/H 由实机标定(2026-08-01)：
+            # V=-4(top 下移)、H=-15(xSkip 减，center 右移到水平居中)。
+            for idx in range(48, 58):  # 数字 0-9
+                off = idx * 36
+                iw, ih, xs, pitch, top, s, t, s2, t2 = struct.unpack_from("<9f", base, off)
+                struct.pack_into("<9f", base, off, iw, ih, xs - 15.0, pitch, top - 4.0, s, t, s2, t2)
+        buf.write(base)
+        buf.write(eng_dat[256 * 36 : 256 * 36 + 20])  # 原版头
     else:
         for (w, h, xskip, top, s, t, s2, t2) in base_rec:
             buf.write(struct.pack("<9f", w, h, xskip, w, top, s, t, s2, t2))
