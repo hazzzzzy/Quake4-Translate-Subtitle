@@ -1,4 +1,4 @@
-﻿str_id	sound	map	english	chinese	source	speaker
+str_id	sound	map	english	chinese	source	speaker
 
 str_380000	vo_1_1_1_68_1	airdefense1	This is Sgt. Miller. I'm takin' Condor Squad in to clear out the facility.	我是 Miller 中士。我带神鹰小队进去清剿这处设施。（基地警报：警告！敌方来袭！）	sndshd	Miller
 
@@ -140,7 +140,7 @@ str_380068	vo_1_1_6_80_1	hangar2	Hey, Rhodes. If you kids are done playin' aroun
 
 str_380069	vo_1_1_6_80_3	hangar2	Sorry, big boy. Voss wants you to stay put. Another team may need your services. Morris, out.	抱歉了，大个子。Voss 要你原地待命。别的队伍可能还需要你帮忙。Morris，完毕。	sndshd	Morris
 
-str_380070	vo_1_2_14_10_1	hub1	All right, Marines. Listen up. The Strogg have taken out the other convoys, we're all that's left. This mission's too big for any screw-ups. No one take any chances, no one try to be the hero. Voss out.	好了，陆战队员们，都听好。Strogg 干掉了其他车队，就剩我们了。这次任务太重大，容不得半点差错。谁都别冒险，谁都别逞英雄。Voss 完毕。	sndshd	Voss
+str_380070	vo_1_2_14_10_1	hub1	All right, Marines, listen up. The Strogg have taken out the other convoys, we're all that's left. This mission's too big for any screw-ups. No one take any chances, no one try to be the hero. We need to get the EMP below the Tetranode, the brains of this facility. The Tetranode routes billions of Strogg communications signals every second from the Nexus. If that were destroyed, it'd effectively shut down the Strogg for this area. Once we get the Nexus down, our troops will have an easy time of it. The Strogg military will be completely disorganized. Voss out.	好了，陆战队员们，都听好。Strogg 干掉了其他车队，就剩我们了。这次任务事关重大，不容有失。谁都别去冒险，谁都别逞英雄。我们要把 EMP 送到下方的「四元节点」——这座设施的核心。「四元节点」每秒为 Nexus 中转数十亿条 Strogg 通讯信号。一旦摧毁它，这一带的 Strogg 就基本瘫痪。只要搞垮 Nexus，我们的部队就轻松了。Strogg 的军队会彻底乱成一盘散沙。Voss 完毕。	sndshd	Voss
 
 str_380071	vo_1_2_14_72_5	hub1	You�ll be fine, Strauss. Kane, get out here on the double. Voss, out.	你不会有事的，Strauss。Kane，马上出来，动作快。Voss，完毕。	sndshd	Voss
 
@@ -148,7 +148,7 @@ str_380072	vo_1_2_16_120_1	hub1	Good job. The forcefield's down, Kane. Return to
 
 str_380073	vo_1_2_17_10_13	hub1	Yes, sir.	是，长官。	sndshd	
 
-str_380074	vo_1_2_17_10_7	hub1	Lieutenant Voss, this is Strauss. What has happened?	Voss 中尉，我是 Strauss。发生什么事了？	sndshd	Strauss
+str_380074	vo_1_2_17_10_7	hub1	Lieutenant Voss, this is Strauss. What has happened? I cannot open the door. Please, I need help, Lieutenant.	Voss 中尉，我是 Strauss。出什么事了？门打不开了。拜托，我需要支援，中尉。	sndshd	Strauss
 
 str_380075	vo_1_2_18_10_3	hub1	Ja. But it means I have to go directly to the Tetranode.	Ja。不过这就意味着我必须直接前往 「四元节点」。	sndshd	
 
@@ -158,7 +158,7 @@ str_380077	vo_1_2_18_20_1	hub2	Corporal Kane, this is Strauss. I am in great dan
 
 str_380078	vo_1_2_20_30_1	hub2	The area you are in stretches between all facilities in this complex.	你所在的这片区域，在这座建筑群的各个设施之间延伸贯通。	sndshd	
 
-str_380079	vo_1_2_20_40_1	hub2	Nearby is a maintenance platform. Get onboard.	附近有一座维修平台。登上去。	sndshd	
+str_380079	vo_1_2_20_40_1	hub2	Nearby is a maintenance platform. It rides on top of the cables and allows the Strogg to perform upkeep. Get onboard the platform.	附近有一座维护平台，它在线缆上方行驶，供 Strogg 进行检修。登上那座平台。	sndshd	
 
 str_380080	vo_1_2_22_20_1	hub2	There should be a console in the center of the room, Corporal Kane. Activate that and the coolant pumps will shut down. In a matter of minutes, the Tetranode will overheat and destroy itself. And this will render the Nexus useless to the Strogg.	房间中央应该有一台控制台，Kane 下士。启动它，冷却泵就会停止运转。几分钟之内，「四元节点」 就会过热自毁。这样一来，Nexus 对 Strogg 就毫无用处了。	sndshd	
 

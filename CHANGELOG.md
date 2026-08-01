@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.2.4 — 2026-08-01
+
+### 修复 3 条 Hub 关卡字幕截短（转写不完整导致中文字幕缺段落）
+
+- `vo_1_2_14_10_1`（Voss 简报）：英文转写截短在"逞英雄。Voss out."，实际音频含完整「四元节点/Nexus」段落（~100 词 / 30 秒）。修复 radio_chatter `str_380070` + dialogue_lips `str_300640` 英文+中文补全
+- `vo_1_2_17_10_7`（Strauss 被困呼叫）：英文截短在"What has happened?"，实际音频含"门打不开了，需要支援"（20 词 / 6.8 秒）。修复 radio_chatter `str_380074`
+- `vo_1_2_20_40_1`（Strauss 维护平台指引）：英文截短在"Get onboard."，实际音频含"在线缆上方行驶，供 Strogg 检修"（22 词 / 5.1 秒）。修复 radio_chatter `str_380079`
+- 根因：dialogue_lips.tsv 有完整版英文+中文，但 radio_chatter.tsv（lipsync decl 实际引用的 string id 来源）的英文来自被截短的声音 shader description，中文跟着截短；用 ffprobe 词/秒全量扫描 931 条语音确认仅此 3 条
+
 ## v1.2.3 — 2026-08-01
 
 ### 字幕标点全角化 + 专名去英文括号 + GUI 加载机制文档
