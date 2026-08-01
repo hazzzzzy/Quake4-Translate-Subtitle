@@ -60,6 +60,7 @@ jobs:
           git -C $engine sparse-checkout init --no-cone
           @(
               "/Q3E/src/main/jni/doom3/neo/CMakeLists.txt",
+              "/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp",
               "/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp",
               "/Q3E/src/main/jni/doom3/neo/quake4/LipSync.cpp",
               "/Q3E/src/main/jni/doom3/neo/quake4/Misc.cpp",
@@ -67,7 +68,8 @@ jobs:
               "/Q3E/src/main/jni/doom3/neo/quake4/Player.h",
               "/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp",
               "/Q3E/src/main/jni/doom3/neo/quake4/Sound.cpp",
-              "/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp"
+              "/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp",
+              "/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp"
           ) | Set-Content -LiteralPath (Join-Path $engine ".git\info\sparse-checkout") -Encoding ASCII
           git -C $engine checkout
           git -C $engine apply --check "$env:GITHUB_WORKSPACE\src\engine-patches\0001-quake4-cn-runtime.patch"

@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.2.5 — 2026-08-01
+
+### 引擎修复：Hub1 关卡 Sentry 物理故障导致严重掉帧（6fps）
+
+- 根因：Hub1（Nexus 枢纽隧道）3 台 `rvMonsterSentry` 生成时掉出地图底部，物理引擎每帧检测到 >4096 单位的巨型位移（`TestHugeTranslation`），`fraction=0` 短路了碰撞检测但未清零速度，形成「速度保留→下帧重复」死循环，3 台 Sentry 各被 3 处 trace 调用点内联触发，每帧数十次 Printf + 物理计算拖垮帧率
+- 修复：`quake4/physics/Clip.cpp` 的 `TestHugeTranslation` 中检测到巨型位移时直接 `SetLinearVelocity(vec3_origin)` 清零实体速度，打断死循环；同时限速 Printf 最多 5 条避免日志 I/O 开销
+- 效果：Sentry 停止挣扎不再吃 CPU，帧率恢复正常；玩家可正常击杀卡住的 Sentry 推进剧情
+
 ## v1.2.4 — 2026-08-01
 
 ### 修复 3 条 Hub 关卡字幕截短（转写不完整导致中文字幕缺段落）
