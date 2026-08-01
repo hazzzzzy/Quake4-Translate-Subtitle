@@ -46,13 +46,13 @@ str_385043	vo_1_2_0_46_2	convoy1	Same as usual. Soldiers are fightin and dyin�
 str_385044	vo_1_2_0_46_3	convoy1	The thing is though, we cant keep this battle up much longer. Weve got to win it soon or were just gonna run out of men.	可问题是，这场仗我们撑不了多久了。必须尽快赢下来，不然人手就要打光了。	sndshd
 str_385045	vo_1_2_0_46_4	convoy1	And thats exactly why these convoys are going out - to tip the scales in our favor.	而这正是派出这些车队的原因——把天平扳向我们这边。	sndshd
 str_385046	vo_1_2_0_49_1	convoy1	Our guys are really cleaning up the fliers since you blew up the hangars, Kane.	{happy}自打你把机库炸了，咱们的人收拾起飞行器来那叫一个痛快，Kane。	sndshd
-str_385047	vo_1_2_0_64_1	convoy1	This is Walker 12 of Bison squad. Got a bogie at 6 oclock.	这里是野牛小队 「步行者」（walker） 12。六点钟方向发现不明目标。	sndshd
+str_385047	vo_1_2_0_64_1	convoy1	This is Walker 12 of Bison squad. Got a bogie at 6 oclock.	这里是野牛小队 「步行者」 12。六点钟方向发现不明目标。	sndshd
 str_385048	vo_1_2_0_70_10	convoy1	You can get off, Kane. This is your stop.	可以下车了，Kane。你到站了。	sndshd
 str_385049	vo_1_2_0_80_10	convoy1	See you around.	回头见。	sndshd
 str_385050	vo_1_2_14_40_3	hub1	Kane, youre assigned to Strauss. Voss out.	Kane，你被派给 Strauss 了。Voss 完毕。	sndshd
 str_385051	vo_1_2_14_80_1	hub1	All right. Convoy, move forward. Kane, get Strauss to the controls for Door 2.	好了。车队，前进。Kane，带 Strauss 去 2 号门的控制台。	sndshd
 str_385052	vo_1_2_15_10_1	hub1	Lt. Voss, uh...what should we do?	Voss 中尉，呃……我们该怎么办？	sndshd
-str_385053	vo_1_2_15_10_2	hub1	Leave them alone, these repair bots are harmless.	别理它们，这些维修机器人没有危害。	sndshd
+str_385053	vo_1_2_15_10_2	hub1	Leave them alone, these repair bots are harmless.	别理它们，这些「维修机器人」没有危害。	sndshd
 str_385054	vo_1_2_15_10_3	hub1	Harmless, huh? Get ready, we got company!	没有危害是吧？准备好，有敌人来了！	sndshd
 str_385055	vo_1_2_15_20_1	hub1	Lieutenant, I can force this door open, but it will set off alarms.	中尉，我可以强行打开这扇门，但那样会触发警报。	sndshd
 str_385056	vo_1_2_15_20_2	hub1	Can you bypass security?	你能绕过安保系统吗？	sndshd
@@ -66,7 +66,7 @@ str_385063	vo_1_2_16_40_1	hub1	I've located the security wiring to Door 2.	我�
 str_385064	vo_1_2_16_40_2	hub1	I've located the security wiring to Door 1.	我找到通往 1 号门的安保线路了。	sndshd
 str_385065	vo_1_2_16_40_3	hub1	Now, I merely switch Door 2 security to look at Door 1.	现在，我只要把 2 号门的安保切换去监视 1 号门就行了。	sndshd
 str_385066	vo_1_2_16_40_4	hub1	There, I'm done. Let's get back to the convoy.	好了，完工。我们回车队吧。	sndshd
-str_385067	vo_1_2_16_60_1	hub1	All clear. Those repair bots must have warned the Strogg we were here. Kane, open the door 2. If there's anything on the other side, I want Strauss out of harm's way.	安全。一定是那些维修机器人向 Strogg 报了信。Kane，去开 2 号门。万一那边有什么东西，我可不想让 Strauss 涉险。	sndshd
+str_385067	vo_1_2_16_60_1	hub1	All clear. Those repair bots must have warned the Strogg we were here. Kane, open the door 2. If there's anything on the other side, I want Strauss out of harm's way.	安全。一定是那些「维修机器人」向 Strogg 报了信。Kane，去开 2 号门。万一那边有什么东西，我可不想让 Strauss 涉险。	sndshd
 str_385068	vo_1_2_16_80_1	hub1	Let's move it out, convoy. Strauss, stay on this side of the door in case we run into trouble.	车队，出发。Strauss，你留在门这一边，免得我们碰上麻烦。	sndshd
 str_385069	vo_1_2_17_10_10	hub1	You're not gonna be able to. I'm sure security locked it.	你打不开的。肯定是安保系统把它锁死了。	sndshd
 str_385070	vo_1_2_17_10_8	hub1	The sons of bitches knew we were coming.	这帮混蛋早就知道我们要来。	sndshd

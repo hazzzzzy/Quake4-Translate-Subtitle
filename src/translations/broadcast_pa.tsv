@@ -1,78 +1,156 @@
-﻿str_id	sound	map	english	chinese	source	speaker
-str_385766	vo_pa_dispersal_10	broadcast	Stroyent transfer process initiated.	「斯托伊文特」（Stroyent） 输运流程已启动。	sndshd	
-str_385767	vo_pa_dispersal_100	broadcast	Critical fluctuation detected in matter intake levels. Investigate Transfer Station Three.	物质摄入水平检测到严重波动。检查三号输送站。	sndshd	
-str_385768	vo_pa_dispersal_20	broadcast	Tactical units dispatched to dispersal facility.	战术部队已派遣至分散设施。	sndshd	
-str_385769	vo_pa_dispersal_30	broadcast	Warning! Pulminary system failure. Drainage malfunction.	警告！肺循环系统故障。排放失灵。	sndshd	
-str_385770	vo_pa_dispersal_40	broadcast	Facility breech. Hostile entity at access point Five.	设施被攻破。五号入口出现敌对实体。	sndshd	
-str_385771	vo_pa_dispersal_50	broadcast	Digestive conduit array at ninety percent capacity. Auxiliary infusion units, online.	消化管道阵列已达百分之九十容量。辅助注入单元已上线。	sndshd	
-str_385772	vo_pa_dispersal_60	broadcast	Matter Intake levels, normal.	物质摄入水平正常。	sndshd	
-str_385773	vo_pa_dispersal_70	broadcast	Anomaly detected in Stabilization Injection Chamber.	稳定注射舱检测到异常。	sndshd	
-str_385774	vo_pa_dispersal_80	broadcast	Stroyent Dispersal Systems online. Maintain full capacity.	「斯托伊文特」（Stroyent） 分散系统在线。保持满负荷运转。	sndshd	
-str_385775	vo_pa_dispersal_90	broadcast	Bio-chemical Fluidic Transfer Station Three has been breached.	生化流体输送站三号已被攻破。	sndshd	
-str_385776	vo_pa_med_10	broadcast	Transfer, approved.	转化已批准。	sndshd	
-str_385777	vo_pa_med_20	broadcast	Warning: Scanning system breech detected.	警告：扫描系统检测到入侵。	sndshd	
-str_385778	vo_pa_med_30	broadcast	Neurocyte registration disrupted. Deploy service unit.	神经细胞注册中断。派遣维护单元。	sndshd	
-str_385779	vo_pa_med_40	broadcast	Hostile units in possession of rogue transfer. Deploy tactical intercepts.	敌对单元携带非法转化体。部署战术拦截。	sndshd	
-str_385780	vo_pa_med_50	broadcast	Enemy transport destroyed.	敌方运输器已摧毁。	sndshd	
-str_385781	vo_pa_med_60	broadcast	Deliver new prisoners to prototype testing and assembly.	将新俘虏送至原型测试与装配区。	sndshd	
-str_385782	vo_pa_med_70	broadcast	Tactical units at full readiness. Beginning deployment.	战术部队已全面就绪。开始部署。	sndshd	
-str_385783	vo_pa_med_80	broadcast	Flyer squadrons dispatched.	飞行器中队已派遣。	sndshd	
-str_385784	vo_pa_network1_10	broadcast	Breech in secure Section 58-D. Activate defenses.	安全区 58-D 被攻破。启动防御。	sndshd	
-str_385785	vo_pa_network1_20	broadcast	Defenses compromised. All units proceed to deck 58.	防御已被突破。所有单元前往 58 层。	sndshd	
-str_385786	vo_pa_network1_30	broadcast	Incoming aircraft detected. Exterior shields at 32%.	检测到来袭飞行器。外部护盾剩余百分之三十二。	sndshd	
-str_385787	vo_pa_network2_10	broadcast	Breech on decks 72 through 85. Deploying repair units.	72 至 85 层被攻破。派遣维修单元。	sndshd	
-str_385788	vo_pa_network2_20	broadcast	Communication terminal 9C, destroyed.	通讯终端 9C 已摧毁。	sndshd	
-str_385789	vo_pa_network2_30	broadcast	Exterior damage sustained. TG-014 report to defenses on deck 12.	外部受损。TG-014 前往 12 层防御。	sndshd	
-str_385790	vo_pa_network2_40	broadcast	Interface disabled. Core teleport activated.	接口已禁用。核心传送已激活。	sndshd	
-str_385791	vo_pa_network2_50	broadcast	Warning! Nexus perimeter is compromised.	警告！Nexus 周界已被攻破。	sndshd	
-str_385792	vo_pa_process1_10	broadcast	Power conservation protocol in effect. Terminal offline.	节能协议生效。终端离线。	sndshd	
-str_385793	vo_pa_process1_20	broadcast	Warning! Weight capactity exceeded.	警告！承重超限。	sndshd	
-str_385794	vo_pa_process1_30	broadcast	Warning! Transport malfunction.	警告！运输故障。	sndshd	
-str_385795	vo_pa_process1_40	broadcast	Attention: Transport, offline.	注意：运输系统离线。	sndshd	
-str_385796	vo_pa_process1_50	broadcast	Attention: Terminal, online.	注意：终端上线。	sndshd	
-str_385797	vo_pa_process2_10	broadcast	Multiple hull breaches on floor 60.	60 层出现多处舱体破损。	sndshd	
-str_385798	vo_pa_process2_20	broadcast	Process terminal connection established to core facility.	处理终端已连接至核心设施。	sndshd	
-str_385799	vo_pa_process2_30	broadcast	Initiating teleportation interface.	正在启动传送接口。	sndshd	
-str_385800	vo_pa_process2_40	broadcast	Teleportation interchange established.	传送交换已建立。	sndshd	
-str_385801	vo_pa_process2_50	broadcast	Unable to process data due to node alignment error.	节点校准错误导致无法处理数据。	sndshd	
-str_385802	vo_pa_process2_60	broadcast	Node alignment error corrected.	节点校准错误已修正。	sndshd	
-str_385803	vo_pa_putra_10	broadcast	Stroyent digestive cycle initiated.	「斯托伊文特」（Stroyent） 消化循环已启动。	sndshd	
-str_385804	vo_pa_putra_20	broadcast	Service required on belt 36-C.	36-C 传送带需要维护。	sndshd	
-str_385805	vo_pa_putra_30	broadcast	Sector 6C compromised. Activate defense protocol.	6C 区域被攻破。启动防御协议。	sndshd	
-str_385806	vo_pa_putra_40	broadcast	Enzyme Distribution sequence initiated.	酶分配序列已启动。	sndshd	
-str_385807	vo_pa_putra_50	broadcast	Enzyme Distribution sequence complete.	酶分配序列已完成。	sndshd	
-str_385808	vo_pa_putra_60	broadcast	Enzyme Distribution failure. Transport systems deactivated.	酶分配失败。运输系统已停用。	sndshd	
-str_385809	vo_pa_putra_70	broadcast	Structural disturbance detected in Bioform Sublevels.	生物体下层检测到结构扰动。	sndshd	
-str_385810	vo_pa_recomp_10	broadcast	Error: Containment production, offline.	错误：容置生产系统离线。	sndshd	
-str_385811	vo_pa_recomp_20	broadcast	System: online.	系统：上线。	sndshd	
-str_385812	vo_pa_recomp_30	broadcast	System: offline. Stroyent production suspended.	系统：离线。「斯托伊文特」（Stroyent） 生产已暂停。	sndshd	
-str_385813	vo_pa_storage1_10	broadcast	Hull shell has sustained multiple breaches.	外壳已承受多处破损。	sndshd	
-str_385814	vo_pa_storage1_100	broadcast	Intruders detected on decks 2 through 4.	2 至 4 层检测到入侵者。	sndshd	
-str_385815	vo_pa_storage1_110	broadcast	Primary defenses on floor 83 reduced to zero percent.	83 层主防御已降至零。	sndshd	
-str_385816	vo_pa_storage1_120	broadcast	All units report to deck 4.	所有单元前往 4 层。	sndshd	
-str_385817	vo_pa_storage1_130	broadcast	Core Interface disabled.	核心接口已禁用。	sndshd	
-str_385818	vo_pa_storage1_20	broadcast	Fire hazards detected. TSDs retracting to lower distribution level.	检测到火灾隐患。TSD 撤至下层分配区。	sndshd	
-str_385819	vo_pa_storage1_30	broadcast	Tactical units dispatched to floor 85.	战术部队已派遣至 85 层。	sndshd	
-str_385820	vo_pa_storage1_40	broadcast	Hangar door sequence activated.	机库门序列已激活。	sndshd	
-str_385821	vo_pa_storage1_50	broadcast	Storage terminal connection established to core facility.	存储终端已连接至核心设施。	sndshd	
-str_385822	vo_pa_storage1_60	broadcast	TSD cooling procedure initiated.	TSD 冷却程序已启动。	sndshd	
-str_385823	vo_pa_storage1_70	broadcast	TSD deployment initiated. Shutting down coolant.	TSD 部署已启动。关闭冷却液。	sndshd	
-str_385824	vo_pa_storage1_80	broadcast	Exterior defenses, fully functional.	外部防御完全正常。	sndshd	
-str_385825	vo_pa_storage1_90	broadcast	TG-014 has been released.	TG-014 已释放。	sndshd	
-str_385826	vo_pa_storage2_10	broadcast	TSDs enroute to main level, power restored.	TSD 正前往主层，电力已恢复。	sndshd	
-str_385827	vo_pa_tram1_10	broadcast	Unknown entity, class human, detected on tram enroute to Hub 8. Tactical unit dispatched.	检测到未知实体，人类类别，位于前往 8 号枢纽的轨道车上。战术单元已派遣。	sndshd	
-str_385828	vo_pa_tram1_20	broadcast	Tram rerouted. Destination, process facility 6.	轨道车已改道。目的地：6 号处理设施。	sndshd	
-str_385829	vo_pa_tram1_30	broadcast	Track malfunction.	轨道故障。	sndshd	
-str_385830	vo_pa_tram1_40	broadcast	Repair units dispatched to damaged track section.	维修单元已派往受损轨道段。	sndshd	
-str_385831	vo_pa_tram1_50	broadcast	Track repaired. Process route now functional.	轨道已修复。处理线路恢复运行。	sndshd	
-str_385832	vo_pa_walker_10	broadcast	Hostile armor unit approaching sector five dispersal facility. Retract bridge and deploy drop turret offensive.	敌方装甲单元正在接近五号区域分散设施。收回桥梁并部署空投炮塔进行拦截。	sndshd	
-str_385833	vo_pa_walker_20	broadcast	Warning: Bridge security compromised.	警告：桥梁安保已被攻破。	sndshd	
-str_385834	vo_pa_walker_30	broadcast	Ground units ineffective; deploy immediate aerial assault.	地面单元无效；立即部署空中突击。	sndshd	
-str_385835	vo_pa_walker_40	broadcast	Rogue Transfer has breached dispersal perimeter. Intercept and terminate.	非法转化体已突破分散周界。拦截并消灭。	sndshd	
-str_385836	vo_pa_walker_50	broadcast	Tactical teams deployed to dispersal complex. Priority alpha, elimination of rogue transfer.	战术小队已部署至分散建筑群。Alpha 优先：消灭非法转化体。	sndshd	
-str_385837	vo_pa_waste_10	broadcast	Neutralization process initiated.	中和流程已启动。	sndshd	
-str_385838	vo_pa_waste_20	broadcast	Tactical unit dispatched to tunnel breach.	战术单元已派往通道突破口。	sndshd	
-str_385839	vo_pa_waste_30	broadcast	Multiple entities detected in resovoir 12.	12 号蓄池检测到多个实体。	sndshd	
-str_385840	vo_pa_waste_40	broadcast	Warning: Decomposition solution activated.	警告：分解液已激活。	sndshd	
-str_385841	vo_pa_waste_50	broadcast	Intruder alert, sector d429 - terminated.	入侵警报，d429 区域——已消灭。	sndshd	
-str_385842	vo_pa_waste_60	broadcast	Station 48 security grid deactivated.	48 号站安保网格已停用。	sndshd	
+﻿str_id	sound	map	english	chinese	source	speaker
+
+str_385766	vo_pa_dispersal_10	broadcast	Stroyent transfer process initiated.	「斯托伊文特」 输运流程已启动。	sndshd	
+
+str_385767	vo_pa_dispersal_100	broadcast	Critical fluctuation detected in matter intake levels. Investigate Transfer Station Three.	物质摄入水平检测到严重波动。检查三号输送站。	sndshd	
+
+str_385768	vo_pa_dispersal_20	broadcast	Tactical units dispatched to dispersal facility.	战术部队已派遣至分散设施。	sndshd	
+
+str_385769	vo_pa_dispersal_30	broadcast	Warning! Pulminary system failure. Drainage malfunction.	警告！肺循环系统故障。排放失灵。	sndshd	
+
+str_385770	vo_pa_dispersal_40	broadcast	Facility breech. Hostile entity at access point Five.	设施被攻破。五号入口出现敌对实体。	sndshd	
+
+str_385771	vo_pa_dispersal_50	broadcast	Digestive conduit array at ninety percent capacity. Auxiliary infusion units, online.	消化管道阵列已达百分之九十容量。辅助注入单元已上线。	sndshd	
+
+str_385772	vo_pa_dispersal_60	broadcast	Matter Intake levels, normal.	物质摄入水平正常。	sndshd	
+
+str_385773	vo_pa_dispersal_70	broadcast	Anomaly detected in Stabilization Injection Chamber.	稳定注射舱检测到异常。	sndshd	
+
+str_385774	vo_pa_dispersal_80	broadcast	Stroyent Dispersal Systems online. Maintain full capacity.	「斯托伊文特」 分散系统在线。保持满负荷运转。	sndshd	
+
+str_385775	vo_pa_dispersal_90	broadcast	Bio-chemical Fluidic Transfer Station Three has been breached.	生化流体输送站三号已被攻破。	sndshd	
+
+str_385776	vo_pa_med_10	broadcast	Transfer, approved.	转化已批准。	sndshd	
+
+str_385777	vo_pa_med_20	broadcast	Warning: Scanning system breech detected.	警告：扫描系统检测到入侵。	sndshd	
+
+str_385778	vo_pa_med_30	broadcast	Neurocyte registration disrupted. Deploy service unit.	神经细胞注册中断。派遣维护单元。	sndshd	
+
+str_385779	vo_pa_med_40	broadcast	Hostile units in possession of rogue transfer. Deploy tactical intercepts.	敌对单元携带非法转化体。部署战术拦截。	sndshd	
+
+str_385780	vo_pa_med_50	broadcast	Enemy transport destroyed.	敌方运输器已摧毁。	sndshd	
+
+str_385781	vo_pa_med_60	broadcast	Deliver new prisoners to prototype testing and assembly.	将新俘虏送至原型测试与装配区。	sndshd	
+
+str_385782	vo_pa_med_70	broadcast	Tactical units at full readiness. Beginning deployment.	战术部队已全面就绪。开始部署。	sndshd	
+
+str_385783	vo_pa_med_80	broadcast	Flyer squadrons dispatched.	飞行器中队已派遣。	sndshd	
+
+str_385784	vo_pa_network1_10	broadcast	Breech in secure Section 58-D. Activate defenses.	安全区 58-D 被攻破。启动防御。	sndshd	
+
+str_385785	vo_pa_network1_20	broadcast	Defenses compromised. All units proceed to deck 58.	防御已被突破。所有单元前往 58 层。	sndshd	
+
+str_385786	vo_pa_network1_30	broadcast	Incoming aircraft detected. Exterior shields at 32%.	检测到来袭飞行器。外部护盾剩余百分之三十二。	sndshd	
+
+str_385787	vo_pa_network2_10	broadcast	Breech on decks 72 through 85. Deploying repair units.	72 至 85 层被攻破。派遣维修单元。	sndshd	
+
+str_385788	vo_pa_network2_20	broadcast	Communication terminal 9C, destroyed.	通讯终端 9C 已摧毁。	sndshd	
+
+str_385789	vo_pa_network2_30	broadcast	Exterior damage sustained. TG-014 report to defenses on deck 12.	外部受损。TG-014 前往 12 层防御。	sndshd	
+
+str_385790	vo_pa_network2_40	broadcast	Interface disabled. Core teleport activated.	接口已禁用。核心传送已激活。	sndshd	
+
+str_385791	vo_pa_network2_50	broadcast	Warning! Nexus perimeter is compromised.	警告！Nexus 周界已被攻破。	sndshd	
+
+str_385792	vo_pa_process1_10	broadcast	Power conservation protocol in effect. Terminal offline.	节能协议生效。终端离线。	sndshd	
+
+str_385793	vo_pa_process1_20	broadcast	Warning! Weight capactity exceeded.	警告！承重超限。	sndshd	
+
+str_385794	vo_pa_process1_30	broadcast	Warning! Transport malfunction.	警告！运输故障。	sndshd	
+
+str_385795	vo_pa_process1_40	broadcast	Attention: Transport, offline.	注意：运输系统离线。	sndshd	
+
+str_385796	vo_pa_process1_50	broadcast	Attention: Terminal, online.	注意：终端上线。	sndshd	
+
+str_385797	vo_pa_process2_10	broadcast	Multiple hull breaches on floor 60.	60 层出现多处舱体破损。	sndshd	
+
+str_385798	vo_pa_process2_20	broadcast	Process terminal connection established to core facility.	处理终端已连接至核心设施。	sndshd	
+
+str_385799	vo_pa_process2_30	broadcast	Initiating teleportation interface.	正在启动传送接口。	sndshd	
+
+str_385800	vo_pa_process2_40	broadcast	Teleportation interchange established.	传送交换已建立。	sndshd	
+
+str_385801	vo_pa_process2_50	broadcast	Unable to process data due to node alignment error.	节点校准错误导致无法处理数据。	sndshd	
+
+str_385802	vo_pa_process2_60	broadcast	Node alignment error corrected.	节点校准错误已修正。	sndshd	
+
+str_385803	vo_pa_putra_10	broadcast	Stroyent digestive cycle initiated.	「斯托伊文特」 消化循环已启动。	sndshd	
+
+str_385804	vo_pa_putra_20	broadcast	Service required on belt 36-C.	36-C 传送带需要维护。	sndshd	
+
+str_385805	vo_pa_putra_30	broadcast	Sector 6C compromised. Activate defense protocol.	6C 区域被攻破。启动防御协议。	sndshd	
+
+str_385806	vo_pa_putra_40	broadcast	Enzyme Distribution sequence initiated.	酶分配序列已启动。	sndshd	
+
+str_385807	vo_pa_putra_50	broadcast	Enzyme Distribution sequence complete.	酶分配序列已完成。	sndshd	
+
+str_385808	vo_pa_putra_60	broadcast	Enzyme Distribution failure. Transport systems deactivated.	酶分配失败。运输系统已停用。	sndshd	
+
+str_385809	vo_pa_putra_70	broadcast	Structural disturbance detected in Bioform Sublevels.	生物体下层检测到结构扰动。	sndshd	
+
+str_385810	vo_pa_recomp_10	broadcast	Error: Containment production, offline.	错误：容置生产系统离线。	sndshd	
+
+str_385811	vo_pa_recomp_20	broadcast	System: online.	系统：上线。	sndshd	
+
+str_385812	vo_pa_recomp_30	broadcast	System: offline. Stroyent production suspended.	系统：离线。「斯托伊文特」 生产已暂停。	sndshd	
+
+str_385813	vo_pa_storage1_10	broadcast	Hull shell has sustained multiple breaches.	外壳已承受多处破损。	sndshd	
+
+str_385814	vo_pa_storage1_100	broadcast	Intruders detected on decks 2 through 4.	2 至 4 层检测到入侵者。	sndshd	
+
+str_385815	vo_pa_storage1_110	broadcast	Primary defenses on floor 83 reduced to zero percent.	83 层主防御已降至零。	sndshd	
+
+str_385816	vo_pa_storage1_120	broadcast	All units report to deck 4.	所有单元前往 4 层。	sndshd	
+
+str_385817	vo_pa_storage1_130	broadcast	Core Interface disabled.	核心接口已禁用。	sndshd	
+
+str_385818	vo_pa_storage1_20	broadcast	Fire hazards detected. TSDs retracting to lower distribution level.	检测到火灾隐患。TSD 撤至下层分配区。	sndshd	
+
+str_385819	vo_pa_storage1_30	broadcast	Tactical units dispatched to floor 85.	战术部队已派遣至 85 层。	sndshd	
+
+str_385820	vo_pa_storage1_40	broadcast	Hangar door sequence activated.	机库门序列已激活。	sndshd	
+
+str_385821	vo_pa_storage1_50	broadcast	Storage terminal connection established to core facility.	存储终端已连接至核心设施。	sndshd	
+
+str_385822	vo_pa_storage1_60	broadcast	TSD cooling procedure initiated.	TSD 冷却程序已启动。	sndshd	
+
+str_385823	vo_pa_storage1_70	broadcast	TSD deployment initiated. Shutting down coolant.	TSD 部署已启动。关闭冷却液。	sndshd	
+
+str_385824	vo_pa_storage1_80	broadcast	Exterior defenses, fully functional.	外部防御完全正常。	sndshd	
+
+str_385825	vo_pa_storage1_90	broadcast	TG-014 has been released.	TG-014 已释放。	sndshd	
+
+str_385826	vo_pa_storage2_10	broadcast	TSDs enroute to main level, power restored.	TSD 正前往主层，电力已恢复。	sndshd	
+
+str_385827	vo_pa_tram1_10	broadcast	Unknown entity, class human, detected on tram enroute to Hub 8. Tactical unit dispatched.	检测到未知实体，人类类别，位于前往 8 号枢纽的轨道车上。战术单元已派遣。	sndshd	
+
+str_385828	vo_pa_tram1_20	broadcast	Tram rerouted. Destination, process facility 6.	轨道车已改道。目的地：6 号处理设施。	sndshd	
+
+str_385829	vo_pa_tram1_30	broadcast	Track malfunction.	轨道故障。	sndshd	
+
+str_385830	vo_pa_tram1_40	broadcast	Repair units dispatched to damaged track section.	维修单元已派往受损轨道段。	sndshd	
+
+str_385831	vo_pa_tram1_50	broadcast	Track repaired. Process route now functional.	轨道已修复。处理线路恢复运行。	sndshd	
+
+str_385832	vo_pa_walker_10	broadcast	Hostile armor unit approaching sector five dispersal facility. Retract bridge and deploy drop turret offensive.	敌方装甲单元正在接近五号区域分散设施。收回桥梁并部署空投炮塔进行拦截。	sndshd	
+
+str_385833	vo_pa_walker_20	broadcast	Warning: Bridge security compromised.	警告：桥梁安保已被攻破。	sndshd	
+
+str_385834	vo_pa_walker_30	broadcast	Ground units ineffective; deploy immediate aerial assault.	地面单元无效；立即部署空中突击。	sndshd	
+
+str_385835	vo_pa_walker_40	broadcast	Rogue Transfer has breached dispersal perimeter. Intercept and terminate.	非法转化体已突破分散周界。拦截并消灭。	sndshd	
+
+str_385836	vo_pa_walker_50	broadcast	Tactical teams deployed to dispersal complex. Priority alpha, elimination of rogue transfer.	战术小队已部署至分散建筑群。Alpha 优先：消灭非法转化体。	sndshd	
+
+str_385837	vo_pa_waste_10	broadcast	Neutralization process initiated.	中和流程已启动。	sndshd	
+
+str_385838	vo_pa_waste_20	broadcast	Tactical unit dispatched to tunnel breach.	战术单元已派往通道突破口。	sndshd	
+
+str_385839	vo_pa_waste_30	broadcast	Multiple entities detected in resovoir 12.	12 号蓄池检测到多个实体。	sndshd	
+
+str_385840	vo_pa_waste_40	broadcast	Warning: Decomposition solution activated.	警告：分解液已激活。	sndshd	
+
+str_385841	vo_pa_waste_50	broadcast	Intruder alert, sector d429 - terminated.	入侵警报，d429 区域——已消灭。	sndshd	
+
+str_385842	vo_pa_waste_60	broadcast	Station 48 security grid deactivated.	48 号站安保网格已停用。	sndshd	
+

@@ -76,7 +76,7 @@
 #str_300074	Let me go! LET ME GO!!!	放开我！放开我！！！	airdefense @ airdefense	review
 #str_300075	No! NOOOOOOO!!!	不！不——！！！	airdefense @ airdefense	review
 #str_300076	Behind you!	小心背后！	marine_1 @ ai	review
-#str_300077	H Q, we can't advance. Dust is clogging the intakes of the hover tanks.	总部，我们无法推进。沙尘堵住了悬浮坦克的进气口。	airdefense @ airdefense	review
+#str_300077	H Q, we can't advance. Dust is clogging the intakes of the hover tanks.	总部，我们无法推进。沙尘堵住了「悬浮坦克」的进气口。	airdefense @ airdefense	review
 #str_300078	We're being overrun! Launch an air strike on my position now!	我们被冲垮了！立刻对我的位置发动空袭！	airdefense @ airdefense	review
 #str_300079	We're a lost cause! Do not attempt to evac us.	我们没救了！不要再来撤离我们。	airdefense @ airdefense	review
 #str_300080	Kane, this is sargent Miller. What's the hold up? Get back here with a medic!	Kane，我是 Miller 中士。磨蹭什么呢？赶紧带医疗兵回来！		review
@@ -265,7 +265,7 @@
 #str_300263	This is War. The Defense Grid is fully deactivated.	这里是「战争」车队。防御网已完全关闭。	building_b @ building_b	review
 #str_300264	Shit! Weve been spotted by Strogg fliers! Theyre coming in for a...	该死！我们被 Strogg 飞行器发现了！它们正俯冲过来……	building_b @ building_b	review
 #str_300265	War. Come in. War, please respond.	「战争」车队，请回答。「战争」车队，请回应。	building_b @ building_b	review
-#str_300266	Kane, we're movin out before the Strogg finds our convoy. We've left a hover tank for you. Grab it and you'll be able to rendezvous with us in no time. Bidwell, out.	Kane，趁 Strogg 还没发现车队，我们先行出发了。给你留了一辆悬浮坦克，开上它很快就能赶上我们。Bidwell 完毕。	building_b @ building_b	review
+#str_300266	Kane, we're movin out before the Strogg finds our convoy. We've left a hover tank for you. Grab it and you'll be able to rendezvous with us in no time. Bidwell, out.	Kane，趁 Strogg 还没发现车队，我们先行出发了。给你留了一辆「悬浮坦克」，开上它很快就能赶上我们。Bidwell 完毕。	building_b @ building_b	review
 #str_300267	Wait here. Jones, you take point.	在这儿等着。Jones，你打头。	building_b @ building_b	review
 #str_300268	Gaahhh!	（受伤音）		done
 #str_300269	Primary lock is cut.	主锁已切开。	building_b @ building_b	review
@@ -364,7 +364,7 @@
 #str_300362	Watch yourself. This zone is not completely free of Strogg.	自己当心，这片区域还没完全肃清 Strogg。	convoy @ convoy	review
 #str_300363	No matter how many times we make a sweep of this area we still run into Strogg.	这片区域扫荡多少遍都没用，照样能撞见 Strogg。	convoy @ convoy	review
 #str_300364	Keep your head down. Theres no tellin when more of the bastards will pop up.	把头压低点，谁知道那帮混蛋什么时候又冒出来。	convoy @ convoy	review
-#str_300365	This is Walker 4 of Bison Squad on patrol. All clear.	这里是野牛小队四号「步行者」（walker），巡逻中。一切安全。	convoy @ convoy	review
+#str_300365	This is Walker 4 of Bison Squad on patrol. All clear.	这里是野牛小队四号「步行者」，巡逻中。一切安全。	convoy @ convoy	review
 #str_300366	Hey! Hey, Corporal Kane! Get over here on the double!	嘿！嘿，Kane 下士！跑步过来，快点！	convoy @ convoy	review
 #str_300367	Corporal Kane, Lieutenant Voss said youd be riding with us. Hop on up and well get going.	Kane 下士，Voss 中尉说你跟我们一辆车。快上来，我们这就出发。	convoy @ convoy	review
 #str_300368	All right, Doyle. Get this shit heap moving.	好了，Doyle，把这堆破铜烂铁开起来。	convoy @ convoy	review
@@ -410,7 +410,7 @@
 #str_300408	Those poor bastards.	那些可怜的家伙。		review
 #str_300409	So this where Raven squad got it?	渡鸦小队就是在这儿全灭的？	convoy @ convoy	review
 #str_300410	Yup, they took the brunt of it. Poor bastards never knew what they were walking into.	对，最狠的火力全砸他们头上了。可怜的家伙们到死都不知道自己踏进了什么鬼地方。	convoy @ convoy	review
-#str_300411	This is Walker 12 of Bison squad. Got a bogie at 6 o clock.	这里是野牛小队十二号「步行者」（walker）。六点钟方向发现不明目标。	convoy @ convoy	review
+#str_300411	This is Walker 12 of Bison squad. Got a bogie at 6 o clock.	这里是野牛小队十二号「步行者」。六点钟方向发现不明目标。	convoy @ convoy	review
 #str_300412	Ive got signal lock. Hes not getting away from me this time.	信号已锁定。这次它别想从我手里溜掉。	convoy @ convoy	review
 #str_300413	Where the hell did he go?	它到底跑哪儿去了？	convoy @ convoy	review
 #str_300414	The target has been eliminated. Score one for the good guys.	目标已消灭。好人这边得一分。	convoy @ convoy	review
@@ -531,13 +531,13 @@
 #str_300529	You did it, Kane! You are now looking at a sight only the Makron has ever laid eyes on. The Nexus is the backbone of the Strogg war machine. Destroy it, and you save Earth.	你做到了，Kane！你眼前的景象，从前只有 Makron 亲眼见过。Nexus 是 Strogg 战争机器的支柱。摧毁它，你就拯救了地球。	core @ core	review
 #str_300530	This is H Q to all squads. A Marine named Matthew Kane is missing but presumed to be enroute to the waste level. Despite his Strogg appearance, he is friend not foe. Be careful of your targets.	总部呼叫各小队。陆战队员 Matthew Kane 目前失踪，推测正在前往废料层。虽然他外表像 Strogg，但他是友非敌。开火前务必认清目标。		review
 #str_300531	What is this place?	这是什么地方？		review
-#str_300532	It's where the Strogg ship Stroyant to their troops.	Strogg 就是在这里把 「斯托伊文特」（Stroyent） 输送给部队的。		review
-#str_300533	What's Stroyant?	「斯托伊文特」（Stroyent） 是什么？		review
+#str_300532	It's where the Strogg ship Stroyant to their troops.	Strogg 就是在这里把 「斯托伊文特」 输送给部队的。		review
+#str_300533	What's Stroyant?	「斯托伊文特」 是什么？		review
 #str_300534	Food for the Strogg.	Strogg 的食物。		review
 #str_300535	It sure as hell reeks.	这味儿可真他妈冲。		review
 #str_300536	To any Marines... Head to the Waste Facility. Just outside is your extraction point.	全体陆战队员……前往废料处理厂。撤离点就在厂外。	dispersal_1 @ dispersal_1	review
 #str_300537	Holy shit! They've got machines here chopping up the bodies of captured Marines.	妈的！这里的机器在把被俘陆战队员的尸体剁碎。		review
-#str_300538	That's what Stroyant is. They get rid of the body armor and bones, then they liquefy the flesh and add steroids.	这就是 「斯托伊文特」（Stroyent） 的来历。他们先去掉盔甲和骨头，再把血肉液化，掺进类固醇。		review
+#str_300538	That's what Stroyant is. They get rid of the body armor and bones, then they liquefy the flesh and add steroids.	这就是 「斯托伊文特」 的来历。他们先去掉盔甲和骨头，再把血肉液化，掺进类固醇。		review
 #str_300539	This is Sasaki of Kodiak Squad. My squad was ambushed. I’m the only survivor. What are my orders?	我是棕熊小队的 Sasaki。小队遭到伏击，只有我一个人活下来了。请指示。		review
 #str_300540	This is Cobra squad in the Waste Level. We're under attack! Three men are dead and Lieutenant Melendez is missing! Any teams nearby, please respond.	这里是废料层的眼镜蛇小队。我们遭到攻击！三人阵亡，Melendez 中尉失踪！附近的小队，请回话。		review
 #str_300541	Morrison this is Cooper. We're in the level just below you and we're meeting heavy resistance. Get down here ASAP!	Morrison，我是 Cooper。我们就在你们下面一层，遭遇顽强抵抗。赶紧下来支援！		review
@@ -644,8 +644,8 @@
 #str_300642	The frigid atmosphere is no doubt the result of the Strogg communications equipment requiring cryogenic technologies.	这种严寒无疑是因为 Strogg 的通讯设备需要低温冷冻技术。	hub_1 @ hub_1	review
 #str_300643	Kane, youre assigned to Strauss. Bring him up front. Voss out.	Kane，你负责 Strauss，带他到前面来。Voss 完毕。		review
 #str_300644	{confused}Why does he assign me only one guard? {Puzzled}Must I die to show Lieutenant Voss how important I am?	{confused}他怎么只给我派一个护卫？{Puzzled}非得我死了，Voss 中尉才明白我有多重要吗？		review
-#str_300645	{furrow}We're looking to get the E M P below the Teranode, the brains of this facility.	{furrow}我们要把 EMP 送到四元节点下方，那玩意儿是这座设施的大脑。		review
-#str_300646	The Tetranode routes billions of Strogg communications signals every second from the Nexus. If that were destroyed it'd effectively shut down the Strogg for this area.	四元节点每秒都在为 Nexus 中转数十亿条 Strogg 通讯信号。一旦摧毁它，这一带的 Strogg 就基本瘫痪了。	hub_1 @ hub_1	review
+#str_300645	{furrow}We're looking to get the E M P below the Teranode, the brains of this facility.	{furrow}我们要把 EMP 送到「四元节点」下方，那玩意儿是这座设施的大脑。		review
+#str_300646	The Tetranode routes billions of Strogg communications signals every second from the Nexus. If that were destroyed it'd effectively shut down the Strogg for this area.	「四元节点」每秒都在为 Nexus 中转数十亿条 Strogg 通讯信号。一旦摧毁它，这一带的 Strogg 就基本瘫痪了。	hub_1 @ hub_1	review
 #str_300647	Once we get the Nexus down, our troops will have an easy time of it. The Strogg military will be completely disorganized.	只要搞垮 Nexus，我们的部队就轻松了。Strogg 的军队会彻底乱成一盘散沙。	hub_1 @ hub_1	review
 #str_300648	{furrow}Damn is it cold down here.	{furrow}妈的，这下面可真冷。		review
 #str_300649	{furrow}Isn't there one spot, {confused}somewhere on Stroggos, {furrow}where I'm not either freezing my ass off or drowning in my own sweat?	{furrow}这 Stroggos 上就没有一个地方，{confused}随便哪儿，{furrow}能让我既不冻掉屁股，也不被自己的汗淹死吗？		review
@@ -675,25 +675,25 @@
 #str_300673	I must find the console that controls life support. From there, I should be able to raise the temperature to something a little less hostile.	我得找到控制生命维持系统的控制台。在那里，我应该能把温度调到不那么要命的程度。		review
 #str_300674	Sounds good. Kane, youre with Strauss. Find that console.	好主意。Kane，你跟着 Strauss，去找那台控制台。		review
 #str_300675	This way, Corporal Kane.	这边走，Kane 下士。		review
-#str_300676	{scared}No! Thats a Strogg Gladiator! Protect me, Corporal!	{scared}不！那是 Strogg 的 「角斗士」（Gladiator）！保护我，下士！		review
+#str_300676	{scared}No! Thats a Strogg Gladiator! Protect me, Corporal!	{scared}不！那是 Strogg 的 「角斗士」！保护我，下士！		review
 #str_300677	{scared}Corporal Kane! Do not let that thing near me!	{scared}Kane 下士！别让那东西靠近我！		review
 #str_300678	{scared}Kill it, Corporal! Destroy it!	{scared}杀了它，下士！干掉它！		review
 #str_300679	{furrow}I demand you save me!	{furrow}我要求你救我！		review
 #str_300680	{furrow}You must kill that beast, Corporal!	{furrow}你必须干掉那头怪物，下士！		review
-#str_300681	Ignore the Harvester, Corporal. It shouldnt bother us.	别理那台 「收割者」（Harvester），下士。它应该不会来烦我们。		review
+#str_300681	Ignore the Harvester, Corporal. It shouldnt bother us.	别理那台 「收割者」，下士。它应该不会来烦我们。		review
 #str_300682	Ah, yes. {puzzled}This is the correct console. {idle}Give me a moment.	啊，对。{puzzled}就是这台控制台。{idle}稍等片刻。		review
 #str_300683	Corporal Kane, I should warn you it will be a rather lengthy journey so please move quickly. I do not wish to arrive at the rendezvous point before you.	Kane 下士，我得提醒你，这段路相当漫长，请抓紧赶路。我可不希望比你先到会合点。		review
 #str_300684	Corporal Kane, this is Strauss. I am in great danger. Rendezvous with me immediately!	Kane 下士，我是 Strauss。我的处境非常危险，立刻来和我会合！	hub_2 @ hub_2	review
 #str_300685	This is Strauss. You must move faster, Corporal Kane!	我是 Strauss。你必须再快一点，Kane 下士！		review
 #str_300686	Corporal, this is Strauss. Hurry. I'm certain the Strogg know I'm here.	下士，我是 Strauss。快点，我敢肯定 Strogg 已经知道我在这儿了。		review
-#str_300687	{furrow}Corporal Kane, you should have been here a long time ago! {idle}But we will speak of this later. Right now, we must concern ourselves with the Nexus. To destroy the Tetranode we must overheat it and that will require several steps. Our first objective is the power plant. Lead the way.	{furrow}Kane 下士，你早就该到了！{idle}不过这笔账以后再算。现在，我们得专心对付 Nexus。要摧毁四元节点，就必须让它过热，这需要好几个步骤。第一个目标是发电厂。带路吧。		review
+#str_300687	{furrow}Corporal Kane, you should have been here a long time ago! {idle}But we will speak of this later. Right now, we must concern ourselves with the Nexus. To destroy the Tetranode we must overheat it and that will require several steps. Our first objective is the power plant. Lead the way.	{furrow}Kane 下士，你早就该到了！{idle}不过这笔账以后再算。现在，我们得专心对付 Nexus。要摧毁「四元节点」，就必须让它过热，这需要好几个步骤。第一个目标是发电厂。带路吧。		review
 #str_300688	Please, let me open the doors. I can do it without activating security alarms.	请让我来开门。我能做到不触发警报。		review
 #str_300689	Corporal Kane, go to the console over there and I will use this one. We must activate them in the correct sequence so as not to alert security. I will wait for you to activate yours first.	Kane 下士，你去那边的控制台，我用这一台。我们必须按正确顺序启动，才不会惊动安保系统。我等你先启动你那台。		review
 #str_300690	{furrow}Corporal Kane, you must go to the other console in this room and activate it.	{furrow}Kane 下士，你必须去启动这个房间里的另一台控制台。		review
-#str_300691	{furrow}I must insist that you activate the other console. I cannot overdrive the Tetranode until you do.	{furrow}我必须坚持让你去启动另一台控制台。你不动手，我就没法让四元节点超载。		review
+#str_300691	{furrow}I must insist that you activate the other console. I cannot overdrive the Tetranode until you do.	{furrow}我必须坚持让你去启动另一台控制台。你不动手，我就没法让「四元节点」超载。		review
 #str_300692	{furrow}Corporal Kane, activate the other console! We do not have much time.	{furrow}Kane 下士，快启动另一台控制台！我们时间不多了。		review
 #str_300693	There. Now I will raise the power plant output and that will cause a heat buildup.	好了。现在我来调高发电厂的输出功率，热量就会不断积聚。	hub_2 @ hub_2	review
-#str_300694	Next we must disable the emergency shutoff or it will deactivate the Tetranode at the first sign of danger.	接下来必须废掉紧急停机装置，否则一有危险迹象，它就会关停四元节点。		review
+#str_300694	Next we must disable the emergency shutoff or it will deactivate the Tetranode at the first sign of danger.	接下来必须废掉紧急停机装置，否则一有危险迹象，它就会关停「四元节点」。		review
 #str_300695	{happy}Ah! A primary console. {idle}Exactly what I was searching for. This allows me to monitor all systems. I must remain here but I will guide you through the rest of our mission. You will have to go on without me.	{happy}啊！一台主控制台。{idle}正是我要找的东西。有了它，我就能监控所有系统。我必须留在这里，但我会引导你完成余下的任务。接下来你得独自前进了。		review
 #str_300696	Allow me to open the proper doors for you. It would be most unfortunate to have you alert security.	让我来为你打开该走的门。你要是惊动了安保系统，那可就太不妙了。		review
 #str_300697	Corporal Kane, go through that door.	Kane 下士，从那扇门过去。		review
@@ -710,13 +710,13 @@
 #str_300708	Proceed forward.	继续向前。		review
 #str_300709	Move the platform backward.	把平台向后移。		review
 #str_300710	Go backward.	向后退。		review
-#str_300711	Corporal Kane, I have taken you to the proper cable bundle. Activate the splicing arms. They will disable communication between the emergency shutoff and the Tetranode.	Kane 下士，我已经把你送到了正确的线缆束。启动熔接臂，它们会切断紧急停机装置和四元节点之间的通讯。		review
-#str_300712	I trust the wire bundle nearby has melted through? That means emergency shutoff has been deactivated. Now you must locate the next maintenance platform. From there I will take you to an area near the coolant pumps. Then you will be able to destroy the Tetranode.	我想你旁边那束线缆已经熔断了吧？这说明紧急停机装置已经失效。现在你得找到下一座维护平台，我会从那里送你去冷却泵附近的区域。然后你就能摧毁四元节点了。		review
+#str_300711	Corporal Kane, I have taken you to the proper cable bundle. Activate the splicing arms. They will disable communication between the emergency shutoff and the Tetranode.	Kane 下士，我已经把你送到了正确的线缆束。启动熔接臂，它们会切断紧急停机装置和「四元节点」之间的通讯。		review
+#str_300712	I trust the wire bundle nearby has melted through? That means emergency shutoff has been deactivated. Now you must locate the next maintenance platform. From there I will take you to an area near the coolant pumps. Then you will be able to destroy the Tetranode.	我想你旁边那束线缆已经熔断了吧？这说明紧急停机装置已经失效。现在你得找到下一座维护平台，我会从那里送你去冷却泵附近的区域。然后你就能摧毁「四元节点」了。		review
 #str_300713	Well done. You have arrived at the next maintenance platform. I will now steer you to the next area.	干得好，你已经到达下一座维护平台。现在我来送你去下一个区域。		review
 #str_300714	The ride is over, Corporal Kane. Now you must locate the coolant pumps. Go, quickly.	旅程到此为止，Kane 下士。现在你必须找到冷却泵。快去。		review
 #str_300715	The door I just opened for you leads to the coolant pumps.	我刚为你打开的那扇门通向冷却泵。		review
-#str_300716	There should be a console in the center of the room, Corporal Kane. Activate that and the coolant pumps will shut down. In a matter of minutes, the Tetranode will overheat and destroy itself. And this will render the Nexus useless to the Strogg.	房间中央应该有一台控制台，Kane 下士。启动它，冷却泵就会停机。用不了几分钟，四元节点就会过热自毁。这样一来，Nexus 对 Strogg 就毫无用处了。	hub_2 @ hub_2	review
-#str_300717	Ah, excellent. Corporal Kane, the Tertanode will soon be destroyed and the Nexus will become inoperative.	啊，太好了。Kane 下士，四元节点很快就会被摧毁，Nexus 也将随之瘫痪。	hub_2 @ hub_2	review
+#str_300716	There should be a console in the center of the room, Corporal Kane. Activate that and the coolant pumps will shut down. In a matter of minutes, the Tetranode will overheat and destroy itself. And this will render the Nexus useless to the Strogg.	房间中央应该有一台控制台，Kane 下士。启动它，冷却泵就会停机。用不了几分钟，「四元节点」就会过热自毁。这样一来，Nexus 对 Strogg 就毫无用处了。	hub_2 @ hub_2	review
+#str_300717	Ah, excellent. Corporal Kane, the Tertanode will soon be destroyed and the Nexus will become inoperative.	啊，太好了。Kane 下士，「四元节点」很快就会被摧毁，Nexus 也将随之瘫痪。	hub_2 @ hub_2	review
 #str_300718	Hello? Do you read? We seem to be experiencing comlink difficulty	喂？收到吗？我们的通讯链路好像出了故障……		review
 #str_300719	Corporal Kane, this is Strauss. I have detected a tremendously large life form in your vicinity. You must get out of there quickly.	Kane 下士，我是 Strauss。我在你附近探测到一个体型极其庞大的生命体。你必须赶快离开那里。	hub_2 @ hub_2	review
 #str_300720	Kane... Oh no! It can't be! ... It's the Makron!! He lives!!!	Kane……不！不可能！……是 Makron！！他还活着！！！		review
@@ -803,7 +803,7 @@
 #str_300801	{puzzled}What squad was he with?	{puzzled}他是哪个小队的？		review
 #str_300802	Not sure, but he was protecting some obnoxious computer tech.	不清楚，反正他护着一个讨人嫌的电脑技术员。	mcc_1 @ mcc_1	review
 #str_300803	Just heard we're moving up to the front. Our whole platoon is being mobilized.	刚听说我们要开赴前线了，全排都在动员。	mcc_1 @ mcc_1	review
-#str_300804	There must be some major offensive in the works. They're getting all kinds of mechanized infantry prepped in the walker bays.	肯定是在筹备什么大规模攻势。「步行者」（walker）库里各式机械化步兵都在整备。	mcc_1 @ mcc_1	review
+#str_300804	There must be some major offensive in the works. They're getting all kinds of mechanized infantry prepped in the walker bays.	肯定是在筹备什么大规模攻势。「步行者」库里各式机械化步兵都在整备。	mcc_1 @ mcc_1	review
 #str_300805	{furrow}I've got a real bad feeling about this one.	{furrow}这次我有种很不祥的预感。		review
 #str_300806	Aaah, you get a real bad feeling all the time.	嗐，你哪次没有不祥的预感。	mcc_1 @ mcc_1	review
 #str_300807	Hey, you're the Matthew Kane I heard about back on the Hannibal, {confused}aren't you?	嘿，你就是我在汉尼拔号上听说的那个 Matthew Kane，{confused}对吧？		review
@@ -872,7 +872,7 @@
 #str_300870	Continue on through the hangar and report to decontamination.	穿过机库，到消毒区报到。	mcc_1 @ mcc_1	review
 #str_300871	Lieutenant Voss, report to briefing room 8.	Voss 中尉，请到 8 号简报室报到。		review
 #str_300872	Memorial Services for Colonel Westmore will be held at oh eight hundred hours.	Westmore 上校的追悼仪式将于八点整举行。	mcc_1 @ mcc_1	review
-#str_300873	Bison Squad, report to walker deck 2 immediately.	野牛小队，立即到 2 号「步行者」（walker）甲板报到。	mcc_1 @ mcc_1	review
+#str_300873	Bison Squad, report to walker deck 2 immediately.	野牛小队，立即到 2 号「步行者」甲板报到。	mcc_1 @ mcc_1	review
 #str_300874	Testing launch PODs 1 and 2.	正在测试 1 号和 2 号发射舱。	mcc_1 @ mcc_1	review
 #str_300875	Say again, Hyena Squad.	请重复，鬣狗小队。	mcc_1 @ mcc_1	review
 #str_300876	My team is pinned down by heavy fire. I'm requesting an artillery strike on a Strogg bunker.	我队被猛烈火力压制。请求对一处 Strogg 碉堡实施炮击。	mcc_1 @ mcc_1	review
@@ -883,11 +883,11 @@
 #str_300881	Okay, let 'em know I'm on my way.	好，告诉他们我这就过去。	mcc_1 @ mcc_1	review
 #str_300882	Affirmative.	收到。	mcc_1 @ mcc_1	review
 #str_300883	Thanks for the help. Looms out.	多谢帮忙。Looms 完毕。	mcc_1 @ mcc_1	review
-#str_300884	Crew Chief Hammond, report to walker bay eight D immediately.	机务长 Hammond，立即到 8D 「步行者」（walker）库报到。		review
+#str_300884	Crew Chief Hammond, report to walker bay eight D immediately.	机务长 Hammond，立即到 8D 「步行者」库报到。		review
 #str_300885	A welding crew is needed in armament.	军械部需要一支焊接班组。	mcc_1 @ mcc_1	review
-#str_300886	All walkers for Bison Squad will need to be pre prepped by oh four hundred hours.	野牛小队的所有「步行者」（walker）须在四点整之前完成预整备。	mcc_1 @ mcc_1	review
+#str_300886	All walkers for Bison Squad will need to be pre prepped by oh four hundred hours.	野牛小队的所有「步行者」须在四点整之前完成预整备。	mcc_1 @ mcc_1	review
 #str_300887	Specialist Herman Ways, report to the main office immediately.	专业军士 Herman Ways，立即到总办公室报到。	mcc_1 @ mcc_1	review
-#str_300888	A computer tech is needed in walker bay six C.	6C 「步行者」（walker）库需要一名电脑技术员。		review
+#str_300888	A computer tech is needed in walker bay six C.	6C 「步行者」库需要一名电脑技术员。		review
 #str_300889	Crew Chief Hanks, call two three two. Crew Chief Hanks, call two three two.	机务长 Hanks，请拨 232。机务长 Hanks，请拨 232。		review
 #str_300890	We are unable to send or receive signals in that area due to Strogg interference.	由于 Strogg 干扰，我们无法在那片区域收发信号。	mcc_1 @ mcc_1	review
 #str_300891	But a Strogg unit is headed directly for Cougar squad.	可有一支 Strogg 部队正直扑美洲狮小队。	mcc_1 @ mcc_1	review
@@ -951,7 +951,7 @@
 #str_300949	Help! SOMEBODY HELP ME!!!!	救命！谁来救救我！！！！	mcc_1 @ mcc_1	review
 #str_300950	Corporal Matthew Kane, the rest of Rhino Squad has already arrived. The briefing will commence shortly.	Matthew Kane 下士，犀牛小队其他成员均已到达。简报会即将开始。	mcc_1 @ mcc_1	review
 #str_300951	Looks like Kane made it back.	看来 Kane 平安回来了。	mcc_1 @ mcc_1	review
-#str_300952	The blast will overload a device known as the Tetranode and effectively cut off the Strogg forces from the nexus and therefore their commanders. To ensure success, three other squads will be escorting additional E M Ps to the same location. Their convoys are code named War, Famine, and Pestilence.	爆炸将使一种名为「四元节点」（Tetranode）的装置过载，从而切断 Strogg 部队与 Nexus 乃至其指挥官的联系。为确保成功，另有三支小队将护送额外的 EMP 前往同一地点。他们的车队代号分别是「战争」「饥荒」和「瘟疫」。	mcc_1 @ mcc_1	review
+#str_300952	The blast will overload a device known as the Tetranode and effectively cut off the Strogg forces from the nexus and therefore their commanders. To ensure success, three other squads will be escorting additional E M Ps to the same location. Their convoys are code named War, Famine, and Pestilence.	爆炸将使一种名为「四元节点」的装置过载，从而切断 Strogg 部队与 Nexus 乃至其指挥官的联系。为确保成功，另有三支小队将护送额外的 EMP 前往同一地点。他们的车队代号分别是「战争」「饥荒」和「瘟疫」。	mcc_1 @ mcc_1	review
 #str_300953	Which means we are Death.	也就是说，我们是「死亡」。	mcc_1 @ mcc_1	review
 #str_300954	Yeah, we're Death. Any questions?	没错，我们就是「死亡」。有问题吗？	mcc_1 @ mcc_1	review
 #str_300955	The convoy will be deployed soon. Go to the armory and suit up. Dismissed.	车队很快就会出发。去军械库整装。解散。	mcc_1 @ mcc_1	review
@@ -966,7 +966,7 @@
 #str_300964	The Nexus sounds most intriguing. To be able to process the thoughts of billions of Strogg would require technology that is many generations beyond us.	Nexus 听起来极为耐人寻味。要处理数十亿 Strogg 的思维，所需的技术得领先我们好几个世代。	mcc_1 @ mcc_1	review
 #str_300965	Backup, would ya? I got work to do here.	退后行吗？我这儿还有活要干。	mcc_1 @ mcc_1	review
 #str_300966	{furrow}Quit bustin' my chops, kid. I'm busy.	{furrow}别烦我了，小子，我忙着呢。		review
-#str_300967	{furrow}I've got 8 walkers I'm supposed to repair in six hours, so get the hell out of my way.	{furrow}我得在六小时内修好 8 台「步行者」（walker），所以给我让开。		review
+#str_300967	{furrow}I've got 8 walkers I'm supposed to repair in six hours, so get the hell out of my way.	{furrow}我得在六小时内修好 8 台「步行者」，所以给我让开。		review
 #str_300968	Just who are they gonna call in when the life of every man, woman and child on Earth hangs in the balance? Rhino Squad of course.	等到地球上男女老幼的性命都悬于一线时，他们会找谁来救场？当然是犀牛小队。	mcc_1 @ mcc_1	review
 #str_300969	{happy}You've gotta love the Marine Corps. Sure the pay ain't the greatest and the chow tastes like crap but where else am I gonna make a living blowin shit up?	{happy}你不得不爱陆战队。工资确实不高，伙食也难吃得要命，可除了这儿，我上哪儿靠炸东西吃饭去？		review
 #str_300970	You've done some good work today, Corporal. Lieutenant Voss had a feeling about you. Said you'd be trouble but you'd be worth it. The Lieutenant's never wrong.	你今天干得不错，下士。Voss 中尉早就看好你，说你是个麻烦，但值这个价。中尉从来没看走眼过。		review
@@ -1527,17 +1527,17 @@
 #str_301525	This is Falcon eight making a flyby of the Processing Tower. I just sighted that Guardian Creature. Anyone on the top of the tower better be careful. He looks pissed.	这里是猎鹰八号，正在飞掠数据处理塔。我刚看见那头守卫巨兽了。塔顶上的人都当心点，它看着火气不小。		review
 #str_301526	Viper squad, this is H Q. A group of cornered Marines have been located in your area.	毒蛇小队，这里是总部。在你们区域发现一批被困的陆战队员。	putra @ putra	review
 #str_301527	Roger that, H Q. Viper squad is enroute now to help.	收到，总部。毒蛇小队正赶去支援。	putra @ putra	review
-#str_301528	A research team should be studying this facility. Somehow the Strogg are able to break the Stroyant down into pure enzymes.	真该派个研究组来查查这地方。Strogg 不知用什么法子，能把 「斯托伊文特」（Stroyent） 分解成纯酶。	putra @ putra	review
+#str_301528	A research team should be studying this facility. Somehow the Strogg are able to break the Stroyant down into pure enzymes.	真该派个研究组来查查这地方。Strogg 不知用什么法子，能把 「斯托伊文特」 分解成纯酶。	putra @ putra	review
 #str_301529	This is Private Sasaki, the only survivor of Kodiak squad. The Strogg are attempting to corner me at the Dispersal facility. Please, I need immediate assistance.	我是列兵 Sasaki，棕熊小队唯一的幸存者。Strogg 正想把我堵死在疏散设施。求你们，我需要立即支援。		review
 #str_301530	This is corporal Hatten to any member of Cobra. It is imperative we regroup.	我是下士 Hatten，呼叫眼镜蛇小队任何一名队员。我们必须马上集结。		review
-#str_301531	I just discovered how the Stroyent is being broken down into enzymes. This defies description. I... Aaaaaaaah!	我刚弄明白 「斯托伊文特」（Stroyent） 是怎么被分解成酶的了。这简直没法形容。我……啊——！	putra @ putra	review
+#str_301531	I just discovered how the Stroyent is being broken down into enzymes. This defies description. I... Aaaaaaaah!	我刚弄明白 「斯托伊文特」 是怎么被分解成酶的了。这简直没法形容。我……啊——！	putra @ putra	review
 #str_301532	I just found the Lieutenant... or what's left of him.	我刚找到中尉了……或者说，他剩下的那部分。	putra @ putra	review
 #str_301533	To all escaped Marines, this is the evac team. Meet us outside the Waste Level.	各位逃出来的陆战队员，这里是撤离队。到废料处理层外面与我们会合。	putra @ putra	review
 #str_301534	All of my squad is dead. How the hell do I get out of here?	我们小队全死光了。我他妈到底怎么才能出去？	putra @ putra	review
 #str_301535	Remain calm, Private...	保持冷静，列兵……	putra @ putra	review
 #str_301536	Shit, I've been spotted.	妈的，我被发现了。	putra @ putra	review
 #str_301537	You want me? Come and get me you sons of bitches! Woooo hoooo!!!!	想要我的命？有种就来拿啊，狗娘养的！呜——吼——！！		review
-#str_301538	Stroyant processor has been terminated. All units respond to threat.	「斯托伊文特」（Stroyent） 处理装置已被终止。全体单位，应对威胁。	putra @ putra	review
+#str_301538	Stroyant processor has been terminated. All units respond to threat.	「斯托伊文特」 处理装置已被终止。全体单位，应对威胁。	putra @ putra	review
 #str_301539	I think you're in the assembly control room. Find the console and activate it.	你现在应该是在组装控制室。找到控制台，启动它。		review
 #str_301540	Good work! Assembly's functioning now.	干得漂亮！组装系统恢复运转了。		review
 #str_301541	So get back to that central control room and see if you can reboot the system.	那就回中央控制室，看看能不能把系统重启。		review
@@ -1721,7 +1721,7 @@
 #str_301719	Excellent, Kane. The track has been repaired. Return to the tram and we can be on our way.	太好了，Kane。轨道已经修复。回车上来，我们就能出发了。		review
 #str_301720	Excellent, Kane. The track has been repaired. But now you must find some way to turn the tram so that it faces the right direction.	太好了，Kane。轨道已经修复。但你还得想办法把轨道车转到正确的方向。		review
 #str_301721	I must apologize for the condition of this tram. It has been damaged and will not run at full speed.	这辆轨道车的状况，我得说声抱歉。它受了损伤，跑不到全速了。	tram_1 @ tram_1	review
-#str_301722	This is where my squad was ambushed. The track was damaged so I had to head back alone. The tech guy in my squad said the Strogg should have some type of repair bots around here to fix  the break. Lets try to find em.	我的小队就是在这儿中的埋伏。轨道坏了，我只好一个人往回走。我们队里的技术兵说，Strogg 在这附近应该有那种维修机器人，能把断轨修好。咱们找找看。		review
+#str_301722	This is where my squad was ambushed. The track was damaged so I had to head back alone. The tech guy in my squad said the Strogg should have some type of repair bots around here to fix  the break. Lets try to find em.	我的小队就是在这儿中的埋伏。轨道坏了，我只好一个人往回走。我们队里的技术兵说，Strogg 在这附近应该有那种「维修机器人」，能把断轨修好。咱们找找看。		review
 #str_301723	Wait! Wait! This is Corporal Kane.	等等！别开枪！这位是 Kane 下士。		review
 #str_301724	Lybeck? What are you doin' here?	Lybeck？你怎么在这儿？		review
 #str_301725	Trying to catch up with our squad.	想追上咱们小队。		review
@@ -1769,8 +1769,8 @@
 #str_301767	Kane, this is Morris. Wolf squad's just ahead and they need your help. Look for Corporal Osterhaus to meet you at the tram station.	Kane，我是 Morris。野狼小队就在前面，他们需要你帮忙。去轨道车站找 Osterhaus 下士接应你。		review
 #str_301768	Lutenant Morris told me you'd be coming. My squad's trying to blow up the boulders blocking the tram track. But there's an emplacement of Strogg pinning us down. I'm gonna circle around one way while you go the other. Let's see if we can't flush the squibs out.	Morris 中尉说过你会来。我的小队正想把堵住轨道的巨石炸掉，可有一处 Strogg 工事把我们压得抬不起头。我从一边绕过去，你走另一边。看看能不能把那帮杂碎撵出来。		review
 #str_301769	Lutenant Morris told me you'd be coming. My squad's trying to blow up the boulders blocking the tram. But there's an emplacement of Strogg pinning us down. I'll stay here and keep you updated on our status.	Morris 中尉说过你会来。我的小队正想把堵住轨道车的巨石炸掉，可有一处 Strogg 工事把我们压得抬不起头。我留在这儿，随时向你通报我们的情况。		review
-#str_301770	We've got a walker to destroy the boulders, but we can't get near enough to use it because of the Strogg emplacement.	我们有一台「步行者」（walker）能炸掉那些巨石，可 Strogg 的工事挡着，根本没法靠近使用。		review
-#str_301771	Normally walkers don't fear much from Strogg infantry, but these squibs have rocket propelled grenades.	平时「步行者」（walker）根本不怵 Strogg 步兵，可这帮杂碎手里有火箭榴弹。		review
+#str_301770	We've got a walker to destroy the boulders, but we can't get near enough to use it because of the Strogg emplacement.	我们有一台「步行者」能炸掉那些巨石，可 Strogg 的工事挡着，根本没法靠近使用。		review
+#str_301771	Normally walkers don't fear much from Strogg infantry, but these squibs have rocket propelled grenades.	平时「步行者」根本不怵 Strogg 步兵，可这帮杂碎手里有火箭榴弹。		review
 #str_301772	We've got a team ready to set charges on those rocks but we can't get close because of the Strogg emplacement up there.	我们有个小组随时能去岩石上安放炸药，可上头那处 Strogg 工事让人根本靠不过去。		review
 #str_301773	It'd only take a few seconds to set up the charges but the Strogg are really  keeping the team pinned down.	安放炸药只要几秒钟，可小组被 Strogg 压得死死的，动都动不了。		review
 #str_301774	Corporal Kane, this is Corporal Johnson. Are you having any luck finding that Strogg emplacement?	Kane 下士，我是 Johnson 下士。那处 Strogg 工事找到了吗？		review
@@ -1780,10 +1780,10 @@
 #str_301778	Hey, Kane, keep an eye on those boulders blocking the tram. You might enjoy this.	嘿，Kane，盯着点那些堵住轨道车的巨石。有好戏看了。		review
 #str_301779	Now that's what I call fireworks! Thanks for your help, Kane.	这才叫烟花嘛！多谢帮忙，Kane。		review
 #str_301780	{furrow}I'm busted up, but damn . . . {pain}koff, koff  . . . {furrow}you look worse than me.	{furrow}我是伤得不轻，可是妈呀……{pain}咳、咳……{furrow}你看着比我还惨。		review
-#str_301781	Take my walker and {pain}koff, koff {idle}get help. {pain}koff {furrow}There's more Marines to the north at the dispersal facility. {pain}koff . . . koff	开上我的「步行者」（walker），{pain}咳、咳，{idle}去搬救兵。{pain}咳。{furrow}北边的疏散设施还有不少陆战队员。{pain}咳……咳。		review
-#str_301782	{pain}Take my walker and get help.	{pain}开上我的「步行者」（walker）去搬救兵。		review
+#str_301781	Take my walker and {pain}koff, koff {idle}get help. {pain}koff {furrow}There's more Marines to the north at the dispersal facility. {pain}koff . . . koff	开上我的「步行者」，{pain}咳、咳，{idle}去搬救兵。{pain}咳。{furrow}北边的疏散设施还有不少陆战队员。{pain}咳……咳。		review
+#str_301782	{pain}Take my walker and get help.	{pain}开上我的「步行者」去搬救兵。		review
 #str_301783	Go on. I'll be fine {pain}koff, koff {furrow}I just need to . . .  {pain}aaaaah . .  . damn it . . . . uhhhhh	走吧，我不碍事。{pain}咳、咳。{furrow}我只是得……{pain}啊……该死……呃……		review
-#str_301784	I'm busted up, but damn...you look worse than me. Take my walker and  get help. There's more Marines to the north at the dispersal facility. Go on. I'll be fine  I just need to... aaaaah... damn it.... uhhhhh	我是伤得不轻，可是妈呀……你看着比我还惨。开上我的「步行者」（walker）去搬救兵，北边的疏散设施还有不少陆战队员。走吧，我不碍事，我只是得……啊……该死……呃……		review
+#str_301784	I'm busted up, but damn...you look worse than me. Take my walker and  get help. There's more Marines to the north at the dispersal facility. Go on. I'll be fine  I just need to... aaaaah... damn it.... uhhhhh	我是伤得不轻，可是妈呀……你看着比我还惨。开上我的「步行者」去搬救兵，北边的疏散设施还有不少陆战队员。走吧，我不碍事，我只是得……啊……该死……呃……		review
 #str_301785	To all Marines in all squads. We are retreating from this area. I repeat, we are retreating from this area. Rendezvous at the Waste facility. Aircraft will be waiting there for immediate dustoff.	各小队全体陆战队员注意：我们正从该区域撤退。重复，我们正从该区域撤退。到废料处理厂会合，飞机将在那里待命，随时起飞撤离。		review
 #str_301786	All right, Marines, haul ass. The clock is ticking and this is one flight we don’t wanna miss.	好了，弟兄们，撒腿快跑。时间不等人，这趟班机咱们可误不起。	walker @ walker	review
 #str_301787	H Q, this is Viper squad! Our Lieutenant is severely wounded. Request immediate evac.	总部，这里是毒蛇小队！我们中尉伤势严重，请求立即撤离。	walker @ walker	review
@@ -3561,47 +3561,47 @@
 #str_303559	Another's done.	又拆好一颗。	convoy @ convoy	review
 #str_303560	Got em all. Now lets get the hell out of here!	全拆完了。咱们赶紧离开这鬼地方！	convoy @ convoy	review
 #str_303561	Hey, Kane. Thanks for keepin me in one piece. I owe ya.	嘿，Kane。多谢你保我毫发无损。这份情我记下了。	convoy @ convoy	review
-#str_303562	H Q, this is Pestilence. A Strogg patrol just went by us.	总部，这里是瘟疫车队。一支 Strogg 巡逻队刚从我们旁边过去。		review
+#str_303562	H Q, this is Pestilence. A Strogg patrol just went by us.	总部，这里是「瘟疫」车队。一支 Strogg 巡逻队刚从我们旁边过去。		review
 #str_303563	Were you spotted?	你们暴露了吗？		review
 #str_303564	I dont think so. We should be fine.	应该没有。我们没事。		review
-#str_303565	H Q, this Famine. I think a flier might have seen us. 	总部，这里是饥荒车队。恐怕有架飞行器发现了我们。		review
+#str_303565	H Q, this Famine. I think a flier might have seen us. 	总部，这里是「饥荒」车队。恐怕有架飞行器发现了我们。		review
 #str_303566	If you feel your mission has been compromised, you may return to base. 	如果你们判断任务已经暴露，可以返回基地。		review
 #str_303567	Negative, H Q. Were fine. And were going to continue on.	不必，总部。我们没事，将继续前进。		review
-#str_303568	H Q, War is now underway.	总部，战争车队已经上路。		review
-#str_303569	Good luck to you, War.	祝你们好运，战争车队。		review
-#str_303570	Death, this is H Q. You are now the last convoy. Do you understand the gravity of this situation? 	死亡车队，这里是总部。你们现在是最后一支车队了。明白事态有多严重吗？		review
+#str_303568	H Q, War is now underway.	总部，「战争」车队已经上路。		review
+#str_303569	Good luck to you, War.	祝你们好运，「战争」车队。		review
+#str_303570	Death, this is H Q. You are now the last convoy. Do you understand the gravity of this situation? 	「死亡」车队，这里是总部。你们现在是最后一支车队了。明白事态有多严重吗？		review
 #str_303571	Yes H Q we can fully appreciate our importance to the war effort.	明白，总部，我们完全清楚自己对整个战局有多重要。		review
 #str_303572	Do you believe you will achieve your goal?	你们有把握完成目标吗？		review
 #str_303573	I wouldnt be out here if I didn’t. 	没把握我就不会出这趟任务了。		review
 #str_303574	Kane, this is Morris. Where the hell are you? Hook up with us as soon as you can. Morris, out.	Kane，我是 Morris。你到底在哪儿？尽快跟我们会合。Morris，完毕。		review
-#str_303575	H Q, this is Death. Weve had to stop. A squad of Strogg are guarding the road ahead of us.	总部，这里是死亡车队。我们被迫停下了。前方道路有一队 Strogg 把守。		review
+#str_303575	H Q, this is Death. Weve had to stop. A squad of Strogg are guarding the road ahead of us.	总部，这里是「死亡」车队。我们被迫停下了。前方道路有一队 Strogg 把守。		review
 #str_303576	What are your plans? 	你们打算怎么办？		review
 #str_303577	Well see if we cant wait em out. Otherwise well just have to go in with guns blazing. 	先看看能不能耗到它们走。不行的话，就只能开足火力硬闯了。		review
 #str_303578	Hey, Kane. Too bad you werent here with us waiting on this Strogg squad to move. You could walk over to em and see what the hell theyre waitin for.	嘿，Kane。可惜你没跟我们一起干等这队 Strogg 挪窝。不然你可以走过去问问，它们到底在磨蹭什么。		review
-#str_303579	Death, this is H Q. Ive been instructed to order you back to base.	死亡车队，这里是总部。上面指示我命令你们返回基地。		review
+#str_303579	Death, this is H Q. Ive been instructed to order you back to base.	「死亡」车队，这里是总部。上面指示我命令你们返回基地。		review
 #str_303580	Negative, H Q. We cannot comply. From our current position, we would be spotted if we move in any direction. 	办不到，总部。无法执行。以我们现在的位置，往任何方向动都会暴露。		review
-#str_303581	Roger that, Death. 	收到，死亡车队。		review
+#str_303581	Roger that, Death. 	收到，「死亡」车队。		review
 #str_303582	Good news, H Q. The Strogg squad looks to be gathering up its gear and moving on. 	好消息，总部。那队 Strogg 看样子在收拾装备，准备开拔了。		review
-#str_303583	What are your intentions, Death? 	你们有什么打算，死亡车队？		review
+#str_303583	What are your intentions, Death? 	你们有什么打算，「死亡」车队？		review
 #str_303584	If its all the same to you, wed like to continue on our mission. 	要是总部没意见，我们想继续执行任务。		review
-#str_303585	Affirmative, Death. Keep us apprised of your situation. 	同意，死亡车队。随时报告你们的情况。		review
-#str_303586	Death, whats your status? 	死亡车队，报告状态。		review
+#str_303585	Affirmative, Death. Keep us apprised of your situation. 	同意，「死亡」车队。随时报告你们的情况。		review
+#str_303586	Death, whats your status? 	「死亡」车队，报告状态。		review
 #str_303587	The going is slow. Theres a lot of Strogg patrols out. But so far, were doing fine. 	走得很慢。外面到处是 Strogg 巡逻队。不过到目前为止，我们还行。		review
 #str_303588	Hey, Kane. Stop doggin it. If you dont catch up with us soon, youre gonna miss out on all the fun. 	嘿，Kane。别磨蹭了。再不赶上来，好戏可就全让你错过了。		review
-#str_303589	H Q, this is Death. We have arrived at our destination. The access doors are open. 	总部，这里是死亡车队。我们已抵达目的地。通道大门是开着的。		review
-#str_303590	Well done, Death. Please, be cautious. 	干得好，死亡车队。务必小心。		review
+#str_303589	H Q, this is Death. We have arrived at our destination. The access doors are open. 	总部，这里是「死亡」车队。我们已抵达目的地。通道大门是开着的。		review
+#str_303590	Well done, Death. Please, be cautious. 	干得好，「死亡」车队。务必小心。		review
 #str_303591	I copy that, H Q. 	收到，总部。		review
 #str_303592	Remember your primary goal is to locate and destroy the Nexus. That is the key to disabling the Strogg communication network.	记住，你们的首要目标是找到并摧毁 Nexus。那是瘫痪 Strogg 通讯网络的关键。		review
 #str_303593	Viper Squad, this is Morris. H Qs finally located a demolitionist to destroy the hangars. He should be there soon.	毒蛇小队，我是 Morris。总部总算找到一名爆破手去炸机库了。他应该很快就到。		review
 #str_303594	Kane, this is Morris. The demolitionist should be near the top of the elevator.	Kane，我是 Morris。那名爆破手应该就在电梯顶层附近。	hangar_2 @ hangar_2	review
 #str_303595	It pains me that we must destroy this Strogg facility. The knowledge we could have gained by studying it.	要摧毁这座 Strogg 设施，实在令我心痛。若能好好研究，我们本可以学到多少东西啊。		review
-#str_303596	Listen up, Marines. Were looking to get below the Tetranode, the brains of this facility, and destroy it with our E M P bomb. Once thats accomplished, the Strogg lines of communication will be cut and our troops will have an easy time of it. But first we need to locate the controls thatll unlock the hatchways and allow the convoy through.	都听好了，陆战队员们。我们要设法深入「四元节点」（Tetranode）下方——那是这座设施的大脑——用我们的 EMP 炸弹把它摧毁。一旦得手，Strogg 的通讯线路就会被切断，我们的部队就好打多了。但首先得找到能解锁舱门的控制装置，让车队通过。		review
+#str_303596	Listen up, Marines. Were looking to get below the Tetranode, the brains of this facility, and destroy it with our E M P bomb. Once thats accomplished, the Strogg lines of communication will be cut and our troops will have an easy time of it. But first we need to locate the controls thatll unlock the hatchways and allow the convoy through.	都听好了，陆战队员们。我们要设法深入「四元节点」下方——那是这座设施的大脑——用我们的 EMP 炸弹把它摧毁。一旦得手，Strogg 的通讯线路就会被切断，我们的部队就好打多了。但首先得找到能解锁舱门的控制装置，让车队通过。		review
 #str_303597	There, I have unlocked the passage..	好了，通道已经解锁。	hub_1 @ hub_1	review
 #str_303598	{furrow}Negative. Remain where you are.	{furrow}不行。待在原地。		review
 #str_303599	I must find the temperature controls. From there, I should be able to raise the temperature to something a little less hostile.	我必须找到温控装置。有了它，我应该能把温度调高一些，不至于这么要命。		review
 #str_303600	Sounds good. Kane, youre with Strauss. Find those controls.	好主意。Kane，你跟着 Strauss，去把那些控制装置找出来。	hub_1 @ hub_1	review
 #str_303601	You assign me only one guard? Must I die to show you how valuable I am? Never mind. This way, Corporal Kane.	就派一个人保护我？非得我死了，你们才明白我有多重要？算了。这边走，Kane 下士。	hub_1 @ hub_1	review
-#str_303602	Be extremely cautious, Corporal. We do not want to attract that Harvesters attention.	千万小心，下士。我们可不想引起那台收割者的注意。	hub_1 @ hub_1	review
+#str_303602	Be extremely cautious, Corporal. We do not want to attract that Harvesters attention.	千万小心，下士。我们可不想引起那台「收割者」的注意。	hub_1 @ hub_1	review
 #str_303603	Ah, yes. Precisely what I was looking for. Give me a moment.	啊，没错。正是我要找的。稍等片刻。	hub_1 @ hub_1	review
 #str_303604	Kane, you must protect me while I adjust the temperature controls!	Kane，我调节温控的时候，你必须保护我！		review
 #str_303605	Lieutenant Voss, I must remain here or conditions will return to their frigid state.	Voss 中尉，我必须留在这里，否则环境会重新冻回冰窖。		review
@@ -3615,11 +3615,11 @@
 #str_303613	Lieutenant Voss, I must complain. Corporal Kane is taking far too long to reach me. 	Voss 中尉，我必须提出抗议。Kane 下士到现在还没到我这里，实在太慢了。		review
 #str_303614	Calm down, Strauss. I’m sure Kanes moving as fast as he can.	冷静点，Strauss。Kane 肯定已经在全速赶路了。		review
 #str_303615	{furrow}Corporal Kane, you should have been here a long time ago! {idle}But we will speak of this later.	{furrow}Kane 下士，你早就该到了！{idle}不过这笔账我们以后再算。		review
-#str_303616	That . . . is the Tetranode. Destroying it is our primary objective.	那……就是四元节点。摧毁它是我们的首要目标。	hub_2 @ hub_2	review
+#str_303616	That . . . is the Tetranode. Destroying it is our primary objective.	那……就是「四元节点」。摧毁它是我们的首要目标。	hub_2 @ hub_2	review
 #str_303617	We can accomplish this in three steps. And because this is the hub of the facility, you will have to return here after each step is completed. Our first objective is the power plant. Lead the way.	我们分三步来完成。这里是整座设施的枢纽，所以每完成一步，你都得回到这里。第一个目标是发电厂。你带路。		review
-#str_303618	What are you waiting for, Corporal Kane? You must return to the Tetranode room to complete your next objective.	你还在等什么，Kane 下士？你必须回到四元节点机房，完成下一个目标。		review
-#str_303619	Corporal, return to the Tetranode room so that we can continue this mission.	下士，回四元节点机房去，我们的任务才能继续。		review
-#str_303620	Why do you take so long, Corporal Kane? Go to the Tetranode room, then we can continue our mission.	怎么这么磨蹭，Kane 下士？去四元节点机房，我们才能继续任务。		review
+#str_303618	What are you waiting for, Corporal Kane? You must return to the Tetranode room to complete your next objective.	你还在等什么，Kane 下士？你必须回到「四元节点」机房，完成下一个目标。		review
+#str_303619	Corporal, return to the Tetranode room so that we can continue this mission.	下士，回「四元节点」机房去，我们的任务才能继续。		review
+#str_303620	Why do you take so long, Corporal Kane? Go to the Tetranode room, then we can continue our mission.	怎么这么磨蹭，Kane 下士？去「四元节点」机房，我们才能继续任务。		review
 #str_303621	Strauss, those codes look to be working. Were opening the hatchway now.	Strauss，那些代码看来管用。我们正在打开舱门。		review
 #str_303622	Ambush! Take cover!	有埋伏！找掩护！		review
 #str_303623	Morris . . . Morris can you hear me?	Morris……Morris，听得见吗？		review
@@ -3627,9 +3627,9 @@
 #str_303625	I'm on it.	这就去。	medlabs_1 @ medlabs_1	review
 #str_303626	Rhodes! Rhodes where are you?	Rhodes！Rhodes，你在哪儿？		review
 #str_303627	Strauss, were having some trouble with those codes you sent us. They dont appear to be opening the door. You may have to resend them. I'll let you know shortly.	Strauss，你发来的代码有点问题，门好像打不开。可能得重发一次。我稍后再联系你。		review
-#str_303628	Let us return to the Tetranode. From there we must find a way to disable the emergency shutoff. If we take too long, the shutoff will sense the heat buildup and deactivate all systems.	我们回四元节点去。接下来必须设法解除紧急停机装置。要是拖得太久，它就会侦测到热量积聚，关停所有系统。		review
+#str_303628	Let us return to the Tetranode. From there we must find a way to disable the emergency shutoff. If we take too long, the shutoff will sense the heat buildup and deactivate all systems.	我们回「四元节点」去。接下来必须设法解除紧急停机装置。要是拖得太久，它就会侦测到热量积聚，关停所有系统。		review
 #str_303629	Before we can disable the emergency shutoff, we must locate the Visual Processing area. Let us take the elevator to the second floor. We should be able to find it there.	要解除紧急停机装置，得先找到视觉处理区。我们乘电梯上二层，应该能在那里找到。		review
-#str_303630	Corporal Kane, in the next section is a system that stretches between all facilities in this area. I call it the Tetranode Maintenance Bay. That is your destination.	Kane 下士，下一区有一套贯通这片区域所有设施的系统，我称之为四元节点维护舱。那就是你的目的地。		review
+#str_303630	Corporal Kane, in the next section is a system that stretches between all facilities in this area. I call it the Tetranode Maintenance Bay. That is your destination.	Kane 下士，下一区有一套贯通这片区域所有设施的系统，我称之为「四元节点」维护舱。那就是你的目的地。		review
 #str_303631	Nearby is a maintenance platform. Get onboard.	附近有一座维护平台。上去吧。	hub_2 @ hub_2	review
 #str_303632	Hey, Strauss, Kane. Just to give you an update, the squad is still alive. Were still trapped but Lieutenant Voss is working on a plan. How are you doin?	嘿，Strauss、Kane，通报一下情况：小队还都活着。我们仍然被困着，不过 Voss 中尉正在想办法。你们那边怎么样？		review
 #str_303633	Despite Corporal Kanes tendency to dawdle, we are making good progress.	虽说 Kane 下士总爱磨蹭，我们的进展还是不错的。		review
@@ -3640,11 +3640,11 @@
 #str_303638	Okay. Keep me informed.	好。随时向我汇报。		review
 #str_303639	Cortez is hit! I repeat, Cortez is hit!!	Cortez 中弹了！重复，Cortez 中弹了！！		review
 #str_303640	Get a medic over there, now!	叫医疗兵过去，快！		review
-#str_303641	The ride is over, Corporal Kane. You must now return to the Tetranode room. Locate another maintenance platform to take you back there.	旅程到此为止，Kane 下士。你现在必须返回四元节点机房。找另一座维护平台送你回去。		review
+#str_303641	The ride is over, Corporal Kane. You must now return to the Tetranode room. Locate another maintenance platform to take you back there.	旅程到此为止，Kane 下士。你现在必须返回「四元节点」机房。找另一座维护平台送你回去。		review
 #str_303642	Morris! Get that truck on the elevator!	Morris！把那辆卡车开上电梯！		review
 #str_303643	Were not leaving you behind, sir.	我们不会丢下您的，长官。		review
 #str_303644	Damn straight youre not. Cortez and I are going to give you cover. Then well be up.	那是当然。我和 Cortez 给你们打掩护，随后就上去。		review
-#str_303645	So far you have done well, Corporal Kane. Your final task will be to shut down the coolant pumps. This will cause a complete meltdown of the Tetranode.	到目前为止，你干得不错，Kane 下士。你最后的任务是关闭冷却泵。这会让四元节点彻底熔毁。	hub_2 @ hub_2	review
+#str_303645	So far you have done well, Corporal Kane. Your final task will be to shut down the coolant pumps. This will cause a complete meltdown of the Tetranode.	到目前为止，你干得不错，Kane 下士。你最后的任务是关闭冷却泵。这会让「四元节点」彻底熔毁。	hub_2 @ hub_2	review
 #str_303646	Okay, Strauss. Were holding a position just outside the facility. Let us know when you want us to come get you.	好，Strauss。我们就守在设施外面。需要我们来接你们时说一声。		review
 #str_303647	It will be as soon as Corporal Kane deactivates the coolant pumps. And at his pace, it could take hours.	等 Kane 下士一关掉冷却泵就行。不过照他这速度，怕是得几个小时。		review
 #str_303648	Strauss, this is Voss. Whats your situation?	Strauss，我是 Voss。你们情况如何？		review
@@ -3657,7 +3657,7 @@
 #str_303655	Are you the medic they sent for Raven squad?	你就是派来支援渡鸦小队的医疗兵？	mcclanding @ mcclanding	review
 #str_303656	Yeah, wheres the wounded soldier? 	对。伤员在哪儿？	mcclanding @ mcclanding	review
 #str_303657	Back near that truck. Follow me.	就在后面那辆卡车旁边。跟我来。	mcclanding @ mcclanding	review
-#str_303658	Your post is here, guarding the lift. Theyll be deploying walkers soon and I dont want any surprises.	你的岗位在这儿，守住升降梯。他们很快就要部署「步行者」（walker）了，我可不想出什么岔子。	mcclanding @ mcclanding	review
+#str_303658	Your post is here, guarding the lift. Theyll be deploying walkers soon and I dont want any surprises.	你的岗位在这儿，守住升降梯。他们很快就要部署「步行者」了，我可不想出什么岔子。	mcclanding @ mcclanding	review
 #str_303659	Warning, lift is in motion. Warning, lift is in motion.	警告，升降梯运行中。警告，升降梯运行中。		review
 #str_303660	{scared}Holy shit . . . that was our ticket out of here.	{scared}妈的……那可是我们逃出去的指望啊。		review
 #str_303661	They treat us like . . . animals. Less than animals . . . like experiments.	他们拿我们当……牲口。连牲口都不如……拿我们做实验。		review
@@ -3705,7 +3705,7 @@
 #str_303703	Many men died to get us this far, Kane. We must take control of the Process Tower at all costs.	为了走到这一步，死了太多弟兄，Kane。无论付出什么代价，我们都必须拿下处理塔。		review
 #str_303704	Excellent. This looks to be the hub control room. See if you can find some way to rotate the tram from here.	很好。这里看起来就是枢纽控制室。看看能不能从这里把电车转过来。	tram_1 @ tram_1	review
 #str_303705	Very good, Kane. The tram is now facing the right direction, but it appears the track is damaged.	非常好，Kane。电车已经调正方向，不过轨道似乎损坏了。	tram_1 @ tram_1	review
-#str_303706	There is a door leading to a construction site below the tram. Head there and locate some repair bots to fix the track. I will remain here and guard the tram.	有扇门通往电车下方的施工场地。你去那儿找几台维修机器人来修轨道。我留在这里看守电车。		review
+#str_303706	There is a door leading to a construction site below the tram. Head there and locate some repair bots to fix the track. I will remain here and guard the tram.	有扇门通往电车下方的施工场地。你去那儿找几台「维修机器人」来修轨道。我留在这里看守电车。		review
 #str_303707	Excellent, Kane. The track has been repaired. Return to the tram and we can be on our way to the process tower.	太好了，Kane。轨道修好了。回电车上来，我们这就出发去处理塔。	tram_1 @ tram_1	review
 #str_303708	We need to find a way to get up to the second floor.	我们得想办法上到二层去。		review
 #str_303709	Kane, stay there. I will be right up.	Kane，待在那儿别动。我马上上来。		review
@@ -3756,7 +3756,7 @@
 #str_303754	Get us the hell out of here! Go! Go!	赶紧带我们离开这儿！快走！快走！	convoy @ convoy	review
 #str_303755	H Q, H Q, this is Bison 8! We are under attack!	总部，总部，这里是野牛 8 号！我们遭到攻击！		review
 #str_303756	There you go. I increased the rate of fire. That ought to add a little more punch to it.	好了。我调高了射速。这下打起来该更有劲了。	convoy @ convoy	review
-#str_303757	Death, this is HQ. You are the only convoy left. You must get that E M P to the target.	死亡车队，这里是总部。你们是仅存的车队了。必须把那枚 EMP 送到目标位置。		review
+#str_303757	Death, this is HQ. You are the only convoy left. You must get that E M P to the target.	「死亡」车队，这里是总部。你们是仅存的车队了。必须把那枚 EMP 送到目标位置。		review
 #str_303758	Hear that Rhinos?  It's up to us now.  Stay sharp, they're going to be all over us.	听到了吗，犀牛小队的弟兄们？现在就看我们的了。都警醒点，它们会蜂拥而上。		review
 #str_303759	Good job, buddy!	干得好，伙计！	core @ core	review
 #str_303760	Kane did an adequate job executing my plan.	Kane 执行我的计划，表现还算称职。		review
@@ -3768,7 +3768,7 @@
 #str_303766	Here. Take this shotgun. It's gonna come in handy.	来，拿上这把霰弹枪。会派上用场的。	hangar_1 @ hangar_1	review
 #str_303767	{puzzled}Wow, would ya look at this place.	{puzzled}哇哦，瞧瞧这地方。		review
 #str_303768	{furrow}Keep your shit wired tight. {idle}You can bet your ass we arent gonna be welcome here.	{furrow}都给我打起十二分精神。{idle}我敢拿屁股打赌，这地方绝不欢迎咱们。		review
-#str_303769	Listen up, Marines. We've almost reached our objective.  Now we just need to find the Tetranode and set off our E M P bomb. That will knock out the Strogg lines of communication and our troops will have an easy time of it. Let's find a way to open that hatch so we can move forward.	都听好了，陆战队员们。我们离目标已经不远。现在只需找到「四元节点」（Tetranode），引爆我们的 EMP 炸弹，就能瘫痪 Strogg 的通讯线路，我们的部队就好打多了。先想办法打开那道舱门，才能继续推进。	hub_1 @ hub_1	review
+#str_303769	Listen up, Marines. We've almost reached our objective.  Now we just need to find the Tetranode and set off our E M P bomb. That will knock out the Strogg lines of communication and our troops will have an easy time of it. Let's find a way to open that hatch so we can move forward.	都听好了，陆战队员们。我们离目标已经不远。现在只需找到「四元节点」，引爆我们的 EMP 炸弹，就能瘫痪 Strogg 的通讯线路，我们的部队就好打多了。先想办法打开那道舱门，才能继续推进。	hub_1 @ hub_1	review
 #str_303770	Ah, very good. This appears to be the control room.	啊，很好。这里看来就是控制室。	hub_1 @ hub_1	review
 #str_303771	I must find the temperature controls. From there, I should be able to make the atmosphere a little less hostile.	我必须找到温控装置。有了它，我应该就能让这里的环境不那么要命。	hub_1 @ hub_1	review
 #str_303772	{furrow}I demand you protect me!	{furrow}我要求你们保护我！		review
@@ -3779,11 +3779,11 @@
 #str_303777	Calm down, Strauss. I'm sure Kane's moving as fast as he can.	冷静点，Strauss。Kane 肯定已经在全速赶路了。		review
 #str_303778	The entire facility is centered around this room. We need to find the power plant. Lead the way.	整座设施都是围绕这个房间建造的。我们得找到发电厂。你带路。	hub_2 @ hub_2	review
 #str_303779	Ah, these are the controls to the power plant.	啊，这就是发电厂的控制装置。		review
-#str_303780	Let us return to the Tetranode. From there we must find a way to disable the emergency shutoff. If we don't disable it, it will detect the heat buildup and deactivate all systems.	我们回四元节点去。接下来必须设法解除紧急停机装置。若不解除，它侦测到热量积聚，就会关停所有系统。	hub_2 @ hub_2	review
+#str_303780	Let us return to the Tetranode. From there we must find a way to disable the emergency shutoff. If we don't disable it, it will detect the heat buildup and deactivate all systems.	我们回「四元节点」去。接下来必须设法解除紧急停机装置。若不解除，它侦测到热量积聚，就会关停所有系统。	hub_2 @ hub_2	review
 #str_303781	We can disable the emergency shutoff from the Visual Processing area. Let us take the elevator to the second floor. There we should be able to find it.	紧急停机装置可以从视觉处理区解除。我们乘电梯上二层，应该能在那里找到。	hub_2 @ hub_2	review
 #str_303782	{happy}Ah! The emergency shut off controls.	{happy}啊！紧急停机控制装置。		review
 #str_303783	The area you are in stretches between all facilities in this complex.	你所在的区域贯通了这片综合设施的所有建筑。	hub_2 @ hub_2	review
-#str_303784	Corporal Kane, you should now be at the emergency shutoff relays. Use the splicing controls to cut the cable in front of you. That will disable the emergency shutoff system and allow us to overheat the Tetranode.	Kane 下士，你现在应该已经到了紧急停机继电器。用接线控制装置切断你面前的线缆，这样紧急停机系统就会失效，我们才能让四元节点过热。		review
+#str_303784	Corporal Kane, you should now be at the emergency shutoff relays. Use the splicing controls to cut the cable in front of you. That will disable the emergency shutoff system and allow us to overheat the Tetranode.	Kane 下士，你现在应该已经到了紧急停机继电器。用接线控制装置切断你面前的线缆，这样紧急停机系统就会失效，我们才能让「四元节点」过热。		review
 #str_303785	This is Voss.  We're currently working our way back to the elevator. It's slow going but we're gaining ground. What's your situation, Strauss?	我是 Voss。我们正朝电梯往回打。进展缓慢，但一直在推进。你那边情况如何，Strauss？		review
 #str_303786	Kane...! It can't be! ... It's the Makron!! \nv <Kane> k18s EY3q \t	Kane……！不可能！……是 Makron！！\nv <Kane> k18s EY3q \t		review
 #str_303787	Here, I guess even you get one of these. Its a shotgun thats been modified to take clips. You can reload it all at once now.	拿着，看来连你也能领一把。这霰弹枪改装过，能用弹匣供弹，现在一次就能装满。	mcc_2 @ mcc_2	review
@@ -3809,11 +3809,11 @@
 #str_303808	Yeah, you musta saw what the bastards did to the rest of our squad. Now were just trying to get out of here.	是啊，那帮杂种把我们小队其他人弄成什么样，你八成也看见了。现在我们只想活着离开这儿。	tram_1 @ tram_1	review
 #str_303809	Kane, youre probably looking to get to the next tower. Come with us. We have orders to secure the bridge control center. From there you should be able to find a tram.	Kane，你应该是想去下一座塔吧。跟我们走。我们奉命去占领桥梁控制中心，从那儿你应该能找到一辆电车。	tram_1 @ tram_1	review
 #str_303810	Here. I scavanged this off a dead Strogg. It'll make your lightning gun damage multiple targets. Give it a try.	拿着。我从一具 Strogg 尸体上捡的。装上它，你的闪电枪就能同时电到多个目标。试试看。	tram_1 @ tram_1	review
-#str_303811	You know, that lightining gun will disrupt the shields that the gladiators use.	知道吗，那把闪电枪能瘫痪角斗士用的护盾。		review
+#str_303811	You know, that lightining gun will disrupt the shields that the gladiators use.	知道吗，那把闪电枪能瘫痪「角斗士」用的护盾。		review
 #str_303812	Thanks for the help, Kane. Weve got orders to keep this area secured. You can go on to the processing tower.	多谢帮忙，Kane。我们奉命守住这片区域。你继续往处理塔去吧。	tram_1 @ tram_1	review
 #str_303813	ninety three . . . ninety four . . . ninety five . {happy}Ha. Stroggos is proving to be a target rich planet.	九十三……九十四……九十五……{happy}哈。Stroggos 这星球，靶子真是打不完。		review
 #str_303814	Many men died to get us this far, Kane. We must take control of the Processing Tower at all costs.	为了走到这一步，死了太多弟兄，Kane。无论付出什么代价，我们都必须拿下处理塔。	tram_1 @ tram_1	review
-#str_303815	Perhaps we can use some of the strogg repair bots to fix the track.  There is a door leading to a construction site below the tram, you may be able to acqurie some repair bots there. I will remain here and guard the tram.	或许我们可以用 Strogg 的维修机器人来修轨道。有扇门通向电车下方的施工场地，你也许能在那里弄到几台维修机器人。我会留在这里看守电车。	tram_1 @ tram_1	review
+#str_303815	Perhaps we can use some of the strogg repair bots to fix the track.  There is a door leading to a construction site below the tram, you may be able to acqurie some repair bots there. I will remain here and guard the tram.	或许我们可以用 Strogg 的「维修机器人」来修轨道。有扇门通向电车下方的施工场地，你也许能在那里弄到几台「维修机器人」。我会留在这里看守电车。	tram_1 @ tram_1	review
 #str_303816	You have no idea how difficult it was to liberate this tram.	你根本想不到，为了弄到这辆电车我费了多大劲。		review
 #str_303817	Luckily, the Strogg were not as good a shot as I am.	幸好那些 Strogg 的枪法不如我。		review
 #str_303818	Here Kane, let me adjust your nailgun.  Use the sight to zoom in on your targets and the nails will track them.	来，Kane，我给你调一下钉枪。用瞄具锁定目标，钉弹就会自动追踪。		review
@@ -3916,11 +3916,11 @@
 #str_303919	I'm too late. He's dead. There was nothing I could do.	我来得太迟了。他已经死了。我无能为力。		review
 #str_303920	Damn it all. Bidwell was a good man... a good Marine.	该死的……Bidwell 是个好人……是个好陆战队员。	hub_1 @ hub_1	review
 #str_303921	Strauss, the E M P's destroyed but we still have to shutdown this facility. Any ideas?	Strauss，EMP 炸弹已经毁了，但我们还是得让这座设施停摆。有什么办法？	hub_1 @ hub_1	review
-#str_303922	Ja. But it means I have to go directly to the Tetranode.	Ja。但这意味着我必须直接前往四元节点。	hub_1 @ hub_1	review
+#str_303922	Ja. But it means I have to go directly to the Tetranode.	Ja。但这意味着我必须直接前往「四元节点」。	hub_1 @ hub_1	review
 #str_303923	All right. Kane's the only one who's uninjured, so he's going with you.	好吧。现在没受伤的只剩 Kane 了，让他跟你去。	hub_1 @ hub_1	review
 #str_303924	If my memory of the building schematics is correct, Kane must take a crawlway out and I will meet him at the other end.	如果我对建筑图纸的记忆无误，Kane 必须钻一条检修爬道出去，我会在另一头与他会合。		review
 #str_303925	Sounds like a plan. Voss out.	就这么办。Voss 完毕。	hub_1 @ hub_1	review
-#str_303926	Kane, I don't need to tell you how important this is. Whatever the cost, you must destroy the Tetranode and bring down the Nexus.	Kane，这件事有多重要，不用我多说。无论付出什么代价，你都必须摧毁四元节点，让 Nexus 瘫痪。	hub_1 @ hub_1	review
+#str_303926	Kane, I don't need to tell you how important this is. Whatever the cost, you must destroy the Tetranode and bring down the Nexus.	Kane，这件事有多重要，不用我多说。无论付出什么代价，你都必须摧毁「四元节点」，让 Nexus 瘫痪。	hub_1 @ hub_1	review
 #str_303927	I just upped the field output by 300 percent. Now that rail gun is gonna really kick ass.  You'll be able to shoot straight through guys.	我刚把力场输出提升了 300%。现在这把轨道炮真带劲了，能把敌人一枪打个对穿。		review
 #str_303928	Let me see that Rocket Launcher.  Here, now if you hold scope down after you've fired a rocket, you can guide it where you want it to go.  It's great for shooting around cover.	把火箭发射器给我看看。好了，现在发射火箭后按住瞄准镜不放，就能操纵它飞向你想打的地方。绕过掩体射击特别好使。		review
 #str_303929	Kane! Over here!	Kane！这边！	process_1 @ process_1	review

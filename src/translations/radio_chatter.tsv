@@ -1,295 +1,590 @@
-﻿str_id	sound	map	english	chinese	source	speaker
-str_380000	vo_1_1_1_68_1	airdefense1	This is Sgt. Miller. I'm takin' Condor Squad in to clear out the facility.	我是 Miller 中士。我带神鹰小队进去清剿这处设施。（基地警报：警告！敌方来袭！）	sndshd	Miller
-str_380001	vo_1_1_2_06_1	airdefense1	We're a lost cause! Do not attempt to evac us.	我们没救了！不要试图撤离我们。	sndshd	
-str_380002	vo_1_1_3_51_1	airdefense1	Armadillo Squad, you have to flank left. Flank left, damn it!	犰狳小队，你们得从左翼包抄。从左翼包抄，妈的！	sndshd	
-str_380003	vo_1_1_3_56_2	airdefense1	Comm uplink has been established and systems are in the green. Proceed to your first target Bison squad.	通讯上行链路已建立，各系统状态正常。野牛小队，向你们的第一个目标推进。	sndshd	
-str_380004	vo_1_1_3_58_1	airdefense1	Viper squad, this is H Q. Mantis squad is M I A and unresponsive. Fall back to rally point alpha niner four.	毒蛇小队，这里是总部。螳螂小队已失踪，无法取得联络。撤退到集结点 Alpha 94。	sndshd	总部
-str_380005	vo_1_1_1_70_1	airdefense2	Mayday! Mayday! This is the U.S.S. Patton - we have sustained heavy damage...	求救！求救！这里是 U.S.S. Patton 号——我们受创严重……	sndshd	
-str_380006	vo_1_1_1_72_1	airdefense2	... aircraft loss of 65%. We're taking a lot of heat from the air defense cannon. Ground based troops...	……飞行器损失 65%。防空炮的火力压得我们抬不起头。地面部队……	sndshd	
-str_380007	vo_1_1_2_02_1	airdefense2	HQ, we can't advance. Dust is clogging the intakes of the hover tanks.	总部，我们无法前进。沙尘堵住了悬浮坦克的进气口。	sndshd	
-str_380008	vo_1_1_2_04_1	airdefense2	We're being overrun! Launch an air strike on my position now!	我们快被冲垮了！立刻对我的位置发动空袭！	sndshd	
-str_380009	vo_1_1_3_01_1	airdefense2	Kane! This is Sgt. Bidwell. We need you here ASAP. We've gotta bring the air defense cannon down.	Kane！我是 Bidwell 中士。你得尽快赶过来。我们必须把防空炮打掉。	sndshd	Bidwell
-str_380010	vo_1_1_3_04_1	airdefense2	What's the hold up, Kane? Find us immediately.	磨蹭什么呢，Kane？马上来找我们。	sndshd	
-str_380011	vo_1_1_3_04_2	airdefense2	Kane, this is Sgt. Bidwell. Stop pissin' around and hook up with us.	Kane，我是 Bidwell 中士。别瞎晃悠了，赶紧跟我们会合。	sndshd	Bidwell
-str_380012	vo_1_1_3_04_3	airdefense2	Kane, this is Bidwell. Don't make me come lookin' for you.	Kane，我是 Bidwell。别逼我亲自去找你。	sndshd	Bidwell
-str_380013	vo_1_1_3_30_1	airdefense2	Walker Squad Bison, advance. Fire at will.	野牛机甲小队，前进。自由开火。	sndshd	
-str_380014	vo_1_1_3_63_2	airdefense2	We copy that, bison squad. You are cleared to aid the foot soldiers.	收到，野牛小队。批准你们支援步兵。	sndshd	
-str_380015	vo_1_1_3_65_5	airdefense2	H Q, this is Bison Squad. The situation is under control.	总部，这里是野牛小队。局势已在掌控之中。	sndshd	野牛小队
-str_380016	vo_1_1_3_80_4	airdefense2	Sgt. Bidwell, this is Voss. I think I've found a way to get at that cannon. Can you reach Kane?	Bidwell 中士，我是 Voss。我好像找到对付那门炮的办法了。你能联系上 Kane 吗？	sndshd	Voss
-str_380017	vo_1_1_3_80_6	airdefense2	Good. Kane, go to the Strogg hangars. Viper squad will rendezvous with you there. If you can take out the launching bays, the fliers won't be a problem. Voss out.	很好。Kane，前往 Strogg 机库。毒蛇小队会在那里和你会合。只要能端掉发射舱，那些飞行器就不足为患了。Voss 完毕。	sndshd	Voss
-str_380018	vo_002_bravoteam	building_b	Bravo Team here! We've got a situaton in alpha niner. Requesting backup for the  . . . Oh, God, just send backup now!	这里是 Bravo 小队！Alpha 9 区出状况了。请求增援，我们……哦，天哪，快派增援来就是了！	sndshd	Bravo 小队
-str_380019	vo_002_headsup	building_b	Heads up. The Strogg are breaking through our perimiter. They'll be on us in 3...2...1	注意。Strogg 正在突破我们的防线。他们马上杀到，3……2……1	sndshd	
-str_380020	vo_1_1_13_2_0001	building_b	HQ, this is Fox Squad in sector 6A. We have engaged the Strogg.	总部，这里是 6A 区的狐狸小队。我们已与 Strogg 交火。	sndshd	狐狸小队
-str_380021	vo_1_1_13_2_0002	building_b	Do you require assistance?	需要支援吗？	sndshd	
-str_380022	vo_1_1_13_2_0003	building_b	Affirmative. Send an additional squad immediately.	确认。请立即增派一个小队。	sndshd	
-str_380023	vo_1_1_13_4_0001	building_b	HQ, HQ, our squad's pinned down and meeting heavy resistance. We've run out of... aaaah!	总部，总部，我们小队被火力压制，遭遇顽强抵抗。我们已经打光了……啊——！	sndshd	
-str_380024	vo_1_1_13_5_0001	building_b	Sarge. We got movement - at bearing 221. I count six signals.	中士，发现动静——方位 221。我数到六个信号。	sndshd	
-str_380025	vo_1_1_13_5_0002	building_b	I want a straight V formation. Holtz, you take point.	给我摆一个标准 V 字队形。Holtz，你当尖兵。	sndshd	
-str_380026	vo_1_1_13_5_0003	building_b	Got it.	明白。	sndshd	
-str_380027	vo_1_1_13_5_0004	building_b	Don't bunch up and remember to check the ceilings.	别扎堆，记得留意天花板。	sndshd	
-str_380028	vo_1_1_13_6_0001	building_b	Destroyer, U.S.S. Madison, has achieved sub-orbital position. Com-links established with primary tactical operation HQs. All company commanders transmit sit-reps immediately.	驱逐舰 U.S.S. Madison 号已进入亚轨道位置。已与各主要战术指挥总部建立通讯链路。全体连指挥官立即上报战况。	sndshd	
-str_380029	vo_1_1_13_7_0000	building_b	HQ, we have engaged the Strogg.	总部，我们已与 Strogg 交火。	sndshd	
-str_380030	vo_1_1_13_7_0001	building_b	Roger that. We read you at sector 25 L.	收到。我们确认你们位于 25L 区。	sndshd	
-str_380031	vo_1_1_13_7_0002	building_b	Affirmative, HQ. We're meeting heavy resistance.	确认，总部。我们遭遇顽强抵抗。	sndshd	
-str_380032	vo_1_1_13_7_0003	building_b	Watch the left flank!	注意左翼！	sndshd	
-str_380033	vo_1_1_13_7_0004	building_b	Over here!	这边！	sndshd	
-str_380034	vo_1_1_13_7_0005	building_b	Throw a charge!	扔炸药包！	sndshd	
-str_380035	vo_1_1_13_7_0006	building_b	Get down!	趴下！	sndshd	
-str_380036	vo_1_1_13_7_0007	building_b	Do you require reinforcements? Silence.	你们需要增援吗？（无人应答）	sndshd	
-str_380037	vo_1_1_13_7_0008	building_b	I repeat. Do you require reinforcements?	重复一遍。你们需要增援吗？	sndshd	
-str_380038	vo_1_1_13_7_0009	building_b	Negative. The situation is under control.	不需要。局势已在掌控之中。	sndshd	
-str_380039	vo_1_1_7_0001	building_b	This is Famine Convoy, grid is down.	这里是饥荒车队，防御网已瘫痪。	sndshd	饥荒车队
-str_380040	vo_1_1_7_0002	building_b	This is Pestilence Convoy, grid is down.	这里是瘟疫车队，防御网已瘫痪。	sndshd	瘟疫车队
-str_380041	vo_1_1_7_0003	building_b	This is War. The Defense Grid is fully deactivated.	这里是战争车队。防御网已完全瘫痪。	sndshd	战争车队
-str_380042	vo_1_1_7_0004	building_b	Shit! We've been spotted by Strogg fliers! They're coming in for a...	妈的！我们被 Strogg 飞行器发现了！他们正俯冲过来准备……	sndshd	
-str_380043	vo_1_1_7_0005	building_b	War. Come in. War, please respond.	战争车队，请回话。战争车队，请回答。	sndshd	
-str_380044	vo_1_1_7_0006	building_b	Kane, we're movin' out before the Strogg finds our convoy. We've left a hover tank for you. Grab it and you'll be able to rendezvous with us in no time. Bidwell, out.	Kane，趁 Strogg 还没发现车队，我们先出发了。给你留了一辆悬浮坦克。开上它，你很快就能跟我们会合。Bidwell，完毕。	sndshd	Bidwell
-str_380045	vo_1_2_8_100_1	building_b	Hang on, we got Strogg moving in for the kill!	坚持住，Strogg 正扑上来下杀手！	sndshd	
-str_380046	vo_1_2_8_100_2	building_b	Ramming speed!	全速撞过去！	sndshd	
-str_380047	vo_1_2_8_100_3	building_b	Keep back! We're coming in fast!	退后！我们要高速冲进来了！	sndshd	
-str_380048	vo_1_2_8_100_6	building_b	You must be my escort. Nice of you to show up. Take me back to the door they want opened.	你就是护送我的人吧。可算露面了。带我回他们要打开的那扇门那儿。	sndshd	
-str_380049	vo_1_2_8_20_2	building_b	Rodger that.	收到。	sndshd	
-str_380050	vo_1_2_8_30_6	building_b	I will be locking the door behind you.	你过去之后，我会把门锁上。	sndshd	
-str_380051	vo_1_2_8_61_1	building_b	Kane, what's the hold up? It's imperative you get to Sub-Entrance 1 ASAP.	Kane，还磨蹭什么？你必须尽快赶到 1 号副入口，刻不容缓。	sndshd	
-str_380052	vo_1_2_8_70_1	building_b	To continue you must find the console that manually primes the door to sub-entrance 2..	要继续前进，你必须找到能手动预激活 2 号副入口大门的控制台。	sndshd	
-str_380053	vo_1_2_8_70_2	building_b	Very good. Now activating the door.	很好。正在启动大门。	sndshd	
-str_380054	vo_1_2_8_80_1	building_b	Just got word the Engineering team has seen Strogg in their vicinity. Step it up, Kane.	刚收到消息，工程队在他们附近发现了 Strogg。加快脚步，Kane。	sndshd	
-str_380055	vo_1_2_8_90_1	building_b	Yes, I see where you are - I cannot open that door from here. Find the console that allows you to manually prime it.	好，我看到你的位置了——那扇门我没法从这边打开。去找那台能让你手动预激活它的控制台。	sndshd	
-str_380056	vo_1_2_8_90_2	building_b	Ah, much better.	啊，这就好多了。	sndshd	
-str_380057	vo_3_2_1_10_1	core1	Corporal Kane, can you hear me? Hopefully the shielding around the Core will not completely block my signal.	Kane 下士，能听到我吗？但愿核心周围的屏蔽层不会把我的信号完全隔断。	sndshd	
-str_380058	vo_3_2_1_10_6	core1	Remember your primary goal is to locate and destroy the Nexus. That will disable the Strogg communication network.	记住，你的首要目标是找到并摧毁 Nexus。那将使 Strogg 的通讯网络陷入瘫痪。	sndshd	
-str_380059	vo_3_2_1_40_1	core1	I must admit to being envious of you, Corporal Kane. The technology you are witnessing must be truly spectacular.	我得承认我很羡慕你，Kane 下士。你正亲眼目睹的科技，想必蔚为壮观。	sndshd	
-str_380060	vo_3_2_9_10_1	core2	You are about to enter the room that houses the Nexus, Corporal Kane. Watch yourself, no doubt it will be heavily guarded.	你马上就要进入安置 Nexus 的房间了，Kane 下士。当心，那里毫无疑问守卫森严。	sndshd	
-str_380061	vo_3_2_9_20_1	core2	You did it, Kane! You are now looking at a sight only the Makron has ever laid eyes on. The Nexus is the backbone of the Strogg war machine. Destroy it, and you save Earth.	你做到了，Kane！你现在看到的景象，只有 Makron 曾亲眼见过。Nexus 是 Strogg 战争机器的支柱。摧毁它，就能拯救地球。	sndshd	
-str_380062	vo_2_2_3_25_1	dispersal	To any Marines... Head to the Waste Facility. Just outside is your extraction point.	致所有陆战队员……前往废料处理厂。撤离点就在厂区外面。	sndshd	
-str_380063	vo_1_1_5_100_1	hangar1	Viper Squad, this is Morris. HQ�s finally located a demolitionist for the hangars. He should be there soon.	毒蛇小队，我是 Morris。总部总算找到了负责机库的爆破手。他应该很快就到。	sndshd	Morris
-str_380064	vo_1_1_5_120_1	hangar2	The demolitionist is waiting for the all clear before advancing.	爆破手正在等待安全确认信号，之后才会推进。	sndshd	
-str_380065	vo_1_1_5_140_1	hangar2	Kane, this is Morris. The demolitionist should be near the top of the elevator.	Kane，我是 Morris。爆破手应该就在电梯顶部附近。	sndshd	Morris
-str_380066	vo_1_1_5_150_4	hangar2	Rhodes, if you're done with Viper squad, send 'em on down to my position.	Rhodes，如果毒蛇小队那边的事办完了，就让他们下来到我这个位置。	sndshd	
-str_380067	vo_1_1_6_70_2	hangar2	Detonation in 3... 2... 1	起爆倒计时 3……2……1	sndshd	
-str_380068	vo_1_1_6_80_1	hangar2	Hey, Rhodes. If you kids are done playin' around, why don't you send Kane down my way? Voss wants us back at the air defense cannon on the double.	嘿，Rhodes。你们这帮小子要是玩够了，就把 Kane 打发到我这儿来怎么样？Voss 要我们立刻回防空炮那边。	sndshd	
-str_380069	vo_1_1_6_80_3	hangar2	Sorry, big boy. Voss wants you to stay put. Another team may need your services. Morris, out.	抱歉了，大个子。Voss 要你原地待命。别的队伍可能还需要你帮忙。Morris，完毕。	sndshd	Morris
-str_380070	vo_1_2_14_10_1	hub1	All right, Marines. Listen up. The Strogg have taken out the other convoys, we're all that's left. This mission's too big for any screw-ups. No one take any chances, no one try to be the hero. Voss out.	好了，陆战队员们，都听好。Strogg 干掉了其他车队，就剩我们了。这次任务太重大，容不得半点差错。谁都别冒险，谁都别逞英雄。Voss 完毕。	sndshd	Voss
-str_380071	vo_1_2_14_72_5	hub1	You�ll be fine, Strauss. Kane, get out here on the double. Voss, out.	你不会有事的，Strauss。Kane，马上出来，动作快。Voss，完毕。	sndshd	Voss
-str_380072	vo_1_2_16_120_1	hub1	Good job. The forcefield's down, Kane. Return to the squad immediately.	干得好。力场已经解除，Kane。立刻归队。	sndshd	
-str_380073	vo_1_2_17_10_13	hub1	Yes, sir.	是，长官。	sndshd	
-str_380074	vo_1_2_17_10_7	hub1	Lieutenant Voss, this is Strauss. What has happened?	Voss 中尉，我是 Strauss。发生什么事了？	sndshd	Strauss
-str_380075	vo_1_2_18_10_3	hub1	Ja. But it means I have to go directly to the Tetranode.	Ja。不过这就意味着我必须直接前往 四元节点。	sndshd	
-str_380076	vo_1_2_18_10_5	hub1	If my memory of the building schematics is correct, Kane must take a crawlway out. I will meet him at the other end.	如果我对建筑图纸的记忆没错，Kane 必须从一条爬行通道出去。我会在通道另一头接应他。	sndshd	
-str_380077	vo_1_2_18_20_1	hub2	Corporal Kane, this is Strauss. I am in great danger. Rendezvous with me immediately!	Kane 下士，我是 Strauss。我处境非常危险。立刻来和我会合！	sndshd	Strauss
-str_380078	vo_1_2_20_30_1	hub2	The area you are in stretches between all facilities in this complex.	你所在的这片区域，在这座建筑群的各个设施之间延伸贯通。	sndshd	
-str_380079	vo_1_2_20_40_1	hub2	Nearby is a maintenance platform. Get onboard.	附近有一座维修平台。登上去。	sndshd	
-str_380080	vo_1_2_22_20_1	hub2	There should be a console in the center of the room, Corporal Kane. Activate that and the coolant pumps will shut down. In a matter of minutes, the Tetranode will overheat and destroy itself. And this will render the Nexus useless to the Strogg.	房间中央应该有一台控制台，Kane 下士。启动它，冷却泵就会停止运转。几分钟之内，四元节点 就会过热自毁。这样一来，Nexus 对 Strogg 就毫无用处了。	sndshd	
-str_380081	vo_1_2_22_30_1	hub2	Ah, excellent. Corporal Kane, the Tertanode will soon be destroyed and the Nexus will become inoperative.	啊，太好了。Kane 下士，四元节点 很快就会被摧毁，Nexus 也将随之停摆。	sndshd	
-str_380082	vo_1_2_22_40_1	hub2	Corporal Kane, this is Strauss. I have detected a tremendously large life form in your vicinity. You must get out of there quickly.	Kane 下士，我是 Strauss。我在你附近探测到一个极其庞大的生命体。你必须赶快离开那里。	sndshd	Strauss
-str_380083	vo_1_2_22_40_2	hub2	Kane... It can't be! ... It's the Makron!!	Kane……不可能！……是 Makron！！	sndshd	
-str_380084	vo_1_2_22_40_3	hub2	Get out of there, Kane! Get out!! Suddenly a loud thud can be heard over the comlink.	快离开那里，Kane！快出去！！突然，通讯频道里传来一声巨响。	sndshd	
-str_380085	vo_1_2_22_40_4	hub2	... who is there?	……谁在那里？	sndshd	
-str_380086	vo_1_1_11_100_2	mcc_1	Flooding chamber with trichlorite and septazine. After a few seconds.	正在向舱内注入三氯酸盐和七氮嗪。几秒钟后。	sndshd	消毒室播报
-str_380087	vo_1_1_11_100_3	mcc_1	Chamber at maximum saturation.	舱内已达到最大饱和度。	sndshd	消毒室播报
-str_380088	vo_1_1_11_100_4	mcc_1	Purging chamber.	正在排空舱室。	sndshd	消毒室播报
-str_380089	vo_1_1_11_100_5	mcc_1	Decontamination cycle complete.	消毒流程完成。	sndshd	消毒室播报
-str_380090	vo_1_1_11_360_2	mcc_1	But a Strogg unit is headed directly for Cougar squad.	但有一支 Strogg 部队正直扑美洲狮小队。	sndshd	
-str_380091	vo_1_1_11_360_4	mcc_1	Then they're all dead men. Richards out.	那他们就死定了。Richards 完毕。	sndshd	Richards
-str_380092	vo_2_2_10_253_0	mcc_2	Kane, I would remind you the existence of all humanity rests on your shoulders - but I wouldn't want you to feel any pressure. So all I will say, is don't get yourself killed, my friend.	Kane，我本该提醒你，全人类的存亡都系于你一身——不过我可不想给你压力。所以我只说一句：别把自己弄死了，我的朋友。	sndshd	
-str_380093	vo_2_2_10_253_1	mcc_2	Good luck, sir. Automated navigation will take you right to the Data Storage Terminal. Have a safe flight.	祝你好运，长官。自动导航会把你直接送到数据存储终端。祝飞行顺利。	sndshd	
-str_380094	vo_2_2_10_254_1	mcc_2	My turret�s been hit . . . aaaah, I'm on fire. Heeeelp meeee!	我的炮塔被击中了……啊啊，我着火了。救救我——！	sndshd	
-str_380095	vo_2_2_10_255_1	mcc_2	Harvesters approaching on the left flank.  We need walkers over there ASAP!	收割者正从左翼逼近。马上派「步行者」（walker）过去支援！	sndshd	
-str_380096	vo_2_2_10_256_1	mcc_2	Walker Bison 5 is on fire!  Get Banks out of there!	野牛 5 号「步行者」（walker）着火了！快把 Banks 救出来！	sndshd	
-str_380097	vo_2_2_10_257_1	mcc_2	HQ, this Bison commander. Get us some air support right now or we�re all dead men.	总部，我是野牛小队指挥官。立刻给我们空中支援，不然我们全都得死。	sndshd	野牛小队指挥官
-str_380098	vo_2_2_10_258_1	mcc_2	Badger squad, this is HQ. Set up a defensive position at coordinates 43,82. Render assistance to Bison squad.	猛獾小队，这里是总部。在坐标 43, 82 建立防御阵地，支援野牛小队。	sndshd	总部
-str_380099	vo_2_2_10_258_2	mcc_2	Roger that, HQ. Advancing to coordinates 43, 82.	收到，总部。正在向坐标 43, 82 推进。	sndshd	
-str_380100	vo_2_2_10_259_1	mcc_2	Where the hell is that air support?	该死的空中支援到底在哪儿？	sndshd	
-str_380101	vo_2_2_10_259_2	mcc_2	ETA is 3 minutes.	预计 3 分钟后到达。	sndshd	
-str_380102	vo_2_2_10_259_3	mcc_2	We aren�t gonna last that long.	我们撑不了那么久。	sndshd	
-str_380103	vo_2_2_10_260_1	mcc_2	Another Strogg transport just landed! Where the hell are they all coming from?	又一架 Strogg 运输机降落了！这些家伙到底是从哪儿冒出来的？	sndshd	
-str_380104	vo_2_2_10_261_1	mcc_2	Strogg flyers approaching at 3 O�clock.	Strogg 飞行器正从 3 点钟方向接近。	sndshd	
-str_380105	vo_2_2_10_261_2	mcc_2	I�m on �em.	我来收拾他们。	sndshd	
-str_380106	vo_2_2_10_262_1	mcc_2	Damn!  They just keep coming.	该死！他们源源不断地冲过来。	sndshd	
-str_380107	vo_2_2_10_262_2	mcc_2	Aaahhhh!  Yeah! Take that you freaking Squibs!	啊——！爽！吃我这招，你们这帮该死的杂碎！	sndshd	
-str_380108	vo_2_2_10_262_3	mcc_2	They�re trying to take engineering!	他们想夺取轮机舱！	sndshd	
-str_380109	vo_2_2_10_262_4	mcc_2	They�re all over the place!  I can�t stop them!	到处都是他们！我拦不住了！	sndshd	
-str_380110	vo_2_2_10_262_5	mcc_2	There�s too many!  There�s just too damn many!	太多了！他妈的实在太多了！	sndshd	
-str_380111	vo_2_2_10_263_1	mcc_2	Crap. I can�t get a lock on the flyers. They�re comin� in too low!	该死，我没法锁定那些飞行器。他们飞得太低了！	sndshd	
-str_380112	vo_2_2_10_263_2	mcc_2	Forget the damn computer. Target them visually.	别管那破电脑了。用肉眼瞄准。	sndshd	
-str_380113	vo_2_2_19_120_1	mcc_2	We have Strogg boarding parties on decks 2 and 3!	2 号和 3 号甲板出现 Strogg 登舰部队！	sndshd	
-str_380114	vo_2_2_19_140_1	mcc_2	Security, report to hangar, deck 2. Strogg boarding parties have been reported.	警卫组，前往 2 号甲板机库报到。据报告发现 Strogg 登舰部队。	sndshd	
-str_380115	vo_2_2_20_310_1	mcc_2	Welcome, Corporal Matthew Kane. Navigation online.	欢迎，Matthew Kane 下士。导航系统已上线。	sndshd	
-str_380116	vo_2_2_20_310_2	mcc_2	Engine prep cycle complete.	引擎预热流程完成。	sndshd	
-str_380117	vo_2_2_20_310_3	mcc_2	Prepare for launch.	准备发射。	sndshd	
-str_380118	vo_2_2_20_310_4	mcc_2	5... 4... 3... 2... 1	5……4……3……2……1	sndshd	
-str_380119	vo_1_1_7_100_1	mcc_landing	Kane, this is Morris. I'm not getting any younger. Get a move on.	Kane，我是 Morris。再等下去我都要老了。快点行动。	sndshd	Morris
-str_380120	vo_1_1_7_10_1	mcc_landing	Research team Owl has arrived at the hangars and begun deploying equipment.	猫头鹰研究小组已抵达机库，开始部署设备。	sndshd	
-str_380121	vo_1_1_7_120_1	mcc_landing	Kane, I'm getting tired of coolin' my heels. Get down here before I leave without you!	Kane，我等得都不耐烦了。快下来，不然我可就丢下你先走了！	sndshd	
-str_380122	vo_1_1_7_20_1	mcc_landing	Look! We've got fliers to study!	快看！有飞行器可以研究了！	sndshd	
-str_380123	vo_1_1_7_50_1	mcc_landing	Kane, this is Morris. Where the hell are you? Get down here quick - we've got a war to win, remember?	Kane，我是 Morris。你到底在哪儿？快点下来——别忘了，我们还有一场仗要打赢呢。	sndshd	Morris
-str_380124	vo_1_2_10_20_1	mcc_landing	The Hannibal is passing through the mesosphere. Heat shield is fully operational.	汉尼拔号正在穿越中间层。隔热罩运转完全正常。	sndshd	
-str_380125	vo_1_2_10_30_1	mcc_landing	Now passing through the stratosphere. Breaking procedure has begun.	正在穿越平流层。减速程序已启动。	sndshd	
-str_380126	vo_1_2_10_40_1	mcc_landing	The Hannibal is now in the troposphere - landing zone in sight.	汉尼拔号已进入对流层——着陆区已在视野内。	sndshd	
-str_380127	vo_1_2_10_45_3	mcc_landing	We copy that.	我们收到。	sndshd	
-str_380128	vo_1_2_10_45_5	mcc_landing	Our pleasure.	乐意效劳。	sndshd	
-str_380129	vo_1_2_10_60_1	mcc_landing	The U.S.S. Hannibal has landed. I repeat, the Hannibal has landed. Welcome aboard, Marines.	汉尼拔号已着陆。重复，汉尼拔号已着陆。欢迎登舰，陆战队员们。	sndshd	
-str_380130	vo_1_2_9_20_3	mcc_landing	Affirmative, Lieutenant. The Hannibal is now in geosynchronous orbit and beginning descent.	明白，中尉。汉尼拔号已进入同步轨道，开始下降。	sndshd	
-str_380131	vo_1_2_9_40_3	mcc_landing	Yes, sir	是，长官。	sndshd	
-str_380132	vo_1_2_9_66_1	mcc_landing	Clear the cannon for detonation!	清空炮位区域，准备引爆！	sndshd	
-str_380133	vo_1_2_9_68_2	mcc_landing	Woo! Ha, haaa! Do I love my job!	哇喔！哈，哈哈！我太爱这份工作了！	sndshd	
-str_380134	vo_2_1_1_67_3	medlabs	Anderson, this is Lt.Voss. Things are looking seriously fubared. Rendezvous back with us at the medlab storage facility - we'll head to the primary extraction point.	Anderson，我是 Voss 中尉。情况看起来已经烂得一塌糊涂。回医疗实验室储藏区与我们会合——我们随后前往主撤离点。	sndshd	Voss
-str_380135	vo_2_1_2_220_1	medlabs	All right, Marines, haul ass. The clock is ticking and this is one flight we don�t wanna miss.	好了，陆战队员们，都给我跑起来。时间紧迫，这趟航班我们可误不起。	sndshd	
-str_380136	vo_2_1_2_300_1	medlabs	This is command HQ to all units. A full retreat has been ordered. All squads are to meet at Waste Facility for immediate evac.	指挥部呼叫所有单位。全面撤退命令已下达。所有小队立即前往废料处理厂集合，马上撤离。	sndshd	
-str_380137	vo_3_1_20_100_1	network1	Corporal Kane, I am very busy so I will make this brief.	Kane 下士，我很忙，所以长话短说。	sndshd	
-str_380138	vo_3_1_20_100_2	network1	This is the time you must deactivate the Core security interface. Once you have completed that objective, you will be taking the teleporter into the Core. There you must destroy the Nexus.	现在你必须解除核心的安全接口。完成该目标后，你将乘传送器进入核心。在那里，你必须摧毁 Nexus。	sndshd	
-str_380139	vo_3_1_20_100_3	network1	For the moment, concern yourself with getting to the top of this tower. I will step you through the rest of this mission as you go.	眼下，你只需专心登上这座塔的顶端。接下来的任务步骤，我会一路指引你。	sndshd	
-str_380140	vo_3_1_20_10_1	network1	Private Strauss, it looks like Corporal Kane has arrived.	Strauss 列兵，看来 Kane 下士已经到了。	sndshd	
-str_380141	vo_3_1_20_60_1	network1	This is Falcon 6 making a run on the Networking Tower. Anti-aircraft is heavy.	这里是猎鹰 6 号，正在向网络塔发起突击。防空火力很猛。	sndshd	猎鹰 6 号
-str_380142	vo_3_1_20_60_2	network1	I'm hit! Energizers are off line attempting to...	我被击中了！供能器离线，正在尝试……	sndshd	
-str_380143	vo_3_1_22_10_1	network1	Eagle 10 making our run on the Networking Tower. Damn. The air defenses are strong.	雄鹰 10 号正在向网络塔发起突击。该死，防空火力太强了。	sndshd	
-str_380144	vo_3_1_22_10_2	network1	I'm hit! I have to abort.	我被击中了！我必须中止行动。	sndshd	
-str_380145	vo_3_1_22_40_1	network1	Aaaaaaaah! Aaaaaaaaaaaaaaah!	啊——！啊————！	sndshd	
-str_380146	vo_3_1_22_40_2	network1	Shit. Get a medic up here ASAP! We were trying to demo a door and the charge misfired. Lt.Leonard was hurt.	妈的。赶紧派个医疗兵上来！我们刚才想爆破一扇门，炸药走火了。Leonard 中尉受伤了。	sndshd	
-str_380147	vo_3_1_22_40_3	network1	A medic has been dispatched.	医疗兵已经派出。	sndshd	
-str_380148	vo_3_1_22_50_1	network1	Do something!	想想办法啊！	sndshd	
-str_380149	vo_3_1_22_50_2	network1	It's too late. He's dead.	太迟了。他死了。	sndshd	
-str_380150	vo_3_1_22_50_3	network1	No, damn it. No.	不，该死的。不。	sndshd	
-str_380151	vo_3_1_22_50_4	network1	Sorry, I did what I could. But I'm not a medic.	抱歉，我已经尽力了。但我不是医疗兵。	sndshd	
-str_380152	vo_3_1_22_70_1	network1	No time for grieving. Looks like we've got a fight on our hands.	没时间悲伤了。看来又有一场硬仗要打。	sndshd	
-str_380153	vo_3_1_24_10_1	network1	Corporal Kane, I have bypassed security for the floor you are on. Take the door that is now opening.	Kane 下士，我已经绕过了你所在楼层的安保系统。走那扇正在打开的门。	sndshd	
-str_380154	vo_3_1_24_20_1	network1	We don't dare risk landing pods on the roof until the anti-aircraft guns are taken out.	在防空炮被端掉之前，我们不敢冒险往屋顶投放登陆舱。	sndshd	
-str_380155	vo_3_1_24_30_1	network1	Preparing to make a bombing run on the air defenses.	准备对防空阵地进行一轮轰炸。	sndshd	
-str_380156	vo_3_1_24_30_2	network1	Roger that. I'm following you in.	收到。我跟在你后面进入。	sndshd	
-str_380157	vo_3_1_24_30_3	network1	I can barely see the target through all the...	我几乎看不清目标，到处都是……	sndshd	
-str_380158	vo_3_1_24_30_4	network1	Eagle 12's been hit!	雄鹰 12 号被击中了！	sndshd	
-str_380159	vo_3_1_24_40_1	network1	Corporal Kane, leave one of your squad in the control room you're passing now.	Kane 下士，留一名队员在你正经过的控制室里。	sndshd	
-str_380160	vo_3_1_24_42_1	network1	Radar shows something large headed this way.	雷达显示有个大家伙正朝这边过来。	sndshd	
-str_380161	vo_3_1_24_44_1	network1	We have a visual. The Guardian creature is headed our way. Damn is it fast.	目视确认。那只守护者正朝我们过来。该死，它速度真快。	sndshd	
-str_380162	vo_3_1_24_50_1	network1	Kane, use the teleporter in front of you now. It will take you to the floor directly below the rooftop. There, you will have access to the security  station.	Kane，马上使用你面前的传送器。它会把你送到天台正下方的楼层。在那里你就能进入安保站。	sndshd	
-str_380163	vo_3_1_32_30_1	network1	The Guardian has landed on the side of the tower.	守护者已经落在塔的侧面。	sndshd	
-str_380164	vo_3_1_34_10_1	network2	Ah, the Core security station is finally deactivated. I won't bother asking what took you so long. Quickly make your way to the Core Teleporter.	啊，核心安保站总算解除了。我就不问你怎么磨蹭了这么久了。赶快前往核心传送器。	sndshd	
-str_380165	vo_3_1_34_20_3	network2	HQ, we have a Marine down at the Core teleporter.	总部，核心传送器这边有一名陆战队员倒下了。	sndshd	
-str_380166	vo_3_1_34_20_4	network2	Perhaps he should have listened to me rather than trying to play the hero.	也许他当初该听我的，而不是逞英雄。	sndshd	
-str_380167	vo_3_1_34_20_5	network2	He just wanted to get in there and battle the Strogg.	他只是想冲进去跟 Strogg 干一仗。	sndshd	
-str_380168	vo_3_1_34_20_6	network2	That proved to be a mistake, didn't it?	事实证明这是个错误，不是吗？	sndshd	
-str_380169	vo_3_1_34_20_7	network2	Kane, ignore the unfortunate soul laying dead on the ground. Because of your Strogg physiology you will be able to use the teleporter. Go now, it is the only way into the Core, and that houses the Nexus.	Kane，别管地上那个倒霉鬼了。凭你 Strogg 化的身体，你可以使用传送器。快去，这是进入核心区的唯一通道，Nexus 就在里面。	sndshd	
-str_380170	vo_3_1_34_30_1	network2	Corporal Kane, why do you hesitate to use the teleporter? Trust me when I say it is completely safe for you.	Kane 下士，你还在犹豫什么？相信我，传送器对你来说绝对安全。	sndshd	
-str_380171	vo_3_1_34_30_2	network2	Please, Corporal - use the teleporter. Men are dying as you hesitate to enter the Core.	拜托，下士，快用传送器。你在核心区门口每犹豫一秒，就有人在送命。	sndshd	
-str_380172	vo_3_1_34_30_3	network2	Corporal Kane, it is imperative you use the teleporter now. The Nexus must be destroyed.	Kane 下士，你必须立刻使用传送器。Nexus 非摧毁不可。	sndshd	
-str_380173	vo_3_1_14_10_1	process1	Kane, this is Morris. Data Processing Tower's shut down. Looks like the Strogg are trying to stop us from reaching the core. You'll have to find  a way to bring it back online. Sledge is on his way. He should rendezvous with you shortly. Good luck. Morris out.	Kane，我是 Morris。数据处理塔断电停摆了，看来 Strogg 是想阻止我们接近核心区。你得想办法让它恢复运转。Sledge 已经在路上，很快会和你会合。祝好运。Morris，通话完毕。	sndshd	Morris
-str_380174	vo_3_1_14_20_1	process1	Good job, Kane. The building's back online.	干得好，Kane。整栋建筑恢复运转了。	sndshd	
-str_380175	vo_3_1_14_30_1	process1	Kane, this is Morris. Sledge just arrived at the Processing Tower. Hook up with him as soon as you can.	Kane，我是 Morris。Sledge 刚到数据处理塔，尽快跟他会合。	sndshd	Morris
-str_380176	vo_3_1_14_60_1	process1	Gentlemen, Strauss's finally arrived at the Data Networking Tower. Your mission is gonna become more technical so I'm handing over communications to him. Good luck, guys. Get this mission done. Morris out.	先生们，Strauss 总算抵达数据网络塔了。接下来的任务技术含量会越来越高，通讯指挥就交给他了。祝好运，伙计们，把任务给我拿下。Morris，通话完毕。	sndshd	Morris
-str_380177	vo_3_1_14_6_1	process1	Cortez, this is Morris. Are you and Kane at the Processing Tower yet?	Cortez，我是 Morris。你和 Kane 到数据处理塔了吗？	sndshd	Morris
-str_380178	vo_3_1_14_6_3	process1	Okay, drop off Kane. You're needed at the Networking Tower right away. Another tramcar will be sent for Kane once he's taken care of the security station at the top of the Processing Tower.	好，让 Kane 下车。数据网络塔那边马上需要你。等 Kane 解决掉数据处理塔顶的安全站，会再派一辆轨道车去接他。	sndshd	
-str_380179	vo_3_1_14_6_5	process1	No can do, Alex. Sledge will be here soon enough to lend Kane a hand.	不行，Alex。Sledge 很快就到，会给 Kane 搭把手。	sndshd	
-str_380180	vo_3_1_14_70_1	process1	Greetings, Corporals, this is Strauss. I have finally being to hack into the Nexus. Soon I will know all there is to know about the tower you are in.	各位下士，你们好，我是 Strauss。我总算侵入 Nexus 了。用不了多久，你们所在塔楼的底细我就能摸得一清二楚。	sndshd	Strauss
-str_380181	vo_3_1_14_80_1	process1	The large machines in the area you have just entered are data pumps. They move information from the Networking Tower to the Storage Tower. This is a vital area to the Strogg so expect to meet strong resistance.	你们刚进入的区域里，那些大型机器是数据泵，负责把信息从数据网络塔输送到数据存储塔。这里对 Strogg 至关重要，准备好迎接顽强抵抗吧。	sndshd	
-str_380182	vo_3_1_14_110_2	process2	They are information routers... but they appear to be out of alignment. Kane should be able use the consoles to correct this problem.	那是信息路由器……不过看起来偏离了校准位。Kane 应该能用控制台修正这个问题。	sndshd	
-str_380183	vo_3_1_14_110_3	process2	That data stream you see will act as a guide. Once it�s path is corrected, the stream will lead you to the top floors of the processing tower.	你看到的那道数据流会充当向导。修正它的路径之后，它就会把你引到处理塔的顶层。	sndshd	
-str_380184	vo_3_1_14_135_3	process2	We�re almost to the Processing Tower but we�ve been intercepted by a squadron of fliers!	我们快到处理塔了，却被一中队飞行器拦截了！	sndshd	
-str_380185	vo_3_1_14_140_1	process2	Maybe, mayday! My pod�s been hit! I�m going down! I�m going down!!	求救，求救！我的着陆舱被击中了！我在坠落！我在坠落！！	sndshd	
-str_380186	vo_3_1_14_140_6	process2	Navigation�s out . . . . propulsion�s damaged. I�m coming in like a rock!	导航失灵……推进器受损。我这是直接往下砸啊！	sndshd	
-str_380187	vo_3_1_14_175_2	process2	There is nothing I can do for you in that section. Kane will have to find a solution.	那个区域我无能为力。只能靠 Kane 自己想办法了。	sndshd	
-str_380188	vo_3_1_15_50_1	process2	The Core security interlock from the Processing Tower is now active. Well done, Corporal Kane. Sergeant Slidjonovitch, I would ask you to remain there and not allow the Strogg to reset that console.	数据处理塔通往核心的安全联锁已经解除。干得好，Kane 下士。还有 Slidjonovitch 中士，请你留在原地，别让 Strogg 重置那台控制台。	sndshd	
-str_380189	vo_3_1_15_50_3	process2	Kane, you must now take the elevator down to the tram station and then take a tram to the Data Networking tower. I will meet you there. Strauss, out.	Kane，现在乘电梯下到轨道车站，再乘轨道车前往数据网络塔，我在那里等你。Strauss 通话完毕。	sndshd	Strauss
-str_380190	vo_2_2_4_120_1	recomp	You're in the sterilization control room. There should be a way to turn on the system.	你在消毒控制室里。应该有办法把系统打开。	sndshd	
-str_380191	vo_2_2_4_125_1	recomp	Hey! You did it! The sterilization system is online.	嘿！你成功了！消毒系统启动了。	sndshd	
-str_380192	vo_2_2_4_90_1	recomp	Great. Looks like the whole system needs to be rebooted. You're gonna have to locate and restart both the sterilization and assembly subsystems.	好嘛。看来整套系统都得重启。你得把消毒和装配两个子系统都找到，挨个重启。	sndshd	
-str_380193	vo_3_1_0_10_1	storage1	First wave has launched. All Pods are in the green.	第一波已发射。所有投送舱状态正常。	sndshd	
-str_380194	vo_3_1_0_20_1	storage1	Funny, the Hannibal doesn't look as damaged from here.	有意思，从这儿看，汉尼拔号伤得没那么重嘛。	sndshd	
-str_380195	vo_3_1_0_30_1	storage1	Crap! There's anti-aircraft coming from all directions.	糟了！四面八方全是防空火力。	sndshd	
-str_380196	vo_3_1_0_40_1	storage1	Do not deviate from assigned flight plans.	不得偏离既定飞行计划。	sndshd	
-str_380197	vo_3_1_0_50_1	storage1	Mayday! Mayday! I'm hit! I'm goin' down!	求救！求救！我中弹了！我要坠落了！	sndshd	
-str_380198	vo_3_1_0_60_1	storage1	The shields around the terminals are affecting navigation. Watch your landing vectors.	终端周围的护盾正在干扰导航，注意你们的着陆矢量。	sndshd	
-str_380199	vo_3_1_0_70_1	storage1	There's a fire in my pod! I can't get fire suppression to activate!	我的舱里起火了！灭火系统启动不了！	sndshd	
-str_380200	vo_3_1_0_80_1	storage1	Dammit! Navigation is down. I'm flyin' blind!	该死！导航失灵了，我这是在盲飞！	sndshd	
-str_380201	vo_3_1_1_120_1	storage1	This is Private Terrance Garr. My pod crashed. I need a medic. I... I think my left leg's been severed.	我是列兵 Terrance Garr。我的空投舱坠毁了，需要医疗兵。我……我的左腿好像整个断掉了。	sndshd	
-str_380202	vo_3_1_1_135_1	storage1	Cobra squad, I'm in the level below you. I could use a hand here.	眼镜蛇小队，我在你们下面一层。这边需要搭把手。	sndshd	
-str_380203	vo_3_1_1_135_2	storage1	We're on our way.	我们这就过去。	sndshd	
-str_380204	vo_3_1_1_140_1	storage1	I hate flying in those freakin' pods. They're big metal coffins.	我最烦坐那破空投舱了。那就是一口口大铁棺材。	sndshd	
-str_380205	vo_3_1_1_145_1	storage1	We've done it, HQ! We've broken into the main armory!	我们成功了，总部！我们攻进主军械库了！	sndshd	
-str_380206	vo_3_1_1_30_1	storage1	Shit! My nav computer is screwed up! I'm gonna crash! I'm gonna....	妈的！导航电脑失灵了！我要坠毁了！我要……	sndshd	
-str_380207	vo_3_1_1_35_1	storage1	My pod landed in a lower floor and it's pitch black in here. Somebody tell me where I am.	我的空投舱落到下层了，这里面漆黑一片。谁能告诉我我在哪儿？	sndshd	
-str_380208	vo_3_1_1_50_1	storage1	Someone get me out of this pod! Heeelp meee.	谁来把我从这舱里弄出去！救——命——啊。	sndshd	
-str_380209	vo_3_1_1_55_1	storage1	We just located the pod containing Captain Marin's body. I think I'm gonna be sick.	我们刚找到装着 Marin 上尉遗体的空投舱。我想吐。	sndshd	
-str_380210	vo_3_1_1_70_1	storage1	To all Marines at the Storage Tower. This is Lt.Hollenbeck. Regroup at my position ASAP.	数据存储塔的全体陆战队员注意，我是 Hollenbeck 中尉。尽快到我的位置集结。	sndshd	Hollenbeck
-str_380211	vo_3_1_1_80_1	storage1	Aaaah! My pod! It's on fire!!!	啊——！我的空投舱！着火了！！！	sndshd	
-str_380212	vo_3_1_1_85_1	storage1	HQ, this is Cobra Squad. We have assembled and are advancing.	总部，这里是眼镜蛇小队。我们已集结完毕，正在推进。	sndshd	眼镜蛇小队
-str_380213	vo_3_1_2_35_1	storage1	HQ, this is Kodiak squad and we're in deep shit. Send... aaahh!	总部，这里是棕熊小队。我们麻烦大了。快派……啊——！	sndshd	棕熊小队
-str_380214	vo_3_1_2_50_1	storage1	Rutger and Mills, accompany Kane down to distribution.	Rutger、Mills，陪 Kane 下配电区。	sndshd	
-str_380215	vo_3_1_2_50_2	storage1	Will do.	遵命。	sndshd	
-str_380216	vo_3_1_2_55_1	storage1	Somebody help me! I'm trapped down in level 8. They're gonna be coming through any second!	谁来救救我！我被困在第 8 层了。它们随时都会冲进来！	sndshd	
-str_380217	vo_3_1_3_170_1	storage1	Kane. This is Rhodes. Find me, we gotta get moving.	Kane，我是 Rhodes。来找我，咱们得赶紧行动。	sndshd	Rhodes
-str_380218	vo_3_1_3_170_2	storage1	Kane, where are you? Find me so we can get the hell out of here.	Kane，你在哪儿？快来找我，咱们好离开这鬼地方。	sndshd	
-str_380219	vo_3_1_3_170_3	storage1	Kane, this is Rhodes. What are you doin'? Find me so we can get on with our mission.	Kane，我是 Rhodes。你磨蹭什么呢？快来找我，咱们好继续执行任务。	sndshd	Rhodes
-str_380220	vo_3_1_3_180_2	storage1	Greetings, Corporal Rhodes. You must locate the security interfaces. There is one at the top of each tower that must be disabled to gain access to the Core. But be careful, only Corporal Kane can access them.	你好，Rhodes 下士。你们必须找到安保接口。每座塔的顶部各有一个，全部解除后才能进入核心。但要小心，只有 Kane 下士才能操作它们。	sndshd	
-str_380221	vo_3_1_3_50_1	storage1	This is Falcon 1, awaiting activation of the hangar doors.	这里是猎鹰一号，等待机库大门开启。	sndshd	猎鹰一号
-str_380222	vo_3_1_3_50_2	storage1	This is Falcon 1. We're burning up fuel here. I need those hangar doors opened.	这里是猎鹰一号。我们在白白烧油，赶紧把机库大门打开。	sndshd	猎鹰一号
-str_380223	vo_3_1_3_50_3	storage1	This is Falcon 1, what's the hold up? This zone is hot and I need to land!	这里是猎鹰一号，还在磨蹭什么？这片空域交火激烈，我必须降落！	sndshd	猎鹰一号
-str_380224	vo_3_1_3_55_1	storage1	That heat source in the center of the building is moving rapidly towards the hangar. Whatever it is, you can bet it isn't friendly.	大楼中央的那个热源正快速逼近机库。不管那是什么，保准不是友军。	sndshd	
-str_380225	vo_3_1_3_57_1	storage1	Hot damn, the hangar doors are open! Falcon 1 to commence landing procedure.	好家伙，机库大门开了！猎鹰一号开始降落程序。	sndshd	
-str_380226	vo_3_1_3_60_1	storage1	Falcon 1 has landed. Troops are being deployed. Shit, something's under the hangar floor.	猎鹰一号已着陆，部队正在下机。妈的，机库地板下面有东西。	sndshd	
-str_380227	vo_3_1_3_60_2	storage1	Shit. It's trying to beat it's way through. Immediate dust off in...	妈的，它想砸穿地板冲上来。立即起飞，倒计时……	sndshd	
-str_380228	vo_3_1_3_70_1	storage1	A Strogg creature just tore through the hangar floor like it was wet cardboard. It's huge - I estimate 30 feet tall. We're taking heavy casualties.	一头 Strogg 怪物刚把机库地板撕开了，跟撕湿纸板似的。这家伙巨大无比，目测有三十英尺高。我们伤亡惨重。	sndshd	
-str_380229	vo_3_1_3_80_1	storage1	The creature... is almost impervious... to light weapons fire!	那怪物……轻武器火力……几乎伤不了它！	sndshd	
-str_380230	vo_3_1_3_90_1	storage1	Nothing's slowing it down!	什么都拦不住它！	sndshd	
-str_380231	vo_3_1_4_80_1	storage1	Well done, Corporal Kane! The Core security interface from Data Storage is disabled. Corporal Rhodes, you should remain there and guard the console in case the Strogg should attempt to reactivate it. Corporal Kane should locate the tram and take it to the Data Processing Tower. There he will have to deactivate the second security station at the top. Strauss out.	干得好，Kane 下士！数据存储塔通往核心的安全接口已解除。Rhodes 下士，你应留在原地看守控制台，以防 Strogg 试图将其重新激活。Kane 下士则应找到轨道车，乘它前往数据处理塔，在塔顶解除第二个安全站。Strauss 通话完毕。	sndshd	Strauss
-str_380232	vo_3_1_2_125_1	storage2	HQ, this Cobra squad. We've just taken level five and we are continuing to advance.	总部，这里是眼镜蛇小队。我们刚拿下第五层，正继续推进。	sndshd	眼镜蛇小队
-str_380233	vo_3_1_2_180_1	storage2	Kane, this is Hollenbeck. Good job, the TSD's are being redeployed. Now get back up here on the double.	Kane，我是 Hollenbeck。干得好，TSD 正在重新部署。现在跑步回到上面来。	sndshd	Hollenbeck
-str_380234	vo_3_1_5_1_1	tram1	HQ, this is Scorpion squad. We�ve taken heavy casualties and need an evac at the bridge extraction point.	总部，这里是天蝎小队。我们伤亡惨重，请求在大桥撤离点实施撤离。	sndshd	天蝎小队
-str_380235	vo_3_1_5_1_2	tram1	Scorpion, no evac units are in your immediate area. Secure the bridge control room and sit tight.	天蝎小队，你们附近没有撤离单位。守住大桥控制室，原地待命。	sndshd	
-str_380236	vo_3_1_5_1_3	tram1	Secure the bridge? What the hell with? There�s only two of us left.	守住大桥？拿个屁守啊？我们就剩两个人了。	sndshd	
-str_380237	vo_3_1_5_1_4	tram1	Do the best you can, Scorpion. An evac unit is en route. HQ, out.	尽力撑住，天蝎小队。撤离单位已在路上。总部通话完毕。	sndshd	总部
-str_380238	vo_2_1_2_220_1	walker	All right, Marines, haul ass. The clock is ticking and this is one flight we don�t wanna miss.	好了，弟兄们，撒腿快跑。时间不等人，这趟班机咱们可误不起。	sndshd	
-str_380239	vo_2_1_2_230_1	walker	H Q, this is Viper squad! Our Lieutenant is severely wounded. Request immediate evac.	总部，这里是毒蛇小队！我们中尉伤势严重，请求立即撤离。	sndshd	毒蛇小队
-str_380240	vo_2_1_2_230_2	walker	I wish we could help but evac from your current location is impossible. That zone is too hot.	我们也想帮忙，但你们当前位置无法撤离。那片区域交火太激烈了。	sndshd	
-str_380241	vo_2_1_2_230_3	walker	Shit. All right, thanks HQ. We�ll get out of here somehow.	妈的。行吧，多谢总部。我们自己想办法出去。	sndshd	
-str_380242	vo_2_1_2_240_1	walker	This is Eagle 17, preparing to make a strafing run.	这里是雄鹰十七号，准备进行一轮扫射。	sndshd	雄鹰十七号
-str_380243	vo_2_1_2_300_1	walker	This is command HQ to all units. A full retreat has been ordered. All squads are to meet at Waste Facility for immediate evac.	指挥总部呼叫各单位。全面撤退命令已经下达。所有小队立即前往废料处理厂集合，马上撤离。	sndshd	
-str_380244	vo_2_1_2_320_1	walker	H Q! H Q! This is Kodiak squad. Strogg have overrun our position. I request an immediate artillery barrage on our location!	总部！总部！这里是棕熊小队。Strogg 已经冲垮了我们的阵地。请求立即向我方坐标实施炮火覆盖！	sndshd	棕熊小队
-str_380245	vo_2_1_2_330_1	walker	Walker Squad Bison, you are directed to take up a defensive position at your current location.	野牛机甲小队，命令你们在当前位置转入防御。	sndshd	
-str_380246	vo_2_1_2_330_2	walker	H Q, there�s a shitload of Strogg on our tail.	总部，我们屁股后面咬着一大帮 Strogg。	sndshd	
-str_380247	vo_2_1_2_330_4	walker	Understood. Bison Squad, full halt and deploy weapons. We�re buying the evac some time.	明白。野牛小队，全体停止前进，展开武器。我们给撤离争取时间。	sndshd	
-str_380248	vo_2_1_2_340_1	walker	Eagle 2, Eagle 9, this is Eagle 12. Form up on me.  Let�s see if we can�t offer Bison squad some assistance.	雄鹰二号、雄鹰九号，这里是雄鹰十二号。向我编队。咱们去给野牛小队搭把手。	sndshd	雄鹰十二号
-str_380249	vo_2_2_7_50_1	waste	There are freakin' zombies down here. I just killed one, but it bit me. Shit, I need the medic.	下面全他妈是僵尸。我刚干掉一个，可被它咬了。妈的，我得找医疗兵。	sndshd	
-str_380250	vo_2_2_7_60_1	waste	Where the hell is everyone? I can't get readings on any medchips. We gotta regroup or they're gonna pick us apart.	人都他妈哪儿去了？所有医疗芯片都读不到信号。再不集结，我们就要被它们一个个撕碎了。	sndshd	
-str_380251	vo_1_1_0_01_2	airdefense_intro	Warning!  Incoming attack!	警告！敌方来袭！	sndshd	
-str_380254	vo_1_1_0_01_21	airdefense_intro	We're hit! Another missile's locked on. Firing counter measures.	我们中弹了！又一枚导弹锁定，正在发射干扰弹。	sndshd	
-str_385726	vo_1_2_0_10_1	convoy1	Kane, this is Voss. Grab a ride with Corporal Spencer. He's in a truck nearby. Report to Sergeant Bidwell when you get to the Death convoy. Voss, out.	Kane，我是 Voss。搭 Spencer 下士的车过去，他就在附近的卡车上。到死亡车队后向 Bidwell 中士报到。Voss，完毕。	sndshd	Voss
-str_385727	vo_1_2_0_11_1	convoy1	This is Eagle 3 on flyby, if there's Strogg in the area, they're keeping out of sight.	这里是雄鹰 3 号正在飞越，如果这区域有 Strogg，他们藏得很隐蔽。	sndshd	雄鹰 3 号
-str_385728	vo_1_2_0_16_1	convoy1	This is Walker 4 of Bison Squad on patrol. All clear.	这里是野牛小队「步行者」（walker） 4 号，正在巡逻。一切正常。	sndshd	野牛小队
-str_385729	vo_1_2_0_65_1	convoy1	I've got signal lock. He's not gettin' away from me this time.	信号已锁定。这次他跑不掉了。	sndshd	
-str_385730	vo_1_2_0_66_1	convoy1	Where the hell did he go?	他妈的跑哪儿去了？	sndshd	
-str_385731	vo_1_2_0_90_1	convoy1	Kane, this is voss. We can't move forward until you take out the turrets defending this area.	Kane，我是 Voss。在你摧毁这一带的防御炮台之前，我们无法前进。	sndshd	Voss
-str_385732	vo_1_2_1_100_1	convoy1	Kane, we got landmines ahead. You're gonna have to shoot 'em to detonate 'em.	Kane，前方有地雷。你得射击它们来引爆。	sndshd	
-str_385733	vo_1_2_1_102_1	convoy1	Crap, that must be one of those drop turrets. They're dropped by stealth air units flying in low orbit. Intel says these buggers are nasty.	糟了，那是空投炮塔。低轨道隐形飞行器投下的，情报说这玩意儿不好对付。	sndshd	
-str_385734	vo_1_2_1_105_1	convoy1	HQ, this is Famine. We are in transit now.	总部，这里是饥荒车队。我们已出发。	sndshd	饥荒车队
-str_385735	vo_1_2_1_105_2	convoy1	Roger that, Famine. Pestilence is already underway. Godspeed.	收到，饥荒。瘟疫车队已经上路了。祝好运。	sndshd	
-str_385736	vo_1_2_1_108_1	convoy1	Rhodes! Get up here pronto and disarm these land mines.	Rhodes！马上上来，把这些地雷拆掉。	sndshd	
-str_385737	vo_1_2_1_109_1	convoy1	Kane, protect Rhodes! He's the only one who can disarm those mines.	Kane，掩护 Rhodes！只有他能拆这些地雷。	sndshd	
-str_385738	vo_1_2_1_115_1	convoy1	HQ, this is War.	总部，这里是战争车队。	sndshd	战争车队
-str_385739	vo_1_2_1_115_2	convoy1	This is HQ, go ahead.	总部收到，请讲。	sndshd	
-str_385740	vo_1_2_1_115_3	convoy1	We are proceeding to checkpoint one.	我们正向一号检查点推进。	sndshd	
-str_385741	vo_1_2_1_120_1	convoy1	Kane, this is Voss. Keep your eyes open. Intelligence just is reporting a high concentration of Strogg in your vicinity.	Kane，我是 Voss。保持警惕。情报显示你附近有大量 Strogg 集结。	sndshd	Voss
-str_385742	vo_1_2_1_125_1	convoy1	HQ, this is Eagle 8. We are doing a flyby of Famine. Everything is in the green.	总部，这里是雄鹰 8 号。我们正飞越饥荒车队。一切正常。	sndshd	雄鹰 8 号
-str_385743	vo_1_2_1_135_1	convoy1	HQ, this is Death. We are moving forward and will keep you apprised of our status.	总部，这里是死亡车队。我们正在前进，会随时报告状况。	sndshd	死亡车队
-str_385744	vo_1_2_1_140_1	convoy1	You're doing a great job, Corporal. But keep sharp - there's still reports of Strogg in the area.	干得不错，下士。但保持警觉，这一带仍有 Strogg 出没的报告。	sndshd	
-str_385745	vo_1_2_1_145_1	convoy1	HQ, HQ, this is War. We are under attack from Strogg infantry.	总部，总部，这里是战争车队。我们遭到 Strogg 步兵攻击。	sndshd	战争车队
-str_385746	vo_1_2_1_145_2	convoy1	Roger that, War. Air support has been dispatched.	收到，战争。空中支援已经派出。	sndshd	
-str_385747	vo_1_2_1_147_1	convoy1	War, this is Eagle 9. You might want to duck and cover 'cause this is gonna get messy.	战争车队，这里是雄鹰 9 号。你们最好趴下找掩护，因为接下来会很猛烈。	sndshd	雄鹰 9 号
-str_385748	vo_1_2_1_147_2	convoy1	Woo hoo! Nice shootin', Eagle 9.	好嘞！干得漂亮，雄鹰 9 号。	sndshd	
-str_385749	vo_1_2_1_147_3	convoy1	My pleasure.	乐意效劳。	sndshd	
-str_385750	vo_1_2_1_147_4	convoy1	HQ, this is War. We are resuming our mission.	总部，这里是战争车队。我们恢复执行任务。	sndshd	战争车队
-str_385751	vo_1_2_1_150_1	convoy1	HQ, this is Pestilence. We have reached check point one and are proceeding to check point two.	总部，这里是瘟疫车队。我们已到达一号检查点，正继续向二号检查点推进。	sndshd	瘟疫车队
-str_385752	vo_1_2_1_170_1	convoy1	Death, this is HQ. What is your status?	死亡车队，这里是总部。你们情况如何？	sndshd	总部
-str_385753	vo_1_2_1_170_2	convoy1	We are in the green and proceeding forward.	一切正常，正在继续前进。	sndshd	
-str_385754	vo_1_2_1_170_3	convoy1	Very good. HQ out.	很好。总部完毕。	sndshd	总部
-str_385755	vo_1_2_1_180_1	convoy1	Good job back there, Kane. You kept 'em off us. Here's your stop. Go ahead and get off.	干得好，Kane。你帮我们挡住了它们。你到站了，下车吧。	sndshd	
-str_385756	vo_1_2_1_190_1	convoy1	It's been a pleasure, Kane. Watch yourself.	很荣幸与你同行，Kane。多加小心。	sndshd	
-str_385757	vo_1_2_1_200_1	convoy1	Kane, this is Voss. You see that laser fence in front of you? We're gonna need your help taking it down.	Kane，我是 Voss。看到你前面的激光栅栏了吗？我们需要你的帮忙把它打掉。	sndshd	Voss
-str_385758	vo_1_2_1_200_2	convoy1	HQ! HQ! This is the convoy Famine!! The Strogg have launched missiles on us.	总部！总部！这里是饥荒车队！Strogg 向我们发射了导弹！	sndshd	饥荒车队
-str_385759	vo_1_2_1_200_3	convoy1	Famine, this is HQ. Air support is on its way.	饥荒，这里是总部。空中支援正在路上。	sndshd	总部
-str_385760	vo_1_2_1_200_4	convoy1	Negative. Do not send back up. The area is swarming with Strogg. We're a lost cause.	不用了。不要派增援。这片区域到处是 Strogg。我们没救了。	sndshd	
-str_385761	vo_1_2_1_200_5	convoy1	Kane, you still there? We're down to three convoys so haul ass meet me at the building just up ahead. We need you to take down that fence. Voss, out.	Kane，你还在吗？我们只剩下三支车队了，赶紧到前面那栋建筑和我会合。我们需要你打掉那个栅栏。Voss，完毕。	sndshd	Voss
-str_385762	vo_1_2_1_40_2	convoy1	Affirmative Death. Now switching to frequency 5 1 2.	收到，死亡。现在切换到 512 频率。	sndshd	
-str_385763	vo_1_2_1_80_1	convoy1	Welcome aboard, Corporal Kane. I hope you're handy with that weapon. We're gonna traveling through some pretty hot zones.	欢迎登车，Kane 下士。希望你那把武器用得顺手。我们要穿过几个交战激烈的区域。	sndshd	
-str_385764	vo_1_2_1_92_1	convoy1	To the right!	右边！	sndshd	
-str_385765	vo_1_2_3_30_1	convoy1	Kane, this is Lt.Voss. Head towards the facility dead ahead. See you there. Voss, out.	Kane，我是 Voss 中尉。朝正前方的设施前进。那里见。Voss，完毕。	sndshd	Voss
-str_385844	vo_1_1_11_30_1	mcc_1	You are... Corporal Kane of Rhino Squad. Welcome aboard the Hannibal. You aren't expected at the briefing for a while. Feel free to look around the ship.	你是……犀牛小队的 Kane 下士。欢迎登上汉尼拔号。离汇报还有一阵子，你可以随便转转。	sndshd	
+﻿str_id	sound	map	english	chinese	source	speaker
+
+str_380000	vo_1_1_1_68_1	airdefense1	This is Sgt. Miller. I'm takin' Condor Squad in to clear out the facility.	我是 Miller 中士。我带神鹰小队进去清剿这处设施。（基地警报：警告！敌方来袭！）	sndshd	Miller
+
+str_380001	vo_1_1_2_06_1	airdefense1	We're a lost cause! Do not attempt to evac us.	我们没救了！不要试图撤离我们。	sndshd	
+
+str_380002	vo_1_1_3_51_1	airdefense1	Armadillo Squad, you have to flank left. Flank left, damn it!	犰狳小队，你们得从左翼包抄。从左翼包抄，妈的！	sndshd	
+
+str_380003	vo_1_1_3_56_2	airdefense1	Comm uplink has been established and systems are in the green. Proceed to your first target Bison squad.	通讯上行链路已建立，各系统状态正常。野牛小队，向你们的第一个目标推进。	sndshd	
+
+str_380004	vo_1_1_3_58_1	airdefense1	Viper squad, this is H Q. Mantis squad is M I A and unresponsive. Fall back to rally point alpha niner four.	毒蛇小队，这里是总部。螳螂小队已失踪，无法取得联络。撤退到集结点 Alpha 94。	sndshd	总部
+
+str_380005	vo_1_1_1_70_1	airdefense2	Mayday! Mayday! This is the U.S.S. Patton - we have sustained heavy damage...	求救！求救！这里是 U.S.S. Patton 号——我们受创严重……	sndshd	
+
+str_380006	vo_1_1_1_72_1	airdefense2	... aircraft loss of 65%. We're taking a lot of heat from the air defense cannon. Ground based troops...	……飞行器损失 65%。防空炮的火力压得我们抬不起头。地面部队……	sndshd	
+
+str_380007	vo_1_1_2_02_1	airdefense2	HQ, we can't advance. Dust is clogging the intakes of the hover tanks.	总部，我们无法前进。沙尘堵住了「悬浮坦克」的进气口。	sndshd	
+
+str_380008	vo_1_1_2_04_1	airdefense2	We're being overrun! Launch an air strike on my position now!	我们快被冲垮了！立刻对我的位置发动空袭！	sndshd	
+
+str_380009	vo_1_1_3_01_1	airdefense2	Kane! This is Sgt. Bidwell. We need you here ASAP. We've gotta bring the air defense cannon down.	Kane！我是 Bidwell 中士。你得尽快赶过来。我们必须把防空炮打掉。	sndshd	Bidwell
+
+str_380010	vo_1_1_3_04_1	airdefense2	What's the hold up, Kane? Find us immediately.	磨蹭什么呢，Kane？马上来找我们。	sndshd	
+
+str_380011	vo_1_1_3_04_2	airdefense2	Kane, this is Sgt. Bidwell. Stop pissin' around and hook up with us.	Kane，我是 Bidwell 中士。别瞎晃悠了，赶紧跟我们会合。	sndshd	Bidwell
+
+str_380012	vo_1_1_3_04_3	airdefense2	Kane, this is Bidwell. Don't make me come lookin' for you.	Kane，我是 Bidwell。别逼我亲自去找你。	sndshd	Bidwell
+
+str_380013	vo_1_1_3_30_1	airdefense2	Walker Squad Bison, advance. Fire at will.	野牛机甲小队，前进。自由开火。	sndshd	
+
+str_380014	vo_1_1_3_63_2	airdefense2	We copy that, bison squad. You are cleared to aid the foot soldiers.	收到，野牛小队。批准你们支援步兵。	sndshd	
+
+str_380015	vo_1_1_3_65_5	airdefense2	H Q, this is Bison Squad. The situation is under control.	总部，这里是野牛小队。局势已在掌控之中。	sndshd	野牛小队
+
+str_380016	vo_1_1_3_80_4	airdefense2	Sgt. Bidwell, this is Voss. I think I've found a way to get at that cannon. Can you reach Kane?	Bidwell 中士，我是 Voss。我好像找到对付那门炮的办法了。你能联系上 Kane 吗？	sndshd	Voss
+
+str_380017	vo_1_1_3_80_6	airdefense2	Good. Kane, go to the Strogg hangars. Viper squad will rendezvous with you there. If you can take out the launching bays, the fliers won't be a problem. Voss out.	很好。Kane，前往 Strogg 机库。毒蛇小队会在那里和你会合。只要能端掉发射舱，那些飞行器就不足为患了。Voss 完毕。	sndshd	Voss
+
+str_380018	vo_002_bravoteam	building_b	Bravo Team here! We've got a situaton in alpha niner. Requesting backup for the  . . . Oh, God, just send backup now!	这里是 Bravo 小队！Alpha 9 区出状况了。请求增援，我们……哦，天哪，快派增援来就是了！	sndshd	Bravo 小队
+
+str_380019	vo_002_headsup	building_b	Heads up. The Strogg are breaking through our perimiter. They'll be on us in 3...2...1	注意。Strogg 正在突破我们的防线。他们马上杀到，3……2……1	sndshd	
+
+str_380020	vo_1_1_13_2_0001	building_b	HQ, this is Fox Squad in sector 6A. We have engaged the Strogg.	总部，这里是 6A 区的狐狸小队。我们已与 Strogg 交火。	sndshd	狐狸小队
+
+str_380021	vo_1_1_13_2_0002	building_b	Do you require assistance?	需要支援吗？	sndshd	
+
+str_380022	vo_1_1_13_2_0003	building_b	Affirmative. Send an additional squad immediately.	确认。请立即增派一个小队。	sndshd	
+
+str_380023	vo_1_1_13_4_0001	building_b	HQ, HQ, our squad's pinned down and meeting heavy resistance. We've run out of... aaaah!	总部，总部，我们小队被火力压制，遭遇顽强抵抗。我们已经打光了……啊——！	sndshd	
+
+str_380024	vo_1_1_13_5_0001	building_b	Sarge. We got movement - at bearing 221. I count six signals.	中士，发现动静——方位 221。我数到六个信号。	sndshd	
+
+str_380025	vo_1_1_13_5_0002	building_b	I want a straight V formation. Holtz, you take point.	给我摆一个标准 V 字队形。Holtz，你当尖兵。	sndshd	
+
+str_380026	vo_1_1_13_5_0003	building_b	Got it.	明白。	sndshd	
+
+str_380027	vo_1_1_13_5_0004	building_b	Don't bunch up and remember to check the ceilings.	别扎堆，记得留意天花板。	sndshd	
+
+str_380028	vo_1_1_13_6_0001	building_b	Destroyer, U.S.S. Madison, has achieved sub-orbital position. Com-links established with primary tactical operation HQs. All company commanders transmit sit-reps immediately.	驱逐舰 U.S.S. Madison 号已进入亚轨道位置。已与各主要战术指挥总部建立通讯链路。全体连指挥官立即上报战况。	sndshd	
+
+str_380029	vo_1_1_13_7_0000	building_b	HQ, we have engaged the Strogg.	总部，我们已与 Strogg 交火。	sndshd	
+
+str_380030	vo_1_1_13_7_0001	building_b	Roger that. We read you at sector 25 L.	收到。我们确认你们位于 25L 区。	sndshd	
+
+str_380031	vo_1_1_13_7_0002	building_b	Affirmative, HQ. We're meeting heavy resistance.	确认，总部。我们遭遇顽强抵抗。	sndshd	
+
+str_380032	vo_1_1_13_7_0003	building_b	Watch the left flank!	注意左翼！	sndshd	
+
+str_380033	vo_1_1_13_7_0004	building_b	Over here!	这边！	sndshd	
+
+str_380034	vo_1_1_13_7_0005	building_b	Throw a charge!	扔炸药包！	sndshd	
+
+str_380035	vo_1_1_13_7_0006	building_b	Get down!	趴下！	sndshd	
+
+str_380036	vo_1_1_13_7_0007	building_b	Do you require reinforcements? Silence.	你们需要增援吗？（无人应答）	sndshd	
+
+str_380037	vo_1_1_13_7_0008	building_b	I repeat. Do you require reinforcements?	重复一遍。你们需要增援吗？	sndshd	
+
+str_380038	vo_1_1_13_7_0009	building_b	Negative. The situation is under control.	不需要。局势已在掌控之中。	sndshd	
+
+str_380039	vo_1_1_7_0001	building_b	This is Famine Convoy, grid is down.	这里是饥荒车队，防御网已瘫痪。	sndshd	饥荒车队
+
+str_380040	vo_1_1_7_0002	building_b	This is Pestilence Convoy, grid is down.	这里是瘟疫车队，防御网已瘫痪。	sndshd	瘟疫车队
+
+str_380041	vo_1_1_7_0003	building_b	This is War. The Defense Grid is fully deactivated.	这里是战争车队。防御网已完全瘫痪。	sndshd	战争车队
+
+str_380042	vo_1_1_7_0004	building_b	Shit! We've been spotted by Strogg fliers! They're coming in for a...	妈的！我们被 Strogg 飞行器发现了！他们正俯冲过来准备……	sndshd	
+
+str_380043	vo_1_1_7_0005	building_b	War. Come in. War, please respond.	战争车队，请回话。战争车队，请回答。	sndshd	
+
+str_380044	vo_1_1_7_0006	building_b	Kane, we're movin' out before the Strogg finds our convoy. We've left a hover tank for you. Grab it and you'll be able to rendezvous with us in no time. Bidwell, out.	Kane，趁 Strogg 还没发现车队，我们先出发了。给你留了一辆「悬浮坦克」。开上它，你很快就能跟我们会合。Bidwell，完毕。	sndshd	Bidwell
+
+str_380045	vo_1_2_8_100_1	building_b	Hang on, we got Strogg moving in for the kill!	坚持住，Strogg 正扑上来下杀手！	sndshd	
+
+str_380046	vo_1_2_8_100_2	building_b	Ramming speed!	全速撞过去！	sndshd	
+
+str_380047	vo_1_2_8_100_3	building_b	Keep back! We're coming in fast!	退后！我们要高速冲进来了！	sndshd	
+
+str_380048	vo_1_2_8_100_6	building_b	You must be my escort. Nice of you to show up. Take me back to the door they want opened.	你就是护送我的人吧。可算露面了。带我回他们要打开的那扇门那儿。	sndshd	
+
+str_380049	vo_1_2_8_20_2	building_b	Rodger that.	收到。	sndshd	
+
+str_380050	vo_1_2_8_30_6	building_b	I will be locking the door behind you.	你过去之后，我会把门锁上。	sndshd	
+
+str_380051	vo_1_2_8_61_1	building_b	Kane, what's the hold up? It's imperative you get to Sub-Entrance 1 ASAP.	Kane，还磨蹭什么？你必须尽快赶到 1 号副入口，刻不容缓。	sndshd	
+
+str_380052	vo_1_2_8_70_1	building_b	To continue you must find the console that manually primes the door to sub-entrance 2..	要继续前进，你必须找到能手动预激活 2 号副入口大门的控制台。	sndshd	
+
+str_380053	vo_1_2_8_70_2	building_b	Very good. Now activating the door.	很好。正在启动大门。	sndshd	
+
+str_380054	vo_1_2_8_80_1	building_b	Just got word the Engineering team has seen Strogg in their vicinity. Step it up, Kane.	刚收到消息，工程队在他们附近发现了 Strogg。加快脚步，Kane。	sndshd	
+
+str_380055	vo_1_2_8_90_1	building_b	Yes, I see where you are - I cannot open that door from here. Find the console that allows you to manually prime it.	好，我看到你的位置了——那扇门我没法从这边打开。去找那台能让你手动预激活它的控制台。	sndshd	
+
+str_380056	vo_1_2_8_90_2	building_b	Ah, much better.	啊，这就好多了。	sndshd	
+
+str_380057	vo_3_2_1_10_1	core1	Corporal Kane, can you hear me? Hopefully the shielding around the Core will not completely block my signal.	Kane 下士，能听到我吗？但愿核心周围的屏蔽层不会把我的信号完全隔断。	sndshd	
+
+str_380058	vo_3_2_1_10_6	core1	Remember your primary goal is to locate and destroy the Nexus. That will disable the Strogg communication network.	记住，你的首要目标是找到并摧毁 Nexus。那将使 Strogg 的通讯网络陷入瘫痪。	sndshd	
+
+str_380059	vo_3_2_1_40_1	core1	I must admit to being envious of you, Corporal Kane. The technology you are witnessing must be truly spectacular.	我得承认我很羡慕你，Kane 下士。你正亲眼目睹的科技，想必蔚为壮观。	sndshd	
+
+str_380060	vo_3_2_9_10_1	core2	You are about to enter the room that houses the Nexus, Corporal Kane. Watch yourself, no doubt it will be heavily guarded.	你马上就要进入安置 Nexus 的房间了，Kane 下士。当心，那里毫无疑问守卫森严。	sndshd	
+
+str_380061	vo_3_2_9_20_1	core2	You did it, Kane! You are now looking at a sight only the Makron has ever laid eyes on. The Nexus is the backbone of the Strogg war machine. Destroy it, and you save Earth.	你做到了，Kane！你现在看到的景象，只有 Makron 曾亲眼见过。Nexus 是 Strogg 战争机器的支柱。摧毁它，就能拯救地球。	sndshd	
+
+str_380062	vo_2_2_3_25_1	dispersal	To any Marines... Head to the Waste Facility. Just outside is your extraction point.	致所有陆战队员……前往废料处理厂。撤离点就在厂区外面。	sndshd	
+
+str_380063	vo_1_1_5_100_1	hangar1	Viper Squad, this is Morris. HQ�s finally located a demolitionist for the hangars. He should be there soon.	毒蛇小队，我是 Morris。总部总算找到了负责机库的爆破手。他应该很快就到。	sndshd	Morris
+
+str_380064	vo_1_1_5_120_1	hangar2	The demolitionist is waiting for the all clear before advancing.	爆破手正在等待安全确认信号，之后才会推进。	sndshd	
+
+str_380065	vo_1_1_5_140_1	hangar2	Kane, this is Morris. The demolitionist should be near the top of the elevator.	Kane，我是 Morris。爆破手应该就在电梯顶部附近。	sndshd	Morris
+
+str_380066	vo_1_1_5_150_4	hangar2	Rhodes, if you're done with Viper squad, send 'em on down to my position.	Rhodes，如果毒蛇小队那边的事办完了，就让他们下来到我这个位置。	sndshd	
+
+str_380067	vo_1_1_6_70_2	hangar2	Detonation in 3... 2... 1	起爆倒计时 3……2……1	sndshd	
+
+str_380068	vo_1_1_6_80_1	hangar2	Hey, Rhodes. If you kids are done playin' around, why don't you send Kane down my way? Voss wants us back at the air defense cannon on the double.	嘿，Rhodes。你们这帮小子要是玩够了，就把 Kane 打发到我这儿来怎么样？Voss 要我们立刻回防空炮那边。	sndshd	
+
+str_380069	vo_1_1_6_80_3	hangar2	Sorry, big boy. Voss wants you to stay put. Another team may need your services. Morris, out.	抱歉了，大个子。Voss 要你原地待命。别的队伍可能还需要你帮忙。Morris，完毕。	sndshd	Morris
+
+str_380070	vo_1_2_14_10_1	hub1	All right, Marines. Listen up. The Strogg have taken out the other convoys, we're all that's left. This mission's too big for any screw-ups. No one take any chances, no one try to be the hero. Voss out.	好了，陆战队员们，都听好。Strogg 干掉了其他车队，就剩我们了。这次任务太重大，容不得半点差错。谁都别冒险，谁都别逞英雄。Voss 完毕。	sndshd	Voss
+
+str_380071	vo_1_2_14_72_5	hub1	You�ll be fine, Strauss. Kane, get out here on the double. Voss, out.	你不会有事的，Strauss。Kane，马上出来，动作快。Voss，完毕。	sndshd	Voss
+
+str_380072	vo_1_2_16_120_1	hub1	Good job. The forcefield's down, Kane. Return to the squad immediately.	干得好。力场已经解除，Kane。立刻归队。	sndshd	
+
+str_380073	vo_1_2_17_10_13	hub1	Yes, sir.	是，长官。	sndshd	
+
+str_380074	vo_1_2_17_10_7	hub1	Lieutenant Voss, this is Strauss. What has happened?	Voss 中尉，我是 Strauss。发生什么事了？	sndshd	Strauss
+
+str_380075	vo_1_2_18_10_3	hub1	Ja. But it means I have to go directly to the Tetranode.	Ja。不过这就意味着我必须直接前往 「四元节点」。	sndshd	
+
+str_380076	vo_1_2_18_10_5	hub1	If my memory of the building schematics is correct, Kane must take a crawlway out. I will meet him at the other end.	如果我对建筑图纸的记忆没错，Kane 必须从一条爬行通道出去。我会在通道另一头接应他。	sndshd	
+
+str_380077	vo_1_2_18_20_1	hub2	Corporal Kane, this is Strauss. I am in great danger. Rendezvous with me immediately!	Kane 下士，我是 Strauss。我处境非常危险。立刻来和我会合！	sndshd	Strauss
+
+str_380078	vo_1_2_20_30_1	hub2	The area you are in stretches between all facilities in this complex.	你所在的这片区域，在这座建筑群的各个设施之间延伸贯通。	sndshd	
+
+str_380079	vo_1_2_20_40_1	hub2	Nearby is a maintenance platform. Get onboard.	附近有一座维修平台。登上去。	sndshd	
+
+str_380080	vo_1_2_22_20_1	hub2	There should be a console in the center of the room, Corporal Kane. Activate that and the coolant pumps will shut down. In a matter of minutes, the Tetranode will overheat and destroy itself. And this will render the Nexus useless to the Strogg.	房间中央应该有一台控制台，Kane 下士。启动它，冷却泵就会停止运转。几分钟之内，「四元节点」 就会过热自毁。这样一来，Nexus 对 Strogg 就毫无用处了。	sndshd	
+
+str_380081	vo_1_2_22_30_1	hub2	Ah, excellent. Corporal Kane, the Tertanode will soon be destroyed and the Nexus will become inoperative.	啊，太好了。Kane 下士，「四元节点」 很快就会被摧毁，Nexus 也将随之停摆。	sndshd	
+
+str_380082	vo_1_2_22_40_1	hub2	Corporal Kane, this is Strauss. I have detected a tremendously large life form in your vicinity. You must get out of there quickly.	Kane 下士，我是 Strauss。我在你附近探测到一个极其庞大的生命体。你必须赶快离开那里。	sndshd	Strauss
+
+str_380083	vo_1_2_22_40_2	hub2	Kane... It can't be! ... It's the Makron!!	Kane……不可能！……是 Makron！！	sndshd	
+
+str_380084	vo_1_2_22_40_3	hub2	Get out of there, Kane! Get out!! Suddenly a loud thud can be heard over the comlink.	快离开那里，Kane！快出去！！突然，通讯频道里传来一声巨响。	sndshd	
+
+str_380085	vo_1_2_22_40_4	hub2	... who is there?	……谁在那里？	sndshd	
+
+str_380086	vo_1_1_11_100_2	mcc_1	Flooding chamber with trichlorite and septazine. After a few seconds.	正在向舱内注入三氯酸盐和七氮嗪。几秒钟后。	sndshd	消毒室播报
+
+str_380087	vo_1_1_11_100_3	mcc_1	Chamber at maximum saturation.	舱内已达到最大饱和度。	sndshd	消毒室播报
+
+str_380088	vo_1_1_11_100_4	mcc_1	Purging chamber.	正在排空舱室。	sndshd	消毒室播报
+
+str_380089	vo_1_1_11_100_5	mcc_1	Decontamination cycle complete.	消毒流程完成。	sndshd	消毒室播报
+
+str_380090	vo_1_1_11_360_2	mcc_1	But a Strogg unit is headed directly for Cougar squad.	但有一支 Strogg 部队正直扑美洲狮小队。	sndshd	
+
+str_380091	vo_1_1_11_360_4	mcc_1	Then they're all dead men. Richards out.	那他们就死定了。Richards 完毕。	sndshd	Richards
+
+str_380092	vo_2_2_10_253_0	mcc_2	Kane, I would remind you the existence of all humanity rests on your shoulders - but I wouldn't want you to feel any pressure. So all I will say, is don't get yourself killed, my friend.	Kane，我本该提醒你，全人类的存亡都系于你一身——不过我可不想给你压力。所以我只说一句：别把自己弄死了，我的朋友。	sndshd	
+
+str_380093	vo_2_2_10_253_1	mcc_2	Good luck, sir. Automated navigation will take you right to the Data Storage Terminal. Have a safe flight.	祝你好运，长官。自动导航会把你直接送到数据存储终端。祝飞行顺利。	sndshd	
+
+str_380094	vo_2_2_10_254_1	mcc_2	My turret�s been hit . . . aaaah, I'm on fire. Heeeelp meeee!	我的炮塔被击中了……啊啊，我着火了。救救我——！	sndshd	
+
+str_380095	vo_2_2_10_255_1	mcc_2	Harvesters approaching on the left flank.  We need walkers over there ASAP!	「收割者」正从左翼逼近。马上派「步行者」过去支援！	sndshd	
+
+str_380096	vo_2_2_10_256_1	mcc_2	Walker Bison 5 is on fire!  Get Banks out of there!	野牛 5 号「步行者」着火了！快把 Banks 救出来！	sndshd	
+
+str_380097	vo_2_2_10_257_1	mcc_2	HQ, this Bison commander. Get us some air support right now or we�re all dead men.	总部，我是野牛小队指挥官。立刻给我们空中支援，不然我们全都得死。	sndshd	野牛小队指挥官
+
+str_380098	vo_2_2_10_258_1	mcc_2	Badger squad, this is HQ. Set up a defensive position at coordinates 43,82. Render assistance to Bison squad.	猛獾小队，这里是总部。在坐标 43， 82 建立防御阵地，支援野牛小队。	sndshd	总部
+
+str_380099	vo_2_2_10_258_2	mcc_2	Roger that, HQ. Advancing to coordinates 43, 82.	收到，总部。正在向坐标 43， 82 推进。	sndshd	
+
+str_380100	vo_2_2_10_259_1	mcc_2	Where the hell is that air support?	该死的空中支援到底在哪儿？	sndshd	
+
+str_380101	vo_2_2_10_259_2	mcc_2	ETA is 3 minutes.	预计 3 分钟后到达。	sndshd	
+
+str_380102	vo_2_2_10_259_3	mcc_2	We aren�t gonna last that long.	我们撑不了那么久。	sndshd	
+
+str_380103	vo_2_2_10_260_1	mcc_2	Another Strogg transport just landed! Where the hell are they all coming from?	又一架 Strogg 运输机降落了！这些家伙到底是从哪儿冒出来的？	sndshd	
+
+str_380104	vo_2_2_10_261_1	mcc_2	Strogg flyers approaching at 3 O�clock.	Strogg 飞行器正从 3 点钟方向接近。	sndshd	
+
+str_380105	vo_2_2_10_261_2	mcc_2	I�m on �em.	我来收拾他们。	sndshd	
+
+str_380106	vo_2_2_10_262_1	mcc_2	Damn!  They just keep coming.	该死！他们源源不断地冲过来。	sndshd	
+
+str_380107	vo_2_2_10_262_2	mcc_2	Aaahhhh!  Yeah! Take that you freaking Squibs!	啊——！爽！吃我这招，你们这帮该死的杂碎！	sndshd	
+
+str_380108	vo_2_2_10_262_3	mcc_2	They�re trying to take engineering!	他们想夺取轮机舱！	sndshd	
+
+str_380109	vo_2_2_10_262_4	mcc_2	They�re all over the place!  I can�t stop them!	到处都是他们！我拦不住了！	sndshd	
+
+str_380110	vo_2_2_10_262_5	mcc_2	There�s too many!  There�s just too damn many!	太多了！他妈的实在太多了！	sndshd	
+
+str_380111	vo_2_2_10_263_1	mcc_2	Crap. I can�t get a lock on the flyers. They�re comin� in too low!	该死，我没法锁定那些飞行器。他们飞得太低了！	sndshd	
+
+str_380112	vo_2_2_10_263_2	mcc_2	Forget the damn computer. Target them visually.	别管那破电脑了。用肉眼瞄准。	sndshd	
+
+str_380113	vo_2_2_19_120_1	mcc_2	We have Strogg boarding parties on decks 2 and 3!	2 号和 3 号甲板出现 Strogg 登舰部队！	sndshd	
+
+str_380114	vo_2_2_19_140_1	mcc_2	Security, report to hangar, deck 2. Strogg boarding parties have been reported.	警卫组，前往 2 号甲板机库报到。据报告发现 Strogg 登舰部队。	sndshd	
+
+str_380115	vo_2_2_20_310_1	mcc_2	Welcome, Corporal Matthew Kane. Navigation online.	欢迎，Matthew Kane 下士。导航系统已上线。	sndshd	
+
+str_380116	vo_2_2_20_310_2	mcc_2	Engine prep cycle complete.	引擎预热流程完成。	sndshd	
+
+str_380117	vo_2_2_20_310_3	mcc_2	Prepare for launch.	准备发射。	sndshd	
+
+str_380118	vo_2_2_20_310_4	mcc_2	5... 4... 3... 2... 1	5……4……3……2……1	sndshd	
+
+str_380119	vo_1_1_7_100_1	mcc_landing	Kane, this is Morris. I'm not getting any younger. Get a move on.	Kane，我是 Morris。再等下去我都要老了。快点行动。	sndshd	Morris
+
+str_380120	vo_1_1_7_10_1	mcc_landing	Research team Owl has arrived at the hangars and begun deploying equipment.	猫头鹰研究小组已抵达机库，开始部署设备。	sndshd	
+
+str_380121	vo_1_1_7_120_1	mcc_landing	Kane, I'm getting tired of coolin' my heels. Get down here before I leave without you!	Kane，我等得都不耐烦了。快下来，不然我可就丢下你先走了！	sndshd	
+
+str_380122	vo_1_1_7_20_1	mcc_landing	Look! We've got fliers to study!	快看！有飞行器可以研究了！	sndshd	
+
+str_380123	vo_1_1_7_50_1	mcc_landing	Kane, this is Morris. Where the hell are you? Get down here quick - we've got a war to win, remember?	Kane，我是 Morris。你到底在哪儿？快点下来——别忘了，我们还有一场仗要打赢呢。	sndshd	Morris
+
+str_380124	vo_1_2_10_20_1	mcc_landing	The Hannibal is passing through the mesosphere. Heat shield is fully operational.	汉尼拔号正在穿越中间层。隔热罩运转完全正常。	sndshd	
+
+str_380125	vo_1_2_10_30_1	mcc_landing	Now passing through the stratosphere. Breaking procedure has begun.	正在穿越平流层。减速程序已启动。	sndshd	
+
+str_380126	vo_1_2_10_40_1	mcc_landing	The Hannibal is now in the troposphere - landing zone in sight.	汉尼拔号已进入对流层——着陆区已在视野内。	sndshd	
+
+str_380127	vo_1_2_10_45_3	mcc_landing	We copy that.	我们收到。	sndshd	
+
+str_380128	vo_1_2_10_45_5	mcc_landing	Our pleasure.	乐意效劳。	sndshd	
+
+str_380129	vo_1_2_10_60_1	mcc_landing	The U.S.S. Hannibal has landed. I repeat, the Hannibal has landed. Welcome aboard, Marines.	汉尼拔号已着陆。重复，汉尼拔号已着陆。欢迎登舰，陆战队员们。	sndshd	
+
+str_380130	vo_1_2_9_20_3	mcc_landing	Affirmative, Lieutenant. The Hannibal is now in geosynchronous orbit and beginning descent.	明白，中尉。汉尼拔号已进入同步轨道，开始下降。	sndshd	
+
+str_380131	vo_1_2_9_40_3	mcc_landing	Yes, sir	是，长官。	sndshd	
+
+str_380132	vo_1_2_9_66_1	mcc_landing	Clear the cannon for detonation!	清空炮位区域，准备引爆！	sndshd	
+
+str_380133	vo_1_2_9_68_2	mcc_landing	Woo! Ha, haaa! Do I love my job!	哇喔！哈，哈哈！我太爱这份工作了！	sndshd	
+
+str_380134	vo_2_1_1_67_3	medlabs	Anderson, this is Lt.Voss. Things are looking seriously fubared. Rendezvous back with us at the medlab storage facility - we'll head to the primary extraction point.	Anderson，我是 Voss 中尉。情况看起来已经烂得一塌糊涂。回医疗实验室储藏区与我们会合——我们随后前往主撤离点。	sndshd	Voss
+
+str_380135	vo_2_1_2_220_1	medlabs	All right, Marines, haul ass. The clock is ticking and this is one flight we don�t wanna miss.	好了，陆战队员们，都给我跑起来。时间紧迫，这趟航班我们可误不起。	sndshd	
+
+str_380136	vo_2_1_2_300_1	medlabs	This is command HQ to all units. A full retreat has been ordered. All squads are to meet at Waste Facility for immediate evac.	指挥部呼叫所有单位。全面撤退命令已下达。所有小队立即前往废料处理厂集合，马上撤离。	sndshd	
+
+str_380137	vo_3_1_20_100_1	network1	Corporal Kane, I am very busy so I will make this brief.	Kane 下士，我很忙，所以长话短说。	sndshd	
+
+str_380138	vo_3_1_20_100_2	network1	This is the time you must deactivate the Core security interface. Once you have completed that objective, you will be taking the teleporter into the Core. There you must destroy the Nexus.	现在你必须解除核心的安全接口。完成该目标后，你将乘传送器进入核心。在那里，你必须摧毁 Nexus。	sndshd	
+
+str_380139	vo_3_1_20_100_3	network1	For the moment, concern yourself with getting to the top of this tower. I will step you through the rest of this mission as you go.	眼下，你只需专心登上这座塔的顶端。接下来的任务步骤，我会一路指引你。	sndshd	
+
+str_380140	vo_3_1_20_10_1	network1	Private Strauss, it looks like Corporal Kane has arrived.	Strauss 列兵，看来 Kane 下士已经到了。	sndshd	
+
+str_380141	vo_3_1_20_60_1	network1	This is Falcon 6 making a run on the Networking Tower. Anti-aircraft is heavy.	这里是猎鹰 6 号，正在向网络塔发起突击。防空火力很猛。	sndshd	猎鹰 6 号
+
+str_380142	vo_3_1_20_60_2	network1	I'm hit! Energizers are off line attempting to...	我被击中了！供能器离线，正在尝试……	sndshd	
+
+str_380143	vo_3_1_22_10_1	network1	Eagle 10 making our run on the Networking Tower. Damn. The air defenses are strong.	雄鹰 10 号正在向网络塔发起突击。该死，防空火力太强了。	sndshd	
+
+str_380144	vo_3_1_22_10_2	network1	I'm hit! I have to abort.	我被击中了！我必须中止行动。	sndshd	
+
+str_380145	vo_3_1_22_40_1	network1	Aaaaaaaah! Aaaaaaaaaaaaaaah!	啊——！啊————！	sndshd	
+
+str_380146	vo_3_1_22_40_2	network1	Shit. Get a medic up here ASAP! We were trying to demo a door and the charge misfired. Lt.Leonard was hurt.	妈的。赶紧派个医疗兵上来！我们刚才想爆破一扇门，炸药走火了。Leonard 中尉受伤了。	sndshd	
+
+str_380147	vo_3_1_22_40_3	network1	A medic has been dispatched.	医疗兵已经派出。	sndshd	
+
+str_380148	vo_3_1_22_50_1	network1	Do something!	想想办法啊！	sndshd	
+
+str_380149	vo_3_1_22_50_2	network1	It's too late. He's dead.	太迟了。他死了。	sndshd	
+
+str_380150	vo_3_1_22_50_3	network1	No, damn it. No.	不，该死的。不。	sndshd	
+
+str_380151	vo_3_1_22_50_4	network1	Sorry, I did what I could. But I'm not a medic.	抱歉，我已经尽力了。但我不是医疗兵。	sndshd	
+
+str_380152	vo_3_1_22_70_1	network1	No time for grieving. Looks like we've got a fight on our hands.	没时间悲伤了。看来又有一场硬仗要打。	sndshd	
+
+str_380153	vo_3_1_24_10_1	network1	Corporal Kane, I have bypassed security for the floor you are on. Take the door that is now opening.	Kane 下士，我已经绕过了你所在楼层的安保系统。走那扇正在打开的门。	sndshd	
+
+str_380154	vo_3_1_24_20_1	network1	We don't dare risk landing pods on the roof until the anti-aircraft guns are taken out.	在防空炮被端掉之前，我们不敢冒险往屋顶投放登陆舱。	sndshd	
+
+str_380155	vo_3_1_24_30_1	network1	Preparing to make a bombing run on the air defenses.	准备对防空阵地进行一轮轰炸。	sndshd	
+
+str_380156	vo_3_1_24_30_2	network1	Roger that. I'm following you in.	收到。我跟在你后面进入。	sndshd	
+
+str_380157	vo_3_1_24_30_3	network1	I can barely see the target through all the...	我几乎看不清目标，到处都是……	sndshd	
+
+str_380158	vo_3_1_24_30_4	network1	Eagle 12's been hit!	雄鹰 12 号被击中了！	sndshd	
+
+str_380159	vo_3_1_24_40_1	network1	Corporal Kane, leave one of your squad in the control room you're passing now.	Kane 下士，留一名队员在你正经过的控制室里。	sndshd	
+
+str_380160	vo_3_1_24_42_1	network1	Radar shows something large headed this way.	雷达显示有个大家伙正朝这边过来。	sndshd	
+
+str_380161	vo_3_1_24_44_1	network1	We have a visual. The Guardian creature is headed our way. Damn is it fast.	目视确认。那只守护者正朝我们过来。该死，它速度真快。	sndshd	
+
+str_380162	vo_3_1_24_50_1	network1	Kane, use the teleporter in front of you now. It will take you to the floor directly below the rooftop. There, you will have access to the security  station.	Kane，马上使用你面前的传送器。它会把你送到天台正下方的楼层。在那里你就能进入安保站。	sndshd	
+
+str_380163	vo_3_1_32_30_1	network1	The Guardian has landed on the side of the tower.	守护者已经落在塔的侧面。	sndshd	
+
+str_380164	vo_3_1_34_10_1	network2	Ah, the Core security station is finally deactivated. I won't bother asking what took you so long. Quickly make your way to the Core Teleporter.	啊，核心安保站总算解除了。我就不问你怎么磨蹭了这么久了。赶快前往核心传送器。	sndshd	
+
+str_380165	vo_3_1_34_20_3	network2	HQ, we have a Marine down at the Core teleporter.	总部，核心传送器这边有一名陆战队员倒下了。	sndshd	
+
+str_380166	vo_3_1_34_20_4	network2	Perhaps he should have listened to me rather than trying to play the hero.	也许他当初该听我的，而不是逞英雄。	sndshd	
+
+str_380167	vo_3_1_34_20_5	network2	He just wanted to get in there and battle the Strogg.	他只是想冲进去跟 Strogg 干一仗。	sndshd	
+
+str_380168	vo_3_1_34_20_6	network2	That proved to be a mistake, didn't it?	事实证明这是个错误，不是吗？	sndshd	
+
+str_380169	vo_3_1_34_20_7	network2	Kane, ignore the unfortunate soul laying dead on the ground. Because of your Strogg physiology you will be able to use the teleporter. Go now, it is the only way into the Core, and that houses the Nexus.	Kane，别管地上那个倒霉鬼了。凭你 Strogg 化的身体，你可以使用传送器。快去，这是进入核心区的唯一通道，Nexus 就在里面。	sndshd	
+
+str_380170	vo_3_1_34_30_1	network2	Corporal Kane, why do you hesitate to use the teleporter? Trust me when I say it is completely safe for you.	Kane 下士，你还在犹豫什么？相信我，传送器对你来说绝对安全。	sndshd	
+
+str_380171	vo_3_1_34_30_2	network2	Please, Corporal - use the teleporter. Men are dying as you hesitate to enter the Core.	拜托，下士，快用传送器。你在核心区门口每犹豫一秒，就有人在送命。	sndshd	
+
+str_380172	vo_3_1_34_30_3	network2	Corporal Kane, it is imperative you use the teleporter now. The Nexus must be destroyed.	Kane 下士，你必须立刻使用传送器。Nexus 非摧毁不可。	sndshd	
+
+str_380173	vo_3_1_14_10_1	process1	Kane, this is Morris. Data Processing Tower's shut down. Looks like the Strogg are trying to stop us from reaching the core. You'll have to find  a way to bring it back online. Sledge is on his way. He should rendezvous with you shortly. Good luck. Morris out.	Kane，我是 Morris。数据处理塔断电停摆了，看来 Strogg 是想阻止我们接近核心区。你得想办法让它恢复运转。Sledge 已经在路上，很快会和你会合。祝好运。Morris，通话完毕。	sndshd	Morris
+
+str_380174	vo_3_1_14_20_1	process1	Good job, Kane. The building's back online.	干得好，Kane。整栋建筑恢复运转了。	sndshd	
+
+str_380175	vo_3_1_14_30_1	process1	Kane, this is Morris. Sledge just arrived at the Processing Tower. Hook up with him as soon as you can.	Kane，我是 Morris。Sledge 刚到数据处理塔，尽快跟他会合。	sndshd	Morris
+
+str_380176	vo_3_1_14_60_1	process1	Gentlemen, Strauss's finally arrived at the Data Networking Tower. Your mission is gonna become more technical so I'm handing over communications to him. Good luck, guys. Get this mission done. Morris out.	先生们，Strauss 总算抵达数据网络塔了。接下来的任务技术含量会越来越高，通讯指挥就交给他了。祝好运，伙计们，把任务给我拿下。Morris，通话完毕。	sndshd	Morris
+
+str_380177	vo_3_1_14_6_1	process1	Cortez, this is Morris. Are you and Kane at the Processing Tower yet?	Cortez，我是 Morris。你和 Kane 到数据处理塔了吗？	sndshd	Morris
+
+str_380178	vo_3_1_14_6_3	process1	Okay, drop off Kane. You're needed at the Networking Tower right away. Another tramcar will be sent for Kane once he's taken care of the security station at the top of the Processing Tower.	好，让 Kane 下车。数据网络塔那边马上需要你。等 Kane 解决掉数据处理塔顶的安全站，会再派一辆轨道车去接他。	sndshd	
+
+str_380179	vo_3_1_14_6_5	process1	No can do, Alex. Sledge will be here soon enough to lend Kane a hand.	不行，Alex。Sledge 很快就到，会给 Kane 搭把手。	sndshd	
+
+str_380180	vo_3_1_14_70_1	process1	Greetings, Corporals, this is Strauss. I have finally being to hack into the Nexus. Soon I will know all there is to know about the tower you are in.	各位下士，你们好，我是 Strauss。我总算侵入 Nexus 了。用不了多久，你们所在塔楼的底细我就能摸得一清二楚。	sndshd	Strauss
+
+str_380181	vo_3_1_14_80_1	process1	The large machines in the area you have just entered are data pumps. They move information from the Networking Tower to the Storage Tower. This is a vital area to the Strogg so expect to meet strong resistance.	你们刚进入的区域里，那些大型机器是数据泵，负责把信息从数据网络塔输送到数据存储塔。这里对 Strogg 至关重要，准备好迎接顽强抵抗吧。	sndshd	
+
+str_380182	vo_3_1_14_110_2	process2	They are information routers... but they appear to be out of alignment. Kane should be able use the consoles to correct this problem.	那是信息路由器……不过看起来偏离了校准位。Kane 应该能用控制台修正这个问题。	sndshd	
+
+str_380183	vo_3_1_14_110_3	process2	That data stream you see will act as a guide. Once it�s path is corrected, the stream will lead you to the top floors of the processing tower.	你看到的那道数据流会充当向导。修正它的路径之后，它就会把你引到处理塔的顶层。	sndshd	
+
+str_380184	vo_3_1_14_135_3	process2	We�re almost to the Processing Tower but we�ve been intercepted by a squadron of fliers!	我们快到处理塔了，却被一中队飞行器拦截了！	sndshd	
+
+str_380185	vo_3_1_14_140_1	process2	Maybe, mayday! My pod�s been hit! I�m going down! I�m going down!!	求救，求救！我的着陆舱被击中了！我在坠落！我在坠落！！	sndshd	
+
+str_380186	vo_3_1_14_140_6	process2	Navigation�s out . . . . propulsion�s damaged. I�m coming in like a rock!	导航失灵……推进器受损。我这是直接往下砸啊！	sndshd	
+
+str_380187	vo_3_1_14_175_2	process2	There is nothing I can do for you in that section. Kane will have to find a solution.	那个区域我无能为力。只能靠 Kane 自己想办法了。	sndshd	
+
+str_380188	vo_3_1_15_50_1	process2	The Core security interlock from the Processing Tower is now active. Well done, Corporal Kane. Sergeant Slidjonovitch, I would ask you to remain there and not allow the Strogg to reset that console.	数据处理塔通往核心的安全联锁已经解除。干得好，Kane 下士。还有 Slidjonovitch 中士，请你留在原地，别让 Strogg 重置那台控制台。	sndshd	
+
+str_380189	vo_3_1_15_50_3	process2	Kane, you must now take the elevator down to the tram station and then take a tram to the Data Networking tower. I will meet you there. Strauss, out.	Kane，现在乘电梯下到轨道车站，再乘轨道车前往数据网络塔，我在那里等你。Strauss 通话完毕。	sndshd	Strauss
+
+str_380190	vo_2_2_4_120_1	recomp	You're in the sterilization control room. There should be a way to turn on the system.	你在消毒控制室里。应该有办法把系统打开。	sndshd	
+
+str_380191	vo_2_2_4_125_1	recomp	Hey! You did it! The sterilization system is online.	嘿！你成功了！消毒系统启动了。	sndshd	
+
+str_380192	vo_2_2_4_90_1	recomp	Great. Looks like the whole system needs to be rebooted. You're gonna have to locate and restart both the sterilization and assembly subsystems.	好嘛。看来整套系统都得重启。你得把消毒和装配两个子系统都找到，挨个重启。	sndshd	
+
+str_380193	vo_3_1_0_10_1	storage1	First wave has launched. All Pods are in the green.	第一波已发射。所有投送舱状态正常。	sndshd	
+
+str_380194	vo_3_1_0_20_1	storage1	Funny, the Hannibal doesn't look as damaged from here.	有意思，从这儿看，汉尼拔号伤得没那么重嘛。	sndshd	
+
+str_380195	vo_3_1_0_30_1	storage1	Crap! There's anti-aircraft coming from all directions.	糟了！四面八方全是防空火力。	sndshd	
+
+str_380196	vo_3_1_0_40_1	storage1	Do not deviate from assigned flight plans.	不得偏离既定飞行计划。	sndshd	
+
+str_380197	vo_3_1_0_50_1	storage1	Mayday! Mayday! I'm hit! I'm goin' down!	求救！求救！我中弹了！我要坠落了！	sndshd	
+
+str_380198	vo_3_1_0_60_1	storage1	The shields around the terminals are affecting navigation. Watch your landing vectors.	终端周围的护盾正在干扰导航，注意你们的着陆矢量。	sndshd	
+
+str_380199	vo_3_1_0_70_1	storage1	There's a fire in my pod! I can't get fire suppression to activate!	我的舱里起火了！灭火系统启动不了！	sndshd	
+
+str_380200	vo_3_1_0_80_1	storage1	Dammit! Navigation is down. I'm flyin' blind!	该死！导航失灵了，我这是在盲飞！	sndshd	
+
+str_380201	vo_3_1_1_120_1	storage1	This is Private Terrance Garr. My pod crashed. I need a medic. I... I think my left leg's been severed.	我是列兵 Terrance Garr。我的空投舱坠毁了，需要医疗兵。我……我的左腿好像整个断掉了。	sndshd	
+
+str_380202	vo_3_1_1_135_1	storage1	Cobra squad, I'm in the level below you. I could use a hand here.	眼镜蛇小队，我在你们下面一层。这边需要搭把手。	sndshd	
+
+str_380203	vo_3_1_1_135_2	storage1	We're on our way.	我们这就过去。	sndshd	
+
+str_380204	vo_3_1_1_140_1	storage1	I hate flying in those freakin' pods. They're big metal coffins.	我最烦坐那破空投舱了。那就是一口口大铁棺材。	sndshd	
+
+str_380205	vo_3_1_1_145_1	storage1	We've done it, HQ! We've broken into the main armory!	我们成功了，总部！我们攻进主军械库了！	sndshd	
+
+str_380206	vo_3_1_1_30_1	storage1	Shit! My nav computer is screwed up! I'm gonna crash! I'm gonna....	妈的！导航电脑失灵了！我要坠毁了！我要……	sndshd	
+
+str_380207	vo_3_1_1_35_1	storage1	My pod landed in a lower floor and it's pitch black in here. Somebody tell me where I am.	我的空投舱落到下层了，这里面漆黑一片。谁能告诉我我在哪儿？	sndshd	
+
+str_380208	vo_3_1_1_50_1	storage1	Someone get me out of this pod! Heeelp meee.	谁来把我从这舱里弄出去！救——命——啊。	sndshd	
+
+str_380209	vo_3_1_1_55_1	storage1	We just located the pod containing Captain Marin's body. I think I'm gonna be sick.	我们刚找到装着 Marin 上尉遗体的空投舱。我想吐。	sndshd	
+
+str_380210	vo_3_1_1_70_1	storage1	To all Marines at the Storage Tower. This is Lt.Hollenbeck. Regroup at my position ASAP.	数据存储塔的全体陆战队员注意，我是 Hollenbeck 中尉。尽快到我的位置集结。	sndshd	Hollenbeck
+
+str_380211	vo_3_1_1_80_1	storage1	Aaaah! My pod! It's on fire!!!	啊——！我的空投舱！着火了！！！	sndshd	
+
+str_380212	vo_3_1_1_85_1	storage1	HQ, this is Cobra Squad. We have assembled and are advancing.	总部，这里是眼镜蛇小队。我们已集结完毕，正在推进。	sndshd	眼镜蛇小队
+
+str_380213	vo_3_1_2_35_1	storage1	HQ, this is Kodiak squad and we're in deep shit. Send... aaahh!	总部，这里是棕熊小队。我们麻烦大了。快派……啊——！	sndshd	棕熊小队
+
+str_380214	vo_3_1_2_50_1	storage1	Rutger and Mills, accompany Kane down to distribution.	Rutger、Mills，陪 Kane 下配电区。	sndshd	
+
+str_380215	vo_3_1_2_50_2	storage1	Will do.	遵命。	sndshd	
+
+str_380216	vo_3_1_2_55_1	storage1	Somebody help me! I'm trapped down in level 8. They're gonna be coming through any second!	谁来救救我！我被困在第 8 层了。它们随时都会冲进来！	sndshd	
+
+str_380217	vo_3_1_3_170_1	storage1	Kane. This is Rhodes. Find me, we gotta get moving.	Kane，我是 Rhodes。来找我，咱们得赶紧行动。	sndshd	Rhodes
+
+str_380218	vo_3_1_3_170_2	storage1	Kane, where are you? Find me so we can get the hell out of here.	Kane，你在哪儿？快来找我，咱们好离开这鬼地方。	sndshd	
+
+str_380219	vo_3_1_3_170_3	storage1	Kane, this is Rhodes. What are you doin'? Find me so we can get on with our mission.	Kane，我是 Rhodes。你磨蹭什么呢？快来找我，咱们好继续执行任务。	sndshd	Rhodes
+
+str_380220	vo_3_1_3_180_2	storage1	Greetings, Corporal Rhodes. You must locate the security interfaces. There is one at the top of each tower that must be disabled to gain access to the Core. But be careful, only Corporal Kane can access them.	你好，Rhodes 下士。你们必须找到安保接口。每座塔的顶部各有一个，全部解除后才能进入核心。但要小心，只有 Kane 下士才能操作它们。	sndshd	
+
+str_380221	vo_3_1_3_50_1	storage1	This is Falcon 1, awaiting activation of the hangar doors.	这里是猎鹰一号，等待机库大门开启。	sndshd	猎鹰一号
+
+str_380222	vo_3_1_3_50_2	storage1	This is Falcon 1. We're burning up fuel here. I need those hangar doors opened.	这里是猎鹰一号。我们在白白烧油，赶紧把机库大门打开。	sndshd	猎鹰一号
+
+str_380223	vo_3_1_3_50_3	storage1	This is Falcon 1, what's the hold up? This zone is hot and I need to land!	这里是猎鹰一号，还在磨蹭什么？这片空域交火激烈，我必须降落！	sndshd	猎鹰一号
+
+str_380224	vo_3_1_3_55_1	storage1	That heat source in the center of the building is moving rapidly towards the hangar. Whatever it is, you can bet it isn't friendly.	大楼中央的那个热源正快速逼近机库。不管那是什么，保准不是友军。	sndshd	
+
+str_380225	vo_3_1_3_57_1	storage1	Hot damn, the hangar doors are open! Falcon 1 to commence landing procedure.	好家伙，机库大门开了！猎鹰一号开始降落程序。	sndshd	
+
+str_380226	vo_3_1_3_60_1	storage1	Falcon 1 has landed. Troops are being deployed. Shit, something's under the hangar floor.	猎鹰一号已着陆，部队正在下机。妈的，机库地板下面有东西。	sndshd	
+
+str_380227	vo_3_1_3_60_2	storage1	Shit. It's trying to beat it's way through. Immediate dust off in...	妈的，它想砸穿地板冲上来。立即起飞，倒计时……	sndshd	
+
+str_380228	vo_3_1_3_70_1	storage1	A Strogg creature just tore through the hangar floor like it was wet cardboard. It's huge - I estimate 30 feet tall. We're taking heavy casualties.	一头 Strogg 怪物刚把机库地板撕开了，跟撕湿纸板似的。这家伙巨大无比，目测有三十英尺高。我们伤亡惨重。	sndshd	
+
+str_380229	vo_3_1_3_80_1	storage1	The creature... is almost impervious... to light weapons fire!	那怪物……轻武器火力……几乎伤不了它！	sndshd	
+
+str_380230	vo_3_1_3_90_1	storage1	Nothing's slowing it down!	什么都拦不住它！	sndshd	
+
+str_380231	vo_3_1_4_80_1	storage1	Well done, Corporal Kane! The Core security interface from Data Storage is disabled. Corporal Rhodes, you should remain there and guard the console in case the Strogg should attempt to reactivate it. Corporal Kane should locate the tram and take it to the Data Processing Tower. There he will have to deactivate the second security station at the top. Strauss out.	干得好，Kane 下士！数据存储塔通往核心的安全接口已解除。Rhodes 下士，你应留在原地看守控制台，以防 Strogg 试图将其重新激活。Kane 下士则应找到轨道车，乘它前往数据处理塔，在塔顶解除第二个安全站。Strauss 通话完毕。	sndshd	Strauss
+
+str_380232	vo_3_1_2_125_1	storage2	HQ, this Cobra squad. We've just taken level five and we are continuing to advance.	总部，这里是眼镜蛇小队。我们刚拿下第五层，正继续推进。	sndshd	眼镜蛇小队
+
+str_380233	vo_3_1_2_180_1	storage2	Kane, this is Hollenbeck. Good job, the TSD's are being redeployed. Now get back up here on the double.	Kane，我是 Hollenbeck。干得好，TSD 正在重新部署。现在跑步回到上面来。	sndshd	Hollenbeck
+
+str_380234	vo_3_1_5_1_1	tram1	HQ, this is Scorpion squad. We�ve taken heavy casualties and need an evac at the bridge extraction point.	总部，这里是天蝎小队。我们伤亡惨重，请求在大桥撤离点实施撤离。	sndshd	天蝎小队
+
+str_380235	vo_3_1_5_1_2	tram1	Scorpion, no evac units are in your immediate area. Secure the bridge control room and sit tight.	天蝎小队，你们附近没有撤离单位。守住大桥控制室，原地待命。	sndshd	
+
+str_380236	vo_3_1_5_1_3	tram1	Secure the bridge? What the hell with? There�s only two of us left.	守住大桥？拿个屁守啊？我们就剩两个人了。	sndshd	
+
+str_380237	vo_3_1_5_1_4	tram1	Do the best you can, Scorpion. An evac unit is en route. HQ, out.	尽力撑住，天蝎小队。撤离单位已在路上。总部通话完毕。	sndshd	总部
+
+str_380238	vo_2_1_2_220_1	walker	All right, Marines, haul ass. The clock is ticking and this is one flight we don�t wanna miss.	好了，弟兄们，撒腿快跑。时间不等人，这趟班机咱们可误不起。	sndshd	
+
+str_380239	vo_2_1_2_230_1	walker	H Q, this is Viper squad! Our Lieutenant is severely wounded. Request immediate evac.	总部，这里是毒蛇小队！我们中尉伤势严重，请求立即撤离。	sndshd	毒蛇小队
+
+str_380240	vo_2_1_2_230_2	walker	I wish we could help but evac from your current location is impossible. That zone is too hot.	我们也想帮忙，但你们当前位置无法撤离。那片区域交火太激烈了。	sndshd	
+
+str_380241	vo_2_1_2_230_3	walker	Shit. All right, thanks HQ. We�ll get out of here somehow.	妈的。行吧，多谢总部。我们自己想办法出去。	sndshd	
+
+str_380242	vo_2_1_2_240_1	walker	This is Eagle 17, preparing to make a strafing run.	这里是雄鹰十七号，准备进行一轮扫射。	sndshd	雄鹰十七号
+
+str_380243	vo_2_1_2_300_1	walker	This is command HQ to all units. A full retreat has been ordered. All squads are to meet at Waste Facility for immediate evac.	指挥总部呼叫各单位。全面撤退命令已经下达。所有小队立即前往废料处理厂集合，马上撤离。	sndshd	
+
+str_380244	vo_2_1_2_320_1	walker	H Q! H Q! This is Kodiak squad. Strogg have overrun our position. I request an immediate artillery barrage on our location!	总部！总部！这里是棕熊小队。Strogg 已经冲垮了我们的阵地。请求立即向我方坐标实施炮火覆盖！	sndshd	棕熊小队
+
+str_380245	vo_2_1_2_330_1	walker	Walker Squad Bison, you are directed to take up a defensive position at your current location.	野牛机甲小队，命令你们在当前位置转入防御。	sndshd	
+
+str_380246	vo_2_1_2_330_2	walker	H Q, there�s a shitload of Strogg on our tail.	总部，我们屁股后面咬着一大帮 Strogg。	sndshd	
+
+str_380247	vo_2_1_2_330_4	walker	Understood. Bison Squad, full halt and deploy weapons. We�re buying the evac some time.	明白。野牛小队，全体停止前进，展开武器。我们给撤离争取时间。	sndshd	
+
+str_380248	vo_2_1_2_340_1	walker	Eagle 2, Eagle 9, this is Eagle 12. Form up on me.  Let�s see if we can�t offer Bison squad some assistance.	雄鹰二号、雄鹰九号，这里是雄鹰十二号。向我编队。咱们去给野牛小队搭把手。	sndshd	雄鹰十二号
+
+str_380249	vo_2_2_7_50_1	waste	There are freakin' zombies down here. I just killed one, but it bit me. Shit, I need the medic.	下面全他妈是僵尸。我刚干掉一个，可被它咬了。妈的，我得找医疗兵。	sndshd	
+
+str_380250	vo_2_2_7_60_1	waste	Where the hell is everyone? I can't get readings on any medchips. We gotta regroup or they're gonna pick us apart.	人都他妈哪儿去了？所有医疗芯片都读不到信号。再不集结，我们就要被它们一个个撕碎了。	sndshd	
+
+str_380251	vo_1_1_0_01_2	airdefense_intro	Warning!  Incoming attack!	警告！敌方来袭！	sndshd	
+
+str_380254	vo_1_1_0_01_21	airdefense_intro	We're hit! Another missile's locked on. Firing counter measures.	我们中弹了！又一枚导弹锁定，正在发射干扰弹。	sndshd	
+
+str_385726	vo_1_2_0_10_1	convoy1	Kane, this is Voss. Grab a ride with Corporal Spencer. He's in a truck nearby. Report to Sergeant Bidwell when you get to the Death convoy. Voss, out.	Kane，我是 Voss。搭 Spencer 下士的车过去，他就在附近的卡车上。到死亡车队后向 Bidwell 中士报到。Voss，完毕。	sndshd	Voss
+
+str_385727	vo_1_2_0_11_1	convoy1	This is Eagle 3 on flyby, if there's Strogg in the area, they're keeping out of sight.	这里是雄鹰 3 号正在飞越，如果这区域有 Strogg，他们藏得很隐蔽。	sndshd	雄鹰 3 号
+
+str_385728	vo_1_2_0_16_1	convoy1	This is Walker 4 of Bison Squad on patrol. All clear.	这里是野牛小队「步行者」 4 号，正在巡逻。一切正常。	sndshd	野牛小队
+
+str_385729	vo_1_2_0_65_1	convoy1	I've got signal lock. He's not gettin' away from me this time.	信号已锁定。这次他跑不掉了。	sndshd	
+
+str_385730	vo_1_2_0_66_1	convoy1	Where the hell did he go?	他妈的跑哪儿去了？	sndshd	
+
+str_385731	vo_1_2_0_90_1	convoy1	Kane, this is voss. We can't move forward until you take out the turrets defending this area.	Kane，我是 Voss。在你摧毁这一带的防御炮台之前，我们无法前进。	sndshd	Voss
+
+str_385732	vo_1_2_1_100_1	convoy1	Kane, we got landmines ahead. You're gonna have to shoot 'em to detonate 'em.	Kane，前方有地雷。你得射击它们来引爆。	sndshd	
+
+str_385733	vo_1_2_1_102_1	convoy1	Crap, that must be one of those drop turrets. They're dropped by stealth air units flying in low orbit. Intel says these buggers are nasty.	糟了，那是空投炮塔。低轨道隐形飞行器投下的，情报说这玩意儿不好对付。	sndshd	
+
+str_385734	vo_1_2_1_105_1	convoy1	HQ, this is Famine. We are in transit now.	总部，这里是饥荒车队。我们已出发。	sndshd	饥荒车队
+
+str_385735	vo_1_2_1_105_2	convoy1	Roger that, Famine. Pestilence is already underway. Godspeed.	收到，饥荒。瘟疫车队已经上路了。祝好运。	sndshd	
+
+str_385736	vo_1_2_1_108_1	convoy1	Rhodes! Get up here pronto and disarm these land mines.	Rhodes！马上上来，把这些地雷拆掉。	sndshd	
+
+str_385737	vo_1_2_1_109_1	convoy1	Kane, protect Rhodes! He's the only one who can disarm those mines.	Kane，掩护 Rhodes！只有他能拆这些地雷。	sndshd	
+
+str_385738	vo_1_2_1_115_1	convoy1	HQ, this is War.	总部，这里是战争车队。	sndshd	战争车队
+
+str_385739	vo_1_2_1_115_2	convoy1	This is HQ, go ahead.	总部收到，请讲。	sndshd	
+
+str_385740	vo_1_2_1_115_3	convoy1	We are proceeding to checkpoint one.	我们正向一号检查点推进。	sndshd	
+
+str_385741	vo_1_2_1_120_1	convoy1	Kane, this is Voss. Keep your eyes open. Intelligence just is reporting a high concentration of Strogg in your vicinity.	Kane，我是 Voss。保持警惕。情报显示你附近有大量 Strogg 集结。	sndshd	Voss
+
+str_385742	vo_1_2_1_125_1	convoy1	HQ, this is Eagle 8. We are doing a flyby of Famine. Everything is in the green.	总部，这里是雄鹰 8 号。我们正飞越饥荒车队。一切正常。	sndshd	雄鹰 8 号
+
+str_385743	vo_1_2_1_135_1	convoy1	HQ, this is Death. We are moving forward and will keep you apprised of our status.	总部，这里是死亡车队。我们正在前进，会随时报告状况。	sndshd	死亡车队
+
+str_385744	vo_1_2_1_140_1	convoy1	You're doing a great job, Corporal. But keep sharp - there's still reports of Strogg in the area.	干得不错，下士。但保持警觉，这一带仍有 Strogg 出没的报告。	sndshd	
+
+str_385745	vo_1_2_1_145_1	convoy1	HQ, HQ, this is War. We are under attack from Strogg infantry.	总部，总部，这里是战争车队。我们遭到 Strogg 步兵攻击。	sndshd	战争车队
+
+str_385746	vo_1_2_1_145_2	convoy1	Roger that, War. Air support has been dispatched.	收到，战争。空中支援已经派出。	sndshd	
+
+str_385747	vo_1_2_1_147_1	convoy1	War, this is Eagle 9. You might want to duck and cover 'cause this is gonna get messy.	战争车队，这里是雄鹰 9 号。你们最好趴下找掩护，因为接下来会很猛烈。	sndshd	雄鹰 9 号
+
+str_385748	vo_1_2_1_147_2	convoy1	Woo hoo! Nice shootin', Eagle 9.	好嘞！干得漂亮，雄鹰 9 号。	sndshd	
+
+str_385749	vo_1_2_1_147_3	convoy1	My pleasure.	乐意效劳。	sndshd	
+
+str_385750	vo_1_2_1_147_4	convoy1	HQ, this is War. We are resuming our mission.	总部，这里是战争车队。我们恢复执行任务。	sndshd	战争车队
+
+str_385751	vo_1_2_1_150_1	convoy1	HQ, this is Pestilence. We have reached check point one and are proceeding to check point two.	总部，这里是瘟疫车队。我们已到达一号检查点，正继续向二号检查点推进。	sndshd	瘟疫车队
+
+str_385752	vo_1_2_1_170_1	convoy1	Death, this is HQ. What is your status?	死亡车队，这里是总部。你们情况如何？	sndshd	总部
+
+str_385753	vo_1_2_1_170_2	convoy1	We are in the green and proceeding forward.	一切正常，正在继续前进。	sndshd	
+
+str_385754	vo_1_2_1_170_3	convoy1	Very good. HQ out.	很好。总部完毕。	sndshd	总部
+
+str_385755	vo_1_2_1_180_1	convoy1	Good job back there, Kane. You kept 'em off us. Here's your stop. Go ahead and get off.	干得好，Kane。你帮我们挡住了它们。你到站了，下车吧。	sndshd	
+
+str_385756	vo_1_2_1_190_1	convoy1	It's been a pleasure, Kane. Watch yourself.	很荣幸与你同行，Kane。多加小心。	sndshd	
+
+str_385757	vo_1_2_1_200_1	convoy1	Kane, this is Voss. You see that laser fence in front of you? We're gonna need your help taking it down.	Kane，我是 Voss。看到你前面的激光栅栏了吗？我们需要你的帮忙把它打掉。	sndshd	Voss
+
+str_385758	vo_1_2_1_200_2	convoy1	HQ! HQ! This is the convoy Famine!! The Strogg have launched missiles on us.	总部！总部！这里是饥荒车队！Strogg 向我们发射了导弹！	sndshd	饥荒车队
+
+str_385759	vo_1_2_1_200_3	convoy1	Famine, this is HQ. Air support is on its way.	饥荒，这里是总部。空中支援正在路上。	sndshd	总部
+
+str_385760	vo_1_2_1_200_4	convoy1	Negative. Do not send back up. The area is swarming with Strogg. We're a lost cause.	不用了。不要派增援。这片区域到处是 Strogg。我们没救了。	sndshd	
+
+str_385761	vo_1_2_1_200_5	convoy1	Kane, you still there? We're down to three convoys so haul ass meet me at the building just up ahead. We need you to take down that fence. Voss, out.	Kane，你还在吗？我们只剩下三支车队了，赶紧到前面那栋建筑和我会合。我们需要你打掉那个栅栏。Voss，完毕。	sndshd	Voss
+
+str_385762	vo_1_2_1_40_2	convoy1	Affirmative Death. Now switching to frequency 5 1 2.	收到，死亡。现在切换到 512 频率。	sndshd	
+
+str_385763	vo_1_2_1_80_1	convoy1	Welcome aboard, Corporal Kane. I hope you're handy with that weapon. We're gonna traveling through some pretty hot zones.	欢迎登车，Kane 下士。希望你那把武器用得顺手。我们要穿过几个交战激烈的区域。	sndshd	
+
+str_385764	vo_1_2_1_92_1	convoy1	To the right!	右边！	sndshd	
+
+str_385765	vo_1_2_3_30_1	convoy1	Kane, this is Lt.Voss. Head towards the facility dead ahead. See you there. Voss, out.	Kane，我是 Voss 中尉。朝正前方的设施前进。那里见。Voss，完毕。	sndshd	Voss
+
+str_385844	vo_1_1_11_30_1	mcc_1	You are... Corporal Kane of Rhino Squad. Welcome aboard the Hannibal. You aren't expected at the briefing for a while. Feel free to look around the ship.	你是……犀牛小队的 Kane 下士。欢迎登上汉尼拔号。离汇报还有一阵子，你可以随便转转。	sndshd	
+

@@ -605,7 +605,7 @@ id	en	zh	context	status
 #str_107738	Waiting for initial server message	正在等待服务器初始消息		review
 #str_107739	WAITING TO PLAY	等待进入游戏		review
 #str_107740	ADVANCED	高级		review
-#str_108000	Failed Transfer	失败改造体		review
+#str_108000	Failed Transfer	「失败改造体」		review
 #str_108001	Slimy Transfer	黏液改造体		review
 #str_108002	Corpse	尸体		review
 #str_108003	Kane	Kane		review
@@ -620,7 +620,7 @@ id	en	zh	context	status
 #str_108012	Fuchs	Fuchs		review
 #str_108013	Tactical Transfer	战术改造体		review
 #str_108014	Stroggified Kane	Strogg 化的 Kane		review
-#str_108015	Alternate Failed Transfer	失败改造体（备选）		review
+#str_108015	Alternate Failed Transfer	「失败改造体」		review
 #str_108016	Alternate Slimy Transfer	黏液改造体（备选）		review
 #str_108017	Tactical Elite	精英战术兵		review
 #str_108018	Tactical Command	战术指挥官		review
@@ -681,7 +681,7 @@ id	en	zh	context	status
 #str_122900	CAVERNOUS CRYONICS	冷冻洞窟		review
 #str_122901	CENTRAL INDUSTRIAL	中央工业区		review
 #str_122902	WARFORGED	战争锻造场		review
-#str_122903	STROYENT RED	「斯托伊文特」（Stroyent） 红		review
+#str_122903	STROYENT RED	「斯托伊文特」 红		review
 #str_122904	RETROPHOBOPOLIS	复古恐惧之城		review
 #str_122905	FIREWALL	防火墙		review
 #str_122906	STROGGENOMENON	Strogg 异象		review

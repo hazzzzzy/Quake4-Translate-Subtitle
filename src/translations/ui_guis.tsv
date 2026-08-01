@@ -482,7 +482,7 @@
 #str_200496	> processor <\nsystem error	> 处理器 <\n系统错误		review
 #str_200497	stomach contents at:	胃内容物达：		review
 #str_200498	safety mechanisms prevent overfeeding	安全机制防止过度喂食		review
-#str_200499	of primary stroyent processor.	主 「斯托伊文特」（Stroyent） 处理器。		review
+#str_200499	of primary stroyent processor.	主 「斯托伊文特」 处理器。		review
 #str_200500	override?	强制执行？		review
 #str_200501	feeding status	喂食状态		review
 #str_200502	nominal	正常		review
@@ -494,7 +494,7 @@
 #str_200508	lr	lr		review
 #str_200509	vk-3	vk-3		review
 #str_200510	n-4	n-4		review
-#str_200511	raw stroyent input	「斯托伊文特」（Stroyent） 原料输入		review
+#str_200511	raw stroyent input	「斯托伊文特」 原料输入		review
 #str_200512	auxilliary	辅助		review
 #str_200513	tank capacity	储罐容量		review
 #str_200514	output	输出		review
@@ -519,7 +519,7 @@
 #str_200533	>> secondary source x5b	>> 副来源 x5b		review
 #str_200534	activate barrel process	激活储桶流程		review
 #str_200535	> sorting process active <	> 分拣流程运行中 <		review
-#str_200536	stroyent filling control 34-k	「斯托伊文特」（Stroyent） 灌装控制 34-k		review
+#str_200536	stroyent filling control 34-k	「斯托伊文特」 灌装控制 34-k		review
 #str_200537	holding cells	拘禁室		review
 #str_200538	cell 1	1 号室		review
 #str_200539	cell 3	3 号室		review
@@ -529,7 +529,7 @@
 #str_200543	transport	运输		review
 #str_200544	ext.spec	外部规格		review
 #str_200545	assign	分配		review
-#str_200546	repair bots	维修机器人		review
+#str_200546	repair bots	「维修机器人」		review
 #str_200547	station 04	04 号站		review
 #str_200548	automated repair hub	自动维修枢纽		review
 #str_200549	b58n2-x2-45-tw	b58n2-x2-45-tw		review
@@ -617,7 +617,7 @@
 #str_200631	april 2245	2245 年 4 月		review
 #str_200632	april 22nd	4 月 22 日		review
 #str_200633	2030 MOVIE NIGHT: blood beast 5: the deadening	2030 电影之夜：血兽 5：死寂		review
-#str_200634	Join your fellow marines to watch the cult classic considered by many to be the best of the worst in the Blood Beast octology. With special effects unable to scare your grandma, and a story with plot holes big enough to drive a hovertank through, Blood Beast 5: the Deadening needs to be seen to be believed.	与战友们一起观看这部邪典经典之作——它被许多人誉为《血兽》八部曲中「最烂里的最佳」。特效吓不倒你奶奶，剧情漏洞大到能开过一辆悬浮坦克，《血兽 5：死寂》不看不信。		review
+#str_200634	Join your fellow marines to watch the cult classic considered by many to be the best of the worst in the Blood Beast octology. With special effects unable to scare your grandma, and a story with plot holes big enough to drive a hovertank through, Blood Beast 5: the Deadening needs to be seen to be believed.	与战友们一起观看这部邪典经典之作——它被许多人誉为《血兽》八部曲中「最烂里的最佳」。特效吓不倒你奶奶，剧情漏洞大到能开过一辆「悬浮坦克」，《血兽 5：死寂》不看不信。		review
 #str_200635	2100 PROBALL FINALS (QUAD 3)	2100 Proball 决赛（QUAD 3）		review
 #str_200636	Come down to watch as the 482nd Airborne team battles the 379th Infantry team for Proball supremacy and the right to enter the final round robin. Your commanding officers would like to take this opportunity to remind you to watch this event.	快来观看第 482 空降队对阵第 379 步兵队，争夺 Proball 霸主地位与晋级最终循环赛的资格。各位指挥官借此机会提醒你，务必观看本场比赛。		review
 #str_200637	frequency	频率		review
@@ -776,7 +776,7 @@
 #str_200790	7894-sdds-4	7894-sdds-4		review
 #str_200791	array vector	阵列向量		review
 #str_200792	sig variance	信号方差		review
-#str_200793	repair bot	维修机器人		review
+#str_200793	repair bot	「维修机器人」		review
 #str_200794	783894-sdfds-4	783894-sdfds-4		review
 #str_200795	systems status	系统状态		review
 #str_200796	1 7 3 8 9 5 2 6 4	1 7 3 8 9 5 2 6 4		review
@@ -813,7 +813,7 @@
 #str_200827	>transport failure<	>运输故障<		review
 #str_200828	barrel transport	桶体运输		review
 #str_200829	system error	系统错误		review
-#str_200830	stroyent flow	「斯托伊文特」（Stroyent） 流量		review
+#str_200830	stroyent flow	「斯托伊文特」 流量		review
 #str_200831	flowrate	流速		review
 #str_200832	console	控制台		review
 #str_200833	sys.chk	sys.chk		review
@@ -943,7 +943,7 @@
 #str_200957	MAINTENANCE	维护		review
 #str_200958	VERIFICATION	验证		review
 #str_200959	Voice Chat	语音聊天		review
-#str_200960	stroyent	「斯托伊文特」（Stroyent）		review
+#str_200960	stroyent	「斯托伊文特」		review
 #str_200961	health	生命值		review
 #str_200962	DEPLETED	已耗尽		review
 #str_200963	track maintenance 7xj	轨道维护 7xj		review

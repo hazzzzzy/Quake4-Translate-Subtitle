@@ -45,7 +45,7 @@
 #str_400045	D.4 Genetic Research	D.4 基因研究室		review
 #str_400046	D.4 Neurosurgery	D.4 神经外科		review
 #str_400047	D.4 Drop Pods 1-15	D.4 空投舱 1-15		review
-#str_400048	D.4 Walker Hangar	D.4 「步行者」（walker）机库		review
+#str_400048	D.4 Walker Hangar	D.4 「步行者」机库		review
 #str_400049	D.4 Med Bay | Central Command	D.4 医疗舱 | 中央指挥部		review
 #str_400050	D.4 Rhino Quarters	D.4 Rhino 小队宿舍		review
 #str_400051	D.4 Drop Pod Launch Bay	D.4 空投舱发射区		review
@@ -67,22 +67,22 @@
 #str_400067	Retrieve Engineer	接回工程师		review
 #str_400068	Enter the basement of this building and locate the convoy that is pinned down there.  Locate the engineer that is attached to the squad.	进入这栋建筑的地下室，找到被困在那里的车队，并找到配属该小队的工程师。		review
 #str_400069	Return to Building Entrance	返回建筑入口		review
-#str_400070	Return to the entrance of the facility and find the hover tank waiting there.	返回设施入口，找到在那里待命的悬浮坦克。		review
+#str_400070	Return to the entrance of the facility and find the hover tank waiting there.	返回设施入口，找到在那里待命的「悬浮坦克」。		review
 #str_400071	Shut Down the Defense Grid	关闭防御网		review
 #str_400072	Find a way to the Perimeter Control Room and shut down the laser grid to allow the convoy to proceed to the Nexus Hub.	设法抵达外围控制室，关闭激光网，让车队得以继续前往 Nexus 枢纽。		review
 #str_400073	Canyons	峡谷		review
-#str_400074	Destroy the Tetranode with Strauss	与 Strauss 一起摧毁「四元节点」（Tetranode）		review
-#str_400075	Take the crawlspace to meet up with Strauss and destroy the Tetranode by hand.	钻过检修通道与 Strauss 会合，亲手摧毁四元节点。		review
-#str_400076	Destroy the Tetranode	摧毁四元节点		review
-#str_400077	Escort the EMP to directly under the Tetranode and destroy it.	护送 EMP 装置至四元节点正下方，将其摧毁。		review
+#str_400074	Destroy the Tetranode with Strauss	与 Strauss 一起摧毁「四元节点」		review
+#str_400075	Take the crawlspace to meet up with Strauss and destroy the Tetranode by hand.	钻过检修通道与 Strauss 会合，亲手摧毁「四元节点」。		review
+#str_400076	Destroy the Tetranode	摧毁「四元节点」		review
+#str_400077	Escort the EMP to directly under the Tetranode and destroy it.	护送 EMP 装置至「四元节点」正下方，将其摧毁。		review
 #str_400078	Activate the Power Plant	启动发电厂		review
-#str_400079	Escort and protect Strauss to the Tetranode's power plant.	护送 Strauss 前往四元节点的发电厂，并保护他的安全。		review
+#str_400079	Escort and protect Strauss to the Tetranode's power plant.	护送 Strauss 前往「四元节点」的发电厂，并保护他的安全。		review
 #str_400080	Find the Emergency Shutoff Controls	找到紧急关闭控制装置		review
 #str_400081	Escort and protect Strauss to the Emergency Shutoff Controls.	护送 Strauss 前往紧急关闭控制装置，并保护他的安全。		review
 #str_400082	Stop the Emergency Shutdown	阻止紧急停机		review
-#str_400083	Use the data routers to rewire and shut down the emergency controls for the Tetranode.	利用数据路由器重新接线，关闭四元节点的紧急控制系统。		review
+#str_400083	Use the data routers to rewire and shut down the emergency controls for the Tetranode.	利用数据路由器重新接线，关闭「四元节点」的紧急控制系统。		review
 #str_400084	Shut Down the Coolant Pumps	关闭冷却泵		review
-#str_400085	Find the coolant pumps used to keep the Tetranode from overheating and shut them down.	找到用于防止四元节点过热的冷却泵，并将其关闭。		review
+#str_400085	Find the coolant pumps used to keep the Tetranode from overheating and shut them down.	找到用于防止「四元节点」过热的冷却泵，并将其关闭。		review
 #str_400086	Find A New Path	寻找新通路		review
 #str_400087	The machinery has opened a new way to go. Return to the machine and exit the medical facility through the newly created path.	机械装置开辟出了一条新通路。回到那台机器旁，经由新开辟的通道离开医疗设施。		review
 #str_400088	Return to Rotating Machine	返回旋转机械		review
@@ -96,15 +96,15 @@
 #str_400096	Extend the Bridge	展开桥梁		review
 #str_400097	Find the command overlook that is used to extend the bridge.	找到用于展开桥梁的指挥瞭望台。		review
 #str_400098	Regroup	会合		review
-#str_400099	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」（Stroyent） 疏散设施的废料区与其余陆战队员会合。		review
+#str_400099	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」 疏散设施的废料区与其余陆战队员会合。		review
 #str_400100	Dispersal	疏散设施		review
 #str_400101	Injection Interjection	中断注入		review
-#str_400102	Reset the Stroyent Injection System--you wouldn't survive the process.	重置 「斯托伊文特」（Stroyent） 注入系统——你可挺不过那道工序。		review
+#str_400102	Reset the Stroyent Injection System--you wouldn't survive the process.	重置 「斯托伊文特」 注入系统——你可挺不过那道工序。		review
 #str_400103	Destroy Fluid Pump	摧毁流体泵		review
 #str_400104	The mutated heart seems to pump fluid throughout the pipes in the dispersal facility.  Overcharge it to drain the pool and exit deeper into the building.	这颗变异的心脏似乎在为疏散设施中的管道泵送流体。让它过载以排空水池，然后深入建筑内部。		review
-#str_400105	Destroy the Stroyent Processing Creature	摧毁 「斯托伊文特」（Stroyent） 加工生物		review
-#str_400106	Find a way to destroy the creature that controls the flow of fluids through the Stroyent Dispersal Facility.	设法摧毁控制 「斯托伊文特」（Stroyent） 疏散设施内流体输送的生物。		review
-#str_400107	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」（Stroyent） 疏散设施的废料区与其余陆战队员会合。		review
+#str_400105	Destroy the Stroyent Processing Creature	摧毁 「斯托伊文特」 加工生物		review
+#str_400106	Find a way to destroy the creature that controls the flow of fluids through the Stroyent Dispersal Facility.	设法摧毁控制 「斯托伊文特」 疏散设施内流体输送的生物。		review
+#str_400107	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」 疏散设施的废料区与其余陆战队员会合。		review
 #str_400108	Recomposition	再造中心		review
 #str_400109	Activate Process	启动工序		review
 #str_400110	Find the barrel sterilization controls and reboot the system	找到料桶消毒控制装置并重启系统。		review
@@ -144,7 +144,7 @@
 #str_400144	Align Tram Car	校准电车线路		review
 #str_400145	Activate the hub station to rotate the tram on to the correct course.	启动枢纽站，将电车旋转到正确的线路上。		review
 #str_400146	Repair Tram Rail	修复电车轨道		review
-#str_400147	Redirect repair bots to repair the broken tram rail.	调派维修机器人修复损坏的电车轨道。		review
+#str_400147	Redirect repair bots to repair the broken tram rail.	调派「维修机器人」修复损坏的电车轨道。		review
 #str_400148	Protect Tram Car	保护电车		review
 #str_400149	Keep the strogg off your back so the tram can reach Data Processing in one piece.	顶住 Strogg 的攻势，让电车完好无损地抵达数据处理塔。		review
 #str_400150	Protect Tram Car	保护电车		review
@@ -452,7 +452,7 @@
 #str_400452	Hub Monitoring	枢纽监控		review
 #str_400453	Hub Controls	枢纽控制		review
 #str_400454	Construction	施工区		review
-#str_400455	Repair Bot Controls	维修机器人控制		review
+#str_400455	Repair Bot Controls	「维修机器人」控制		review
 #str_400456	Mega Health	超级生命		review
 #str_400457	Health Shard	生命碎片		review
 #str_400458	Locate Exit	寻找出口		review
