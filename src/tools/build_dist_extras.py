@@ -271,14 +271,6 @@ def patch_exitlevel_gui(text: str) -> str:
         text, "t_exit", "text", '"#str_200379"', '"exit"')
 
 
-def patch_cursor_gui(text: str) -> str:
-    """准心人名(crossName)由 marine 改用 lowpixel：marine 恢复原版基础段后英文
-    人名会显示为原版方正字形、与中文军衔(思源)混排违和，故准心人名改回纯思源
-    字体 lowpixel（2026-08-01 用户反馈）。"""
-    return patch_window_property(text, "crossName", "font",
-                                 '"fonts/marine"', '"fonts/lowpixel"')
-
-
 def patch_sys_offline_gui(text: str) -> str:
     """把“系统 / 现已离线”放回原可读文本区域的视觉中心。"""
     text = patch_window_property(
@@ -651,7 +643,7 @@ def build_assets(
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     small_step = 0
-    small_step_total = 18
+    small_step_total = 17
 
     def advance(message: str) -> None:
         nonlocal small_step
@@ -716,11 +708,6 @@ def build_assets(
                       patch_exitlevel_gui,
                       out / "guis" / "common" / "exitlevel.gui")
     advance("已生成撤离界面")
-
-    print("[2h] 补丁 cursor.gui（准心人名 marine→lowpixel，避免原版字形混排）...", flush=True)
-    extract_and_patch(pak001, "guis/cursor.gui",
-                      patch_cursor_gui, out / "guis" / "cursor.gui")
-    advance("已生成准心界面")
 
     print("[3/4] 补丁 med1_textchange.gui（pak001 → 神经细胞植入转译动画中文化）...", flush=True)
     extract_and_patch(pak001, "guis/maps/medlabs/med1_textchange.gui",

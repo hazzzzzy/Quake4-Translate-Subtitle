@@ -105,6 +105,27 @@ Quake 4 会按 GUI 源文件结构和窗口顺序序列化状态。必须遵守�
 4. 视觉验收应从主菜单进入新流程、换图，或在明确的调试场景执行 `reloadGuis all`；不能用旧 `gamestart`判断当前 HUD 文件是否正确。
 5. 旧 `gamestart`制作于 2026-07-17，早于后续 EXIT、枪名、字体和 HUD 调整。`run_q4_start.cmd`出现旧无线电两行、EXIT 异常或枪名偏高，不代表当前磁盘资产回退。
 
+## GUI 加载机制与字体共用约束
+
+### 两类 GUI 的加载路径（2026-08-01 摸清）
+
+- **走 savepath 的 GUI**（loose 覆盖生效）：HUD（hud.gui/hud_strogg.gui）、主菜单、腕表、字幕、Strogg 面板、电梯/撤离/生命补给等。由 `build_dist_extras.py` 从原版 pak 现场生成到 `savedata/q4base/guis/`，loose 文件覆盖 pak 原版。
+- **不走 savepath 的 GUI**（只认 basepath pak，loose 文件和 savepath 内 pk4 都不覆盖）：武器 viewmodel 弹药 GUI（`machinegun_ammo`/`hyperblaster_ammo`/`shotgun_ammo`/`nailgun_ammo`/`rocketlauncher_ammo.gui`）和准心 GUI（`cursor.gui`）。由武器 def / 引擎代码从 basepath pak 直接加载，不搜 `fs_savepath`。**改这些 GUI 的 rect/font/textscale 等任何属性都不会生效**（实测：ammo rect 大补偿 +28、cursor crossName font 改 lowpixel、cursor 打 zzz pk4，全部纹丝不动）。
+
+### marine 字体被三处共用，字形无法分别
+
+marine 基础段（ASCII/英文/数字）被以下三处共用，字形必须一致：
+
+1. **枪身弹药数字**（武器 viewmodel ammo GUI，`font "fonts/marine"`）
+2. **准心人名**（`cursor.gui` 的 `crossName` 控件 `gui::npc`，`font "fonts/marine"`）
+3. **MCC 终端/医疗面板/简报/监控的数字编号**（各终端 GUI，`font "fonts/marine"`）
+
+marine 恢复原版基础段后，这三处的英文/数字**同时变原版方正字形**，无法只让枪身是原版、准心是思源。要让准心英文名回思源只能 marine 整体回思源（枪身数字也回思源）。当前（2026-08-01）选择 marine 原版基础段：三者统一原版，并附数字位置补偿。
+
+### 改 viewmodel/准心数字位置：改 fontdat，不要改 GUI rect
+
+武器弹药数字和准心的位置由 fontdat 里数字字形的 `top`（垂直）和 `xSkip`（水平 center 基准）决定，`PaintChar` 直接读取这两个度量。GUI rect 改动对这些 viewmodel/准心 GUI 无效（不走 savepath），**改 fontdat 才有效**（2026-08-01 大补偿实证：fontdat 数字 top-10/xSkip-10 立刻右下移）。marine 数字位置补偿（`top-4`/`xSkip-15`，实机标定：垂直下移到不偏上、水平 center 右移到居中）集成在 `export_font.py` 的 `use_original_base` 分支（marine 基础段拷贝后改数字 0-9 的 top/xSkip 再写）；`patch_marine_numoffset.py` 是实机快速微调工具（每次基于 pak 原版重新算，不累积偏移）。注意 xSkip 大幅缩小会让多字符（如机枪"24"）字间距变窄，单字符（霰弹枪）不受影响。
+
 ## 引擎构建与部署
 
 q4game 使用 VS2022、CMake 和 Ninja 构建，核心配置为：
