@@ -69,6 +69,7 @@ jobs:
               "/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp",
               "/Q3E/src/main/jni/doom3/neo/quake4/Sound.cpp",
               "/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp",
+              "/Q3E/src/main/jni/doom3/neo/quake4/GameEdit.cpp",
               "/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp"
           ) | Set-Content -LiteralPath (Join-Path $engine ".git\info\sparse-checkout") -Encoding ASCII
           git -C $engine checkout

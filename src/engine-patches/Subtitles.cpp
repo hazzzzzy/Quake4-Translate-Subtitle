@@ -35,7 +35,7 @@ rvSubtitles gameSubtitles;
 
 // —— 行宽度量（与引擎 DrawText 同款推进公式：xSkip * useScale）——
 // 首次使用时从字幕 GUI 同款 fontdat 读取真实字形步进，文件缺失时退回估值
-static const float SUB_TEXT_W		= 356.0f;					// 行像素预算（gui 文本区宽 368，留行首禁则并入余量）
+static const float SUB_TEXT_W		= 362.0f;					// 行像素预算（gui 文本区宽 368，留行首禁则并入余量）
 // 2026-07-17 字幕改用 24 号字库同尺寸渲染：gui_smallFontLimit 置 0（启动脚本/
 // 配置下发）后 textscale 0.19 落入 24 号档，useScale=0.19×48/24=0.38，屏显
 // 尺寸不变、度量分辨率翻倍——fontdat 步进是整数，12 号下拉丁字母 4~6px 的
@@ -284,13 +284,15 @@ bool rvSubtitles::IsAudible( idEntity *bodyEnt, const idSoundShader *shader ) co
 	if ( !bodyEnt || !shader ) {
 		return true;
 	}
-	// 过场期间:借用引擎 cinematic 标志,只显示过场实体(cinematic=1)的字幕,
-	// 过滤走廊路人/环境广播乱入 —— 过场时 cinematic=0 的实体本就被引擎冻结不 Think。
-	// (2026-07-31 用户反馈会议字幕乱入)
+	// 过场期间过滤环境广播(speaker 实体)的字幕乱入,
+	// 但保留剧情实体(idAI/idAFAttachment 等)的对白字幕。
+	// 旧逻辑(2026-07-31)一刀切拦所有非 cinematic 实体,导致 Voss 被抓等
+	// 过场对白(func_animate/head attachment 无 cinematic 标志)被误杀。
+	// (2026-08-01 修复)
 	if ( gameLocal.inCinematic ) {
-		if ( !bodyEnt->cinematic ) {
+		if ( bodyEnt->IsType( idSound::GetClassType() ) && !bodyEnt->cinematic ) {
 			if ( harm_g_subtitleDebug.GetBool() ) {
-				gameLocal.Printf( "[SUB] skip (non-cinematic in cinematic): %s\n", bodyEnt->GetName() );
+				gameLocal.Printf( "[SUB] skip (non-cinematic speaker in cinematic): %s\n", bodyEnt->GetName() );
 			}
 			return false;
 		}
@@ -318,6 +320,15 @@ bool rvSubtitles::IsAudible( idEntity *bodyEnt, const idSoundShader *shader ) co
 		friendly = ( static_cast<idActor *>( bodyEnt )->team == player->team );
 	}
 
+	// speaker 实体（PA 广播）：广播系统设计为全设施覆盖，不应按距离/PVS 门控。
+	// 环境音无 lipsync decl 不会进入此路径，只影响有 transcribe text 的 PA 广播。
+	// (2026-08-01 用户反馈 Strogg 化后 Strogg 广播字幕时有时无：vo_pa_* 全部
+	// 无 global 标志、maxDistance 仅 900，玩家走远后字幕被距离门控误拦)
+	bool isSpeakerEnt = bodyEnt->IsType( idSound::GetClassType() );
+	if ( isSpeakerEnt ) {
+		return true;
+	}
+
 	float dist = ( player->GetPhysics()->GetOrigin() - bodyEnt->GetPhysics()->GetOrigin() ).LengthFast();
 	float distLimit = parms->maxDistance * ( friendly ? 1.5f : 1.15f );
 	if ( parms->maxDistance > 0.0f && dist > distLimit ) {
@@ -326,12 +337,9 @@ bool rvSubtitles::IsAudible( idEntity *bodyEnt, const idSoundShader *shader ) co
 		}
 		return false;
 	}
-	// speaker 实体(广播 PA)声音可穿墙传播,玩家在听觉范围内即可听见,
-	// 不应按 PVS(可见性)门控拦截 —— 广播本就该隔墙有字幕
-	// (2026-07-31 用户反馈舰上/Strogg 广播无字幕)
-	bool isSpeakerEnt = bodyEnt->IsType( idSound::GetClassType() );
+	// speaker 实体已在上方提前 return，此处仅非 speaker 实体执行 PVS 门控
 	if ( !friendly && harm_g_subtitlePVSCheck.GetBool() && dist > SUB_PVS_NEAR_DIST
-	     && !isSpeakerEnt && !gameLocal.InPlayerPVS( bodyEnt ) ) {
+	     && !gameLocal.InPlayerPVS( bodyEnt ) ) {
 		if ( harm_g_subtitleDebug.GetBool() ) {
 			gameLocal.Printf( "[SUB] skip (out of PVS, dist %.0f): %s\n", dist, bodyEnt->GetName() );
 		}
@@ -374,6 +382,15 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 		full = va( "%s\xEF\xBC\x9A%s", speaker, clean.c_str() );
 	} else {
 		full = clean;
+	}
+
+	// karin: 去重——同一字幕 300ms 内不重复添加（catch-all hook 可能与
+	// LipSync/Sound 等 hook 同时触发同一声音）
+	if ( numLines > 0 ) {
+		subLine_t &last = lines[numLines - 1];
+		if ( last.text == full && gameLocal.time - last.startTime < 300 ) {
+			return;
+		}
 	}
 
 	// 按说话人来源分配字幕配色(2026-08-01 用户要求：广播黄/无线电青/其余白,统一正常亮度)
@@ -438,7 +455,7 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 			}
 			px += adv;
 			if ( c == ' ' ) {
-				if ( px > SUB_TEXT_W * 0.7f ) {
+				if ( px > SUB_TEXT_W * 0.92f ) {
 					lastSpace = i;
 				}
 				lastSpaceAny = i;

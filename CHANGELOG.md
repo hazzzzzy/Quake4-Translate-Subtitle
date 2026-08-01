@@ -1,5 +1,29 @@
 # Changelog
 
+## v1.2.6 — 2026-08-02
+
+### 字幕系统全面修复：过场对话/PA广播/换行/批量补缺
+
+引擎改动（q4game.dll）:
+- Subtitles.cpp 过场门控修复：过场期间只拦 speaker 实体（环境广播），不再误杀 rvModmodel/idAI 剧情对白（Voss 被抓过场恢复字幕）
+- Subtitles.cpp PA广播距离门控豁免：speaker 实体跳过距离/PVS 门控，Strogg 化后全设施 PA 广播字幕不再时有时无
+- Subtitles.cpp 字幕去重：同一字幕 300ms 内不重复添加（多 hook 并发保护）
+- Subtitles.cpp 字幕换行优化：空格优先断行阈值从 70% 改为 92%，文字填满行才换，不再在英文词后提前断行（SUB_TEXT_W 356->362）
+- Entity.cpp Event_StartSound 字幕 hook：脚本通过 startSound 播放的 snd_*/lipsync_*/vo_* 对白补字幕（Voss 过场问候、MCC 守卫等），不与 StartLipSyncing/AI Speak/speaker 实体的已有 hook 冲突
+- Entity.cpp StartSoundShader catch-all hook 已移除（与已有 hook 双重触发导致重复字幕+说话人误识别）
+- GameEdit.cpp rvModmodel::Event_Speak 无头分支补字幕 hook
+- Clip.cpp TestHugeTranslation 速度清零修复 Sentry 物理故障掉帧（v1.2.5 已发，此处纳入补丁）
+
+翻译改动:
+- 修复 3 条 Hub 关卡字幕截短（vo_1_2_14_10_1 Voss简报/vo_1_2_17_10_7 Strauss被困/vo_1_2_20_40_1 维护平台）
+- 新增 Voss 过场问候对白翻译+lipSync decl（vo_2_1_2_70_1_full，原版无 decl）
+- 批量补齐 89 条原版缺失 lipSync decl 的 vo_ 声音（Makron嘲讽/战斗喊叫/储藏塔剧情/网络塔对话/车队指令等）
+- 受伤/死亡音格式统一：（受伤音）->【受伤】，(死亡音）->【死亡】
+- Voss 简报翻译修正："Damn" 漏译补为"好家伙"
+
+CI:
+- sparse-checkout 新增 GameEdit.cpp
+
 ## v1.2.5 — 2026-08-01
 
 ### 引擎修复：Hub1 关卡 Sentry 物理故障导致严重掉帧（6fps）

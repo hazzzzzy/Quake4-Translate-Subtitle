@@ -30,46 +30,84 @@ index dadf7c489..40e43dceb 100644
  		Game_Log.cpp
  		Healing_Station.cpp
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
-index 6331dede4..18da98915 100644
+index 6331dede4..dc0430c60 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
-@@ -10,6 +10,9 @@
- #include "ai/AI_Manager.h"
- // RAVEN END
+@@ -2,6 +2,7 @@
+ #pragma hdrstop
  
-+// karin: 汉化项目语音字幕
+ #include "Game_local.h"
 +#include "Subtitles.h"
-+
- /*
- ===============================================================================
  
-@@ -5166,8 +5169,26 @@ idEntity::Event_StartSound
+ // RAVEN BEGIN
+ // bdube: client effects
+@@ -5166,8 +5167,30 @@ idEntity::Event_StartSound
  */
  void idEntity::Event_StartSound( const char *soundName, int channel, int netSync ) {
  	int time;
 -	
++
  	StartSound( soundName, ( s_channelType )channel, 0, ( netSync != 0 ), &time );
 +
-+	// karin: 汉化项目 —— script 通过 startSound 播放的语音(如 mcc_1 简报过场 Voss 的
-+	// briefingVoss1/2/5/6/7)不走 aiSpeak/StartLipSyncing 字幕挂钩,导致无字幕。
-+	// Event_StartSound 是 script event handler,只抓 script 显式调的 startSound,不与
-+	// StartLipSyncing(aiSpeak) 或 speaker 实体(Sound.cpp DoSound) 重复。
-+	// 门控:lipsync_ 前缀(预缓存语音) + 有 lipsync decl 才出字幕
-+	if ( time > 0 && soundName && idStr::Cmpn( soundName, "lipsync_", 8 ) == 0 ) {
-+		const char *declName = soundName + 8;
-+		const rvDeclLipSync *ls = declManager->FindLipSync( declName, false );
-+		if ( ls ) {
-+			const char *subText = ls->GetTranscribeText();
-+			if ( subText && subText[0] ) {
-+				gameSubtitles.AddFromEntity( this, subText, time );
++	// karin: subtitle hook for script-triggered sounds (startSound).
++	// Catches snd_*/lipsync_*/vo_* keys that bypass StartLipSyncing.
++	// Does NOT fire for StartLipSyncing/AI Speak/speaker entities (those have own hooks).
++	if ( time > 0 && soundName && soundName[0] ) {
++		const char *shaderName = NULL;
++		if ( idStr::Cmpn( soundName, "lipsync_", 8 ) == 0 ) {
++			shaderName = spawnArgs.GetString( soundName );
++			if ( !shaderName[0] ) shaderName = soundName + 8;
++		} else if ( idStr::Cmpn( soundName, "snd_", 4 ) == 0 ) {
++			shaderName = spawnArgs.GetString( soundName );
++		} else if ( idStr::Cmpn( soundName, "vo_", 3 ) == 0 ) {
++			shaderName = soundName;
++		}
++		if ( shaderName && shaderName[0] ) {
++			const rvDeclLipSync *ls = declManager->FindLipSync( shaderName, false );
++			if ( ls && ls->GetTranscribeText()[0] ) {
++				gameSubtitles.AddFromEntity( this, ls->GetTranscribeText(), time );
 +			}
-+		} else if ( harm_g_subtitleDebug.GetBool() ) {
-+			gameLocal.Printf( "[SUB] startSound: no decl for '%s'\n", soundName );
 +		}
 +	}
 +
  	idThread::ReturnFloat( MS2SEC( time ) );
  }
+ 
+diff --git a/Q3E/src/main/jni/doom3/neo/quake4/GameEdit.cpp b/Q3E/src/main/jni/doom3/neo/quake4/GameEdit.cpp
+index 2ec6b8724..220915c2c 100644
+--- a/Q3E/src/main/jni/doom3/neo/quake4/GameEdit.cpp
++++ b/Q3E/src/main/jni/doom3/neo/quake4/GameEdit.cpp
+@@ -3,6 +3,7 @@
+ #pragma hdrstop
+ 
+ #include "Game_local.h"
++#include "Subtitles.h"
+ // RAVEN BEGIN
+ // bdube: added
+ #include "Effect.h"
+@@ -1952,9 +1953,21 @@ void rvModviewModel::Event_Speak ( const char* lipsync ) {
+ 	if ( head ) {
+ 		head->StartLipSyncing( lipsync );
+ 	} else {
+-		StartSoundShader (declManager->FindSound ( lipsync ), SND_CHANNEL_VOICE, 0, false, NULL );
++		int length = 0;
++		StartSoundShader (declManager->FindSound ( lipsync ), SND_CHANNEL_VOICE, 0, false, &length );
++		const rvDeclLipSync *ls = declManager->FindLipSync( lipsync, false );
++		if ( ls ) {
++			const char *subText = ls->GetTranscribeText();
++			if ( subText && subText[0] ) {
++				gameSubtitles.AddFromEntity( this, subText, length );
++			} else if ( harm_g_subtitleDebug.GetBool() ) {
++				gameLocal.Printf( "[SUB] modmodel: empty transcribe for '%s'\n", lipsync );
++			}
++		} else if ( harm_g_subtitleDebug.GetBool() ) {
++			gameLocal.Printf( "[SUB] modmodel: no lipsync decl for '%s'\n", lipsync );
++		}
+ 	}
+-}	
++}
+ 
+ // RAVEN END
  
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
 index fbb6731ab..3e70a73c7 100644
@@ -337,106 +375,12 @@ index 5c9d2262c..051cc1010 100644
  		playingUntilTime += gameLocal.time;
  	} else {
  		StopSound( SND_CHANNEL_ANY, true );
-diff --git a/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp b/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
-index 8fce0d71e..fc0d2cccd 100644
---- a/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
-+++ b/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
-@@ -1,4 +1,4 @@
--/*
-+﻿/*
- ================
- 
- AI.cpp
-@@ -17,6 +17,7 @@ AI.cpp
- #include "../Projectile.h"
- #include "../spawner.h"
- #include "AI_Tactical.h"
-+#include "../Subtitles.h"
- 
- const char* aiTalkMessageString [ ] = {
- 	"None",
-@@ -4511,8 +4512,17 @@ bool idAI::Speak( const char *lipsync, bool random ){
- 	if ( head ) {
- 		speakTime = head->StartLipSyncing( lipsync );
- 	} else {
--		speakTime = 0;		
--		StartSoundShader (declManager->FindSound ( lipsync ), SND_CHANNEL_VOICE, SSF_IS_VO, false, &speakTime );
-+		speakTime = 0;
-+		const idSoundShader *voShader = declManager->FindSound ( lipsync );
-+		StartSoundShader ( voShader, SND_CHANNEL_VOICE, SSF_IS_VO, false, &speakTime );
-+
-+		// karin: 汉化项目 —— 无头模型 AI 不走 StartLipSyncing，字幕在此注入
-+		const rvDeclLipSync *voLipSync = declManager->FindLipSync( lipsync, false );
-+		if ( voLipSync ) {
-+			gameSubtitles.AddFromEntity( this, voLipSync->GetTranscribeText(), speakTime, voShader );
-+		} else if ( harm_g_subtitleDebug.GetBool() ) {
-+			gameLocal.Printf( "[SUB] headless: no lipsync decl for '%s'\n", lipsync );
-+		}
- 	}
- 
- 	speakTime += gameLocal.time;
-diff --git a/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp b/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
-index 337d964b3..fc77da6ae 100644
---- a/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
-+++ b/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
-@@ -1366,10 +1366,20 @@ ID_INLINE bool TestHugeTranslation( trace_t &results, const idClipModel *mdl, co
- 		results.c.point = start;
- 		results.c.entityNum = ENTITYNUM_WORLD;
- 
-+		// karin: hub1 关卡 rvMonsterSentry 物理故障（坐标/速度溢出），每帧触发
-+		// TestHugeTranslation 被内联调用 3 处。仅限 Printf 无法解决掉帧——物理引擎
-+		// 仍每帧尝试巨型位移计算。此处直接清零实体速度，打断「速度→huge位移→
-+		// fraction=0→速度保留→下帧重复」死循环。
- 		if ( mdl->GetEntity() ) {
--			gameLocal.Printf( "huge translation for clip model %d on entity %d '%s'\n", mdl->GetId(), mdl->GetEntity()->entityNumber, mdl->GetEntity()->GetName() );
--		} else {
--			gameLocal.Printf( "huge translation for clip model %d\n", mdl->GetId() );
-+			idPhysics *phys = mdl->GetEntity()->GetPhysics();
-+			if ( phys ) {
-+				phys->SetLinearVelocity( vec3_origin );
-+			}
-+			static int hugeTranslationWarnCount = 0;
-+			if ( hugeTranslationWarnCount < 5 ) {
-+				hugeTranslationWarnCount++;
-+				gameLocal.Printf( "huge translation for clip model %d on entity %d '%s'\n", mdl->GetId(), mdl->GetEntity()->entityNumber, mdl->GetEntity()->GetName() );
-+			}
- 		}
- 		return true;
- 	}
-diff --git a/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp b/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp
-index a22a92952..b49313e1b 100644
---- a/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp
-+++ b/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp
-@@ -941,6 +941,7 @@ int idDeviceContext::DrawText(float x, float y, float scale, idVec4 color, const
- #ifdef _WCHAR_LANG
-         if(AsASCIICharLang(text, (int)len))
-         {
-+		if(len > 0 && len < 12 && useFont && *text) common->Printf("[FONTDBG]A font=%s ch=%d sh=%s\n", activeFont?activeFont->name:"?", (unsigned char)*text, useFont->glyphs[(unsigned char)*text].shaderName);
- #endif
- 		while (s && *s && count < len) {
- 			if (*s < GLYPH_START || *s > GLYPH_END) {
-@@ -1000,6 +1001,7 @@ int idDeviceContext::DrawText(float x, float y, float scale, idVec4 color, const
-         }
-         else
-         {
-+		if(len > 0 && len < 12) common->Printf("[FONTDBG]C font=%s\n", activeFont?activeFont->name:"?");
-             idStr drawText = text;
-             int charIndex = 0;
-             int lastCharIndex = 0;
-@@ -1201,6 +1203,7 @@ int idDeviceContext::TextHeight(const char *text, float scale, int limit)
-         }
-         else
-         {
-+		if(len > 0 && len < 12) common->Printf("[FONTDBG]C font=%s\n", activeFont?activeFont->name:"?");
-             idStr drawText = text;
-             int charIndex = 0;
-             float f = 0.0f;
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
 new file mode 100644
-index 000000000..fd4dd54e6
+index 000000000..074161690
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
-@@ -0,0 +1,692 @@
+@@ -0,0 +1,709 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— 语音字幕（Apex/HL2 风格整块面板）
 +// 面板底部锚定，新行从下方顶入，高度平滑伸缩，行淡入淡出
 +// GUI 资产: guis/subtitles.gui
@@ -474,7 +418,7 @@ index 000000000..fd4dd54e6
 +
 +// —— 行宽度量（与引擎 DrawText 同款推进公式：xSkip * useScale）——
 +// 首次使用时从字幕 GUI 同款 fontdat 读取真实字形步进，文件缺失时退回估值
-+static const float SUB_TEXT_W		= 356.0f;					// 行像素预算（gui 文本区宽 368，留行首禁则并入余量）
++static const float SUB_TEXT_W		= 362.0f;					// 行像素预算（gui 文本区宽 368，留行首禁则并入余量）
 +// 2026-07-17 字幕改用 24 号字库同尺寸渲染：gui_smallFontLimit 置 0（启动脚本/
 +// 配置下发）后 textscale 0.19 落入 24 号档，useScale=0.19×48/24=0.38，屏显
 +// 尺寸不变、度量分辨率翻倍——fontdat 步进是整数，12 号下拉丁字母 4~6px 的
@@ -723,13 +667,15 @@ index 000000000..fd4dd54e6
 +	if ( !bodyEnt || !shader ) {
 +		return true;
 +	}
-+	// 过场期间:借用引擎 cinematic 标志,只显示过场实体(cinematic=1)的字幕,
-+	// 过滤走廊路人/环境广播乱入 —— 过场时 cinematic=0 的实体本就被引擎冻结不 Think。
-+	// (2026-07-31 用户反馈会议字幕乱入)
++	// 过场期间过滤环境广播(speaker 实体)的字幕乱入,
++	// 但保留剧情实体(idAI/idAFAttachment 等)的对白字幕。
++	// 旧逻辑(2026-07-31)一刀切拦所有非 cinematic 实体,导致 Voss 被抓等
++	// 过场对白(func_animate/head attachment 无 cinematic 标志)被误杀。
++	// (2026-08-01 修复)
 +	if ( gameLocal.inCinematic ) {
-+		if ( !bodyEnt->cinematic ) {
++		if ( bodyEnt->IsType( idSound::GetClassType() ) && !bodyEnt->cinematic ) {
 +			if ( harm_g_subtitleDebug.GetBool() ) {
-+				gameLocal.Printf( "[SUB] skip (non-cinematic in cinematic): %s\n", bodyEnt->GetName() );
++				gameLocal.Printf( "[SUB] skip (non-cinematic speaker in cinematic): %s\n", bodyEnt->GetName() );
 +			}
 +			return false;
 +		}
@@ -757,6 +703,15 @@ index 000000000..fd4dd54e6
 +		friendly = ( static_cast<idActor *>( bodyEnt )->team == player->team );
 +	}
 +
++	// speaker 实体（PA 广播）：广播系统设计为全设施覆盖，不应按距离/PVS 门控。
++	// 环境音无 lipsync decl 不会进入此路径，只影响有 transcribe text 的 PA 广播。
++	// (2026-08-01 用户反馈 Strogg 化后 Strogg 广播字幕时有时无：vo_pa_* 全部
++	// 无 global 标志、maxDistance 仅 900，玩家走远后字幕被距离门控误拦)
++	bool isSpeakerEnt = bodyEnt->IsType( idSound::GetClassType() );
++	if ( isSpeakerEnt ) {
++		return true;
++	}
++
 +	float dist = ( player->GetPhysics()->GetOrigin() - bodyEnt->GetPhysics()->GetOrigin() ).LengthFast();
 +	float distLimit = parms->maxDistance * ( friendly ? 1.5f : 1.15f );
 +	if ( parms->maxDistance > 0.0f && dist > distLimit ) {
@@ -765,12 +720,9 @@ index 000000000..fd4dd54e6
 +		}
 +		return false;
 +	}
-+	// speaker 实体(广播 PA)声音可穿墙传播,玩家在听觉范围内即可听见,
-+	// 不应按 PVS(可见性)门控拦截 —— 广播本就该隔墙有字幕
-+	// (2026-07-31 用户反馈舰上/Strogg 广播无字幕)
-+	bool isSpeakerEnt = bodyEnt->IsType( idSound::GetClassType() );
++	// speaker 实体已在上方提前 return，此处仅非 speaker 实体执行 PVS 门控
 +	if ( !friendly && harm_g_subtitlePVSCheck.GetBool() && dist > SUB_PVS_NEAR_DIST
-+	     && !isSpeakerEnt && !gameLocal.InPlayerPVS( bodyEnt ) ) {
++	     && !gameLocal.InPlayerPVS( bodyEnt ) ) {
 +		if ( harm_g_subtitleDebug.GetBool() ) {
 +			gameLocal.Printf( "[SUB] skip (out of PVS, dist %.0f): %s\n", dist, bodyEnt->GetName() );
 +		}
@@ -813,6 +765,15 @@ index 000000000..fd4dd54e6
 +		full = va( "%s\xEF\xBC\x9A%s", speaker, clean.c_str() );
 +	} else {
 +		full = clean;
++	}
++
++	// karin: 去重——同一字幕 300ms 内不重复添加（catch-all hook 可能与
++	// LipSync/Sound 等 hook 同时触发同一声音）
++	if ( numLines > 0 ) {
++		subLine_t &last = lines[numLines - 1];
++		if ( last.text == full && gameLocal.time - last.startTime < 300 ) {
++			return;
++		}
 +	}
 +
 +	// 按说话人来源分配字幕配色(2026-08-01 用户要求：广播黄/无线电青/其余白,统一正常亮度)
@@ -877,7 +838,7 @@ index 000000000..fd4dd54e6
 +			}
 +			px += adv;
 +			if ( c == ' ' ) {
-+				if ( px > SUB_TEXT_W * 0.7f ) {
++				if ( px > SUB_TEXT_W * 0.92f ) {
 +					lastSpace = i;
 +				}
 +				lastSpaceAny = i;
@@ -1194,3 +1155,97 @@ index 000000000..57aebf325
 +extern idCVar			harm_g_subtitleDebug;
 +
 +#endif /* !__GAME_SUBTITLES_H__ */
+diff --git a/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp b/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
+index 8fce0d71e..fc0d2cccd 100644
+--- a/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
++++ b/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
+@@ -1,4 +1,4 @@
+-/*
++﻿/*
+ ================
+ 
+ AI.cpp
+@@ -17,6 +17,7 @@ AI.cpp
+ #include "../Projectile.h"
+ #include "../spawner.h"
+ #include "AI_Tactical.h"
++#include "../Subtitles.h"
+ 
+ const char* aiTalkMessageString [ ] = {
+ 	"None",
+@@ -4511,8 +4512,17 @@ bool idAI::Speak( const char *lipsync, bool random ){
+ 	if ( head ) {
+ 		speakTime = head->StartLipSyncing( lipsync );
+ 	} else {
+-		speakTime = 0;		
+-		StartSoundShader (declManager->FindSound ( lipsync ), SND_CHANNEL_VOICE, SSF_IS_VO, false, &speakTime );
++		speakTime = 0;
++		const idSoundShader *voShader = declManager->FindSound ( lipsync );
++		StartSoundShader ( voShader, SND_CHANNEL_VOICE, SSF_IS_VO, false, &speakTime );
++
++		// karin: 汉化项目 —— 无头模型 AI 不走 StartLipSyncing，字幕在此注入
++		const rvDeclLipSync *voLipSync = declManager->FindLipSync( lipsync, false );
++		if ( voLipSync ) {
++			gameSubtitles.AddFromEntity( this, voLipSync->GetTranscribeText(), speakTime, voShader );
++		} else if ( harm_g_subtitleDebug.GetBool() ) {
++			gameLocal.Printf( "[SUB] headless: no lipsync decl for '%s'\n", lipsync );
++		}
+ 	}
+ 
+ 	speakTime += gameLocal.time;
+diff --git a/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp b/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
+index 337d964b3..fc77da6ae 100644
+--- a/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
++++ b/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
+@@ -1366,10 +1366,20 @@ ID_INLINE bool TestHugeTranslation( trace_t &results, const idClipModel *mdl, co
+ 		results.c.point = start;
+ 		results.c.entityNum = ENTITYNUM_WORLD;
+ 
++		// karin: hub1 关卡 rvMonsterSentry 物理故障（坐标/速度溢出），每帧触发
++		// TestHugeTranslation 被内联调用 3 处。仅限 Printf 无法解决掉帧——物理引擎
++		// 仍每帧尝试巨型位移计算。此处直接清零实体速度，打断「速度→huge位移→
++		// fraction=0→速度保留→下帧重复」死循环。
+ 		if ( mdl->GetEntity() ) {
+-			gameLocal.Printf( "huge translation for clip model %d on entity %d '%s'\n", mdl->GetId(), mdl->GetEntity()->entityNumber, mdl->GetEntity()->GetName() );
+-		} else {
+-			gameLocal.Printf( "huge translation for clip model %d\n", mdl->GetId() );
++			idPhysics *phys = mdl->GetEntity()->GetPhysics();
++			if ( phys ) {
++				phys->SetLinearVelocity( vec3_origin );
++			}
++			static int hugeTranslationWarnCount = 0;
++			if ( hugeTranslationWarnCount < 5 ) {
++				hugeTranslationWarnCount++;
++				gameLocal.Printf( "huge translation for clip model %d on entity %d '%s'\n", mdl->GetId(), mdl->GetEntity()->entityNumber, mdl->GetEntity()->GetName() );
++			}
+ 		}
+ 		return true;
+ 	}
+diff --git a/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp b/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp
+index a22a92952..b49313e1b 100644
+--- a/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp
++++ b/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp
+@@ -941,6 +941,7 @@ int idDeviceContext::DrawText(float x, float y, float scale, idVec4 color, const
+ #ifdef _WCHAR_LANG
+         if(AsASCIICharLang(text, (int)len))
+         {
++		if(len > 0 && len < 12 && useFont && *text) common->Printf("[FONTDBG]A font=%s ch=%d sh=%s\n", activeFont?activeFont->name:"?", (unsigned char)*text, useFont->glyphs[(unsigned char)*text].shaderName);
+ #endif
+ 		while (s && *s && count < len) {
+ 			if (*s < GLYPH_START || *s > GLYPH_END) {
+@@ -1000,6 +1001,7 @@ int idDeviceContext::DrawText(float x, float y, float scale, idVec4 color, const
+         }
+         else
+         {
++		if(len > 0 && len < 12) common->Printf("[FONTDBG]C font=%s\n", activeFont?activeFont->name:"?");
+             idStr drawText = text;
+             int charIndex = 0;
+             int lastCharIndex = 0;
+@@ -1201,6 +1203,7 @@ int idDeviceContext::TextHeight(const char *text, float scale, int limit)
+         }
+         else
+         {
++		if(len > 0 && len < 12) common->Printf("[FONTDBG]C font=%s\n", activeFont?activeFont->name:"?");
+             idStr drawText = text;
+             int charIndex = 0;
+             float f = 0.0f;
