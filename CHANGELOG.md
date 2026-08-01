@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.2.2 — 2026-08-01
+
+### 枪身弹药数字字体恢复原版 + 位置修正
+
+- 武器 viewmodel 弹药计数（机枪/高爆弹/霰弹枪）与 MCC 终端/医疗面板/简报/监控的数字恢复原版方正字形：`marine` 字体基础段（ASCII/数字）改为直接拷贝 pak001 原版 fontdat+tga，CJK 宽表仍用思源黑体；marine 独立 canonical 避免原版基础段经别名传染字幕字体 lowpixel
+- 枪身弹药数字位置补偿：原版方正数字 `xSkip`(~37) 远大于思源(~21)导致 center 偏左、top 略偏上，经武器 GUI 的 textscale 4~6 放大后明显；在 fontdat 数字字形上叠 `top-4`/`xSkip-15`（实机标定）修正到水平居中 + 垂直不偏上。GUI rect 改动实测不生效（viewmodel GUI 不从 savepath 加载），改 fontdat 度量（PaintChar 直接读取）解决
+
 ## v1.2.1 — 2026-08-01
 
 ### 字幕颜色 + 驾驶员映射修正 + 专有名词「」格式
