@@ -1,6 +1,9 @@
-[简体中文](README.md) | [English](README_EN.md)
+[简体中文](README.md) | [English Version](README_EN.md)
 
 # Quake 4 简体中文汉化
+
+![主菜单](docs/images/menu.png)
+![游戏内字幕](docs/images/subtitles.jpg)
 
 一份完整的 Quake 4（2005）简体中文汉化补丁：全部界面/菜单/剧情对白翻译、原版本没有的**语音字幕**（含无线电通讯与 PA 广播）、思源黑体中文字体、Strogg 外星文与神经细胞植入后可读文的完整中文化。
 
