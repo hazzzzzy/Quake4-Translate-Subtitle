@@ -22,11 +22,9 @@
 | 工程引擎 | `idTech4Apx\quake4` | idTech4A++ 的 `Quake4.exe`及当前编译的 `q4game.dll` |
 | 工程运行数据 | `savedata\q4base` | `fs_savepath`，部署字体、字符串、GUI、lipsync、语音别名、配置、日志和存档 |
 | 已知可玩基线 | `D:\Quake4-CN` | 外部对照目录；未经用户明确许可不要覆盖或同步修改 |
-| 正常启动器 | `启动汉化版.cmd` | 全屏 1920x1080，进入主菜单，不自动加载存档 |
-| 窗口调试器 | `tmp\scripts\run_apx.cmd` | 640x480 窗口模式，可追加控制台参数 |
-| 旧快速开场脚本 | `tmp\scripts\run_q4_start.cmd` | 强制加载 2026-07-17 的 `gamestart`；不得用于当前 HUD 视觉验收 |
+| 测试启动 | exe 安装版 `Quake4中文启动器.exe`（Q4CNLauncher） | 安装后用快捷方式启动；安装器安装时从原版 Quake4.exe 提取图标。便携 ZIP 已停发 |
 
-正常测试优先使用根目录 `启动汉化版.cmd`。启动器显式开启中文、宽字符 GUI、高清字体、字幕、日志、全屏 1920x1080 和阴影选项，但不会执行 `loadGame`。
+测试统一用 exe 安装版（安装到游戏目录后点 Quake4中文启动器.exe），不再用工程 .cmd 启动器。引擎中文、宽字符 GUI、高清字体、字幕、阴影等选项由启动器/安装器配置。
 
 ## 目录职责
 
@@ -79,8 +77,6 @@ idTech4A++ 上游源码，基线为 `v1.1.0harmattan70`。当前 Quake 4 汉化�
 构建、验证和临时产物目录：
 
 - `scripts/quake4-cn-engine-full.patch`：完整引擎补丁的本机交接副本；公开权威文件位于 `src/engine-patches`。
-- `scripts/run_apx.cmd`：窗口调试启动器。
-- `scripts/run_q4_start.cmd`：旧快速开场脚本，仅用于特定旧存档场景。
 - `build-q4-ninja-only`：当前 q4game 增量构建目录。
 - `windows-sdk-nuget`：本地 Windows SDK 10.0.26100，不是系统级安装。
 - 其余截图、隔离存档和生成目录均为测试证据；删除前必须征得用户确认。
@@ -103,7 +99,6 @@ Quake 4 会按 GUI 源文件结构和窗口顺序序列化状态。必须遵守�
 2. 为兼容存档，原则上只改既有窗口的数值属性；禁止随意增删 `windowDef`、脚本、变量或改变顺序。
 3. 旧存档会恢复保存时的 `rect`、`textscale`、文本和其他 GUI 状态，从而暂时覆盖磁盘上的新配置。
 4. 视觉验收应从主菜单进入新流程、换图，或在明确的调试场景执行 `reloadGuis all`；不能用旧 `gamestart`判断当前 HUD 文件是否正确。
-5. 旧 `gamestart`制作于 2026-07-17，早于后续 EXIT、枪名、字体和 HUD 调整。`run_q4_start.cmd`出现旧无线电两行、EXIT 异常或枪名偏高，不代表当前磁盘资产回退。
 
 ## GUI 加载机制与字体共用约束
 
@@ -187,7 +182,7 @@ idTech4Apx/quake4/q4game.dll.official
 
 运行时验证：
 
-- 正常验收使用根目录 `启动汉化版.cmd`，不得自动加载旧存档。
+- 正常验收使用 exe 安装版（`Quake4中文启动器.exe`），不得自动加载旧存档。
 - 日志位于 `savedata/q4base/qconsole.log`。
 - 日志不得出现中文字体缺失、字体图片降采样、`ERROR`或 `FATAL`。
 - 原版 pak 的材质重复定义、无窗口 Gamma、主菜单选项数量和未知原版字符串警告属于已知噪声，但仍需分类报告，不能笼统声称“无警告”。
