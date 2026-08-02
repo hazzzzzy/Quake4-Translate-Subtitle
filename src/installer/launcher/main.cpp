@@ -2,6 +2,7 @@
 #include <shellapi.h>
 #include <shobjidl.h>
 
+#include <cstdio>
 #include <filesystem>
 #include <string>
 #include <system_error>
@@ -82,9 +83,6 @@ std::wstring BuildCommandLine(
         L"+set", L"com_allowConsole", L"1",
         L"+set", L"logFile", L"2",
         L"+set", L"r_fullscreen", L"1",
-        L"+set", L"r_mode", L"-1",
-        L"+set", L"r_customWidth", L"1920",
-        L"+set", L"r_customHeight", L"1080",
         L"+set", L"r_useShadowMapping", L"1",
         L"+set", L"harm_r_softStencilShadow", L"0",
     };
@@ -182,6 +180,19 @@ int LaunchGame(const fs::path& launcherPath) {
     if (error) {
         ShowError(L"建立汉化版存档目录失败：\n" + saveDirectory.wstring());
         return 3;
+    }
+
+    // Write default resolution to config only on first launch.
+    // After this, the user edits Quake4Config.cfg to change resolution.
+    const fs::path configFile = saveDirectory / L"q4base" / L"Quake4Config.cfg";
+    if (!fs::exists(configFile, error)) {
+        FILE* file = nullptr;
+        if (_wfopen_s(&file, configFile.c_str(), L"w") == 0 && file) {
+            std::fputs("seta r_mode \"-1\"\n", file);
+            std::fputs("seta r_customWidth \"1920\"\n", file);
+            std::fputs("seta r_customHeight \"1080\"\n", file);
+            std::fclose(file);
+        }
     }
 
     std::wstring commandLine =
