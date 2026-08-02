@@ -1,4 +1,25 @@
 # Changelog
+## v1.2.8 — 2026-08-02
+
+### 主菜单分辨率/比例设置可选 + FOV 调整
+
+引擎改动（q4game.dll）:
+- g_fov 加 CVAR_ARCHIVE，选值持久（重启保持）
+- 新增 Harm_ApplyResolution：解析 harm_g_resIndex → r_mode -1 + r_customWidth/Height + vid_restart；经 game->HandleMainMenuCommands 直接调用（主菜单时 Clear 未执行、命令未注册；session HandleMainMenuCommands 是白名单不转发未知命令，但每个菜单命令都转发给 game）
+- harm_g_resIndex 加 CVAR_ARCHIVE
+- 从 rvSubtitles::Draw 移除失效的选项注入/解析块（主菜单 player==NULL 提前返回，Draw 不执行）
+
+GUI patch（build_dist_extras.patch_resolution_settings，安装器现场生成）:
+- 三个分辨率 choiceDef 硬编码 choices/values + 绑 harm_g_resIndex
+- 比例 choiceDef 补 choices/values（原引用 fixup_mode 填充的 gui 变量）
+- vidwarn 确认按钮（ESC 路径 curr==34 + pop_b_vidwarn_close onAction）触发 harm_applyVideo：切换不立即 vid_restart，点确认时一次性应用
+- 系统设置页新增 FOV 选择器（高级设置与音频之间），绑 g_fov，选项 80/90/100/110
+
+其他:
+- 启动器不再命令行覆盖分辨率：首次写入 cfg 后续尊重用户修改
+- 视频设置弹窗提示文字："更改将在下次运行 Quake 4 时生效" → "更改将在返回主菜单时立即生效"
+- patch 与 package.yml sparse-checkout 加入 SysCvar.cpp
+
 ## v1.2.7 — 2026-08-02
 
 ### 字幕配色系统 + 射击表面类型修复
