@@ -397,13 +397,17 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 	subColor_t color;
 	if ( !speaker || !speaker[0] || speaker[0] == '#' ) {
 		color = SUB_COLOR_NORMAL;	// 无说话人(无名环境音) — 白
+	} else if ( strstr( speaker, "\xE8\x88\xB0\xE8\xBD\xBD\xE5\xB9\xBF\xE6\x92\xAD" ) != NULL ) { // 舰载广播
+		color = SUB_COLOR_HUMANCAST;	// 人类/舰船广播 — 绿
 	} else if ( idStr::Cmp( speaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) == 0			// 广播
 	        || idStr::Icmp( speaker, "PA" ) == 0
-	        || strstr( speaker, "\xE6\x92\xAD\xE6\x8A\xA5" ) != NULL ) {		// 含"播报"(消毒室播报等地点播报)
-		color = SUB_COLOR_BROADCAST;	// 广播类 — 黄
+	        || strstr( speaker, "\xE6\x92\xAD\xE6\x8A\xA5" ) != NULL ) {		// 含"播报"
+		color = SUB_COLOR_BROADCAST;	// Strogg广播 — 黄
 	} else if ( idStr::Cmp( speaker, "\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5" ) == 0	// 无线电
 	        || idStr::Icmp( speaker, "Radio" ) == 0 ) {
 		color = SUB_COLOR_RADIO;		// 无线电 — 青
+	} else if ( idStr::Icmp( speaker, "Makron" ) == 0 ) {
+		color = SUB_COLOR_MAKRON;		// Makron — 紫
 	} else {
 		color = SUB_COLOR_NORMAL;	// 角色对白 — 白
 	}
@@ -537,7 +541,7 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 	static const char *knownSpeakers[] = {
 		"cortez", "bidwell", "voss", "morris", "anderson", "rhodes",
 		"sledge", "strauss", "kane", "walker", "hollenbeck", "scott",
-		"mahler", "silverman", "harper", NULL
+		"mahler", "silverman", "harper", "makron", NULL
 	};
 
 	// 玩家听不到的说话不出字幕
@@ -587,7 +591,17 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 		}
 	}
 	if ( !speaker.Length() && fallbackSpeaker && fallbackSpeaker[0] ) {
-		speaker = fallbackSpeaker;
+		// 区分 Strogg 广播(vo_pa_*)与人类/舰船广播：前者黄色，后者绿色
+		if ( shader && idStr::Cmp( fallbackSpeaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) == 0 ) {
+			const char *sn = shader->GetName();
+			if ( sn && idStr::Cmpn( sn, "vo_pa_", 6 ) != 0 ) {
+				speaker = "\xE8\x88\xB0\xE8\xBD\xBD\xE5\xB9\xBF\xE6\x92\xAD"; // 舰载广播
+			} else {
+				speaker = fallbackSpeaker;
+			}
+		} else {
+			speaker = fallbackSpeaker;
+		}
 	}
 
 	Add( speaker.Length() ? speaker.c_str() : NULL, text, durationMs );
@@ -692,6 +706,8 @@ void rvSubtitles::Draw( void ) {
 			switch ( lines[i].color ) {
 				case SUB_COLOR_BROADCAST: subR = 1.0f;  subG = 0.80f; subB = 0.15f; break;
 				case SUB_COLOR_RADIO:     subR = 0.35f; subG = 0.85f; subB = 1.0f;  break;
+				case SUB_COLOR_MAKRON:    subR = 0.75f; subG = 0.35f; subB = 1.0f;  break;
+				case SUB_COLOR_HUMANCAST: subR = 0.40f; subG = 0.90f; subB = 0.40f; break;
 				default:                   subR = 0.95f; subG = 0.95f; subB = 0.95f; break;
 			}
 			gui->SetStateFloat( va( "subTxtR%d", i ), subR );

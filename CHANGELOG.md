@@ -1,4 +1,27 @@
 # Changelog
+## v1.2.7 — 2026-08-02
+
+### 字幕配色系统 + 射击表面类型修复
+
+引擎改动:
+- 字幕五色配色系统：角色白/无线电青/Strogg广播黄/舰船广播绿/Makron紫
+- 人类广播(非vo_pa_*)自动识别为绿色"舰载广播"前缀，Strogg广播(vo_pa_*)保持黄色
+- Makron加入knownSpeakers列表，Boss嘲讽显示紫色"Makron："前缀
+- 字幕换行优化：空格断行阈值70%改为92%，行宽预算356改为362
+- Event_StartSound精准字幕hook(替代catch-all，消除重复字幕+说话人误识别)
+- 过场门控修复：只拦speaker实体，不误杀剧情对白
+- PA广播距离门控豁免：speaker实体跳过距离/PVS检查
+- rvModmodel无头分支补字幕hook
+- Clip.cpp Sentry物理故障速度清零修复
+- GetDefaultSurfaceType修复：idAnimatedEntity默认METAL改为FLESH，生命补给器/尸体射击喷血而非冒火花
+
+翻译改动:
+- 89条原版缺失lipSync decl声音批量补齐
+- 受伤/死亡音格式统一：【受伤】【死亡】
+- Voss过场问候翻译+lipSync decl
+- 3条Hub字幕截短修正
+- Voss简报"Damn"漏译修正
+
 
 ## v1.2.6 — 2026-08-02
 

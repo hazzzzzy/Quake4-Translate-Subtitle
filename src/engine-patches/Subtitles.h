@@ -8,8 +8,10 @@
 // 字幕配色类型：按说话人来源区分前景色（取代旧的 dimmed 二态淡色）
 enum subColor_t {
 	SUB_COLOR_NORMAL = 0,	// 角色对白 / 无名环境音 — 白
-	SUB_COLOR_BROADCAST,	// 广播(PA) — 黄
-	SUB_COLOR_RADIO			// 无线电 — 青
+	SUB_COLOR_BROADCAST,	// Strogg广播(PA) — 黄
+	SUB_COLOR_RADIO,		// 无线电 — 青
+	SUB_COLOR_MAKRON,		// Makron — 紫
+	SUB_COLOR_HUMANCAST		// 人类/舰船广播 — 绿
 };
 
 class idSoundShader;
