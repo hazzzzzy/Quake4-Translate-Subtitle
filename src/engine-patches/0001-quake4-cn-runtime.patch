@@ -1292,6 +1292,19 @@ index 8fce0d71e..fc0d2cccd 100644
  	}
  
  	speakTime += gameLocal.time;
+diff --git a/Q3E/src/main/jni/doom3/neo/quake4/gamesys/SysCvar.cpp b/Q3E/src/main/jni/doom3/neo/quake4/gamesys/SysCvar.cpp
+index 670f8073f..dfa694637 100644
+--- a/Q3E/src/main/jni/doom3/neo/quake4/gamesys/SysCvar.cpp
++++ b/Q3E/src/main/jni/doom3/neo/quake4/gamesys/SysCvar.cpp
+@@ -468,7 +468,7 @@ idCVar g_viewNodalX(				"g_viewNodalX",				"0",			CVAR_GAME | CVAR_FLOAT, "" );
+ idCVar g_viewNodalZ(				"g_viewNodalZ",				"0",			CVAR_GAME | CVAR_FLOAT, "" );
+ // RAVEN BEGIN
+ // jshepard: fov as a float for smoother transitions?
+-idCVar g_fov(						"g_fov",					"90",			CVAR_GAME | CVAR_FLOAT | CVAR_NOCHEAT, "" );
++idCVar g_fov(						"g_fov",					"90",			CVAR_GAME | CVAR_FLOAT | CVAR_ARCHIVE | CVAR_NOCHEAT, "" );
+ // RAVEN END
+ idCVar g_skipViewEffects(			"g_skipViewEffects",		"0",			CVAR_GAME | CVAR_BOOL, "skip damage and other view effects" );
+ idCVar g_mpWeaponAngleScale(		"g_mpWeaponAngleScale",		"0",			CVAR_GAME | CVAR_FLOAT, "Control the weapon sway in MP" );
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp b/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
 index 337d964b3..fc77da6ae 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp

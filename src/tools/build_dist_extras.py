@@ -138,6 +138,35 @@ def patch_resolution_settings(data: bytes) -> bytes:
     vidwarn_btn_new = b'onAction {\n\t\t\t\tset "cmd" "harm_applyVideo" ;'
     assert data.count(vidwarn_btn_old) == 1, "mainmenu.gui: vidwarn确认按钮 onAction 锚点不唯一"
     data = data.replace(vidwarn_btn_old, vidwarn_btn_new)
+
+    # FOV 选择器：插在高级设置(set_sys_t_adv)与音频标题(set_sys_audio)之间。
+    # 绑 g_fov（已加 CVAR_ARCHIVE 持久），选值立即生效（无需 vid_restart）。
+    fov_anchor = b'\t\t\t\twindowDef set_sys_audio\n'
+    fov_block = (
+        b'\t\t\t\twindowDef set_sys_fov\n'
+        b'\t\t\t\t{\n'
+        b'\t\t\t\t\trect\t259,290,172,18\n'
+        b'\t\t\t\t\tvisible\t1\n'
+        b'\t\t\t\t\tforecolor\t1,1,1,0.8\n'
+        b'\t\t\t\t\ttext\t"FOV"\n'
+        b'\t\t\t\t\ttextscale\t0.24\n'
+        b'\t\t\t\t\tfont\t"fonts/lowpixel"\n'
+        b'\t\t\t\t}\n'
+        b'\t\t\t\tchoiceDef set_sys_fov_val\n'
+        b'\t\t\t\t{\n'
+        b'\t\t\t\t\trect\t468,290,164,18\n'
+        b'\t\t\t\t\tvisible\t1\n'
+        b'\t\t\t\t\tforecolor\t1,0.745,0.137,0.8\n'
+        b'\t\t\t\t\tchoices\t"80;90;100;110"\n'
+        b'\t\t\t\t\tvalues\t"80;90;100;110"\n'
+        b'\t\t\t\t\tcvar\t"g_fov"\n'
+        b'\t\t\t\t\tchoiceType\t1\n'
+        b'\t\t\t\t\ttextscale\t0.24\n'
+        b'\t\t\t\t\tfont\t"fonts/lowpixel"\n'
+        b'\t\t\t\t}\n'
+    )
+    assert data.count(fov_anchor) == 1, "mainmenu.gui: set_sys_audio 锚点不唯一"
+    data = data.replace(fov_anchor, fov_block + fov_anchor)
     return data
 
 
