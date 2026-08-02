@@ -58,4 +58,9 @@ private:
 extern rvSubtitles		gameSubtitles;
 extern idCVar			harm_g_subtitleDebug;
 
+// 主菜单设置页选分辨率/比例后由 GUI onActionRelease("harm_applyVideo")触发，
+// 经 game->HandleMainMenuCommands 直接调用（不经控制台命令：主菜单时 Clear 未执行、
+// 命令未注册）。解析 harm_g_resIndex → r_mode -1+r_customWidth/Height+vid_restart。
+void				Harm_ApplyResolution( void );
+
 #endif /* !__GAME_SUBTITLES_H__ */

@@ -6,7 +6,7 @@ id	en	zh	context	status
 #str_102087	Loading...	载入中……		review
 #str_102911	Unidentified	未识别		review
 #str_102916	Game Saved...	游戏已保存……		review
-#str_104137	These changes will take effect the next time you run Quake 4.	这些更改将在下次运行 Quake 4 时生效。		review
+#str_104137	These changes will take effect the next time you run Quake 4.	更改将在返回主菜单时立即生效。		review
 #str_104141	UNABLE TO LOCATE 3D AUDIO	无法找到 3D 音频		review
 #str_104142	Surround speakers not found.\nMake sure the speaker settings are configured properly in the Windows Control Panel.	未找到环绕声扬声器。\n请确保已在 Windows 控制面板中正确配置扬声器设置。		review
 #str_104247	Ready	已准备		review

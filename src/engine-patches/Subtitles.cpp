@@ -15,6 +15,7 @@ idCVar harm_g_subtitleMinTime( "harm_g_subtitleMinTime", "1500", CVAR_GAME | CVA
 idCVar harm_g_subtitleTest( "harm_g_subtitleTest", "", CVAR_GAME, "debug: push a test subtitle line" );
 idCVar harm_g_subtitleDebug( "harm_g_subtitleDebug", "0", CVAR_GAME | CVAR_BOOL, "debug: print subtitle add/skip decisions to console" );
 idCVar harm_g_subtitlePVSCheck( "harm_g_subtitlePVSCheck", "1", CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "hide subtitles of speakers outside player PVS (occluded)" );
+idCVar harm_g_resIndex( "harm_g_resIndex", "-1", CVAR_GAME | CVAR_INTEGER | CVAR_ARCHIVE, "resolution selector index (100-series=4:3, 200-series=16:9, 300-series=16:10)" );
 
 // 近距离豁免：此距离（游戏单位）内即使隔墙（不在 PVS）也显示字幕
 static const float SUB_PVS_NEAR_DIST = 240.0f;
@@ -605,6 +606,53 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 	}
 
 	Add( speaker.Length() ? speaker.c_str() : NULL, text, durationMs );
+}
+
+/*
+================
+Harm_ApplyResolution
+
+主菜单设置页选分辨率/比例后由 GUI onActionRelease 触发。原版靠引擎命令
+fixup_mode 枚举显示模式填充选项，idTech4A++ 未实现该命令 → "No Choices Defined"。
+改为 GUI 硬编码 choices/values 绑 harm_g_resIndex，由此命令解析索引 →
+r_mode -1 + r_customWidth/Height + vid_restart。
+
+挂在控制台命令而非 rvSubtitles::Draw()：idGameLocal::Draw 主菜单时
+player==NULL 提前返回，字幕 Draw 不执行；命令由 GUI 主动触发，主菜单可用。
+================
+*/
+void Harm_ApplyResolution( void ) {
+	int resIdx = harm_g_resIndex.GetInteger();
+	common->Printf( "[HARM] harm_applyVideo called, resIdx=%d\n", resIdx );
+	int rw = 0, rh = 0;
+	switch ( resIdx ) {
+		// 4:3
+		case 100: rw = 1024; rh = 768;  break;
+		case 101: rw = 1280; rh = 960;  break;
+		case 102: rw = 1600; rh = 1200; break;
+		// 16:9
+		case 200: rw = 1280; rh = 720;  break;
+		case 201: rw = 1366; rh = 768;  break;
+		case 202: rw = 1600; rh = 900;  break;
+		case 203: rw = 1920; rh = 1080; break;
+		case 204: rw = 2560; rh = 1440; break;
+		case 205: rw = 3840; rh = 2160; break;
+		// 16:10
+		case 300: rw = 1280; rh = 800;  break;
+		case 301: rw = 1440; rh = 900;  break;
+		case 302: rw = 1680; rh = 1050; break;
+		case 303: rw = 1920; rh = 1200; break;
+		case 304: rw = 2560; rh = 1600; break;
+		default:  rw = 0; break;
+	}
+	if ( rw > 0 ) {
+		cvarSystem->SetCVarInteger( "r_mode", -1 );
+		cvarSystem->SetCVarInteger( "r_customWidth", rw );
+		cvarSystem->SetCVarInteger( "r_customHeight", rh );
+		common->Printf( "[HARM] set r_mode=-1 custom=%dx%d, vid_restart queued\n", rw, rh );
+	}
+	// 无论是否设了分辨率都 vid_restart：改比例（r_aspectRatio）也需重启视频生效
+	cmdSystem->BufferCommandText( CMD_EXEC_APPEND, "vid_restart\n" );
 }
 
 /*

@@ -69,6 +69,78 @@ MEDLAB_EDITS = {
 }
 
 
+def patch_resolution_settings(data: bytes) -> bytes:
+    """设置页分辨率/比例选择器适配 idTech4A++。
+
+    原版三个分辨率 choiceDef（set_sys_screensize_val_0/1/2）choices 引用
+    gui::4_3_choices 等状态变量，由引擎命令 fixup_mode 枚举填充；cvar 绑 r_mode
+    预设索引。idTech4A++ 未实现 fixup_mode → 设置页"屏幕尺寸"显示 No Choices
+    Defined，改分辨率/比例也不生效（解析又挂在 rvSubtitles::Draw，主菜单不执行）。
+
+    改为：硬编码 choices/values + 绑 harm_g_resIndex（正值索引）+ onActionRelease
+    调 harm_applyVideo 命令（q4game 注册，解析索引→r_mode -1+r_customWidth/Height
+    +vid_restart）。GUI 改动必须进此函数：安装器 postinstall 现场从正版 pak 生成
+    mainmenu.gui，不进此函数则分发包用户拿不到。
+    """
+    screensize = [
+        # (choiceDef 名, gui 变量 key, choices, values)
+        ("set_sys_screensize_val_0", "4_3", "1024x768;1280x960;1600x1200", "100;101;102"),
+        ("set_sys_screensize_val_1", "16_9", "1280x720;1366x768;1600x900;1920x1080;2560x1440;3840x2160", "200;201;202;203;204;205"),
+        ("set_sys_screensize_val_2", "16_10", "1280x800;1440x900;1680x1050;1920x1200;2560x1600", "300;301;302;303;304"),
+    ]
+    notice = b'set "set_sys_notice::visible" "1" ;'
+    for name, key, choices, values in screensize:
+        marker = b"choiceDef " + name.encode("ascii")
+        idx = data.find(marker)
+        assert idx >= 0, f"mainmenu.gui: 找不到 choiceDef {name}"
+        brace = data.find(b"{", idx)
+        assert brace >= 0, f"mainmenu.gui: {name} 缺少 '{{'"
+        depth, end = 0, brace
+        while end < len(data):
+            ch = data[end:end + 1]
+            if ch == b"{":
+                depth += 1
+            elif ch == b"}":
+                depth -= 1
+                if depth == 0:
+                    break
+            end += 1
+        assert depth == 0, f"mainmenu.gui: {name} 括号不匹配"
+        block_orig = data[idx:end + 1]
+        assert data.count(block_orig) == 1, f"mainmenu.gui: {name} 块不唯一"
+        block = block_orig
+        block = block.replace(f'choices\t"gui::{key}_choices"'.encode("ascii"),
+                              f'choices\t"{choices}"'.encode("ascii"))
+        block = block.replace(f'values\t"gui::{key}_values"'.encode("ascii"),
+                              f'values\t"{values}"'.encode("ascii"))
+        assert block.count(b'cvar\t"r_mode"') == 1, f"mainmenu.gui: {name} cvar r_mode 不唯一"
+        block = block.replace(b'cvar\t"r_mode"', b'cvar\t"harm_g_resIndex"')
+        # onActionRelease 不触发 harm_applyVideo（延迟到 vidwarn 弹窗确认时，避免每次点击都 vid_restart）
+        data = data.replace(block_orig, block)
+
+    # 比例 choiceDef：choices/values 也引用 gui::aspect_choices（fixup_mode 填充）→ 硬编码
+    assert data.count(b'choices\t"gui::aspect_choices"') == 1, "mainmenu.gui: aspect_choices 不唯一"
+    data = data.replace(b'choices\t"gui::aspect_choices"', b'choices\t"4:3;16:9;16:10"')
+    assert data.count(b'values\t"gui::aspect_values"') == 1, "mainmenu.gui: aspect_values 不唯一"
+    data = data.replace(b'values\t"gui::aspect_values"', b'values\t"0;1;2"')
+
+    # vidwarn 弹窗确认（curr==34）：原版 consolecmd "vid_restart" 被注释 → 改为 harm_applyVideo。
+    # 用户改分辨率/比例后点返回 → vidwarn 弹窗 → 确认时一次性应用（不每次点击都 vid_restart）。
+    # 比例 onActionRelease 的 fixup_mode 保留原样（idTech4A++ 未实现，调用无效但无害）。
+    vidwarn_old = b'== 34 && "desktop::active" == 0) {\n//\t\t\tconsolecmd "vid_restart" ;'
+    vidwarn_new = b'== 34 && "desktop::active" == 0) {\n\t\t\tset "cmd" "harm_applyVideo" ;'
+    assert data.count(vidwarn_old) == 1, "mainmenu.gui: vidwarn ESC(consolecmd vid_restart)锚点不唯一"
+    data = data.replace(vidwarn_old, vidwarn_new)
+
+    # pop_b_vidwarn_close 确认按钮 onAction（用户鼠标点的"确认"，非 ESC）：原版
+    # consolecmd vid_restart 被注释 → 改为 harm_applyVideo，点确认时当场 vid_restart 生效。
+    vidwarn_btn_old = b'onAction {\n//\t\t\t\tconsolecmd "vid_restart" ;'
+    vidwarn_btn_new = b'onAction {\n\t\t\t\tset "cmd" "harm_applyVideo" ;'
+    assert data.count(vidwarn_btn_old) == 1, "mainmenu.gui: vidwarn确认按钮 onAction 锚点不唯一"
+    data = data.replace(vidwarn_btn_old, vidwarn_btn_new)
+    return data
+
+
 def patch_mainmenu_gui(data: bytes) -> bytes:
     """mainmenu.gui 补丁：三按钮 rect y+4 + credits 段职位汉化（2026-07-18）。
 
@@ -133,6 +205,8 @@ def patch_mainmenu_gui(data: bytes) -> bytes:
         new_b = f'text\t"{zh}"'.encode("utf-8")
         if old_b in data:
             data = data.replace(old_b, new_b)
+
+    data = patch_resolution_settings(data)
     return data
 
 

@@ -123,7 +123,7 @@ index 2ec6b8724..220915c2c 100644
  // RAVEN END
  
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
-index fbb6731ab..3e70a73c7 100644
+index fbb6731ab..f35eb9c3d 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
 @@ -1,6 +1,8 @@
@@ -145,6 +145,21 @@ index fbb6731ab..3e70a73c7 100644
 +
  	return true;
  }
+ 
+@@ -4131,6 +4136,14 @@ idGameLocal::HandleMainMenuCommands
+ ================
+ */
+ void idGameLocal::HandleMainMenuCommands( const char *menuCommand, idUserInterface *gui ) {
++	// karin: 设置页分辨率/比例 onActionRelease 触发。session 的 HandleMainMenuCommands
++	// 不转发未知命令给 cmdSystem，但每个菜单命令都会调 game->HandleMainMenuCommands。
++	// 在此识别 harm_applyVideo，直接调用解析函数（不经控制台命令：主菜单时 Clear
++	// 未执行、命令未注册）。解析 harm_g_resIndex → r_mode -1+custom+vid_restart。
++	if ( !idStr::Icmp( menuCommand, "harm_applyVideo" ) ) {
++		Harm_ApplyResolution();
++		return;
++	}
+ 	if ( !idStr::Icmp( menuCommand, "initCreateServerSettings" ) ) {
+ 		int	guiValue = 0;
  
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/LipSync.cpp b/Q3E/src/main/jni/doom3/neo/quake4/LipSync.cpp
 index 2854fcf06..c85cbb394 100644
@@ -390,10 +405,10 @@ index 5c9d2262c..051cc1010 100644
  		StopSound( SND_CHANNEL_ANY, true );
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
 new file mode 100644
-index 000000000..8351baf75
+index 000000000..c07e39eff
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
-@@ -0,0 +1,725 @@
+@@ -0,0 +1,773 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— 语音字幕（Apex/HL2 风格整块面板）
 +// 面板底部锚定，新行从下方顶入，高度平滑伸缩，行淡入淡出
 +// GUI 资产: guis/subtitles.gui
@@ -411,6 +426,7 @@ index 000000000..8351baf75
 +idCVar harm_g_subtitleTest( "harm_g_subtitleTest", "", CVAR_GAME, "debug: push a test subtitle line" );
 +idCVar harm_g_subtitleDebug( "harm_g_subtitleDebug", "0", CVAR_GAME | CVAR_BOOL, "debug: print subtitle add/skip decisions to console" );
 +idCVar harm_g_subtitlePVSCheck( "harm_g_subtitlePVSCheck", "1", CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "hide subtitles of speakers outside player PVS (occluded)" );
++idCVar harm_g_resIndex( "harm_g_resIndex", "-1", CVAR_GAME | CVAR_INTEGER | CVAR_ARCHIVE, "resolution selector index (100-series=4:3, 200-series=16:9, 300-series=16:10)" );
 +
 +// 近距离豁免：此距离（游戏单位）内即使隔墙（不在 PVS）也显示字幕
 +static const float SUB_PVS_NEAR_DIST = 240.0f;
@@ -1005,6 +1021,53 @@ index 000000000..8351baf75
 +
 +/*
 +================
++Harm_ApplyResolution
++
++主菜单设置页选分辨率/比例后由 GUI onActionRelease 触发。原版靠引擎命令
++fixup_mode 枚举显示模式填充选项，idTech4A++ 未实现该命令 → "No Choices Defined"。
++改为 GUI 硬编码 choices/values 绑 harm_g_resIndex，由此命令解析索引 →
++r_mode -1 + r_customWidth/Height + vid_restart。
++
++挂在控制台命令而非 rvSubtitles::Draw()：idGameLocal::Draw 主菜单时
++player==NULL 提前返回，字幕 Draw 不执行；命令由 GUI 主动触发，主菜单可用。
++================
++*/
++void Harm_ApplyResolution( void ) {
++	int resIdx = harm_g_resIndex.GetInteger();
++	common->Printf( "[HARM] harm_applyVideo called, resIdx=%d\n", resIdx );
++	int rw = 0, rh = 0;
++	switch ( resIdx ) {
++		// 4:3
++		case 100: rw = 1024; rh = 768;  break;
++		case 101: rw = 1280; rh = 960;  break;
++		case 102: rw = 1600; rh = 1200; break;
++		// 16:9
++		case 200: rw = 1280; rh = 720;  break;
++		case 201: rw = 1366; rh = 768;  break;
++		case 202: rw = 1600; rh = 900;  break;
++		case 203: rw = 1920; rh = 1080; break;
++		case 204: rw = 2560; rh = 1440; break;
++		case 205: rw = 3840; rh = 2160; break;
++		// 16:10
++		case 300: rw = 1280; rh = 800;  break;
++		case 301: rw = 1440; rh = 900;  break;
++		case 302: rw = 1680; rh = 1050; break;
++		case 303: rw = 1920; rh = 1200; break;
++		case 304: rw = 2560; rh = 1600; break;
++		default:  rw = 0; break;
++	}
++	if ( rw > 0 ) {
++		cvarSystem->SetCVarInteger( "r_mode", -1 );
++		cvarSystem->SetCVarInteger( "r_customWidth", rw );
++		cvarSystem->SetCVarInteger( "r_customHeight", rh );
++		common->Printf( "[HARM] set r_mode=-1 custom=%dx%d, vid_restart queued\n", rw, rh );
++	}
++	// 无论是否设了分辨率都 vid_restart：改比例（r_aspectRatio）也需重启视频生效
++	cmdSystem->BufferCommandText( CMD_EXEC_APPEND, "vid_restart\n" );
++}
++
++/*
++================
 +rvSubtitles::Draw
 +
 +整块半透明面板：底部固定，高度=行数，平滑伸缩；
@@ -1121,10 +1184,10 @@ index 000000000..8351baf75
 +}
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h
 new file mode 100644
-index 000000000..7b463aad3
+index 000000000..4a65b51c1
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h
-@@ -0,0 +1,61 @@
+@@ -0,0 +1,66 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— HL 风格语音字幕
 +// 文本来源: rvDeclLipSync::GetTranscribeText()（经 GetLocalizedString 本地化）
 +#ifndef __GAME_SUBTITLES_H__
@@ -1184,6 +1247,11 @@ index 000000000..7b463aad3
 +
 +extern rvSubtitles		gameSubtitles;
 +extern idCVar			harm_g_subtitleDebug;
++
++// 主菜单设置页选分辨率/比例后由 GUI onActionRelease("harm_applyVideo")触发，
++// 经 game->HandleMainMenuCommands 直接调用（不经控制台命令：主菜单时 Clear 未执行、
++// 命令未注册）。解析 harm_g_resIndex → r_mode -1+r_customWidth/Height+vid_restart。
++void				Harm_ApplyResolution( void );
 +
 +#endif /* !__GAME_SUBTITLES_H__ */
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp b/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
