@@ -167,7 +167,7 @@ idTech4Apx/quake4/q4game.dll.official
 
 ## 自动打包
 
-- push 到 `main`后，GitHub Actions 运行 Python 检查、安装器测试、上游补丁校验、安装器构建和分发审计，并上传自包含 EXE、便携 ZIP 与校验文件 Artifact。
+- push 到 `main`后，GitHub Actions 运行 Python 检查、安装器测试、上游补丁校验、安装器构建和分发审计，并上传自包含 EXE 与校验文件 Artifact。
 - **patch 加新文件时，必须同步 `.github/workflows/package.yml` 的 sparse-checkout 列表**：Validate engine patch 步骤只 checkout 列表内文件做 `git apply --check`，缺文件即失败（c7b653a 加 Entity.cpp 漏同步，导致两次构建红，2026-08-01 补）。
 - 版本号 tag 驱动：push `v*`标签触发 Release 构建（版本 = tag 名），在相同验证通过后创建 GitHub Release；main 分支构建用 commit hash 作版本，不发 Release。出正式版打 `vX.Y.Z` tag。
 - 本地等价打包入口是 `src/tools/package_release.ps1`。

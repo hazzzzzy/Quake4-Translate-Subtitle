@@ -102,7 +102,6 @@ jobs:
           name: Quake4-Translate-Subtitle-${{ env.PACKAGE_VERSION }}
           path: |
             artifacts/*.exe
-            artifacts/*.zip
             artifacts/SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 14
@@ -113,10 +112,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          $archives = @(Get-ChildItem -LiteralPath artifacts -Filter "*.zip" -File)
-          if ($archives.Count -ne 1) {
-              throw "Expected exactly one release archive, found $($archives.Count)"
-          }
           $installers = @(Get-ChildItem -LiteralPath artifacts -Filter "*.exe" -File)
           if ($installers.Count -ne 1) {
               throw "Expected exactly one installer, found $($installers.Count)"
@@ -124,7 +119,6 @@ jobs:
           $checksums = (Resolve-Path -LiteralPath "artifacts\SHA256SUMS.txt").Path
           gh release create $env:GITHUB_REF_NAME `
               $installers[0].FullName `
-              $archives[0].FullName `
               $checksums `
               --repo $env:GITHUB_REPOSITORY `
               --title $env:GITHUB_REF_NAME `
