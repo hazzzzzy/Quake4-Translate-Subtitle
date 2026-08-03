@@ -1,4 +1,26 @@
 # Changelog
+## v1.2.9 — 2026-08-03
+
+### 准心命中变红 + 喷血修复 + 安装器界面升级
+
+引擎改动（Quake4.exe，首次编译完整引擎）:
+- 准心命中变红修复：ui/Window.cpp GetWinVarByName 补充 matColor_x/y/z → matColor_r/g/b 映射。原版 cursor.gui 用 Vec4 的 x/y/z 分量名设命中红色，idTech4A++ 只实现了 r/g/b/w 别名遗漏 x/y/z，导致 set matcolor_x/y/z 找不到目标变量、命中只有缩放没有变红。在 #ifdef _RAVEN 块内新增 3 个 if 映射，不影响其他游戏编译
+- SDL2 升级至 2.30.10（匹配新编译的 Quake4.exe）
+
+引擎改动（q4game.dll）:
+- 喷血修复：Game_local.cpp HitScan 三处 + Projectile.cpp DefaultDamageEffect，命中标有 bleed 属性的有机体时强制传 flesh materialType，覆盖 idAnimatedEntity/idAFAttachment/所有 bleed=true 实体（Strogg 步兵/人彘/俘虏/生命补给器等），金属管道保持火花
+- 准心变红清理：移除 Player.cpp 中无效的 SetStateString(matcolor_x/y/z) 绕过代码（SetStateString 只设 state 字典 key，不能操作窗口属性）
+
+安装器:
+- 安装器界面标题右侧新增开发者链接：GitHub logo + B站 logo，点击跳转浏览器
+- exe 图标替换为 Quake4 原版图标
+- 版本号标注 v1.2.9（标题栏 + 标题右侧）
+- 安装补丁时保留已有存档目录（不清空重建）
+
+补丁/CI:
+- 引擎补丁新增 ui/Window.cpp + quake4/Projectile.cpp
+- package.yml sparse-checkout 同步新增两文件
+
 ## v1.2.8 — 2026-08-02
 
 ### 主菜单分辨率/比例设置可选 + FOV 调整

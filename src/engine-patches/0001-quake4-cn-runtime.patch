@@ -30,7 +30,7 @@ index dadf7c489..40e43dceb 100644
  		Game_Log.cpp
  		Healing_Station.cpp
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
-index 6331dede4..802976a6b 100644
+index 6331dede4..70af17123 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
 @@ -2,6 +2,7 @@
@@ -41,7 +41,19 @@ index 6331dede4..802976a6b 100644
  
  // RAVEN BEGIN
  // bdube: client effects
-@@ -5166,8 +5167,30 @@ idEntity::Event_StartSound
+@@ -3716,6 +3717,11 @@ void idEntity::AddDamageEffect( const trace_t &collision, const idVec3 &velocity
+ 	}
+ 
+ 	const char *materialType = gameLocal.sufaceTypeNames[ collision.c.material->GetSurfaceType() ];
++	// karin: 能进入此函数的实体都已通过 bleed 检查（会流血的有机体）。idTech4A++ 材质
++	// surfacetype 读取异常导致 metal 误判冒火花——强制走 flesh 喷血。
++	if ( idStr::Cmp( materialType, "flesh" ) != 0 ) {
++		materialType = "flesh";
++	}
+ 
+ 	// start impact sound based on material type
+ 	key = va( "snd_%s", materialType );
+@@ -5166,8 +5172,30 @@ idEntity::Event_StartSound
  */
  void idEntity::Event_StartSound( const char *soundName, int channel, int netSync ) {
  	int time;
@@ -73,7 +85,7 @@ index 6331dede4..802976a6b 100644
  	idThread::ReturnFloat( MS2SEC( time ) );
  }
  
-@@ -6601,7 +6624,11 @@ idAnimatedEntity::GetDefaultSurfaceType
+@@ -6601,7 +6629,11 @@ idAnimatedEntity::GetDefaultSurfaceType
  ==============
  */
  int	idAnimatedEntity::GetDefaultSurfaceType( void ) const {
@@ -123,7 +135,7 @@ index 2ec6b8724..220915c2c 100644
  // RAVEN END
  
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
-index fbb6731ab..f35eb9c3d 100644
+index fbb6731ab..589fa735e 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
 @@ -1,6 +1,8 @@
@@ -161,6 +173,40 @@ index fbb6731ab..f35eb9c3d 100644
  	if ( !idStr::Icmp( menuCommand, "initCreateServerSettings" ) ) {
  		int	guiValue = 0;
  
+@@ -7904,21 +7917,28 @@ idEntity* idGameLocal::HitScan(
+ 		// Play a different effect when reflecting
+ 		if ( !reflect || ent->fl.takedamage ) {
+ 			idMat3 axis;
+-			
+-			// Effect axis when hitting actors is along the direction of impact because actor models are 
++
++			// Effect axis when hitting actors is along the direction of impact because actor models are
+ 			// very detailed.
+ 			if ( ent->IsType ( idActor::GetClassType() ) ) {
+ 				axis = ((-dir + tr.c.normal) * 0.5f).ToMat3();
+ 			} else {
+ 				axis = tr.c.normal.ToMat3();
+ 			}
+-			
++
++			// karin: idActor 命中强制走默认 flesh 效果（血），不读 tr.c.materialType
++			// （idTech4A++ 材质 type 读取异常，Strogg 模型被误判 metal 冒火花）
++			const rvDeclMatType *harm_matType = tr.c.materialType;
++			if ( ent->spawnArgs.GetBool("bleed") || ent->IsType ( idAnimatedEntity::GetClassType() ) ) {
++				harm_matType = declManager->FindMaterialType( "flesh" );
++			}
++
+ 			if ( !g_perfTest_weaponNoFX.GetBool() ) {
+ 				if ( ent->CanPlayImpactEffect( owner, ent ) ) {
+ 					if ( ent->IsType( idMover::GetClassType( ) ) ) {
+-						ent->PlayEffect( GetEffect( hitscanDict, "fx_impact", tr.c.materialType ), collisionPoint, axis, false, vec3_origin, false, EC_IMPACT, hitscanTint );					
++						ent->PlayEffect( GetEffect( hitscanDict, "fx_impact", harm_matType ), collisionPoint, axis, false, vec3_origin, false, EC_IMPACT, hitscanTint );
+ 					} else {
+-						gameLocal.PlayEffect( GetEffect( hitscanDict, "fx_impact", tr.c.materialType ), collisionPoint, axis, false, vec3_origin, false, false, EC_IMPACT, hitscanTint );
++						gameLocal.PlayEffect( GetEffect( hitscanDict, "fx_impact", harm_matType ), collisionPoint, axis, false, vec3_origin, false, false, EC_IMPACT, hitscanTint );
+ 					}
+ 				}
+ 			}
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/LipSync.cpp b/Q3E/src/main/jni/doom3/neo/quake4/LipSync.cpp
 index 2854fcf06..c85cbb394 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/LipSync.cpp
@@ -241,7 +287,7 @@ index 5c4464026..db60ef681 100644
  
  	if ( player && player->GetHud() ) {
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
-index f755e1344..9ac08cb25 100644
+index f755e1344..515ecde3e 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 @@ -1,4 +1,4 @@
@@ -303,7 +349,23 @@ index f755e1344..9ac08cb25 100644
  	savefile->ReadBool( objectiveSystemOpen );
  
  #ifdef _XENON
-@@ -9449,6 +9465,7 @@ Called every tic for each player
+@@ -3759,8 +3775,15 @@ void idPlayer::DrawHUD( idUserInterface *_hud ) {
+ 
+ 	if ( gameLocal.isMultiplayer ) {
+ 		_hud->SetStateBool( "mp", true );
++		// karin: cursor.gui 的命中变红条件读 gui::mp，必须也给 cursor 设值（用 int 避免 bool→"false" 字符串不匹配）
++		if ( cursor ) {
++			cursor->SetStateInt( "mp", 1 );
++		}
+ 	} else {
+ 		_hud->SetStateBool( "mp", false );
++		if ( cursor ) {
++			cursor->SetStateInt( "mp", 0 );
++		}
+ 	}
+ 
+ 	// Draw the cinematic hud when in a cinematic
+@@ -9449,6 +9472,7 @@ Called every tic for each player
  ==============
  */
  void idPlayer::Think( void ) {
@@ -311,7 +373,7 @@ index f755e1344..9ac08cb25 100644
  #ifdef _MOD_FULL_BODY_AWARENESS
  	if(!harm_pm_fullBodyAwareness.GetBool() || pm_thirdPerson.GetBool() || IsInVehicle() || zoomed || focusUI)
  	{
-@@ -13821,6 +13838,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
+@@ -13821,6 +13845,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
  idPlayer::SaveMessage
  =====================
  */
@@ -324,7 +386,7 @@ index f755e1344..9ac08cb25 100644
  void idPlayer::SaveMessage( void ) {
  #ifndef _XENON
  	if ( GetHud( ) ) {
-@@ -13830,6 +13853,18 @@ void idPlayer::SaveMessage( void ) {
+@@ -13830,6 +13860,18 @@ void idPlayer::SaveMessage( void ) {
  	if ( objectiveSystem ) {
  		objectiveSystem->HandleNamedEvent( "saveMessage" );
  	}
@@ -362,6 +424,65 @@ index 31d63795f..0230ad9fa 100644
  
  	// mekberg: set pm_ cvars
  	void					SetPMCVars( void );
+diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Projectile.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Projectile.cpp
+index d3e1eaf79..383e96f0e 100644
+--- a/Q3E/src/main/jni/doom3/neo/quake4/Projectile.cpp
++++ b/Q3E/src/main/jni/doom3/neo/quake4/Projectile.cpp
+@@ -1017,7 +1017,7 @@ idProjectile::DefaultDamageEffect
+ void idProjectile::DefaultDamageEffect( const trace_t &tr, const idVec3 &velocity, const char *damageDefName ) {
+ 	idEntity* ent;
+ 	idMat3	  axis;
+-	ent = gameLocal.entities[ tr.c.entityNum ];	
++	ent = gameLocal.entities[ tr.c.entityNum ];
+ 
+ 	// Make sure we want to play effects
+ 	if  ( (!*spawnArgs.GetString( "def_splash_damage" ) || spawnArgs.GetBool( "bloodyImpactEffect" ))
+@@ -1025,16 +1025,24 @@ void idProjectile::DefaultDamageEffect( const trace_t &tr, const idVec3 &velocit
+ 		return;
+ 	}
+ 
+-	// Effect axis when hitting actors is along the direction of impact because actor models are 
++	// karin: idActor/idAFAttachment 命中强制走 flesh 效果（喷血），不读 tr.c.materialType
++	// （idTech4A++ 材质 type 读取异常，Strogg 模型被误判 metal 冒火花）
++	const rvDeclMatType *harm_matType = tr.c.materialType;
++	bool harm_isActor = ent->IsType( idAnimatedEntity::GetClassType() ) || ent->IsType( idAFAttachment::GetClassType() ) || ent->spawnArgs.GetBool("bleed");
++	if ( harm_isActor ) {
++		harm_matType = declManager->FindMaterialType( "flesh" );
++	}
++
++	// Effect axis when hitting actors is along the direction of impact because actor models are
+ 	// very detailed.
+-	if ( ent->IsType( idActor::GetClassType() ) || ent->IsType( idAFAttachment::GetClassType() ) ) {
++	if ( harm_isActor ) {
+ 		idVec3 dir;
+ 		dir = velocity;
+ 		dir.Normalize ( );
+ 		axis = ((-dir + tr.c.normal) * 0.5f).ToMat3();
+-		
++
+ 		// Play an actor specific impact effect?
+-		const idDecl *actorImpactEffect = gameLocal.GetEffect( spawnArgs, "fx_impact_actor", tr.c.materialType );
++		const idDecl *actorImpactEffect = gameLocal.GetEffect( spawnArgs, "fx_impact_actor", harm_matType );
+ 		if ( actorImpactEffect ) {
+ 			gameLocal.PlayEffect( actorImpactEffect, tr.c.point, axis, false, vec3_origin, true );
+ 			return;
+@@ -1042,12 +1050,12 @@ void idProjectile::DefaultDamageEffect( const trace_t &tr, const idVec3 &velocit
+ 	} else {
+ 		axis = tr.c.normal.ToMat3();
+ 	}
+-	
++
+ 	// Play an impact effect on the entity that got hit
+ 	if ( ent->IsType( idMover::GetClassType ( ) ) ) {
+-		ent->PlayEffect( gameLocal.GetEffect( spawnArgs, "fx_impact", tr.c.materialType ), tr.c.point, axis, false, vec3_origin, true );
+-	} else { 
+-		gameLocal.PlayEffect( gameLocal.GetEffect( spawnArgs, "fx_impact", tr.c.materialType ), tr.c.point, axis, false, vec3_origin, true );
++		ent->PlayEffect( gameLocal.GetEffect( spawnArgs, "fx_impact", harm_matType ), tr.c.point, axis, false, vec3_origin, true );
++	} else {
++		gameLocal.PlayEffect( gameLocal.GetEffect( spawnArgs, "fx_impact", harm_matType ), tr.c.point, axis, false, vec3_origin, true );
+ 	}
+ }
+ 
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Sound.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Sound.cpp
 index 5c9d2262c..051cc1010 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Sound.cpp
@@ -1361,3 +1482,29 @@ index a22a92952..b49313e1b 100644
              idStr drawText = text;
              int charIndex = 0;
              float f = 0.0f;
+diff --git a/Q3E/src/main/jni/doom3/neo/ui/Window.cpp b/Q3E/src/main/jni/doom3/neo/ui/Window.cpp
+index 01b502ffa..476cc62c6 100644
+--- a/Q3E/src/main/jni/doom3/neo/ui/Window.cpp
++++ b/Q3E/src/main/jni/doom3/neo/ui/Window.cpp
+@@ -2215,6 +2215,21 @@ idWinVar *idWindow::GetWinVarByName(const char *_name, bool fixup, drawWin_t **o
+     {
+         retVar = &matColor_w;
+     }
++// karin: 原版 Quake4 GUI 脚本用 matcolor_x/y/z 表示颜色分量（Vec4 的 x/y/z = r/g/b），
++// idTech4A++ 只实现了 r/g/b/w 别名。补上 x/y/z 映射，否则 cursor.gui 命中变红等无效。
++    if (idStr::Icmp(_name, "matColor_x") == 0)
++    {
++        retVar = &matColor_r;
++    }
++    if (idStr::Icmp(_name, "matColor_y") == 0)
++    {
++        retVar = &matColor_g;
++    }
++    if (idStr::Icmp(_name, "matColor_z") == 0)
++    {
++        retVar = &matColor_b;
++    }
++// karin end
+ // jmarshall end
+ #endif
+ 

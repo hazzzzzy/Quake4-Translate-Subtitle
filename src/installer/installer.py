@@ -15,6 +15,7 @@ import sys
 import tempfile
 import threading
 import traceback
+import webbrowser
 import winreg
 import zipfile
 from datetime import datetime
@@ -26,6 +27,7 @@ from tkinter import (
     RIGHT,
     X,
     BooleanVar,
+    PhotoImage,
     StringVar,
     Tk,
     Toplevel,
@@ -43,9 +45,10 @@ if not getattr(sys, "frozen", False):
     sys.path.insert(0, str(TOOLS_DIR))
 
 from build_dist_extras import build_assets  # noqa: E402
+from _logos import GITHUB_B64, BILI_B64, APP_ICON_B64  # noqa: E402
 
 
-APP_NAME = "Quake 4 简体中文汉化安装器"
+APP_NAME = "Quake 4 简体中文汉化安装器 v1.2.9"
 INSTALL_DIRECTORY_NAME = "Quake4-Chinese"
 LAUNCHER_NAME = "Quake4中文启动器.exe"
 # 英文模式共用同一启动器二进制，按文件名含"英文"分流（见 launcher/main.cpp）
@@ -754,10 +757,44 @@ class InstallerWindow:
         root.minsize(680, 520)
         root.option_add("*Font", ("Microsoft YaHei UI", 10))
 
+        # 窗口图标（base64 内嵌，不依赖外部文件）
+        self._app_icon = PhotoImage(data=APP_ICON_B64)
+        root.iconphoto(True, self._app_icon)
+
         main = ttk.Frame(root, padding=20)
         main.pack(fill=BOTH, expand=True)
 
-        ttk.Label(main, text="Quake 4 简体中文汉化", font=("Microsoft YaHei UI", 17, "bold")).pack(anchor="w")
+        # 标题行：左侧标题 + 右侧开发者链接
+        title_row = ttk.Frame(main)
+        title_row.pack(fill=X)
+        ttk.Label(title_row, text="Quake 4 简体中文汉化", font=("Microsoft YaHei UI", 17, "bold")).pack(side=LEFT)
+        ttk.Label(title_row, text="v1.2.9", font=("Microsoft YaHei UI", 10), foreground="#888888").pack(side=LEFT, padx=(8, 0), pady=(6, 0))
+
+        # 开发者链接区（右侧）
+        link_area = ttk.Frame(title_row)
+        link_area.pack(side=RIGHT, anchor="ne")
+        link_font = ("Microsoft YaHei UI", 9)
+        link_color = "#2962FF"
+        cursor_hand = "hand2"
+
+        self._github_icon = PhotoImage(data=GITHUB_B64)
+        self._bili_icon = PhotoImage(data=BILI_B64)
+
+        def _make_icon_link(parent, icon, text, url):
+            """创建带图标的可点击链接（图标在文字左侧）。"""
+            lbl = ttk.Label(parent, image=icon, text=text, compound="left",
+                            font=link_font, foreground=link_color, cursor=cursor_hand)
+            lbl.bind("<Button-1>", lambda e: webbrowser.open(url))
+            return lbl
+
+        # B站链接（图标 + 文本：小白4a）
+        _make_icon_link(link_area, self._bili_icon, "小白4a",
+                        "https://space.bilibili.com/271279547").pack(side=RIGHT, padx=(4, 0))
+        ttk.Label(link_area, text="·", font=link_font).pack(side=RIGHT, padx=(2, 2))
+        # GitHub 链接（图标 + 文本：hazzzzzy）
+        _make_icon_link(link_area, self._github_icon, "hazzzzzy",
+                        "https://github.com/hazzzzzy/Quake4-Translate-Subtitle").pack(side=RIGHT)
+
         ttk.Label(main, text="游戏目录").pack(anchor="w", pady=(20, 6))
 
         path_row = ttk.Frame(main)

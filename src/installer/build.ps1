@@ -142,6 +142,7 @@ foreach ($path in $payloadRequired) {
     --windowed `
     --uac-admin `
     --name "Quake4-Chinese-Installer" `
+    --icon "$source\app.ico" `
     --distpath $package `
     --workpath $pyiWork `
     --specpath $pyiSpec `
@@ -150,7 +151,6 @@ foreach ($path in $payloadRequired) {
     --add-binary "$launcher;." `
     --add-data "$payloadEngine;payload\engine" `
     --add-data "$payloadSavedata;payload\savedata" `
-    (Join-Path $source "installer.py")
 if ($LASTEXITCODE -ne 0) {
     throw "Installer build failed with exit code $LASTEXITCODE"
 }
