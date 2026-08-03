@@ -22,11 +22,9 @@
 | 工程引擎 | `idTech4Apx\quake4` | idTech4A++ 的 `Quake4.exe`及当前编译的 `q4game.dll` |
 | 工程运行数据 | `savedata\q4base` | `fs_savepath`，部署字体、字符串、GUI、lipsync、语音别名、配置、日志和存档 |
 | 已知可玩基线 | `D:\Quake4-CN` | 外部对照目录；未经用户明确许可不要覆盖或同步修改 |
-| 正常启动器 | `启动汉化版.cmd` | 全屏 1920x1080，进入主菜单，不自动加载存档 |
-| 窗口调试器 | `tmp\scripts\run_apx.cmd` | 640x480 窗口模式，可追加控制台参数 |
-| 旧快速开场脚本 | `tmp\scripts\run_q4_start.cmd` | 强制加载 2026-07-17 的 `gamestart`；不得用于当前 HUD 视觉验收 |
+| 测试启动 | exe 安装版 `Quake4中文启动器.exe`（Q4CNLauncher） | 安装后用快捷方式启动；安装器安装时从原版 Quake4.exe 提取图标。便携 ZIP 已停发 |
 
-正常测试优先使用根目录 `启动汉化版.cmd`。启动器显式开启中文、宽字符 GUI、高清字体、字幕、日志、全屏 1920x1080 和阴影选项，但不会执行 `loadGame`。
+测试统一用 exe 安装版（安装到游戏目录后点 Quake4中文启动器.exe），不再用工程 .cmd 启动器。引擎中文、宽字符 GUI、高清字体、字幕、阴影等选项由启动器/安装器配置。
 
 ## 目录职责
 
@@ -79,8 +77,6 @@ idTech4A++ 上游源码，基线为 `v1.1.0harmattan70`。当前 Quake 4 汉化�
 构建、验证和临时产物目录：
 
 - `scripts/quake4-cn-engine-full.patch`：完整引擎补丁的本机交接副本；公开权威文件位于 `src/engine-patches`。
-- `scripts/run_apx.cmd`：窗口调试启动器。
-- `scripts/run_q4_start.cmd`：旧快速开场脚本，仅用于特定旧存档场景。
 - `build-q4-ninja-only`：当前 q4game 增量构建目录。
 - `windows-sdk-nuget`：本地 Windows SDK 10.0.26100，不是系统级安装。
 - 其余截图、隔离存档和生成目录均为测试证据；删除前必须征得用户确认。
@@ -103,14 +99,14 @@ Quake 4 会按 GUI 源文件结构和窗口顺序序列化状态。必须遵守�
 2. 为兼容存档，原则上只改既有窗口的数值属性；禁止随意增删 `windowDef`、脚本、变量或改变顺序。
 3. 旧存档会恢复保存时的 `rect`、`textscale`、文本和其他 GUI 状态，从而暂时覆盖磁盘上的新配置。
 4. 视觉验收应从主菜单进入新流程、换图，或在明确的调试场景执行 `reloadGuis all`；不能用旧 `gamestart`判断当前 HUD 文件是否正确。
-5. 旧 `gamestart`制作于 2026-07-17，早于后续 EXIT、枪名、字体和 HUD 调整。`run_q4_start.cmd`出现旧无线电两行、EXIT 异常或枪名偏高，不代表当前磁盘资产回退。
 
 ## GUI 加载机制与字体共用约束
 
 ### 两类 GUI 的加载路径（2026-08-01 摸清）
 
 - **走 savepath 的 GUI**（loose 覆盖生效）：HUD（hud.gui/hud_strogg.gui）、主菜单、腕表、字幕、Strogg 面板、电梯/撤离/生命补给等。由 `build_dist_extras.py` 从原版 pak 现场生成到 `savedata/q4base/guis/`，loose 文件覆盖 pak 原版。
-- **不走 savepath 的 GUI**（只认 basepath pak，loose 文件和 savepath 内 pk4 都不覆盖）：武器 viewmodel 弹药 GUI（`machinegun_ammo`/`hyperblaster_ammo`/`shotgun_ammo`/`nailgun_ammo`/`rocketlauncher_ammo.gui`）和准心 GUI（`cursor.gui`）。由武器 def / 引擎代码从 basepath pak 直接加载，不搜 `fs_savepath`。**改这些 GUI 的 rect/font/textscale 等任何属性都不会生效**（实测：ammo rect 大补偿 +28、cursor crossName font 改 lowpixel、cursor 打 zzz pk4，全部纹丝不动）。
+- **不走 savepath 的 GUI**（只认 basepath pak）：武器 viewmodel 弹药 GUI（`machinegun_ammo`/`hyperblaster_ammo`/`shotgun_ammo`/`nailgun_ammo`/`rocketlauncher_ammo.gui`）。由武器 def 从 basepath pak 直接加载，不搜 `fs_savepath`，改 rect/font/textscale 不生效。
+- **cursor.gui 走 savepath 但禁止修改**（2026-08-03 摸清）：cursor.gui 和 HUD 走同一个 `FindGui → InitFromFile → fileSystem->ReadFile` 路径，loose 文件能被加载。但 cursor GUI 被 `Player.cpp` 的 `WriteUserInterface` 序列化到存档，**修改 cursor.gui 内容会导致存档加载崩溃**（实证：matcolor_x→matcolor_r 等长替换、matcolor 整体替换、3 行合 1 行，全部崩溃；原版不修改不崩溃）。之前"改 cursor 属性纹丝不动"的实测实际是修改后崩溃或存档覆盖所致。**修复准心相关问题只能改引擎 `ui/Window.cpp`（需编译 Quake4.exe），不能改 cursor.gui**。
 
 ### marine 字体被三处共用，字形无法分别
 
@@ -127,6 +123,19 @@ marine 恢复原版基础段后，这三处的英文/数字**同时变原版方�
 武器弹药数字和准心的位置由 fontdat 里数字字形的 `top`（垂直）和 `xSkip`（水平 center 基准）决定，`PaintChar` 直接读取这两个度量。GUI rect 改动对这些 viewmodel/准心 GUI 无效（不走 savepath），**改 fontdat 才有效**（2026-08-01 大补偿实证：fontdat 数字 top-10/xSkip-10 立刻右下移）。marine 数字位置补偿（`top-4`/`xSkip-15`，实机标定：垂直下移到不偏上、水平 center 右移到居中）集成在 `export_font.py` 的 `use_original_base` 分支（marine 基础段拷贝后改数字 0-9 的 top/xSkip 再写）；`patch_marine_numoffset.py` 是实机快速微调工具（每次基于 pak 原版重新算，不累积偏移）。注意 xSkip 大幅缩小会让多字符（如机枪"24"）字间距变窄，单字符（霰弹枪）不受影响。
 
 ## 引擎构建与部署
+
+### 编译目标分离（2026-08-03 摸清）
+
+idTech4A++ 的 CMake 有两个独立构建目标，源码归属不同：
+
+| 目标 | CMake 选项 | 包含源码 | 产物 |
+|---|---|---|---|
+| q4game.dll | `QUAKE4=ON` | `quake4/*.cpp`（游戏逻辑、AI、武器、字幕等） | q4game.dll |
+| Quake4.exe | `RAVEN=ON` | `ui/*.cpp`（Window/GuiScript/Winvar 等）+ 渲染器 + 框架 + 声音（`src_core_raven`） | Quake4.exe |
+
+**关键约束**：`ui/*.cpp` 编译在 Quake4.exe 中，不在 q4game.dll。改 UI 代码（如 `Window.cpp` 的 `GetWinVarByName`）必须编译 Quake4.exe（`RAVEN=ON`），只跑 `ninja q4game` 不会生效。
+
+### q4game.dll 编译（日常）
 
 q4game 使用 VS2022、CMake 和 Ninja 构建，核心配置为：
 
@@ -150,6 +159,27 @@ idTech4Apx/quake4/q4game.dll.official
 
 实际编译（2026-08-01 摸清）：工具链在 D 盘非默认位——VS2022 BuildTools `D:/Microsoft Visual Studio/2022/BuildTools/`（MSVC 14.44，Hostx64/x64）+ Windows SDK 10.0.22621.0（需 VS Installer 勾装；缺 UCRT 会 `malloc.h` C1083）。增量编译跑 `tmp/build_q4.bat`（先 `call vcvars64.bat` 初始化 INCLUDE/LIB，再 `ninja q4game`，构建目录 `tmp/build-q4-ninja-only`）。**bat 必须 CRLF**——LF 会让含空格路径的 call 行截断；改 `Subtitles.{h,cpp}` 后先 `cp` 到 `diii4a/Q3E/src/main/jni/doom3/neo/quake4/` 再编译（双写同步）。产物部署三处：`idTech4Apx/quake4/q4game.dll`、`dist/engine/q4game.dll`、`D:/Quake 4/Quake4-Chinese/engine/q4game.dll`（实际游玩目录）。
 
+### Quake4.exe 编译（改 UI 代码时）
+
+Quake4.exe 编译需要 `RAVEN=ON`，并额外依赖 SDL2 和 ZLIB（q4game.dll 不需要）：
+
+- **SDL2** 开发包 2.30.10（`tmp/SDL2-VC/SDL2-2.30.10/`，含 cmake 配置 + 头文件 + lib + dll）
+- **ZLIB**（内部 curl 依赖）：源码 `tmp/zlib-1.3.1/`（编译后需把 `tmp/build-zlib/zconf.h` 复制进去），静态库 `tmp/build-zlib/zlibstatic.lib`
+
+CMake 重新配置（在现有构建目录追加 RAVEN=ON + 依赖路径）：
+
+```text
+cmake -S diii4a/Q3E/src/main/jni/doom3/neo -B tmp/build-q4-ninja-only
+    -DRAVEN=ON
+    -DSDL2_DIR=<repo>/tmp/SDL2-VC/SDL2-2.30.10/cmake
+    -DZLIB_INCLUDE_DIR=<repo>/tmp/zlib-1.3.1
+    -DZLIB_LIBRARY=<repo>/tmp/build-zlib/zlibstatic.lib
+```
+
+编译跑 `tmp/build_q4engine.bat`（`ninja Quake4`，需 vcvars64 环境）。首次为全量编译（366+ 文件，约 20-30 分钟），后续增量只编译改动的文件。
+
+产物部署 Quake4.exe + 配套 SDL2.dll 三处：`idTech4Apx/quake4/`、`dist/engine/`、`D:/Quake 4/Quake4-Chinese/engine/`。SDL2.dll 需与编译时版本一致（当前 2.30.10）。
+
 ## 生成工具与部署纪律
 
 - 修改翻译时先改 `src/translations`，再运行对应生成工具，不要只改部署后的 lang。术语译名（武器/单位/装备/概念）以 `docs/glossary.md` 为准，专名用「」包裹（首次「译名」（英文），后续「译名」）；人名、番号（机甲小队等）、保留英文的 Strogg/Makron/Nexus 不包裹。
@@ -172,7 +202,7 @@ idTech4Apx/quake4/q4game.dll.official
 
 ## 自动打包
 
-- push 到 `main`后，GitHub Actions 运行 Python 检查、安装器测试、上游补丁校验、安装器构建和分发审计，并上传自包含 EXE、便携 ZIP 与校验文件 Artifact。
+- push 到 `main`后，GitHub Actions 运行 Python 检查、安装器测试、上游补丁校验、安装器构建和分发审计，并上传自包含 EXE 与校验文件 Artifact。
 - **patch 加新文件时，必须同步 `.github/workflows/package.yml` 的 sparse-checkout 列表**：Validate engine patch 步骤只 checkout 列表内文件做 `git apply --check`，缺文件即失败（c7b653a 加 Entity.cpp 漏同步，导致两次构建红，2026-08-01 补）。
 - 版本号 tag 驱动：push `v*`标签触发 Release 构建（版本 = tag 名），在相同验证通过后创建 GitHub Release；main 分支构建用 commit hash 作版本，不发 Release。出正式版打 `vX.Y.Z` tag。
 - 本地等价打包入口是 `src/tools/package_release.ps1`。
@@ -187,7 +217,7 @@ idTech4Apx/quake4/q4game.dll.official
 
 运行时验证：
 
-- 正常验收使用根目录 `启动汉化版.cmd`，不得自动加载旧存档。
+- 正常验收使用 exe 安装版（`Quake4中文启动器.exe`），不得自动加载旧存档。
 - 日志位于 `savedata/q4base/qconsole.log`。
 - 日志不得出现中文字体缺失、字体图片降采样、`ERROR`或 `FATAL`。
 - 原版 pak 的材质重复定义、无窗口 Gamma、主菜单选项数量和未知原版字符串警告属于已知噪声，但仍需分类报告，不能笼统声称“无警告”。

@@ -105,7 +105,8 @@ Quake 4 会按 GUI 源文件结构和窗口顺序序列化状态。必须遵守�
 ### 两类 GUI 的加载路径（2026-08-01 摸清）
 
 - **走 savepath 的 GUI**（loose 覆盖生效）：HUD（hud.gui/hud_strogg.gui）、主菜单、腕表、字幕、Strogg 面板、电梯/撤离/生命补给等。由 `build_dist_extras.py` 从原版 pak 现场生成到 `savedata/q4base/guis/`，loose 文件覆盖 pak 原版。
-- **不走 savepath 的 GUI**（只认 basepath pak，loose 文件和 savepath 内 pk4 都不覆盖）：武器 viewmodel 弹药 GUI（`machinegun_ammo`/`hyperblaster_ammo`/`shotgun_ammo`/`nailgun_ammo`/`rocketlauncher_ammo.gui`）和准心 GUI（`cursor.gui`）。由武器 def / 引擎代码从 basepath pak 直接加载，不搜 `fs_savepath`。**改这些 GUI 的 rect/font/textscale 等任何属性都不会生效**（实测：ammo rect 大补偿 +28、cursor crossName font 改 lowpixel、cursor 打 zzz pk4，全部纹丝不动）。
+- **不走 savepath 的 GUI**（只认 basepath pak）：武器 viewmodel 弹药 GUI（`machinegun_ammo`/`hyperblaster_ammo`/`shotgun_ammo`/`nailgun_ammo`/`rocketlauncher_ammo.gui`）。由武器 def 从 basepath pak 直接加载，不搜 `fs_savepath`，改 rect/font/textscale 不生效。
+- **cursor.gui 走 savepath 但禁止修改**（2026-08-03 摸清）：cursor.gui 和 HUD 走同一个 `FindGui → InitFromFile → fileSystem->ReadFile` 路径，loose 文件能被加载。但 cursor GUI 被 `Player.cpp` 的 `WriteUserInterface` 序列化到存档，**修改 cursor.gui 内容会导致存档加载崩溃**（实证：matcolor_x→matcolor_r 等长替换、matcolor 整体替换、3 行合 1 行，全部崩溃；原版不修改不崩溃）。之前"改 cursor 属性纹丝不动"的实测实际是修改后崩溃或存档覆盖所致。**修复准心相关问题只能改引擎 `ui/Window.cpp`（需编译 Quake4.exe），不能改 cursor.gui**。
 
 ### marine 字体被三处共用，字形无法分别
 
@@ -122,6 +123,19 @@ marine 恢复原版基础段后，这三处的英文/数字**同时变原版方�
 武器弹药数字和准心的位置由 fontdat 里数字字形的 `top`（垂直）和 `xSkip`（水平 center 基准）决定，`PaintChar` 直接读取这两个度量。GUI rect 改动对这些 viewmodel/准心 GUI 无效（不走 savepath），**改 fontdat 才有效**（2026-08-01 大补偿实证：fontdat 数字 top-10/xSkip-10 立刻右下移）。marine 数字位置补偿（`top-4`/`xSkip-15`，实机标定：垂直下移到不偏上、水平 center 右移到居中）集成在 `export_font.py` 的 `use_original_base` 分支（marine 基础段拷贝后改数字 0-9 的 top/xSkip 再写）；`patch_marine_numoffset.py` 是实机快速微调工具（每次基于 pak 原版重新算，不累积偏移）。注意 xSkip 大幅缩小会让多字符（如机枪"24"）字间距变窄，单字符（霰弹枪）不受影响。
 
 ## 引擎构建与部署
+
+### 编译目标分离（2026-08-03 摸清）
+
+idTech4A++ 的 CMake 有两个独立构建目标，源码归属不同：
+
+| 目标 | CMake 选项 | 包含源码 | 产物 |
+|---|---|---|---|
+| q4game.dll | `QUAKE4=ON` | `quake4/*.cpp`（游戏逻辑、AI、武器、字幕等） | q4game.dll |
+| Quake4.exe | `RAVEN=ON` | `ui/*.cpp`（Window/GuiScript/Winvar 等）+ 渲染器 + 框架 + 声音（`src_core_raven`） | Quake4.exe |
+
+**关键约束**：`ui/*.cpp` 编译在 Quake4.exe 中，不在 q4game.dll。改 UI 代码（如 `Window.cpp` 的 `GetWinVarByName`）必须编译 Quake4.exe（`RAVEN=ON`），只跑 `ninja q4game` 不会生效。
+
+### q4game.dll 编译（日常）
 
 q4game 使用 VS2022、CMake 和 Ninja 构建，核心配置为：
 
@@ -144,6 +158,27 @@ idTech4Apx/quake4/q4game.dll.official
 源码中的中文注释使用 UTF-8 BOM，避免 MSVC 按系统代码页误读；窄字符串中的中文运行时常量必须用显式 UTF-8 字节转义（如 `"\xE5\xB9\xBF\xE6\x92\xAD"` 表示"广播"），否则 MSVC 按系统 GBK 码页编译窄字面量会得到错误字节。
 
 实际编译（2026-08-01 摸清）：工具链在 D 盘非默认位——VS2022 BuildTools `D:/Microsoft Visual Studio/2022/BuildTools/`（MSVC 14.44，Hostx64/x64）+ Windows SDK 10.0.22621.0（需 VS Installer 勾装；缺 UCRT 会 `malloc.h` C1083）。增量编译跑 `tmp/build_q4.bat`（先 `call vcvars64.bat` 初始化 INCLUDE/LIB，再 `ninja q4game`，构建目录 `tmp/build-q4-ninja-only`）。**bat 必须 CRLF**——LF 会让含空格路径的 call 行截断；改 `Subtitles.{h,cpp}` 后先 `cp` 到 `diii4a/Q3E/src/main/jni/doom3/neo/quake4/` 再编译（双写同步）。产物部署三处：`idTech4Apx/quake4/q4game.dll`、`dist/engine/q4game.dll`、`D:/Quake 4/Quake4-Chinese/engine/q4game.dll`（实际游玩目录）。
+
+### Quake4.exe 编译（改 UI 代码时）
+
+Quake4.exe 编译需要 `RAVEN=ON`，并额外依赖 SDL2 和 ZLIB（q4game.dll 不需要）：
+
+- **SDL2** 开发包 2.30.10（`tmp/SDL2-VC/SDL2-2.30.10/`，含 cmake 配置 + 头文件 + lib + dll）
+- **ZLIB**（内部 curl 依赖）：源码 `tmp/zlib-1.3.1/`（编译后需把 `tmp/build-zlib/zconf.h` 复制进去），静态库 `tmp/build-zlib/zlibstatic.lib`
+
+CMake 重新配置（在现有构建目录追加 RAVEN=ON + 依赖路径）：
+
+```text
+cmake -S diii4a/Q3E/src/main/jni/doom3/neo -B tmp/build-q4-ninja-only
+    -DRAVEN=ON
+    -DSDL2_DIR=<repo>/tmp/SDL2-VC/SDL2-2.30.10/cmake
+    -DZLIB_INCLUDE_DIR=<repo>/tmp/zlib-1.3.1
+    -DZLIB_LIBRARY=<repo>/tmp/build-zlib/zlibstatic.lib
+```
+
+编译跑 `tmp/build_q4engine.bat`（`ninja Quake4`，需 vcvars64 环境）。首次为全量编译（366+ 文件，约 20-30 分钟），后续增量只编译改动的文件。
+
+产物部署 Quake4.exe + 配套 SDL2.dll 三处：`idTech4Apx/quake4/`、`dist/engine/`、`D:/Quake 4/Quake4-Chinese/engine/`。SDL2.dll 需与编译时版本一致（当前 2.30.10）。
 
 ## 生成工具与部署纪律
 
