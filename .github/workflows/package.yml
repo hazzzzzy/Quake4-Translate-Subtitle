@@ -119,9 +119,34 @@ jobs:
               throw "Expected exactly one installer, found $($installers.Count)"
           }
           $checksums = (Resolve-Path -LiteralPath "artifacts\SHA256SUMS.txt").Path
+
+          # 从 CHANGELOG.md 提取当前版本的更新内容作为 release 正文
+          $version = $env:GITHUB_REF_NAME
+          $lines = Get-Content -LiteralPath "CHANGELOG.md" -Encoding UTF8
+          $capturing = $false
+          $body = @()
+          foreach ($line in $lines) {
+              if ($line -match "^## $([regex]::Escape($version))") {
+                  $capturing = $true
+                  continue
+              }
+              if ($capturing -and $line -match "^## v") {
+                  break
+              }
+              if ($capturing) {
+                  $body += $line
+              }
+          }
+          $bodyText = ($body -join "`n").Trim()
+          if ([string]::IsNullOrWhiteSpace($bodyText)) {
+              $bodyText = "更新内容详见 CHANGELOG.md"
+          }
+          $notesFile = Join-Path $env:RUNNER_TEMP "release_notes.md"
+          $bodyText | Out-File -LiteralPath $notesFile -Encoding UTF8
+
           gh release create $env:GITHUB_REF_NAME `
               $installers[0].FullName `
               $checksums `
               --repo $env:GITHUB_REPOSITORY `
               --title $env:GITHUB_REF_NAME `
-              --generate-notes
+              --notes-file $notesFile
