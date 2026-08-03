@@ -151,6 +151,8 @@ foreach ($path in $payloadRequired) {
     --add-binary "$launcher;." `
     --add-data "$payloadEngine;payload\engine" `
     --add-data "$payloadSavedata;payload\savedata" `
+    "$source\installer.py"
+
 if ($LASTEXITCODE -ne 0) {
     throw "Installer build failed with exit code $LASTEXITCODE"
 }
