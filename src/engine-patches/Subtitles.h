@@ -11,7 +11,8 @@ enum subColor_t {
 	SUB_COLOR_BROADCAST,	// Strogg广播(PA) — 黄
 	SUB_COLOR_RADIO,		// 无线电 — 青
 	SUB_COLOR_MAKRON,		// Makron — 紫
-	SUB_COLOR_HUMANCAST		// 人类/舰船广播 — 绿
+	SUB_COLOR_HUMANCAST,	// 人类/舰船广播 — 绿
+	SUB_COLOR_ENEMY			// 敌军语音 — 红
 };
 
 class idSoundShader;
@@ -22,7 +23,7 @@ public:
 
 	void				Clear( void );
 	// speaker 可为 NULL；durationMs 为语音时长（毫秒）
-	void				Add( const char *speaker, const char *text, int durationMs );
+	void				Add( const char *speaker, const char *text, int durationMs, subColor_t colorOverride = SUB_COLOR_NORMAL );
 	// 从说话实体推断说话人名后加入；shader 非 NULL 时做可听性门控；
 	// fallbackSpeaker：推断不出名字时的兜底前缀（如 speaker 实体传"广播"）
 	void				AddFromEntity( idEntity *bodyEnt, const char *text, int durationMs, const idSoundShader *shader = NULL, const char *fallbackSpeaker = NULL );

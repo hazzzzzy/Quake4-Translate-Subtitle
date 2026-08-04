@@ -23,7 +23,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA0"
+		forecolor	"gui::subTxtR0","gui::subTxtG0","gui::subTxtB0","gui::subTxtA0"
 		text	"gui::subText0"
 		visible	1
 	}
@@ -33,7 +33,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA1"
+		forecolor	"gui::subTxtR1","gui::subTxtG1","gui::subTxtB1","gui::subTxtA1"
 		text	"gui::subText1"
 		visible	1
 	}
@@ -43,7 +43,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA2"
+		forecolor	"gui::subTxtR2","gui::subTxtG2","gui::subTxtB2","gui::subTxtA2"
 		text	"gui::subText2"
 		visible	1
 	}
@@ -53,7 +53,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA3"
+		forecolor	"gui::subTxtR3","gui::subTxtG3","gui::subTxtB3","gui::subTxtA3"
 		text	"gui::subText3"
 		visible	1
 	}
@@ -63,7 +63,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA4"
+		forecolor	"gui::subTxtR4","gui::subTxtG4","gui::subTxtB4","gui::subTxtA4"
 		text	"gui::subText4"
 		visible	1
 	}
@@ -73,7 +73,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA5"
+		forecolor	"gui::subTxtR5","gui::subTxtG5","gui::subTxtB5","gui::subTxtA5"
 		text	"gui::subText5"
 		visible	1
 	}
@@ -83,7 +83,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA6"
+		forecolor	"gui::subTxtR6","gui::subTxtG6","gui::subTxtB6","gui::subTxtA6"
 		text	"gui::subText6"
 		visible	1
 	}
@@ -93,7 +93,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	0.95,0.95,0.95,"gui::subTxtA7"
+		forecolor	"gui::subTxtR7","gui::subTxtG7","gui::subTxtB7","gui::subTxtA7"
 		text	"gui::subText7"
 		visible	1
 	}

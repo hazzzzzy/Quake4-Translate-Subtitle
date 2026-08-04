@@ -5280,3 +5280,99 @@ lipSync vo_3_1_2_10_2
 	description	"Don't let the Strogg makeup fool ya - he's a damn fine Marine."
 	text		"#str_386075"
 }
+
+lipSync failedtransfer_alert
+{
+	description	"failedtransfer_alert"
+	text		"我看见你了"
+}
+
+lipSync gunner_alert
+{
+	description	"gunner_alert"
+	text		"机炮兵发现目标"
+}
+
+lipSync iron_maiden_alert
+{
+	description	"iron_maiden_alert"
+	text		"必须……杀……"
+}
+
+lipSync network_guardian_alert
+{
+	description	"network_guardian_alert"
+	text		"「咆哮」"
+}
+
+lipSync s_protector_alert
+{
+	description	"s_protector_alert"
+	text		"「嘶吼」"
+}
+
+lipSync scientist_alert
+{
+	description	"scientist_alert"
+	text		"科学家发现目标"
+}
+
+lipSync slimytransfer_alert
+{
+	description	"slimytransfer_alert"
+	text		"我看见你了"
+}
+
+lipSync teleportdropper_alert
+{
+	description	"teleportdropper_alert"
+	text		"我必须咬你了"
+}
+
+lipSync vo_3_2_9_30_2
+{
+	description	"vo_3_2_9_30_2"
+	text		"#str_385761"
+}
+
+lipSync vo_3_2_9_30_3
+{
+	description	"vo_3_2_9_30_3"
+	text		"#str_385762"
+}
+
+lipSync vo_3_2_9_30_4
+{
+	description	"vo_3_2_9_30_4"
+	text		"#str_385763"
+}
+
+lipSync vo_3_2_9_30_5
+{
+	description	"vo_3_2_9_30_5"
+	text		"#str_385764"
+}
+
+lipSync vo_3_2_9_30_6
+{
+	description	"vo_3_2_9_30_6"
+	text		"#str_385765"
+}
+
+lipSync vo_3_2_9_30_7
+{
+	description	"vo_3_2_9_30_7"
+	text		"#str_385766"
+}
+
+lipSync vo_3_2_9_30_11
+{
+	description	"vo_3_2_9_30_11"
+	text		"#str_385767"
+}
+
+lipSync vo_3_2_9_30_12
+{
+	description	"vo_3_2_9_30_12"
+	text		"#str_385768"
+}

@@ -357,7 +357,7 @@ rvSubtitles::Add
 优先在空格处断行；拆出的各行共享同一个到期时间。
 ================
 */
-void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
+void rvSubtitles::Add( const char *speaker, const char *text, int durationMs, subColor_t colorOverride ) {
 	if ( !harm_g_subtitles.GetBool() || !text || !text[0] ) {
 		return;
 	}
@@ -391,7 +391,9 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 
 	// 按说话人来源分配字幕配色(2026-08-01 用户要求：广播黄/无线电青/其余白,统一正常亮度)
 	subColor_t color;
-	if ( !speaker || !speaker[0] || speaker[0] == '#' ) {
+	if ( colorOverride != SUB_COLOR_NORMAL ) {
+		color = colorOverride;
+	} else if ( !speaker || !speaker[0] || speaker[0] == '#' ) {
 		color = SUB_COLOR_NORMAL;	// 无说话人(无名环境音) — 白
 	} else if ( strstr( speaker, "\xE8\x88\xB0\xE8\xBD\xBD\xE5\xB9\xBF\xE6\x92\xAD" ) != NULL ) { // 舰载广播
 		color = SUB_COLOR_HUMANCAST;	// 人类/舰船广播 — 绿
@@ -404,12 +406,14 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 		color = SUB_COLOR_RADIO;		// 无线电 — 青
 	} else if ( idStr::Icmp( speaker, "Makron" ) == 0 ) {
 		color = SUB_COLOR_MAKRON;		// Makron — 紫
+	} else if ( idStr::Cmp( speaker, "\xE6\x95\x8C\xE5\x86\x9B" ) == 0 ) {	// 敌军
+		color = SUB_COLOR_ENEMY;		// 敌军语音 — 红
 	} else {
 		color = SUB_COLOR_NORMAL;	// 角色对白 — 白
 	}
 
 	if ( harm_g_subtitleDebug.GetBool() ) {
-		gameLocal.Printf( "[SUB] show (%dms): %s\n", durationMs, full.c_str() );
+		gameLocal.Printf( "[SUB] show (%dms) color=%d: %s\n", durationMs, color, full.c_str() );
 	}
 
 	int dur = durationMs;
@@ -748,9 +752,10 @@ void rvSubtitles::Draw( void ) {
 			float subR, subG, subB;
 			switch ( lines[i].color ) {
 				case SUB_COLOR_BROADCAST: subR = 1.0f;  subG = 0.80f; subB = 0.15f; break;
-				case SUB_COLOR_RADIO:     subR = 0.35f; subG = 0.85f; subB = 1.0f;  break;
+				case SUB_COLOR_RADIO:     subR = 0.40f; subG = 0.90f; subB = 0.40f; break;
 				case SUB_COLOR_MAKRON:    subR = 0.75f; subG = 0.35f; subB = 1.0f;  break;
-				case SUB_COLOR_HUMANCAST: subR = 0.40f; subG = 0.90f; subB = 0.40f; break;
+				case SUB_COLOR_HUMANCAST: subR = 0.35f; subG = 0.60f; subB = 1.0f;  break;
+				case SUB_COLOR_ENEMY:     subR = 1.0f;  subG = 0.35f; subB = 0.35f; break;
 				default:                   subR = 0.95f; subG = 0.95f; subB = 0.95f; break;
 			}
 			gui->SetStateFloat( va( "subTxtR%d", i ), subR );

@@ -1,28 +1,39 @@
 # Changelog
 ## v1.3.0 — 2026-08-04
 
-### 字幕系统全面修复 + 准心命中变红
+### 字幕系统全面修复 + 准心命中变红 + 喷血修复
 
 字幕系统:
-- 修复 #str_ 引用被跳过（v1.2.1 引入的 bug）：Subtitles.cpp Add 函数直接放行 #str_ 引用，GUI 文本控件自动解析为中文翻译
-- lipsync decl 全面补齐至 1172 个，4 个 TSV 全部 100% 覆盖：
-  - radio_chatter（无线电）: 253 → 292
-  - ai_vo_gap（AI 语音）: 668 → 726
-  - broadcast_pa（PA 广播）: 0 → 77（首次生成）
-  - speaker_chatter（环境对话）: 0 → 77（首次生成，修复 TSV 双 BOM）
-- speaker_map.txt 首次纳入 installer payload（之前从未打包）
-- 车队代号加「」包裹（20 处）：「战争」车队、「瘟疫」车队、「死亡」车队、「饥荒」车队
+- 修复 #str_ 引用被跳过（v1.2.1 引入的 bug）
+- lipsync decl 全面补齐至 1172 个，4 个 TSV 全部 100% 覆盖
+- speaker_map.txt 首次纳入 installer payload
+- 车队代号加「」包裹（20 处）
+- 字幕颜色系统修复：subtitles.gui forecolor 绑定 subTxtR/G/B 变量
+  - 无线电 → 绿色，人类/舰船广播 → 蓝色，Strogg 广播 → 黄色
+  - 敌军语音 → 红色，Makron → 紫色，角色对白 → 白色
+- Add 方法新增 colorOverride 参数：无线电字幕强制绿色（不受 speaker 名影响）
+- Strogg AI 发现敌人时的 alert 字幕（8 种特殊单位：机炮兵/铁娘子/科学家等）
+- Makron Boss taunt 翻译 9 条（"你会失败的！" "去死吧，人类！" 等）
+- speaker_chatter.tsv 修复双 BOM
 
 准心命中变红:
-- 纯 q4game.dll 层面实现，不需要编译 Quake4.exe（不卡），不需要改 cursor.gui（不崩溃）
-- 利用 cursor.gui 已有的 weaponChange 事件：命中时设 crossColor=红色 → 触发 weaponChange → 150ms 后恢复原色
+- 纯 q4game.dll 层面实现（weaponChange + crossColor），不编译引擎，不改 cursor.gui
+
+喷血修复:
+- 敌人角色（idActor）/bleed=true 实体 → 喷血
+- 车辆（rvVehicle）/飞船（idAnimatedEntity 有 metal 材质）→ 喷火花
+- 非 vehicle 的 idAnimatedEntity（补给器/尸体/墙上人彘等）→ 喷血
+- GetDefaultSurfaceType 恢复 METAL，喷血由 HitScan/Projectile 的类型判断控制
 
 引擎:
-- 保留预编译 Quake4.exe + 旧版 SDL2.dll（v1.2.9 自编译引擎在部分玩家机器上性能差）
-- q4game.dll 保留喷血修复（bleed 属性判断强制 flesh materialType）
+- 保留预编译 Quake4.exe + 旧版 SDL2.dll
+- Sentry 物理修复：TestHugeTranslation 静默警告不清零速度（避免 Sentry 坠落）
 
 字体:
 - 同步 dist 字体文件到工程目录最新版（marine 原版基础段 + lowpixel/strogg/chain 全套）
+
+已知问题:
+- hub2（枢纽）关卡冷启动（map/devmap 跳关）可能卡顿，正常流程从头游玩不受影响
 
 ## v1.2.10 — 2026-08-04
 
