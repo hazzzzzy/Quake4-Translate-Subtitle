@@ -83,7 +83,7 @@ str_380080	vo_1_2_22_20_1	hub2	There should be a console in the center of the ro
 str_380081	vo_1_2_22_30_1	hub2	Ah, excellent. Corporal Kane, the Tertanode will soon be destroyed and the Nexus will become inoperative.	啊，太好了。Kane 下士，「四元节点」 很快就会被摧毁，Nexus 也将随之停摆。	sndshd	
 str_380082	vo_1_2_22_40_1	hub2	Corporal Kane, this is Strauss. I have detected a tremendously large life form in your vicinity. You must get out of there quickly.	Kane 下士，我是 Strauss。我在你附近探测到一个极其庞大的生命体。你必须赶快离开那里。	sndshd	Strauss
 str_380083	vo_1_2_22_40_2	hub2	Kane... It can't be! ... It's the Makron!!	Kane……不可能！……是 Makron！！	sndshd	
-str_380084	vo_1_2_22_40_3	hub2	Get out of there, Kane! Get out!! Suddenly a loud thud can be heard over the comlink.	快离开那里，Kane！快出去！！突然，通讯频道里传来一声巨响。	sndshd	
+str_380084	vo_1_2_22_40_3	hub2	Get out of there, Kane! Get out!! Suddenly a loud thud can be heard over the comlink.	快离开那里，Kane！快出去！！（突然，通讯频道里传来一声巨响。）	sndshd	
 str_380085	vo_1_2_22_40_4	hub2	... who is there?	……谁在那里？	sndshd	
 str_380086	vo_1_1_11_100_2	mcc_1	Flooding chamber with trichlorite and septazine. After a few seconds.	正在向舱内注入三氯酸盐和七氮嗪。几秒钟后。	sndshd	消毒室播报
 str_380087	vo_1_1_11_100_3	mcc_1	Chamber at maximum saturation.	舱内已达到最大饱和度。	sndshd	消毒室播报

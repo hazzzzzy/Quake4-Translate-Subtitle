@@ -48,7 +48,7 @@ from build_dist_extras import build_assets  # noqa: E402
 from _logos import GITHUB_B64, BILI_B64, APP_ICON_B64  # noqa: E402
 
 
-APP_NAME = "Quake 4 简体中文汉化安装器 v1.3.0"
+APP_NAME = "Quake 4 简体中文汉化安装器 v1.3.1"
 INSTALL_DIRECTORY_NAME = "Quake4-Chinese"
 LAUNCHER_NAME = "Quake4中文启动器.exe"
 # 英文模式共用同一启动器二进制，按文件名含"英文"分流（见 launcher/main.cpp）
@@ -468,6 +468,7 @@ def install_localization(
     report,
     progress=lambda _value, _message: None,
     mode: str = "chinese",
+    unlock_fps: bool = True,
 ) -> Path:
     game_directory = game_directory.resolve()
     payload_directory = application_directory()
@@ -555,6 +556,14 @@ def install_localization(
             SHORTCUT_NAME_ENGLISH if english_mode else SHORTCUT_NAME,
         )
         report(f"桌面快捷方式：{shortcut}")
+
+    if unlock_fps:
+        autoexec = install_directory / savedata_name / "q4base" / "autoexec.cfg"
+        existing = autoexec.read_text(encoding="utf-8") if autoexec.exists() else ""
+        if "com_fixedTic" not in existing:
+            with open(autoexec, "a", encoding="utf-8") as f:
+                f.write('\nseta com_fixedTic "-1"\n')
+            report("已解锁帧率（com_fixedTic -1，需显示器支持高刷新率）")
 
     report(f"启动器：{launcher_target}")
     progress(100, "英文字幕安装完成" if english_mode else "汉化安装完成")
@@ -748,6 +757,7 @@ class InstallerWindow:
         self.events: queue.Queue[tuple[str, object]] = queue.Queue()
         self.game_directory = StringVar()
         self.desktop_shortcut = BooleanVar(value=True)
+        self.unlock_fps = BooleanVar(value=True)
         self.install_mode = StringVar(value="chinese")
         self.status = StringVar(value="请选择 Quake 4 1.4.2 游戏目录")
         self.installed_launcher: Path | None = None
@@ -828,7 +838,14 @@ class InstallerWindow:
             text="创建桌面快捷方式",
             variable=self.desktop_shortcut,
         )
-        self.desktop_check.pack(anchor="w", pady=(14, 10))
+        self.desktop_check.pack(anchor="w", pady=(14, 0))
+
+        self.fps_check = ttk.Checkbutton(
+            main,
+            text="解锁帧率（超过 60 FPS，需显示器支持高刷新率）",
+            variable=self.unlock_fps,
+        )
+        self.fps_check.pack(anchor="w", pady=(6, 10))
 
         self.progress = ttk.Progressbar(main, mode="determinate", value=0)
         self.progress.pack(fill=X, pady=(0, 8))
@@ -896,6 +913,7 @@ class InstallerWindow:
         self.mode_chinese.configure(state=state)
         self.mode_english.configure(state=state)
         self.desktop_check.configure(state=state)
+        self.fps_check.configure(state=state)
         self.install_button.configure(state=state)
         if busy:
             self.launch_button.configure(state="disabled")
@@ -937,12 +955,12 @@ class InstallerWindow:
         self.append_log("开始安装（英文原版 + 英文字幕）" if mode == "english" else "开始安装")
         thread = threading.Thread(
             target=self.install_worker,
-            args=(game_directory, self.desktop_shortcut.get(), mode),
+            args=(game_directory, self.desktop_shortcut.get(), self.unlock_fps.get(), mode),
             daemon=True,
         )
         thread.start()
 
-    def install_worker(self, game_directory: Path, desktop_shortcut: bool, mode: str) -> None:
+    def install_worker(self, game_directory: Path, desktop_shortcut: bool, unlock_fps: bool, mode: str) -> None:
         try:
             launcher = install_localization(
                 game_directory,
@@ -952,6 +970,7 @@ class InstallerWindow:
                     ("progress", (value, message))
                 ),
                 mode=mode,
+                unlock_fps=unlock_fps,
             )
             self.events.put(("success", launcher))
         except Exception as error:
