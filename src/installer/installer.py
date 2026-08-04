@@ -763,8 +763,8 @@ class InstallerWindow:
         self.installed_launcher: Path | None = None
 
         root.title(APP_NAME)
-        root.geometry("720x560")
-        root.minsize(680, 520)
+        root.geometry("720x620")
+        root.minsize(680, 570)
         root.option_add("*Font", ("Microsoft YaHei UI", 10))
 
         # 窗口图标（base64 内嵌，不依赖外部文件）
@@ -851,7 +851,7 @@ class InstallerWindow:
         self.progress.pack(fill=X, pady=(0, 8))
         ttk.Label(main, textvariable=self.status).pack(anchor="w", pady=(0, 8))
 
-        self.log = ScrolledText(main, height=10, wrap="word", state="disabled")
+        self.log = ScrolledText(main, height=8, wrap="word", state="disabled")
         self.log.pack(fill=BOTH, expand=True)
 
         buttons = ttk.Frame(main)
