@@ -423,7 +423,7 @@ lipSync vo_1_1_6_80_3
 
 lipSync vo_1_2_14_10_1
 {
-	description	"All right, Marines. Listen up. The Strogg have taken out the other convoys, we're all that's left. This mission's too big for any screw-ups. No one take any chances, no one try to be the hero. Voss out."
+	description	"All right, Marines, listen up. The Strogg have taken out the other convoys, we're all that's left. This mission's too big for any screw-ups. No one take any chances, no one try to be the hero. We need to get the EMP below the Tetranode, the brains of this facility. The Tetranode routes billions of Strogg communications signals every second from the Nexus. If that were destroyed, it'd effectively shut down the Strogg for this area. Once we get the Nexus down, our troops will have an easy time of it. The Strogg military will be completely disorganized. Voss out."
 	text		"#str_380070"
 }
 
@@ -447,7 +447,7 @@ lipSync vo_1_2_17_10_13
 
 lipSync vo_1_2_17_10_7
 {
-	description	"Lieutenant Voss, this is Strauss. What has happened?"
+	description	"Lieutenant Voss, this is Strauss. What has happened? I cannot open the door. Please, I need help, Lieutenant."
 	text		"#str_380074"
 }
 
@@ -477,7 +477,7 @@ lipSync vo_1_2_20_30_1
 
 lipSync vo_1_2_20_40_1
 {
-	description	"Nearby is a maintenance platform. Get onboard."
+	description	"Nearby is a maintenance platform. It rides on top of the cables and allows the Strogg to perform upkeep. Get onboard the platform."
 	text		"#str_380079"
 }
 
@@ -1505,4 +1505,250 @@ lipSync vo_1_1_0_01_21
 {
 	description	"We're hit! Another missile's locked on. Firing counter measures."
 	text		"#str_380254"
+}
+
+lipSync vo_1_2_0_10_1
+{
+	description	"Kane, this is Voss. Grab a ride with Corporal Spencer. He's in a truck nearby. Report to Sergeant Bidwell when you get to the Death convoy. Voss, out."
+	text		"#str_385726"
+}
+
+lipSync vo_1_2_0_11_1
+{
+	description	"This is Eagle 3 on flyby, if there's Strogg in the area, they're keeping out of sight."
+	text		"#str_385727"
+}
+
+lipSync vo_1_2_0_16_1
+{
+	description	"This is Walker 4 of Bison Squad on patrol. All clear."
+	text		"#str_385728"
+}
+
+lipSync vo_1_2_0_65_1
+{
+	description	"I've got signal lock. He's not gettin' away from me this time."
+	text		"#str_385729"
+}
+
+lipSync vo_1_2_0_66_1
+{
+	description	"Where the hell did he go?"
+	text		"#str_385730"
+}
+
+lipSync vo_1_2_0_90_1
+{
+	description	"Kane, this is voss. We can't move forward until you take out the turrets defending this area."
+	text		"#str_385731"
+}
+
+lipSync vo_1_2_1_100_1
+{
+	description	"Kane, we got landmines ahead. You're gonna have to shoot 'em to detonate 'em."
+	text		"#str_385732"
+}
+
+lipSync vo_1_2_1_102_1
+{
+	description	"Crap, that must be one of those drop turrets. They're dropped by stealth air units flying in low orbit. Intel says these buggers are nasty."
+	text		"#str_385733"
+}
+
+lipSync vo_1_2_1_105_1
+{
+	description	"HQ, this is Famine. We are in transit now."
+	text		"#str_385734"
+}
+
+lipSync vo_1_2_1_105_2
+{
+	description	"Roger that, Famine. Pestilence is already underway. Godspeed."
+	text		"#str_385735"
+}
+
+lipSync vo_1_2_1_108_1
+{
+	description	"Rhodes! Get up here pronto and disarm these land mines."
+	text		"#str_385736"
+}
+
+lipSync vo_1_2_1_109_1
+{
+	description	"Kane, protect Rhodes! He's the only one who can disarm those mines."
+	text		"#str_385737"
+}
+
+lipSync vo_1_2_1_115_1
+{
+	description	"HQ, this is War."
+	text		"#str_385738"
+}
+
+lipSync vo_1_2_1_115_2
+{
+	description	"This is HQ, go ahead."
+	text		"#str_385739"
+}
+
+lipSync vo_1_2_1_115_3
+{
+	description	"We are proceeding to checkpoint one."
+	text		"#str_385740"
+}
+
+lipSync vo_1_2_1_120_1
+{
+	description	"Kane, this is Voss. Keep your eyes open. Intelligence just is reporting a high concentration of Strogg in your vicinity."
+	text		"#str_385741"
+}
+
+lipSync vo_1_2_1_125_1
+{
+	description	"HQ, this is Eagle 8. We are doing a flyby of Famine. Everything is in the green."
+	text		"#str_385742"
+}
+
+lipSync vo_1_2_1_135_1
+{
+	description	"HQ, this is Death. We are moving forward and will keep you apprised of our status."
+	text		"#str_385743"
+}
+
+lipSync vo_1_2_1_140_1
+{
+	description	"You're doing a great job, Corporal. But keep sharp - there's still reports of Strogg in the area."
+	text		"#str_385744"
+}
+
+lipSync vo_1_2_1_145_1
+{
+	description	"HQ, HQ, this is War. We are under attack from Strogg infantry."
+	text		"#str_385745"
+}
+
+lipSync vo_1_2_1_145_2
+{
+	description	"Roger that, War. Air support has been dispatched."
+	text		"#str_385746"
+}
+
+lipSync vo_1_2_1_147_1
+{
+	description	"War, this is Eagle 9. You might want to duck and cover 'cause this is gonna get messy."
+	text		"#str_385747"
+}
+
+lipSync vo_1_2_1_147_2
+{
+	description	"Woo hoo! Nice shootin', Eagle 9."
+	text		"#str_385748"
+}
+
+lipSync vo_1_2_1_147_3
+{
+	description	"My pleasure."
+	text		"#str_385749"
+}
+
+lipSync vo_1_2_1_147_4
+{
+	description	"HQ, this is War. We are resuming our mission."
+	text		"#str_385750"
+}
+
+lipSync vo_1_2_1_150_1
+{
+	description	"HQ, this is Pestilence. We have reached check point one and are proceeding to check point two."
+	text		"#str_385751"
+}
+
+lipSync vo_1_2_1_170_1
+{
+	description	"Death, this is HQ. What is your status?"
+	text		"#str_385752"
+}
+
+lipSync vo_1_2_1_170_2
+{
+	description	"We are in the green and proceeding forward."
+	text		"#str_385753"
+}
+
+lipSync vo_1_2_1_170_3
+{
+	description	"Very good. HQ out."
+	text		"#str_385754"
+}
+
+lipSync vo_1_2_1_180_1
+{
+	description	"Good job back there, Kane. You kept 'em off us. Here's your stop. Go ahead and get off."
+	text		"#str_385755"
+}
+
+lipSync vo_1_2_1_190_1
+{
+	description	"It's been a pleasure, Kane. Watch yourself."
+	text		"#str_385756"
+}
+
+lipSync vo_1_2_1_200_1
+{
+	description	"Kane, this is Voss. You see that laser fence in front of you? We're gonna need your help taking it down."
+	text		"#str_385757"
+}
+
+lipSync vo_1_2_1_200_2
+{
+	description	"HQ! HQ! This is the convoy Famine!! The Strogg have launched missiles on us."
+	text		"#str_385758"
+}
+
+lipSync vo_1_2_1_200_3
+{
+	description	"Famine, this is HQ. Air support is on its way."
+	text		"#str_385759"
+}
+
+lipSync vo_1_2_1_200_4
+{
+	description	"Negative. Do not send back up. The area is swarming with Strogg. We're a lost cause."
+	text		"#str_385760"
+}
+
+lipSync vo_1_2_1_200_5
+{
+	description	"Kane, you still there? We're down to three convoys so haul ass meet me at the building just up ahead. We need you to take down that fence. Voss, out."
+	text		"#str_385761"
+}
+
+lipSync vo_1_2_1_40_2
+{
+	description	"Affirmative Death. Now switching to frequency 5 1 2."
+	text		"#str_385762"
+}
+
+lipSync vo_1_2_1_80_1
+{
+	description	"Welcome aboard, Corporal Kane. I hope you're handy with that weapon. We're gonna traveling through some pretty hot zones."
+	text		"#str_385763"
+}
+
+lipSync vo_1_2_1_92_1
+{
+	description	"To the right!"
+	text		"#str_385764"
+}
+
+lipSync vo_1_2_3_30_1
+{
+	description	"Kane, this is Lt.Voss. Head towards the facility dead ahead. See you there. Voss, out."
+	text		"#str_385765"
+}
+
+lipSync vo_1_1_11_30_1
+{
+	description	"You are... Corporal Kane of Rhino Squad. Welcome aboard the Hannibal. You aren't expected at the briefing for a while. Feel free to look around the ship."
+	text		"#str_385844"
 }

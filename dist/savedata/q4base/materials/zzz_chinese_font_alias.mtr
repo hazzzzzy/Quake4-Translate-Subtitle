@@ -227,7 +227,7 @@ fonts/chinese/lowpixel_12.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_12.tga"
+		map "fonts/chinese/lowpixel_12.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -238,7 +238,7 @@ fonts/chinese/lowpixel_1_12.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_1_12.tga"
+		map "fonts/chinese/lowpixel_1_12.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -249,7 +249,7 @@ fonts/chinese/lowpixel_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_24.tga"
+		map "fonts/chinese/lowpixel_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -260,7 +260,7 @@ fonts/chinese/lowpixel_1_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_1_24.tga"
+		map "fonts/chinese/lowpixel_1_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -271,7 +271,7 @@ fonts/chinese/lowpixel_2_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_2_24.tga"
+		map "fonts/chinese/lowpixel_2_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -282,7 +282,7 @@ fonts/chinese/lowpixel_3_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_3_24.tga"
+		map "fonts/chinese/lowpixel_3_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -293,7 +293,7 @@ fonts/chinese/lowpixel_4_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_4_24.tga"
+		map "fonts/chinese/lowpixel_4_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -304,7 +304,7 @@ fonts/chinese/lowpixel_48.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_48.tga"
+		map "fonts/chinese/lowpixel_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -315,7 +315,7 @@ fonts/chinese/lowpixel_1_48.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_1_48.tga"
+		map "fonts/chinese/lowpixel_1_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -326,7 +326,7 @@ fonts/chinese/lowpixel_2_48.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_2_48.tga"
+		map "fonts/chinese/lowpixel_2_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -337,7 +337,7 @@ fonts/chinese/profont_12.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_12.tga"
+		map "fonts/chinese/lowpixel_12.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -348,7 +348,7 @@ fonts/chinese/profont_1_12.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_1_12.tga"
+		map "fonts/chinese/lowpixel_1_12.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -359,7 +359,7 @@ fonts/chinese/profont_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_24.tga"
+		map "fonts/chinese/lowpixel_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -370,7 +370,7 @@ fonts/chinese/profont_1_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_1_24.tga"
+		map "fonts/chinese/lowpixel_1_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -381,7 +381,7 @@ fonts/chinese/profont_2_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_2_24.tga"
+		map "fonts/chinese/lowpixel_2_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -392,7 +392,7 @@ fonts/chinese/profont_3_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_3_24.tga"
+		map "fonts/chinese/lowpixel_3_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -403,7 +403,7 @@ fonts/chinese/profont_4_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_4_24.tga"
+		map "fonts/chinese/lowpixel_4_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -414,7 +414,7 @@ fonts/chinese/profont_48.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_48.tga"
+		map "fonts/chinese/lowpixel_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -425,7 +425,7 @@ fonts/chinese/profont_1_48.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_1_48.tga"
+		map "fonts/chinese/lowpixel_1_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -436,7 +436,7 @@ fonts/chinese/profont_2_48.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_2_48.tga"
+		map "fonts/chinese/lowpixel_2_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -480,7 +480,7 @@ fonts/chinese/r_strogg_12.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_12.tga"
+		map "fonts/chinese/r_strogg_12.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -491,7 +491,7 @@ fonts/chinese/r_strogg_1_12.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_1_12.tga"
+		map "fonts/chinese/r_strogg_1_12.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -502,7 +502,7 @@ fonts/chinese/r_strogg_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_24.tga"
+		map "fonts/chinese/r_strogg_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -513,7 +513,7 @@ fonts/chinese/r_strogg_1_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_1_24.tga"
+		map "fonts/chinese/r_strogg_1_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -524,7 +524,7 @@ fonts/chinese/r_strogg_2_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_2_24.tga"
+		map "fonts/chinese/r_strogg_2_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -535,7 +535,7 @@ fonts/chinese/r_strogg_3_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_3_24.tga"
+		map "fonts/chinese/r_strogg_3_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -546,7 +546,7 @@ fonts/chinese/r_strogg_4_24.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_4_24.tga"
+		map "fonts/chinese/r_strogg_4_24.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -557,7 +557,7 @@ fonts/chinese/r_strogg_48.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_48.tga"
+		map "fonts/chinese/r_strogg_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -568,7 +568,7 @@ fonts/chinese/r_strogg_1_48.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_1_48.tga"
+		map "fonts/chinese/r_strogg_1_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -579,7 +579,7 @@ fonts/chinese/r_strogg_2_48.tga
 	{
 		blend blend
 		colored
-		map "fonts/chinese/marine_2_48.tga"
+		map "fonts/chinese/r_strogg_2_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality

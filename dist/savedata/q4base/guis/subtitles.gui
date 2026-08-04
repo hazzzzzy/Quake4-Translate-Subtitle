@@ -1,7 +1,9 @@
 // Quake 4 简体中文汉化项目 —— 语音字幕层（整块面板，Apex/HL2 风格）
 // 由 q4game.dll 的 rvSubtitles 每帧驱动：
 //   subBgY/subBgH/subBgA 面板位置/高度/透明度
-//   subText0..3 / subTxtR0..3,G,B / subTxtA0..3 / subRowY0..3 行文本/透明度/纵坐标
+//   subText0..7 / subTxtA0..7 / subRowY0..7 行文本/透明度/纵坐标
+//   透明度由代码按行设置：角色对白全亮度，广播/无线电等环境音淡色（×0.62）
+//   上限 8 行（2026-07-31 由 4 行放开，配合 cinematic 过滤避免乱入占满）
 windowDef Desktop
 {
 	rect	0,0,640,480
@@ -21,7 +23,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	"gui::subTxtR0","gui::subTxtG0","gui::subTxtB0","gui::subTxtA0"
+		forecolor	0.95,0.95,0.95,"gui::subTxtA0"
 		text	"gui::subText0"
 		visible	1
 	}
@@ -31,7 +33,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	"gui::subTxtR1","gui::subTxtG1","gui::subTxtB1","gui::subTxtA1"
+		forecolor	0.95,0.95,0.95,"gui::subTxtA1"
 		text	"gui::subText1"
 		visible	1
 	}
@@ -41,7 +43,7 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	"gui::subTxtR2","gui::subTxtG2","gui::subTxtB2","gui::subTxtA2"
+		forecolor	0.95,0.95,0.95,"gui::subTxtA2"
 		text	"gui::subText2"
 		visible	1
 	}
@@ -51,8 +53,48 @@ windowDef Desktop
 		font	"fonts/lowpixel"
 		textscale	0.19
 		textalign	0
-		forecolor	"gui::subTxtR3","gui::subTxtG3","gui::subTxtB3","gui::subTxtA3"
+		forecolor	0.95,0.95,0.95,"gui::subTxtA3"
 		text	"gui::subText3"
+		visible	1
+	}
+	windowDef subText4
+	{
+		rect	136,"gui::subRowY4",368,13
+		font	"fonts/lowpixel"
+		textscale	0.19
+		textalign	0
+		forecolor	0.95,0.95,0.95,"gui::subTxtA4"
+		text	"gui::subText4"
+		visible	1
+	}
+	windowDef subText5
+	{
+		rect	136,"gui::subRowY5",368,13
+		font	"fonts/lowpixel"
+		textscale	0.19
+		textalign	0
+		forecolor	0.95,0.95,0.95,"gui::subTxtA5"
+		text	"gui::subText5"
+		visible	1
+	}
+	windowDef subText6
+	{
+		rect	136,"gui::subRowY6",368,13
+		font	"fonts/lowpixel"
+		textscale	0.19
+		textalign	0
+		forecolor	0.95,0.95,0.95,"gui::subTxtA6"
+		text	"gui::subText6"
+		visible	1
+	}
+	windowDef subText7
+	{
+		rect	136,"gui::subRowY7",368,13
+		font	"fonts/lowpixel"
+		textscale	0.19
+		textalign	0
+		forecolor	0.95,0.95,0.95,"gui::subTxtA7"
+		text	"gui::subText7"
 		visible	1
 	}
 }

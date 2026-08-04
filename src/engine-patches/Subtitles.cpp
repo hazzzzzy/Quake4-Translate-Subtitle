@@ -361,13 +361,8 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
 	if ( !harm_g_subtitles.GetBool() || !text || !text[0] ) {
 		return;
 	}
-	// 未本地化的裸 #str_ 引用不显示
-	if ( text[0] == '#' ) {
-		if ( harm_g_subtitleDebug.GetBool() ) {
-			gameLocal.Printf( "[SUB] skip (unlocalized): %s\n", text );
-		}
-		return;
-	}
+	// #str_ 引用直接通过，GUI 文本控件自动解析为 lang 翻译文本
+	// （v1.2.0 行为：不检查 # 前缀，lipsync decl 的 text 字段用 #str_xxx 引用 lang 翻译）
 
 	idStr clean = text;
 	Sanitize( clean );

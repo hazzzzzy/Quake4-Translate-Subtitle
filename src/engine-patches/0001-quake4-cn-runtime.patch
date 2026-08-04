@@ -287,7 +287,7 @@ index 5c4464026..db60ef681 100644
  
  	if ( player && player->GetHud() ) {
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
-index f755e1344..515ecde3e 100644
+index f755e1344..e54374090 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 @@ -1,4 +1,4 @@
@@ -313,7 +313,7 @@ index f755e1344..515ecde3e 100644
  // nrausch: support for direct button input
  #include "../sys/xenon/xen_input.h"
  #endif
-@@ -30,6 +29,19 @@
+@@ -30,8 +29,25 @@
  #ifdef _MOD_VIEW_BODY
  #include "ViewBody.cpp"
  #endif
@@ -332,8 +332,14 @@ index f755e1344..515ecde3e 100644
 +
  #ifdef _QUAKE4 //karin: allow fire when focus NPC
  static idCVar harm_g_allowFireWhenFocusNPC( "harm_g_allowFireWhenFocusNPC", "0", CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "allow fire when focus NPC" );
++// 准心命中变红：利用 cursor.gui weaponChange 事件（set matcolor = $gui::crossColor）
++// 不需要改 cursor.gui 或编译 Quake4.exe，纯 q4game.dll 层面实现
++static idStr	harm_origCrossColor;
++static int		harm_hitFlashTime = 0;
  #endif
-@@ -2457,10 +2469,14 @@ void idPlayer::Restore( idRestoreGame *savefile ) {
+ 
+ idCVar net_predictionErrorDecay( "net_predictionErrorDecay", "112", CVAR_FLOAT | CVAR_GAME | CVAR_NOCHEAT, "time in milliseconds it takes to fade away prediction errors", 0.0f, 200.0f );
+@@ -2457,10 +2473,14 @@ void idPlayer::Restore( idRestoreGame *savefile ) {
  	weaponViewModel.Restore( savefile );	
  	weaponWorldModel.Restore( savefile );	
  
@@ -349,7 +355,7 @@ index f755e1344..515ecde3e 100644
  	savefile->ReadBool( objectiveSystemOpen );
  
  #ifdef _XENON
-@@ -3759,8 +3775,15 @@ void idPlayer::DrawHUD( idUserInterface *_hud ) {
+@@ -3759,8 +3779,24 @@ void idPlayer::DrawHUD( idUserInterface *_hud ) {
  
  	if ( gameLocal.isMultiplayer ) {
  		_hud->SetStateBool( "mp", true );
@@ -362,10 +368,19 @@ index f755e1344..515ecde3e 100644
 +		if ( cursor ) {
 +			cursor->SetStateInt( "mp", 0 );
 +		}
++	}
++
++	// karin: 准心命中变红恢复——150ms 后恢复 crossColor 原色
++	if ( harm_hitFlashTime > 0 && gameLocal.time - harm_hitFlashTime > 150 ) {
++		if ( cursor ) {
++			cursor->SetStateString( "crossColor", harm_origCrossColor );
++			cursor->HandleNamedEvent( "weaponChange" );
++		}
++		harm_hitFlashTime = 0;
  	}
  
  	// Draw the cinematic hud when in a cinematic
-@@ -9449,6 +9472,7 @@ Called every tic for each player
+@@ -9449,6 +9485,7 @@ Called every tic for each player
  ==============
  */
  void idPlayer::Think( void ) {
@@ -373,7 +388,23 @@ index f755e1344..515ecde3e 100644
  #ifdef _MOD_FULL_BODY_AWARENESS
  	if(!harm_pm_fullBodyAwareness.GetBool() || pm_thirdPerson.GetBool() || IsInVehicle() || zoomed || focusUI)
  	{
-@@ -13821,6 +13845,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
+@@ -11556,7 +11593,15 @@ void idPlayer::SetLastHitTime( int time, bool armorHit ) {
+ 
+ 	if ( lastHitTime != time ) {
+ 		if ( cursor ) {
++			// karin: 准心命中变红——设 crossColor=红色，触发 weaponChange（设 matcolor=红色），再触发 weaponHit（缩放）
++			// 150ms 后在 DrawHUD 中恢复 crossColor 原色并触发 weaponChange
++			if ( harm_hitFlashTime == 0 ) {
++				harm_origCrossColor = cursor->GetStateString( "crossColor" );
++			}
++			cursor->SetStateString( "crossColor", "1, 0, 0, 1" );
++			cursor->HandleNamedEvent( "weaponChange" );
+ 			cursor->HandleNamedEvent( "weaponHit" );
++			harm_hitFlashTime = gameLocal.time;
+ 		}
+ 		if ( gameLocal.isMultiplayer ) {			
+ 			// spectated so we get sounds for a client we're following
+@@ -13821,6 +13866,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
  idPlayer::SaveMessage
  =====================
  */
@@ -386,7 +417,7 @@ index f755e1344..515ecde3e 100644
  void idPlayer::SaveMessage( void ) {
  #ifndef _XENON
  	if ( GetHud( ) ) {
-@@ -13830,6 +13860,18 @@ void idPlayer::SaveMessage( void ) {
+@@ -13830,6 +13881,18 @@ void idPlayer::SaveMessage( void ) {
  	if ( objectiveSystem ) {
  		objectiveSystem->HandleNamedEvent( "saveMessage" );
  	}
@@ -526,10 +557,10 @@ index 5c9d2262c..051cc1010 100644
  		StopSound( SND_CHANNEL_ANY, true );
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
 new file mode 100644
-index 000000000..c07e39eff
+index 000000000..7f8b70540
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
-@@ -0,0 +1,773 @@
+@@ -0,0 +1,768 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— 语音字幕（Apex/HL2 风格整块面板）
 +// 面板底部锚定，新行从下方顶入，高度平滑伸缩，行淡入淡出
 +// GUI 资产: guis/subtitles.gui
@@ -893,13 +924,8 @@ index 000000000..c07e39eff
 +	if ( !harm_g_subtitles.GetBool() || !text || !text[0] ) {
 +		return;
 +	}
-+	// 未本地化的裸 #str_ 引用不显示
-+	if ( text[0] == '#' ) {
-+		if ( harm_g_subtitleDebug.GetBool() ) {
-+			gameLocal.Printf( "[SUB] skip (unlocalized): %s\n", text );
-+		}
-+		return;
-+	}
++	// #str_ 引用直接通过，GUI 文本控件自动解析为 lang 翻译文本
++	// （v1.2.0 行为：不检查 # 前缀，lipsync decl 的 text 字段用 #str_xxx 引用 lang 翻译）
 +
 +	idStr clean = text;
 +	Sanitize( clean );
