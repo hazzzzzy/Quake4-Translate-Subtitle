@@ -1,0 +1,8 @@
+// karin: medlabs Voss 过场对白 lipSync decl 补充
+// vo_2_1_2_70_1_full 原版无 lipSync decl（描述为开发注释"The above 3 all together"）
+// 实际音频为 Voss 被 Strogg 化前的完整问候对白，通过 cin_voss.startSound 播放
+
+lipSync vo_2_1_2_70_1_full
+{
+	text		"#str_303967"
+}

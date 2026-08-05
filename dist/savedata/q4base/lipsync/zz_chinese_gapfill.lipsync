@@ -1,0 +1,447 @@
+// karin: batch gap-fill lipSync decls for vo_ sounds missing from original game
+
+lipSync vo_3_2_9_30_1
+{
+	text		"#str_303968"
+}
+
+lipSync vo_3_2_9_30_2
+{
+	text		"#str_303969"
+}
+
+lipSync vo_3_2_9_30_3
+{
+	text		"#str_303970"
+}
+
+lipSync vo_3_2_9_30_4
+{
+	text		"#str_303971"
+}
+
+lipSync vo_3_2_9_30_5
+{
+	text		"#str_303972"
+}
+
+lipSync vo_3_2_9_30_6
+{
+	text		"#str_303973"
+}
+
+lipSync vo_3_2_9_30_7
+{
+	text		"#str_303974"
+}
+
+lipSync vo_3_2_9_30_11
+{
+	text		"#str_303975"
+}
+
+lipSync vo_3_2_9_30_12
+{
+	text		"#str_303976"
+}
+
+lipSync vo_1_1_1_80_1
+{
+	text		"#str_303977"
+}
+
+lipSync vo_1_1_1_80_2
+{
+	text		"#str_303978"
+}
+
+lipSync vo_1_2_12_30_5
+{
+	text		"#str_303979"
+}
+
+lipSync vo_1_2_1_90_1
+{
+	text		"#str_303980"
+}
+
+lipSync vo_1_2_1_90_2
+{
+	text		"#str_303981"
+}
+
+lipSync vo_1_2_1_90_3
+{
+	text		"#str_303982"
+}
+
+lipSync vo_1_2_1_90_4
+{
+	text		"#str_303983"
+}
+
+lipSync vo_1_2_1_90_5
+{
+	text		"#str_303984"
+}
+
+lipSync vo_1_2_1_92_2
+{
+	text		"#str_303985"
+}
+
+lipSync vo_1_2_1_92_3
+{
+	text		"#str_303986"
+}
+
+lipSync vo_1_2_1_92_4
+{
+	text		"#str_303987"
+}
+
+lipSync vo_1_2_1_92_5
+{
+	text		"#str_303988"
+}
+
+lipSync vo_1_2_1_94_1
+{
+	text		"#str_303989"
+}
+
+lipSync vo_1_2_1_94_2
+{
+	text		"#str_303990"
+}
+
+lipSync vo_1_2_1_94_3
+{
+	text		"#str_303991"
+}
+
+lipSync vo_1_2_1_94_4
+{
+	text		"#str_303992"
+}
+
+lipSync vo_1_2_1_94_5
+{
+	text		"#str_303993"
+}
+
+lipSync vo_1_2_10_45_4
+{
+	text		"#str_303994"
+}
+
+lipSync vo_1_1_2_09_1
+{
+	text		"#str_303995"
+}
+
+lipSync vo_1_1_2_09_1_global
+{
+	text		"#str_303996"
+}
+
+lipSync vo_1_1_11_120_1
+{
+	text		"#str_303997"
+}
+
+lipSync vo_1_1_11_120_2
+{
+	text		"#str_303998"
+}
+
+lipSync vo_1_1_11_130_1
+{
+	text		"#str_303999"
+}
+
+lipSync vo_1_1_11_130_2
+{
+	text		"#str_304000"
+}
+
+lipSync vo_1_1_11_130_3
+{
+	text		"#str_304001"
+}
+
+lipSync vo_1_1_11_430_1
+{
+	text		"#str_304002"
+}
+
+lipSync vo_1_1_11_565_1
+{
+	text		"#str_304003"
+}
+
+lipSync vo_2_2_10_252_1
+{
+	text		"#str_304004"
+}
+
+lipSync vo_1_1_7_60_1
+{
+	text		"#str_304005"
+}
+
+lipSync vo_1_2_10_01_1
+{
+	text		"#str_304006"
+}
+
+lipSync vo_1_2_10_03_3
+{
+	text		"#str_304007"
+}
+
+lipSync vo_1_2_10_45_1
+{
+	text		"#str_304008"
+}
+
+lipSync vo_1_2_10_45_2
+{
+	text		"#str_304009"
+}
+
+lipSync vo_1_2_9_70_2
+{
+	text		"#str_304010"
+}
+
+lipSync vo_1_2_9_80_1
+{
+	text		"#str_304011"
+}
+
+lipSync vo_1_2_9_82_1
+{
+	text		"#str_304012"
+}
+
+lipSync vo_1_2_9_82_2
+{
+	text		"#str_304013"
+}
+
+lipSync vo_1_2_9_82_3
+{
+	text		"#str_304014"
+}
+
+lipSync vo_1_2_0_67_1
+{
+	text		"#str_304015"
+}
+
+lipSync vo_1_2_1_130_1
+{
+	text		"#str_304016"
+}
+
+lipSync vo_1_2_3_20_1
+{
+	text		"#str_304017"
+}
+
+lipSync vo_1_2_3_22_1
+{
+	text		"#str_304018"
+}
+
+lipSync vo_1_2_8_50_2
+{
+	text		"#str_304019"
+}
+
+lipSync vo_1_2_16_100_2
+{
+	text		"#str_304020"
+}
+
+lipSync vo_1_2_16_100_3
+{
+	text		"#str_304021"
+}
+
+lipSync vo_1_2_16_100_4
+{
+	text		"#str_304022"
+}
+
+lipSync vo_2_2_3_130_1
+{
+	text		"#str_304023"
+}
+
+lipSync vo_2_2_4_74_1
+{
+	text		"#str_304024"
+}
+
+lipSync vo_2_2_4_74_2
+{
+	text		"#str_304025"
+}
+
+lipSync vo_2_2_4_74_3
+{
+	text		"#str_304026"
+}
+
+lipSync vo_3_1_1_10_1
+{
+	text		"#str_304027"
+}
+
+lipSync vo_3_1_1_20_1
+{
+	text		"#str_304028"
+}
+
+lipSync vo_3_1_1_20_2
+{
+	text		"#str_304029"
+}
+
+lipSync vo_3_1_1_20_3
+{
+	text		"#str_304030"
+}
+
+lipSync vo_3_1_1_70_2
+{
+	text		"#str_304031"
+}
+
+lipSync vo_3_1_2_70_1
+{
+	text		"#str_304032"
+}
+
+lipSync vo_3_1_2_70_2
+{
+	text		"#str_304033"
+}
+
+lipSync vo_3_1_2_80_1
+{
+	text		"#str_304034"
+}
+
+lipSync vo_3_1_2_80_2
+{
+	text		"#str_304035"
+}
+
+lipSync vo_3_1_2_90_1
+{
+	text		"#str_304036"
+}
+
+lipSync vo_3_1_2_90_2
+{
+	text		"#str_304037"
+}
+
+lipSync vo_3_1_2_90_3
+{
+	text		"#str_304038"
+}
+
+lipSync vo_3_1_3_140_1
+{
+	text		"#str_304039"
+}
+
+lipSync vo_3_1_3_140_2
+{
+	text		"#str_304040"
+}
+
+lipSync vo_3_1_3_140_3
+{
+	text		"#str_304041"
+}
+
+lipSync vo_3_1_3_150_2
+{
+	text		"#str_304042"
+}
+
+lipSync vo_3_1_3_160_1
+{
+	text		"#str_304043"
+}
+
+lipSync vo_3_1_3_25_1
+{
+	text		"#str_304044"
+}
+
+lipSync vo_3_1_2_145_1
+{
+	text		"#str_304045"
+}
+
+lipSync vo_3_1_2_200_1
+{
+	text		"#str_304046"
+}
+
+lipSync vo_3_1_20_20_1
+{
+	text		"#str_304047"
+}
+
+lipSync vo_3_1_20_20_2
+{
+	text		"#str_304048"
+}
+
+lipSync vo_3_1_20_20_3
+{
+	text		"#str_304049"
+}
+
+lipSync vo_3_1_20_30_2
+{
+	text		"#str_304050"
+}
+
+lipSync vo_3_1_20_30_4
+{
+	text		"#str_304051"
+}
+
+lipSync vo_3_1_20_35_1
+{
+	text		"#str_304052"
+}
+
+lipSync vo_3_1_20_35_2
+{
+	text		"#str_304053"
+}
+
+lipSync vo_3_1_34_20_1
+{
+	text		"#str_304054"
+}
+
+lipSync vo_3_1_34_20_2
+{
+	text		"#str_304055"
+}
+
+lipSync vo_3_1_5_2_2
+{
+	text		"#str_304056"
+}
+

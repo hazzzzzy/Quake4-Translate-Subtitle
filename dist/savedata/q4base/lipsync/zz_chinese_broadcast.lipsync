@@ -1,0 +1,464 @@
+// 汉化项目自建：Strogg 设施 PA 广播 lipsync decl（原版缺失，仅供字幕取文本）
+// 由 tools/gen_missing_subtitles.py 生成，勿手改
+
+lipSync vo_pa_dispersal_10
+{
+	description	"Stroyent transfer process initiated."
+	text		"#str_385766"
+}
+
+lipSync vo_pa_dispersal_100
+{
+	description	"Critical fluctuation detected in matter intake levels. Investigate Transfer Station Three."
+	text		"#str_385767"
+}
+
+lipSync vo_pa_dispersal_20
+{
+	description	"Tactical units dispatched to dispersal facility."
+	text		"#str_385768"
+}
+
+lipSync vo_pa_dispersal_30
+{
+	description	"Warning! Pulminary system failure. Drainage malfunction."
+	text		"#str_385769"
+}
+
+lipSync vo_pa_dispersal_40
+{
+	description	"Facility breech. Hostile entity at access point Five."
+	text		"#str_385770"
+}
+
+lipSync vo_pa_dispersal_50
+{
+	description	"Digestive conduit array at ninety percent capacity. Auxiliary infusion units, online."
+	text		"#str_385771"
+}
+
+lipSync vo_pa_dispersal_60
+{
+	description	"Matter Intake levels, normal."
+	text		"#str_385772"
+}
+
+lipSync vo_pa_dispersal_70
+{
+	description	"Anomaly detected in Stabilization Injection Chamber."
+	text		"#str_385773"
+}
+
+lipSync vo_pa_dispersal_80
+{
+	description	"Stroyent Dispersal Systems online. Maintain full capacity."
+	text		"#str_385774"
+}
+
+lipSync vo_pa_dispersal_90
+{
+	description	"Bio-chemical Fluidic Transfer Station Three has been breached."
+	text		"#str_385775"
+}
+
+lipSync vo_pa_med_10
+{
+	description	"Transfer, approved."
+	text		"#str_385776"
+}
+
+lipSync vo_pa_med_20
+{
+	description	"Warning: Scanning system breech detected."
+	text		"#str_385777"
+}
+
+lipSync vo_pa_med_30
+{
+	description	"Neurocyte registration disrupted. Deploy service unit."
+	text		"#str_385778"
+}
+
+lipSync vo_pa_med_40
+{
+	description	"Hostile units in possession of rogue transfer. Deploy tactical intercepts."
+	text		"#str_385779"
+}
+
+lipSync vo_pa_med_50
+{
+	description	"Enemy transport destroyed."
+	text		"#str_385780"
+}
+
+lipSync vo_pa_med_60
+{
+	description	"Deliver new prisoners to prototype testing and assembly."
+	text		"#str_385781"
+}
+
+lipSync vo_pa_med_70
+{
+	description	"Tactical units at full readiness. Beginning deployment."
+	text		"#str_385782"
+}
+
+lipSync vo_pa_med_80
+{
+	description	"Flyer squadrons dispatched."
+	text		"#str_385783"
+}
+
+lipSync vo_pa_network1_10
+{
+	description	"Breech in secure Section 58-D. Activate defenses."
+	text		"#str_385784"
+}
+
+lipSync vo_pa_network1_20
+{
+	description	"Defenses compromised. All units proceed to deck 58."
+	text		"#str_385785"
+}
+
+lipSync vo_pa_network1_30
+{
+	description	"Incoming aircraft detected. Exterior shields at 32%."
+	text		"#str_385786"
+}
+
+lipSync vo_pa_network2_10
+{
+	description	"Breech on decks 72 through 85. Deploying repair units."
+	text		"#str_385787"
+}
+
+lipSync vo_pa_network2_20
+{
+	description	"Communication terminal 9C, destroyed."
+	text		"#str_385788"
+}
+
+lipSync vo_pa_network2_30
+{
+	description	"Exterior damage sustained. TG-014 report to defenses on deck 12."
+	text		"#str_385789"
+}
+
+lipSync vo_pa_network2_40
+{
+	description	"Interface disabled. Core teleport activated."
+	text		"#str_385790"
+}
+
+lipSync vo_pa_network2_50
+{
+	description	"Warning! Nexus perimeter is compromised."
+	text		"#str_385791"
+}
+
+lipSync vo_pa_process1_10
+{
+	description	"Power conservation protocol in effect. Terminal offline."
+	text		"#str_385792"
+}
+
+lipSync vo_pa_process1_20
+{
+	description	"Warning! Weight capactity exceeded."
+	text		"#str_385793"
+}
+
+lipSync vo_pa_process1_30
+{
+	description	"Warning! Transport malfunction."
+	text		"#str_385794"
+}
+
+lipSync vo_pa_process1_40
+{
+	description	"Attention: Transport, offline."
+	text		"#str_385795"
+}
+
+lipSync vo_pa_process1_50
+{
+	description	"Attention: Terminal, online."
+	text		"#str_385796"
+}
+
+lipSync vo_pa_process2_10
+{
+	description	"Multiple hull breaches on floor 60."
+	text		"#str_385797"
+}
+
+lipSync vo_pa_process2_20
+{
+	description	"Process terminal connection established to core facility."
+	text		"#str_385798"
+}
+
+lipSync vo_pa_process2_30
+{
+	description	"Initiating teleportation interface."
+	text		"#str_385799"
+}
+
+lipSync vo_pa_process2_40
+{
+	description	"Teleportation interchange established."
+	text		"#str_385800"
+}
+
+lipSync vo_pa_process2_50
+{
+	description	"Unable to process data due to node alignment error."
+	text		"#str_385801"
+}
+
+lipSync vo_pa_process2_60
+{
+	description	"Node alignment error corrected."
+	text		"#str_385802"
+}
+
+lipSync vo_pa_putra_10
+{
+	description	"Stroyent digestive cycle initiated."
+	text		"#str_385803"
+}
+
+lipSync vo_pa_putra_20
+{
+	description	"Service required on belt 36-C."
+	text		"#str_385804"
+}
+
+lipSync vo_pa_putra_30
+{
+	description	"Sector 6C compromised. Activate defense protocol."
+	text		"#str_385805"
+}
+
+lipSync vo_pa_putra_40
+{
+	description	"Enzyme Distribution sequence initiated."
+	text		"#str_385806"
+}
+
+lipSync vo_pa_putra_50
+{
+	description	"Enzyme Distribution sequence complete."
+	text		"#str_385807"
+}
+
+lipSync vo_pa_putra_60
+{
+	description	"Enzyme Distribution failure. Transport systems deactivated."
+	text		"#str_385808"
+}
+
+lipSync vo_pa_putra_70
+{
+	description	"Structural disturbance detected in Bioform Sublevels."
+	text		"#str_385809"
+}
+
+lipSync vo_pa_recomp_10
+{
+	description	"Error: Containment production, offline."
+	text		"#str_385810"
+}
+
+lipSync vo_pa_recomp_20
+{
+	description	"System: online."
+	text		"#str_385811"
+}
+
+lipSync vo_pa_recomp_30
+{
+	description	"System: offline. Stroyent production suspended."
+	text		"#str_385812"
+}
+
+lipSync vo_pa_storage1_10
+{
+	description	"Hull shell has sustained multiple breaches."
+	text		"#str_385813"
+}
+
+lipSync vo_pa_storage1_100
+{
+	description	"Intruders detected on decks 2 through 4."
+	text		"#str_385814"
+}
+
+lipSync vo_pa_storage1_110
+{
+	description	"Primary defenses on floor 83 reduced to zero percent."
+	text		"#str_385815"
+}
+
+lipSync vo_pa_storage1_120
+{
+	description	"All units report to deck 4."
+	text		"#str_385816"
+}
+
+lipSync vo_pa_storage1_130
+{
+	description	"Core Interface disabled."
+	text		"#str_385817"
+}
+
+lipSync vo_pa_storage1_20
+{
+	description	"Fire hazards detected. TSDs retracting to lower distribution level."
+	text		"#str_385818"
+}
+
+lipSync vo_pa_storage1_30
+{
+	description	"Tactical units dispatched to floor 85."
+	text		"#str_385819"
+}
+
+lipSync vo_pa_storage1_40
+{
+	description	"Hangar door sequence activated."
+	text		"#str_385820"
+}
+
+lipSync vo_pa_storage1_50
+{
+	description	"Storage terminal connection established to core facility."
+	text		"#str_385821"
+}
+
+lipSync vo_pa_storage1_60
+{
+	description	"TSD cooling procedure initiated."
+	text		"#str_385822"
+}
+
+lipSync vo_pa_storage1_70
+{
+	description	"TSD deployment initiated. Shutting down coolant."
+	text		"#str_385823"
+}
+
+lipSync vo_pa_storage1_80
+{
+	description	"Exterior defenses, fully functional."
+	text		"#str_385824"
+}
+
+lipSync vo_pa_storage1_90
+{
+	description	"TG-014 has been released."
+	text		"#str_385825"
+}
+
+lipSync vo_pa_storage2_10
+{
+	description	"TSDs enroute to main level, power restored."
+	text		"#str_385826"
+}
+
+lipSync vo_pa_tram1_10
+{
+	description	"Unknown entity, class human, detected on tram enroute to Hub 8. Tactical unit dispatched."
+	text		"#str_385827"
+}
+
+lipSync vo_pa_tram1_20
+{
+	description	"Tram rerouted. Destination, process facility 6."
+	text		"#str_385828"
+}
+
+lipSync vo_pa_tram1_30
+{
+	description	"Track malfunction."
+	text		"#str_385829"
+}
+
+lipSync vo_pa_tram1_40
+{
+	description	"Repair units dispatched to damaged track section."
+	text		"#str_385830"
+}
+
+lipSync vo_pa_tram1_50
+{
+	description	"Track repaired. Process route now functional."
+	text		"#str_385831"
+}
+
+lipSync vo_pa_walker_10
+{
+	description	"Hostile armor unit approaching sector five dispersal facility. Retract bridge and deploy drop turret offensive."
+	text		"#str_385832"
+}
+
+lipSync vo_pa_walker_20
+{
+	description	"Warning: Bridge security compromised."
+	text		"#str_385833"
+}
+
+lipSync vo_pa_walker_30
+{
+	description	"Ground units ineffective; deploy immediate aerial assault."
+	text		"#str_385834"
+}
+
+lipSync vo_pa_walker_40
+{
+	description	"Rogue Transfer has breached dispersal perimeter. Intercept and terminate."
+	text		"#str_385835"
+}
+
+lipSync vo_pa_walker_50
+{
+	description	"Tactical teams deployed to dispersal complex. Priority alpha, elimination of rogue transfer."
+	text		"#str_385836"
+}
+
+lipSync vo_pa_waste_10
+{
+	description	"Neutralization process initiated."
+	text		"#str_385837"
+}
+
+lipSync vo_pa_waste_20
+{
+	description	"Tactical unit dispatched to tunnel breach."
+	text		"#str_385838"
+}
+
+lipSync vo_pa_waste_30
+{
+	description	"Multiple entities detected in resovoir 12."
+	text		"#str_385839"
+}
+
+lipSync vo_pa_waste_40
+{
+	description	"Warning: Decomposition solution activated."
+	text		"#str_385840"
+}
+
+lipSync vo_pa_waste_50
+{
+	description	"Intruder alert, sector d429 - terminated."
+	text		"#str_385841"
+}
+
+lipSync vo_pa_waste_60
+{
+	description	"Station 48 security grid deactivated."
+	text		"#str_385842"
+}

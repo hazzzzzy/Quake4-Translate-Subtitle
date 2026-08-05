@@ -226,6 +226,32 @@ idTech4Apx/quake4/q4game.dll.official
 
 实际编译（2026-08-01 摸清）：工具链在 D 盘非默认位——VS2022 BuildTools `D:/Microsoft Visual Studio/2022/BuildTools/`（MSVC 14.44，Hostx64/x64）+ Windows SDK 10.0.22621.0（需 VS Installer 勾装；缺 UCRT 会 `malloc.h` C1083）。增量编译跑 `tmp/build_q4.bat`（先 `call vcvars64.bat` 初始化 INCLUDE/LIB，再 `ninja q4game`，构建目录 `tmp/build-q4-ninja-only`）。**bat 必须 CRLF**——LF 会让含空格路径的 call 行截断；改 `Subtitles.{h,cpp}` 后先 `cp` 到 `diii4a/Q3E/src/main/jni/doom3/neo/quake4/` 再编译（双写同步）。产物部署三处：`idTech4Apx/quake4/q4game.dll`、`dist/engine/q4game.dll`、`D:/Quake 4/Quake4-Chinese/engine/q4game.dll`（实际游玩目录）。
 
+### 打包前必做：同步 dist/savedata
+
+**每次改了 `savedata/q4base/` 下的任何文件后，必须同步到 `dist/savedata/q4base/`，否则安装器打包的 payload 是旧的。**
+
+CI 从 `dist/` 目录打包安装器 payload，不从 `savedata/` 读。需要同步的文件包括：
+
+| 源（savedata/q4base/） | 目标（dist/savedata/q4base/） | 内容 |
+|---|---|---|
+| `strings/*.lang` | `strings/*.lang` | lang 翻译文件（字幕/任务/UI 文本） |
+| `lipsync/*.lipsync` | `lipsync/*.lipsync` | 字幕 lipsync decl |
+| `fonts/chinese/*` | `fonts/chinese/*` | fontdat + TGA 纹理 |
+| `materials/*.mtr` | `materials/*.mtr` | 字体材质别名 |
+| `speaker_map.txt` | `speaker_map.txt` | 声音 shader → 说话人映射 |
+| `guis/*.gui` | `guis/*.gui`（如改过） | HUD/字幕/菜单 GUI |
+
+同步命令（在工程根执行）：
+```bash
+cp savedata/q4base/strings/*.lang dist/savedata/q4base/strings/
+cp -r savedata/q4base/lipsync/* dist/savedata/q4base/lipsync/
+cp savedata/q4base/fonts/chinese/* dist/savedata/q4base/fonts/chinese/
+cp savedata/q4base/materials/*.mtr dist/savedata/q4base/materials/
+cp savedata/q4base/speaker_map.txt dist/savedata/q4base/
+```
+
+**教训（v1.3.2）**：改了 lang/TSV/字体后只部署到 `savedata/` 和用户目录，忘了同步 `dist/savedata/`，导致安装器打包的 lang 文件是旧版（无人名汉化），用户安装后看不到改动。
+
 ### Quake4.exe 编译（改 UI 代码时）
 
 Quake4.exe 编译需要 `RAVEN=ON`，并额外依赖 SDL2 和 ZLIB（q4game.dll 不需要）：

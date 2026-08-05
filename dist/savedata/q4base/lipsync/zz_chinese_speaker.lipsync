@@ -1,0 +1,458 @@
+// 汉化项目自建：speaker 实体播放的舰上 PA/对话语音 lipsync decl(原版缺失,仅供字幕取文本)
+// 由 tools/gen_speaker_decls.py 生成,勿手改
+
+lipSync vo_1_1_11_220_2
+{
+	description	"Report to life support services immediately - they're having a problem with a purification unit."
+	text		"#str_386000"
+}
+
+lipSync vo_1_1_11_230_2
+{
+	description	"Reroute the energy stabilizers. Wait two seconds and then purge 'em. The hit will cause the system to depolarize."
+	text		"#str_386001"
+}
+
+lipSync vo_1_1_11_230_4
+{
+	description	"Kid, I know what this ship can and can't do."
+	text		"#str_386002"
+}
+
+lipSync vo_1_1_11_230_6
+{
+	description	"Power restored in 3... 2... 1."
+	text		"#str_386003"
+}
+
+lipSync vo_1_1_11_230_8
+{
+	description	"Of course it worked. Now recalibrate that console, then get back here."
+	text		"#str_386004"
+}
+
+lipSync vo_1_1_11_250_4
+{
+	description	"The glitch is in that sector."
+	text		"#str_386005"
+}
+
+lipSync vo_1_1_11_260_2
+{
+	description	"Nope. It's at 54%."
+	text		"#str_386006"
+}
+
+lipSync vo_1_1_11_260_4
+{
+	description	"74%."
+	text		"#str_386007"
+}
+
+lipSync vo_1_1_11_260_6
+{
+	description	"Now it's at 83%."
+	text		"#str_386008"
+}
+
+lipSync vo_1_1_11_300_1
+{
+	description	"Private Mark Lorenzi, please report to medical bay 3."
+	text		"#str_386009"
+}
+
+lipSync vo_1_1_11_310_1
+{
+	description	"Lt.Voss, report to briefing room 8."
+	text		"#str_386010"
+}
+
+lipSync vo_1_1_11_320_1
+{
+	description	"Memorial Services for Colonel Westmore will be held at oh eight hundred hours."
+	text		"#str_386011"
+}
+
+lipSync vo_1_1_11_330_1
+{
+	description	"Bison Squad, report to walker deck 2 immediately."
+	text		"#str_386012"
+}
+
+lipSync vo_1_1_11_332_1
+{
+	description	"Testing launch PODs 1 and 2."
+	text		"#str_386013"
+}
+
+lipSync vo_1_1_11_340_2
+{
+	description	"My team is pinned down by heavy fire. I'm requesting an artillery strike on a Strogg bunker."
+	text		"#str_386014"
+}
+
+lipSync vo_1_1_11_350_2
+{
+	description	"Great, so where's my squad located?"
+	text		"#str_386015"
+}
+
+lipSync vo_1_1_11_350_4
+{
+	description	"Okay, let 'em know I'm on my way."
+	text		"#str_386016"
+}
+
+lipSync vo_1_1_11_350_6
+{
+	description	"Thanks for the help. Looms out."
+	text		"#str_386017"
+}
+
+lipSync vo_1_1_11_35_1
+{
+	description	"Crew Chief Hammond, report to walker bay 8D immediately."
+	text		"#str_386018"
+}
+
+lipSync vo_1_1_11_35_2
+{
+	description	"A welding crew is needed in armament."
+	text		"#str_386019"
+}
+
+lipSync vo_1_1_11_35_3
+{
+	description	"All walkers for Bison Squad will need to be pre-prepped by oh four hundred hours."
+	text		"#str_386020"
+}
+
+lipSync vo_1_1_11_35_4
+{
+	description	"Specialist Herman Ways, report to the main office immediately."
+	text		"#str_386021"
+}
+
+lipSync vo_1_1_11_35_5
+{
+	description	"A computer tech is needed in walker bay 6C."
+	text		"#str_386022"
+}
+
+lipSync vo_1_1_11_35_6
+{
+	description	"Crew Chief Hanks, call 232. Crew Chief Hanks, call 232."
+	text		"#str_386023"
+}
+
+lipSync vo_1_1_11_380_1
+{
+	description	"Signal check for pestilence."
+	text		"#str_386024"
+}
+
+lipSync vo_1_1_11_380_3
+{
+	description	"Roger that. Switching to 4 6 1."
+	text		"#str_386025"
+}
+
+lipSync vo_1_1_11_395_1
+{
+	description	"I'm a scout on special assignment."
+	text		"#str_386026"
+}
+
+lipSync vo_1_1_11_395_3
+{
+	description	"Tell General Harper that there should be no problem entering the Hub from the lower level."
+	text		"#str_386027"
+}
+
+lipSync vo_1_1_11_40_4
+{
+	description	"The back shields cut out."
+	text		"#str_386028"
+}
+
+lipSync vo_1_1_11_40_6
+{
+	description	"Primary emitter is in the green."
+	text		"#str_386029"
+}
+
+lipSync vo_1_1_11_40_8
+{
+	description	"Secondary emitters check out."
+	text		"#str_386030"
+}
+
+lipSync vo_1_1_11_70_2
+{
+	description	"18 hours, Chief."
+	text		"#str_386031"
+}
+
+lipSync vo_1_1_11_70_5
+{
+	description	"Check."
+	text		"#str_386032"
+}
+
+lipSync vo_1_1_11_70_7
+{
+	description	"Check."
+	text		"#str_386033"
+}
+
+lipSync vo_1_1_11_70_9
+{
+	description	"Check."
+	text		"#str_386034"
+}
+
+lipSync vo_1_1_1_15_1
+{
+	description	"You're needed ASAP. Colonel Westmore has been wounded in the leg."
+	text		"#str_386035"
+}
+
+lipSync vo_1_1_1_15_3
+{
+	description	"Westmore demanded you."
+	text		"#str_386036"
+}
+
+lipSync vo_1_1_1_28_1
+{
+	description	"Are you picking up our medical chips?"
+	text		"#str_386037"
+}
+
+lipSync vo_1_1_1_28_3
+{
+	description	"Good. Now establish an uplink with HQ. Voss out."
+	text		"#str_386038"
+}
+
+lipSync vo_1_1_7_110_2
+{
+	description	"Nein. I don't know how to make it any simpler, you have to engage the primary override first."
+	text		"#str_386039"
+}
+
+lipSync vo_1_1_7_110_4
+{
+	description	"I shouldn't have to. It's plainly obvious. Do I have to come down there and walk you through it?"
+	text		"#str_386040"
+}
+
+lipSync vo_1_1_7_110_6
+{
+	description	"Very well, Strauss out."
+	text		"#str_386041"
+}
+
+lipSync vo_1_1_7_140_2
+{
+	description	"Strauss, we've been over this - it's not gonna happen."
+	text		"#str_386042"
+}
+
+lipSync vo_1_1_7_140_4
+{
+	description	"Thank you, Private Strauss. Your grievance is noted."
+	text		"#str_386043"
+}
+
+lipSync vo_1_2_12_30_1
+{
+	description	"Zebra 2, this is Bison 8. See anything?"
+	text		"#str_386044"
+}
+
+lipSync vo_1_2_12_30_2
+{
+	description	"I got nothing."
+	text		"#str_386045"
+}
+
+lipSync vo_1_2_12_30_3
+{
+	description	"Wait a second. I've got a reading."
+	text		"#str_386046"
+}
+
+lipSync vo_1_2_12_30_4
+{
+	description	"Holy shit! What IS that?!"
+	text		"#str_386047"
+}
+
+lipSync vo_2_2_10_195_1
+{
+	description	"On Venus, the city of Portsmith is scheduled to have temperatures in the low to mid 70's with rain from seven to eight am."
+	text		"#str_386048"
+}
+
+lipSync vo_2_2_10_195_2
+{
+	description	"The city of New Berlin be in the mid to upper 70's and clear."
+	text		"#str_386049"
+}
+
+lipSync vo_2_2_10_195_3
+{
+	description	"And the spaceport, Aldrin, is still under repair from the meteor storm so the average temperature will be in the mid to upper 400's."
+	text		"#str_386050"
+}
+
+lipSync vo_2_2_10_251_1
+{
+	description	"Exterior shields sustaining heavy damage."
+	text		"#str_386051"
+}
+
+lipSync vo_2_2_10_251_10
+{
+	description	"Danger! Hull has been breached on decks two and three. Danger! Hull has been breached."
+	text		"#str_386052"
+}
+
+lipSync vo_2_2_10_251_2
+{
+	description	"Shields are at 86%."
+	text		"#str_386053"
+}
+
+lipSync vo_2_2_10_251_3
+{
+	description	"Shields at 72%, rerouting power from propulsion."
+	text		"#str_386054"
+}
+
+lipSync vo_2_2_10_251_4
+{
+	description	"Shields currently at 63%"
+	text		"#str_386055"
+}
+
+lipSync vo_2_2_10_251_5
+{
+	description	"Warning. Exterior shields are at 48%."
+	text		"#str_386056"
+}
+
+lipSync vo_2_2_10_251_6
+{
+	description	"Aft shields intermittent. Damage reported on Decks 2 and 3."
+	text		"#str_386057"
+}
+
+lipSync vo_2_2_10_251_7
+{
+	description	"Warning. Shields have dropped to 29%."
+	text		"#str_386058"
+}
+
+lipSync vo_2_2_10_251_8
+{
+	description	"Danger. Exterior shields are at 13%."
+	text		"#str_386059"
+}
+
+lipSync vo_2_2_10_251_9
+{
+	description	"Exterior shields are down."
+	text		"#str_386060"
+}
+
+lipSync vo_2_2_10_265_1
+{
+	description	"Paging Private Herman. Paging Private Paul Herman. Please report to General Harper's office."
+	text		"#str_386061"
+}
+
+lipSync vo_2_2_10_270_1
+{
+	description	"Evac drills for decks 4 and 5 to commence at oh two hundred hours."
+	text		"#str_386062"
+}
+
+lipSync vo_2_2_10_280_1
+{
+	description	"Security, report to deck 2. A Strogg Warrior has been sighted."
+	text		"#str_386063"
+}
+
+lipSync vo_2_2_10_290_1
+{
+	description	"Condor squad, report to briefing room 4."
+	text		"#str_386064"
+}
+
+lipSync vo_2_2_10_326_2
+{
+	description	"That's Matthew Kane. He's not a Strogg and he's been given full clearance."
+	text		"#str_386065"
+}
+
+lipSync vo_2_2_20_10_1
+{
+	description	"Wolf squad, report to engineering and repel boarding parties."
+	text		"#str_386066"
+}
+
+lipSync vo_2_2_20_20_2
+{
+	description	"Roger that, control."
+	text		"#str_386067"
+}
+
+lipSync vo_2_2_20_40_2
+{
+	description	"I will be prepped for launch in two minutes, control."
+	text		"#str_386068"
+}
+
+lipSync vo_2_2_20_50_4
+{
+	description	"This is Bay 42. The pod is away. Running diagnostics for next launch cycle."
+	text		"#str_386069"
+}
+
+lipSync vo_2_2_20_60_1
+{
+	description	"Control, I'm having a little trouble with navigation."
+	text		"#str_386070"
+}
+
+lipSync vo_2_2_20_60_2
+{
+	description	"I confirm that. Re-transmitting pod flight plan."
+	text		"#str_386071"
+}
+
+lipSync vo_3_1_20_30_1
+{
+	description	"What has he been up to?"
+	text		"#str_386072"
+}
+
+lipSync vo_3_1_20_30_3
+{
+	description	"Does he represent a threat?"
+	text		"#str_386073"
+}
+
+lipSync vo_3_1_20_30_5
+{
+	description	"Keep a close eye on him. Section 13, out."
+	text		"#str_386074"
+}
+
+lipSync vo_3_1_2_10_2
+{
+	description	"Don't let the Strogg makeup fool ya - he's a damn fine Marine."
+	text		"#str_386075"
+}

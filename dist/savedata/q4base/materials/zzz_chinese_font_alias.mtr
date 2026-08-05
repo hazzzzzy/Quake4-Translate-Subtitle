@@ -112,6 +112,17 @@ fonts/chinese/chain_2_48.tga
 		forceHighQuality
 	}
 }
+fonts/chinese/chain_3_48.tga
+{
+	{
+		blend blend
+		colored
+		map "fonts/chinese/chain_3_48.tga"
+		clamp
+		nopicmip
+		forceHighQuality
+	}
+}
 fonts/chinese/marine_12.tga
 {
 	{
@@ -217,6 +228,17 @@ fonts/chinese/marine_2_48.tga
 		blend blend
 		colored
 		map "fonts/chinese/marine_2_48.tga"
+		clamp
+		nopicmip
+		forceHighQuality
+	}
+}
+fonts/chinese/marine_3_48.tga
+{
+	{
+		blend blend
+		colored
+		map "fonts/chinese/marine_3_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -332,6 +354,17 @@ fonts/chinese/lowpixel_2_48.tga
 		forceHighQuality
 	}
 }
+fonts/chinese/lowpixel_3_48.tga
+{
+	{
+		blend blend
+		colored
+		map "fonts/chinese/lowpixel_3_48.tga"
+		clamp
+		nopicmip
+		forceHighQuality
+	}
+}
 fonts/chinese/profont_12.tga
 {
 	{
@@ -437,6 +470,17 @@ fonts/chinese/profont_2_48.tga
 		blend blend
 		colored
 		map "fonts/chinese/lowpixel_2_48.tga"
+		clamp
+		nopicmip
+		forceHighQuality
+	}
+}
+fonts/chinese/profont_3_48.tga
+{
+	{
+		blend blend
+		colored
+		map "fonts/chinese/lowpixel_3_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
@@ -580,6 +624,17 @@ fonts/chinese/r_strogg_2_48.tga
 		blend blend
 		colored
 		map "fonts/chinese/r_strogg_2_48.tga"
+		clamp
+		nopicmip
+		forceHighQuality
+	}
+}
+fonts/chinese/r_strogg_3_48.tga
+{
+	{
+		blend blend
+		colored
+		map "fonts/chinese/r_strogg_3_48.tga"
 		clamp
 		nopicmip
 		forceHighQuality
