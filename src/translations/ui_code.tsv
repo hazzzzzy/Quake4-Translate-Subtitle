@@ -1,4 +1,4 @@
-id	en	zh	context	status
+﻿id	en	zh	context	status
 #str_100625	Your system specifications allow for %d player(s) total.	根据您的系统配置，最多可支持 %d 名玩家。		review
 #str_100626	Warning	警告		review
 #str_101991	Team	队伍		review
@@ -149,7 +149,7 @@ id	en	zh	context	status
 #str_104853	There was an error in your video settings - safe defaults have been selected.	您的视频设置存在错误，已改用安全的默认设置。		review
 #str_106732	Players got even at the last second!	双方在最后一刻打成平手！		review
 #str_106733	No server selected\n	未选择服务器\n		review
-#str_106734	Couldn't resolve server name \"%s\"\n	无法解析服务器名称“%s”\n		review
+#str_106734	"Couldn't resolve server name \""%s\""\n"	无法解析服务器名称“%s”\n		review
 #str_106735	Connect Failed\n	连接失败\n		review
 #str_106737	Ready Status	准备状态		review
 #str_106738	Spectator Mode	观战模式		review
@@ -356,11 +356,11 @@ id	en	zh	context	status
 #str_107279	Regular %s PunkBuster	普通 %s PunkBuster		review
 #str_107280	Server name A %s Z	服务器名 A %s Z		review
 #str_107281	Server name Z %s A	服务器名 Z %s A		review
-#str_107282	Ping Low %s High	延迟 低 %s 高		review
-#str_107283	Ping High %s Low	延迟 高 %s 低		review
-#str_107284	Players Low %s High	玩家数 少 %s 多		review
-#str_107285	Players High %s Low	玩家数 多 %s 少		review
-#str_107286	Players High %s Low (non-full)	玩家数 多 %s 少（未满）		review
+#str_107282	Ping Low %s High	延迟低 %s 高		review
+#str_107283	Ping High %s Low	延迟高 %s 低		review
+#str_107284	Players Low %s High	玩家数少 %s 多		review
+#str_107285	Players High %s Low	玩家数多 %s 少		review
+#str_107286	Players High %s Low (non-full)	玩家数多 %s 少（未满）		review
 #str_107287	Map CTF1 %s DM9	地图 CTF1 %s DM9		review
 #str_107288	Map DM9 %s CTF1	地图 DM9 %s CTF1		review
 #str_107289	Tournament	锦标赛		review
@@ -445,25 +445,25 @@ id	en	zh	context	status
 #str_107440	Rocket Homing Mod	火箭追踪改装		review
 #str_107500	PERSONA TEST	角色测试		review
 #str_107501	PERSONA DESCRIPTION	角色描述		review
-#str_107502	Rhino Squad	Rhino 小队		review
-#str_107503	Badger Squad	Badger 小队		review
-#str_107504	Wolf Squad	Wolf 小队		review
-#str_107505	Kodiak Squad	Kodiak 小队		review
-#str_107506	Eagle Squad	Eagle 小队		review
-#str_107507	Raven Squad	Raven 小队		review
-#str_107508	Warthog Squad	Warthog 小队		review
-#str_107509	Viper Squad	Viper 小队		review
-#str_107510	Cobra Squad	Cobra 小队		review
-#str_107511	Medic Anderson	医疗兵 Anderson		review
-#str_107512	SGT Bidwell	中士 Bidwell		review
-#str_107513	CPL Cortez	下士 Cortez		review
-#str_107514	SGT Morris	中士 Morris		review
-#str_107515	2LT Morris	少尉 Morris		review
-#str_107516	CPL Rhodes	下士 Rhodes		review
-#str_107517	LCPL 'Sledge'	准下士「Sledge」		review
-#str_107518	SGT 'Sledge'	中士「Sledge」		review
-#str_107519	Tech Strauss	技术兵 Strauss		review
-#str_107520	LT Voss	中尉 Voss		review
+#str_107502	Rhino Squad	「犀牛」小队		review
+#str_107503	Badger Squad	「猛獾」小队		review
+#str_107504	Wolf Squad	「野狼」小队		review
+#str_107505	Kodiak Squad	「棕熊」小队		review
+#str_107506	Eagle Squad	「雄鹰」小队		review
+#str_107507	Raven Squad	「渡鸦」小队		review
+#str_107508	Warthog Squad	「疣猪」小队		review
+#str_107509	Viper Squad	「毒蛇」小队		review
+#str_107510	Cobra Squad	「眼镜蛇」小队		review
+#str_107511	Medic Anderson	医疗兵安德森		review
+#str_107512	SGT Bidwell	中士比德威尔		review
+#str_107513	CPL Cortez	下士科尔特斯		review
+#str_107514	SGT Morris	中士莫里斯		review
+#str_107515	2LT Morris	少尉莫里斯		review
+#str_107516	CPL Rhodes	下士罗兹		review
+#str_107517	LCPL 'Sledge'	准下士「斯莱奇」		review
+#str_107518	SGT 'Sledge'	中士「斯莱奇」		review
+#str_107519	Tech Strauss	技术兵施特劳斯		review
+#str_107520	LT Voss	中尉沃斯		review
 #str_107521	Unnamed	未命名		review
 #str_107600	THE FRAGGING YARD	击杀场		review
 #str_107601	SANDSTORM	沙暴		review
@@ -608,21 +608,21 @@ id	en	zh	context	status
 #str_108000	Failed Transfer	「失败改造体」		review
 #str_108001	Slimy Transfer	黏液改造体		review
 #str_108002	Corpse	尸体		review
-#str_108003	Kane	Kane		review
-#str_108004	Morris	Morris		review
-#str_108005	Voss	Voss		review
-#str_108006	Cortez	Cortez		review
-#str_108007	Dynerman	Dynerman		review
-#str_108008	Strauss	Strauss		review
-#str_108009	Anderson	Anderson		review
-#str_108010	Harper	Harper		review
-#str_108011	Bidwell	Bidwell		review
-#str_108012	Fuchs	Fuchs		review
+#str_108003	Kane	凯恩		review
+#str_108004	Morris	莫里斯		review
+#str_108005	Voss	沃斯		review
+#str_108006	Cortez	科尔特斯		review
+#str_108007	Dynerman	迪纳曼		review
+#str_108008	Strauss	施特劳斯		review
+#str_108009	Anderson	安德森		review
+#str_108010	Harper	哈珀		review
+#str_108011	Bidwell	比德威尔		review
+#str_108012	Fuchs	富克斯		review
 #str_108013	Tactical Transfer	战术改造体		review
-#str_108014	Stroggified Kane	Strogg 化的 Kane		review
+#str_108014	Stroggified Kane	Strogg 化的凯恩		review
 #str_108015	Alternate Failed Transfer	「失败改造体」		review
 #str_108016	Alternate Slimy Transfer	黏液改造体（备选）		review
-#str_108017	Tactical Elite	精英战术兵		review
+#str_108017	Tactical Elite	精英「战术兵」		review
 #str_108018	Tactical Command	战术指挥官		review
 #str_108019	Alternate Corpse 1	尸体（备选 1）		review
 #str_108020	Alternate Corpse 2	尸体（备选 2）		review
@@ -681,7 +681,7 @@ id	en	zh	context	status
 #str_122900	CAVERNOUS CRYONICS	冷冻洞窟		review
 #str_122901	CENTRAL INDUSTRIAL	中央工业区		review
 #str_122902	WARFORGED	战争锻造场		review
-#str_122903	STROYENT RED	「斯托伊文特」 红		review
+#str_122903	STROYENT RED	「斯托伊文特」红		review
 #str_122904	RETROPHOBOPOLIS	复古恐惧之城		review
 #str_122905	FIREWALL	防火墙		review
 #str_122906	STROGGENOMENON	Strogg 异象		review

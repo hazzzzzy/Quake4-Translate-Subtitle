@@ -26,6 +26,72 @@
 
 测试统一用 exe 安装版（安装到游戏目录后点 Quake4中文启动器.exe），不再用工程 .cmd 启动器。引擎中文、宽字符 GUI、高清字体、字幕、阴影等选项由启动器/安装器配置。
 
+## 项目结构总览
+
+```
+quake4-translate-subtitle/
+├── src/                            # 源码与工具
+│   ├── translations/               # 翻译主表（TSV，中文字符串源数据）
+│   │   ├── ui_code.tsv             #   UI 代码字符串（按钮/选项/系统提示）
+│   │   ├── ui_guis.tsv             #   GUI 窗口文本
+│   │   ├── ui_maps.tsv             #   地图/关卡名
+│   │   ├── ui_mappack.tsv          #   地图包名
+│   │   ├── dialogue_lips.tsv       #   剧情对白（原版 #str_ 引用，非自建 id）
+│   │   ├── radio_chatter.tsv       #   无线电通信台词（str_380xxx）
+│   │   ├── ai_vo_gap.tsv           #   AI 语音缺口台词（str_385xxx）
+│   │   ├── broadcast_pa.tsv        #   PA 广播台词
+│   │   └── speaker_chatter.tsv     #   说话人闲聊台词
+│   ├── tools/                      # 生成工具（Python，从 TSV/原版 pak 生成部署资产）
+│   │   ├── build_lang.py           #   TSV → lang 文件 + speaker_map.txt
+│   │   ├── build_dist_extras.py    #   原版 pak → savedata/guis（loose 覆盖）
+│   │   ├── gen_radio_decls.py      #   radio_chatter.tsv → lipsync decl
+│   │   ├── export_font.py          #   思源黑体 → fontdat + tga（CJK 字体导出）
+│   │   ├── patch_hud.py            #   HUD 汉化（基于 pak021 底稿）
+│   │   ├── patch_mainmenu.py       #   主菜单汉化
+│   │   ├── patch_wristcomm.py      #   腕表汉化
+│   │   ├── patch_marine_numoffset.py #  marine 字体数字位置补偿
+│   │   ├── package_release.ps1     #   本地打包入口（CI 等价）
+│   │   └── ...                     #   其他辅助工具
+│   ├── installer/                  # 安装器（Tkinter GUI + PyInstaller EXE）
+│   │   ├── installer.py            #   主安装器：模式选择/部署/快捷方式/帧率解锁
+│   │   ├── verify_bundle.py        #   payload 完整性验证
+│   │   ├── build.ps1               #   PyInstaller 构建脚本
+│   │   └── _logos.py               #   开发者链接图标
+│   ├── engine-patches/             # 引擎补丁（对 diii4a 上游）
+│   │   ├── 0001-quake4-cn-runtime.patch # 完整引擎补丁（权威，CI 校验）
+│   │   └── Subtitles.h/.cpp        #   字幕系统源码副本
+│   └── official-compat/            # 原版引擎兼容方案（独立 CMake）
+├── diii4a/                         # idTech4A++ 上游源码（独立 Git，不纳入根仓库）
+├── assets/                         # 开发输入资产（不进 dist）
+│   ├── SourceHanSansSC-Medium.otf  # CJK 字体源
+│   ├── hud_pak021_stock.gui        # HUD 底稿（1.4.2 原版）
+│   └── english_fonts/              # 原版英文字体缓存
+├── savedata/q4base/                # 工程运行时部署目录（fs_savepath）
+│   ├── fonts/chinese/              # 当前中文字体 + fontdat（含 Strogg 多页纹理）
+│   ├── strings/                    # 5 个中文 lang 文件
+│   ├── guis/                       # HUD/字幕/菜单/腕表/Strogg GUI
+│   ├── lipsync/                    # lipsync decl（字幕文本来源）
+│   ├── materials/                  # 字体材质别名（zzz_chinese_font_alias.mtr）
+│   └── speaker_map.txt             # 声音 shader → 说话人映射
+├── dist/                           # 公开可分发内容（installer 打包来源）
+│   ├── engine/                     # q4game.dll + Quake4.exe + SDL2.dll
+│   └── savedata/                   # 部署数据子集
+├── docs/                           # 技术文档（先读 MEMORY.md 索引）
+│   ├── MEMORY.md                   #   文档索引
+│   ├── glossary.md                 #   术语译名表（武器/单位/概念）
+│   └── quake4-*.md                 #   各迭代技术沉淀
+├── tmp/                            # 构建产物/临时文件（不进 git）
+├── idTech4Apx/                     # 引擎工作目录（Quake4.exe 运行用）
+├── .github/workflows/package.yml   # CI：push 验证 + tag Release 发布
+├── CLAUDE.md                       # 本文件
+├── CHANGELOG.md                    # 版本更新记录
+└── requirements.txt                # Python 依赖
+```
+
+**数据流**：`src/translations/*.tsv`（人类编辑）→ `src/tools/*.py`（生成）→ `savedata/q4base/`（工程运行）→ `dist/`（分发子集）→ installer（打包 EXE）→ 玩家安装。
+
+**引擎数据流**：`diii4a/`（上游源码）← `src/engine-patches/`（补丁）→ 编译 `q4game.dll` → 部署到 `idTech4Apx/` + `dist/engine/` + 玩家目录。
+
 ## 目录职责
 
 ### 工程根
@@ -90,6 +156,7 @@ idTech4A++ 上游源码，基线为 `v1.1.0harmattan70`。当前 Quake 4 汉化�
 - `quake4-font-aspect-and-size.md`：字体比例与体积优化。
 - `quake4-strogg-changeover.md`：Strogg 转译动画与字体语义。
 - `quake4-dist-package.md`：分发包结构与打包要求。
+- `quake4-framerate-research.md`：高帧率三条路线研究（相机插值 / 改 tic 率 / openQ4 解耦），含 144Hz A/B 测试待办。
 
 ## GUI 与存档的绝对约束
 

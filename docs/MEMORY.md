@@ -8,3 +8,4 @@
 - [汉化分发包](quake4-dist-package.md) — dist/Quake4-CN-v1.0 打包清单/启动器要点（pak021 检查防读档崩溃）/排除项/重打包方法
 - [第六轮：换图崩溃与字幕完善](quake4-r6-crash-and-subtitles.md) — 崩溃根因=GUI 裸指针跨图悬空（每帧 FindGui 修复）/无 cdb 符号化排障流程/speaker 字幕钩子/友军门控/面板布局三处联动
 - [第九轮：MCC 对齐 + 开源仓库 + Strogg 士兵](quake4-r9-mcc-align-repo-strogg.md) — ASCII 视觉中线偏上根因/正解全档 ascii_drop=drop（度量陷阱教训）/hazzzzzy/Quake4-Chinese public 仓库剥离 5 类版权物+postinstall+汉化流程指南/Strogg 士兵原版无 speech 只有 grunt
+- [高帧率方案研究](quake4-framerate-research.md) — 三条路线（相机插值/改 tic 率/openQ4 解耦），改 tic 率有武器闪烁 bug，openQ4 也不改 tic 率；待 144Hz 屏幕 A/B 测试决策

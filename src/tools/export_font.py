@@ -140,6 +140,7 @@ def build_charsets():
     ])
     # 全角标点保底（两套都要）
     punct = set("，。！？、；：……——“”‘’（）《》【】·￥")
+    punct.add(" ")
     return sorted(full | punct), sorted(ui | punct)
 
 

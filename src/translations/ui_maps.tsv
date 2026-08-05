@@ -1,13 +1,13 @@
 ﻿id	en	zh	context	status
 #str_400000	somethingwritteninstrogg	somethingwritteninstrogg		review
 #str_400001	Air Defense	防空区		review
-#str_400002	Regroup with Rhino Squad	与 Rhino 小队会合		review
-#str_400003	The survivors of Rhino Squad have made their way into the Strogg fortress ahead.  Hurry up and join them.	Rhino 小队的幸存者已经进入前方的 Strogg 要塞。赶快与他们会合。		review
+#str_400002	Regroup with Rhino Squad	与「犀牛」小队会合		review
+#str_400003	The survivors of Rhino Squad have made their way into the Strogg fortress ahead.  Hurry up and join them.	「犀牛」小队的幸存者已经进入前方的 Strogg 要塞。赶快与他们会合。		review
 #str_400006	Retrieve Medic	接回医疗兵		review
-#str_400007	Find Anderson, Rhino Squad's medic.  Bring him back to the wounded marine near Sgt. Miller.	找到 Rhino 小队的医疗兵 Anderson，把他带回 Miller 中士附近那名受伤的陆战队员身边。		review
+#str_400007	Find Anderson, Rhino Squad's medic.  Bring him back to the wounded marine near Sgt. Miller.	找到「犀牛」小队的医疗兵安德森，把他带回米勒中士附近那名受伤的陆战队员身边。		review
 #str_400008	Deck 102 | Hangar	102 号甲板 | 机库		review
 #str_400009	Destroy Strogg Aircraft Hangars	摧毁 Strogg 飞行器机库		review
-#str_400010	Strogg Flyers have Rhino Squad hopelessly pinned down.  Take Morris to the hangar and kill the problem at the root.	Strogg 飞行器把 Rhino 小队压制得毫无还手之力。带 Morris 前往机库，从根源上解决问题。		review
+#str_400010	Strogg Flyers have Rhino Squad hopelessly pinned down.  Take Morris to the hangar and kill the problem at the root.	Strogg 飞行器把「犀牛」小队压制得毫无还手之力。带莫里斯前往机库，从根源上解决问题。		review
 #str_400011	Hangar	机库		review
 #str_400012	Circumvent Glass	绕过玻璃墙		review
 #str_400013	Find a way to get to the other side of the glass.	设法绕到玻璃墙的另一侧。		review
@@ -16,13 +16,13 @@
 #str_400016	Engine Testing	引擎测试区		review
 #str_400017	Engine Storage	引擎存放区		review
 #str_400018	Marine ground units are being shredded by Strogg air support. Find a way to take out the Strogg hangars.	陆战队地面部队正被 Strogg 的空中支援打得七零八落。设法摧毁 Strogg 机库。		review
-#str_400019	Protect Rhodes	保护 Rhodes		review
+#str_400019	Protect Rhodes	保护罗兹		review
 #str_400020	Clear Area of Enemies	肃清区域内的敌人		review
 #str_400021	Prepare this floor for the demolition team by sweeping the area and clearing it of all hostiles.	扫荡本层区域，肃清所有敌人，为爆破小组做好准备。		review
 #str_400022	Hangar Perimeter	机库外围		review
-#str_400023	Lead Rhodes to the hangars and protect him as he sets the demolition charges.	带领 Rhodes 前往机库，并在他安放爆破炸药时保护他。		review
-#str_400024	Regroup with Voss	与 Voss 会合		review
-#str_400025	Return to the Air Defense Cannon and regroup with Lt. Voss and the members of Rhino Squad.	返回防空炮，与 Voss 中尉及 Rhino 小队成员会合。		review
+#str_400023	Lead Rhodes to the hangars and protect him as he sets the demolition charges.	带领罗兹前往机库，并在他安放爆破炸药时保护他。		review
+#str_400024	Regroup with Voss	与沃斯会合		review
+#str_400025	Return to the Air Defense Cannon and regroup with Lt. Voss and the members of Rhino Squad.	返回防空炮，与沃斯中尉及「犀牛」小队成员会合。		review
 #str_400026	Capture the Air Defense Cannon	夺取防空炮		review
 #str_400027	Fight your way to the cannon's controls and take it offline to clear the skies for the Mobile Command Center.	杀出一条血路，抵达防空炮的控制台并使其停机，为移动指挥中心扫清空域。		review
 #str_400028	Trenches	战壕		review
@@ -32,14 +32,14 @@
 #str_400032	Gear Up	补充装备		review
 #str_400033	Find the armory and resupply.	找到军械库，补充物资。		review
 #str_400034	Report to Briefing	前往简报室报到		review
-#str_400035	Make your way through the Hannibal and find Rhino Squad's briefing room for your next mission.	穿过汉尼拔号舰内，找到 Rhino 小队的简报室，接受你的下一项任务。		review
+#str_400035	Make your way through the Hannibal and find Rhino Squad's briefing room for your next mission.	穿过汉尼拔号舰内，找到「犀牛」小队的简报室，接受你的下一项任务。		review
 #str_400036	Drop Pod Command	空投舱指挥部		review
 #str_400037	Deck 04 Mess Hall	04 号甲板食堂		review
 #str_400038	Sector D.4 Medical Bay	D.4 区医疗舱		review
 #str_400039	D.4 Postmortem Laboratory	D.4 尸检实验室		review
 #str_400040	D.4 Decontamination	D.4 洗消室		review
 #str_400041	D.4 Armory	D.4 军械库		review
-#str_400042	D.4 Rhino Briefing Room	D.4 Rhino 简报室		review
+#str_400042	D.4 Rhino Briefing Room	D.4 犀牛简报室		review
 #str_400043	D.4 Infirmary	D.4 医务室		review
 #str_400044	Post Op. Recovery	术后恢复室		review
 #str_400045	D.4 Genetic Research	D.4 基因研究室		review
@@ -47,23 +47,23 @@
 #str_400047	D.4 Drop Pods 1-15	D.4 空投舱 1-15		review
 #str_400048	D.4 Walker Hangar	D.4 「步行者」机库		review
 #str_400049	D.4 Med Bay | Central Command	D.4 医疗舱 | 中央指挥部		review
-#str_400050	D.4 Rhino Quarters	D.4 Rhino 小队宿舍		review
+#str_400050	D.4 Rhino Quarters	D.4 「犀牛」小队宿舍		review
 #str_400051	D.4 Drop Pod Launch Bay	D.4 空投舱发射区		review
 #str_400052	Report to Briefing	前往简报室报到		review
 #str_400053	Gear Up	补充装备		review
 #str_400054	Report to Drop Pod Launch Bay	前往空投舱发射区报到		review
 #str_400055	Hightail it to the drop pod launch center and fire yourself towards the Storage tower.	火速赶往空投舱发射中心，把自己发射向储存塔。		review
-#str_400056	Locate Voss	找到 Voss		review
-#str_400057	Locate Voss for your next mission.	找到 Voss，接受你的下一项任务。		review
+#str_400056	Locate Voss	找到沃斯		review
+#str_400057	Locate Voss for your next mission.	找到沃斯，接受你的下一项任务。		review
 #str_400058	Clear Area of Turrets	清除区域内的炮塔		review
 #str_400059	Clear out the emplaced turrets surrounding the building ahead of you.	清除前方建筑物周围部署的固定炮塔。		review
 #str_400060	Locate Ride to Death Convoy	找到前往车队的载具		review
-#str_400061	Meet up with CPL Spencer and get a ride to Rhino Squad's convoy.	与 Spencer 下士会合，搭车前往 Rhino 小队的车队。		review
+#str_400061	Meet up with CPL Spencer and get a ride to Rhino Squad's convoy.	与斯潘塞下士会合，搭车前往「犀牛」小队的车队。		review
 #str_400062	Protect the Convoy	保护车队		review
 #str_400063	Use the mounted weaponry on the truck to protect the convoy from Strogg attack.	使用卡车上的车载武器，保护车队免遭 Strogg 袭击。		review
 #str_400064	Perimeter Defense Station	外围防御站		review
-#str_400065	Regroup with Rhino Squad	与 Rhino 小队会合		review
-#str_400066	Find a way out of the building and regroup with Rhino Squad at the Nexus Hub.	设法离开这栋建筑，前往 Nexus 枢纽与 Rhino 小队会合。		review
+#str_400065	Regroup with Rhino Squad	与「犀牛」小队会合		review
+#str_400066	Find a way out of the building and regroup with Rhino Squad at the Nexus Hub.	设法离开这栋建筑，前往 Nexus 枢纽与「犀牛」小队会合。		review
 #str_400067	Retrieve Engineer	接回工程师		review
 #str_400068	Enter the basement of this building and locate the convoy that is pinned down there.  Locate the engineer that is attached to the squad.	进入这栋建筑的地下室，找到被困在那里的车队，并找到配属该小队的工程师。		review
 #str_400069	Return to Building Entrance	返回建筑入口		review
@@ -71,14 +71,14 @@
 #str_400071	Shut Down the Defense Grid	关闭防御网		review
 #str_400072	Find a way to the Perimeter Control Room and shut down the laser grid to allow the convoy to proceed to the Nexus Hub.	设法抵达外围控制室，关闭激光网，让车队得以继续前往 Nexus 枢纽。		review
 #str_400073	Canyons	峡谷		review
-#str_400074	Destroy the Tetranode with Strauss	与 Strauss 一起摧毁「四元节点」		review
-#str_400075	Take the crawlspace to meet up with Strauss and destroy the Tetranode by hand.	钻过检修通道与 Strauss 会合，亲手摧毁「四元节点」。		review
+#str_400074	Destroy the Tetranode with Strauss	与施特劳斯一起摧毁「四元节点」		review
+#str_400075	Take the crawlspace to meet up with Strauss and destroy the Tetranode by hand.	钻过检修通道与施特劳斯会合，亲手摧毁「四元节点」。		review
 #str_400076	Destroy the Tetranode	摧毁「四元节点」		review
 #str_400077	Escort the EMP to directly under the Tetranode and destroy it.	护送 EMP 装置至「四元节点」正下方，将其摧毁。		review
 #str_400078	Activate the Power Plant	启动发电厂		review
-#str_400079	Escort and protect Strauss to the Tetranode's power plant.	护送 Strauss 前往「四元节点」的发电厂，并保护他的安全。		review
+#str_400079	Escort and protect Strauss to the Tetranode's power plant.	护送施特劳斯前往「四元节点」的发电厂，并保护他的安全。		review
 #str_400080	Find the Emergency Shutoff Controls	找到紧急关闭控制装置		review
-#str_400081	Escort and protect Strauss to the Emergency Shutoff Controls.	护送 Strauss 前往紧急关闭控制装置，并保护他的安全。		review
+#str_400081	Escort and protect Strauss to the Emergency Shutoff Controls.	护送施特劳斯前往紧急关闭控制装置，并保护他的安全。		review
 #str_400082	Stop the Emergency Shutdown	阻止紧急停机		review
 #str_400083	Use the data routers to rewire and shut down the emergency controls for the Tetranode.	利用数据路由器重新接线，关闭「四元节点」的紧急控制系统。		review
 #str_400084	Shut Down the Coolant Pumps	关闭冷却泵		review
@@ -87,47 +87,47 @@
 #str_400087	The machinery has opened a new way to go. Return to the machine and exit the medical facility through the newly created path.	机械装置开辟出了一条新通路。回到那台机器旁，经由新开辟的通道离开医疗设施。		review
 #str_400088	Return to Rotating Machine	返回旋转机械		review
 #str_400089	Use the medical machinery to your advantage and find a way through the facility.	善加利用医疗机械，设法穿过这处设施。		review
-#str_400090	Regroup with Rhino Squad	与 Rhino 小队会合		review
-#str_400091	Regroup with Voss and the rest of the Rhino Squad somewhere deeper in the medical laboratories facility.	前往医疗实验设施更深处，与 Voss 和 Rhino 小队其余成员会合。		review
-#str_400092	Follow Anderson	跟随 Anderson		review
+#str_400090	Regroup with Rhino Squad	与「犀牛」小队会合		review
+#str_400091	Regroup with Voss and the rest of the Rhino Squad somewhere deeper in the medical laboratories facility.	前往医疗实验设施更深处，与沃斯和「犀牛」小队其余成员会合。		review
+#str_400092	Follow Anderson	跟随安德森		review
 #str_400093	Follow the marine escort to safety.	跟随护送你的陆战队员前往安全地带。		review
 #str_400094	Extend the Bridge	展开桥梁		review
 #str_400095	Find the command overlook and extend the bridge.	找到指挥瞭望台，展开桥梁。		review
 #str_400096	Extend the Bridge	展开桥梁		review
 #str_400097	Find the command overlook that is used to extend the bridge.	找到用于展开桥梁的指挥瞭望台。		review
 #str_400098	Regroup	会合		review
-#str_400099	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」 疏散设施的废料区与其余陆战队员会合。		review
+#str_400099	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」疏散设施的废料区与其余陆战队员会合。		review
 #str_400100	Dispersal	疏散设施		review
 #str_400101	Injection Interjection	中断注入		review
-#str_400102	Reset the Stroyent Injection System--you wouldn't survive the process.	重置 「斯托伊文特」 注入系统——你可挺不过那道工序。		review
+#str_400102	Reset the Stroyent Injection System--you wouldn't survive the process.	重置 「斯托伊文特」注入系统——你可挺不过那道工序。		review
 #str_400103	Destroy Fluid Pump	摧毁流体泵		review
 #str_400104	The mutated heart seems to pump fluid throughout the pipes in the dispersal facility.  Overcharge it to drain the pool and exit deeper into the building.	这颗变异的心脏似乎在为疏散设施中的管道泵送流体。让它过载以排空水池，然后深入建筑内部。		review
-#str_400105	Destroy the Stroyent Processing Creature	摧毁 「斯托伊文特」 加工生物		review
-#str_400106	Find a way to destroy the creature that controls the flow of fluids through the Stroyent Dispersal Facility.	设法摧毁控制 「斯托伊文特」 疏散设施内流体输送的生物。		review
-#str_400107	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」 疏散设施的废料区与其余陆战队员会合。		review
+#str_400105	Destroy the Stroyent Processing Creature	摧毁 「斯托伊文特」加工生物		review
+#str_400106	Find a way to destroy the creature that controls the flow of fluids through the Stroyent Dispersal Facility.	设法摧毁控制 「斯托伊文特」疏散设施内流体输送的生物。		review
+#str_400107	Meet up with the rest of the marines at the Waste center of the Stroyent Dispersal Facility.	在 「斯托伊文特」疏散设施的废料区与其余陆战队员会合。		review
 #str_400108	Recomposition	再造中心		review
 #str_400109	Activate Process	启动工序		review
 #str_400110	Find the barrel sterilization controls and reboot the system	找到料桶消毒控制装置并重启系统。		review
 #str_400111	Locate Exit	寻找出口		review
-#str_400112	Work with Sasaki to try and find an exit from the Recomposition Station.	与 Sasaki 合作，设法找到离开再造中心的出口。		review
+#str_400112	Work with Sasaki to try and find an exit from the Recomposition Station.	与佐佐木合作，设法找到离开再造中心的出口。		review
 #str_400113	Activate Process	启动工序		review
 #str_400114	Activate the barrel assembly process.	启动料桶装配工序。		review
 #str_400115	Activate Barrel Process	启动料桶工序		review
-#str_400116	Sasaki can get you both out of here if you activate the barrel processing assembly line.  Make your way to the control room while Sasaki stays behind.	只要启动料桶加工装配线，Sasaki 就能带你们俩离开这里。让 Sasaki 留在原地，你自己前往控制室。		review
+#str_400116	Sasaki can get you both out of here if you activate the barrel processing assembly line.  Make your way to the control room while Sasaki stays behind.	只要启动料桶加工装配线，佐佐木就能带你们俩离开这里。让佐佐木留在原地，你自己前往控制室。		review
 #str_400117	Regroup	会合		review
 #str_400118	Use Barrel Controls	使用料桶控制装置		review
-#str_400119	Sasaki is gone.  Use the control system to build a path to the upper ledge and escape.	Sasaki 已经不在了。利用控制系统搭出一条通往上层平台的路，然后逃出去。		review
+#str_400119	Sasaki is gone.  Use the control system to build a path to the upper ledge and escape.	佐佐木已经不在了。利用控制系统搭出一条通往上层平台的路，然后逃出去。		review
 #str_400120	Putrification	腐化区		review
 #str_400121	Waste	废料区		review
 #str_400122	Objective complete	任务目标完成		review
 #str_400123	Deactivate Laser Scanner	关闭激光扫描器		review
 #str_400124	Find a way to deactivate the laser scanner so the rest of the survivors can get through.	设法关闭激光扫描器，让其余幸存者得以通过。		review
-#str_400125	Find Rhodes	找到 Rhodes		review
-#str_400126	Locate Rhodes and continue on with your mission.	找到 Rhodes，继续执行你的任务。		review
+#str_400125	Find Rhodes	找到罗兹		review
+#str_400126	Locate Rhodes and continue on with your mission.	找到罗兹，继续执行你的任务。		review
 #str_400127	Open Hangar Doors	打开机库大门		review
 #str_400128	Gain access to the hangar control room and open both sets of doors.	进入机库控制室，打开两道大门。		review
 #str_400129	Regroup	会合		review
-#str_400130	Find LT. Hollenbeck	找到 Hollenbeck 中尉		review
+#str_400130	Find LT. Hollenbeck	找到霍伦贝克中尉		review
 #str_400131	Open Gates	打开闸门		review
 #str_400132	The terminal gates are open.	终端站闸门已打开。		review
 #str_400133	Find a way to open the terminal hangar doors to allow the marine ships to enter the terminal.	设法打开终端站的机库大门，让陆战队飞船得以进入终端站。		review
@@ -151,15 +151,15 @@
 #str_400151	Return Power to the Processing Tower	恢复处理塔的供电		review
 #str_400152	Find a way to bring the Data Processing Tower back on-line.	设法让数据处理塔恢复运转。		review
 #str_400153	Activate Elevator System	启动电梯系统		review
-#str_400154	Call down the elevator in the room ahead, it will allow you and Sledge to reach the top levels.	把前方房间的电梯呼叫下来，你和 Sledge 就能乘它抵达顶层。		review
+#str_400154	Call down the elevator in the room ahead, it will allow you and Sledge to reach the top levels.	把前方房间的电梯呼叫下来，你和斯莱奇就能乘它抵达顶层。		review
 #str_400155	Survive!	活下去！		review
 #str_400156	Survive!	活下去！		review
 #str_400157	Return to Tram Station	返回电车站		review
 #str_400158	Make your way back to the tram station and get to the Data Networking Tower.	返回电车站，前往数据网络塔。		review
 #str_400159	Activate the Laser Coupling	启动激光耦合器		review
 #str_400160	Activate the laser coupling, this will allow the beam on the roof to be activated later	启动激光耦合器，这样稍后才能启动屋顶上的光束。		review
-#str_400161	Escort Sledge	护送 Sledge		review
-#str_400162	Escort Sledge to the teleport bay, the Strogg will never know what hit them.	护送 Sledge 前往传送舱，打 Strogg 一个措手不及。		review
+#str_400161	Escort Sledge	护送斯莱奇		review
+#str_400162	Escort Sledge to the teleport bay, the Strogg will never know what hit them.	护送斯莱奇前往传送舱，打 Strogg 一个措手不及。		review
 #str_400163	Proceed to Tower Rooftop	前往塔顶		review
 #str_400164	Head to the roof and activate the final antenna that will connect this building to the Core building.	前往屋顶，启动最后一座天线，将这栋建筑与核心塔连接起来。		review
 #str_400165	Proceed to the Tower Rooftop	前往塔顶		review
@@ -180,268 +180,268 @@
 #str_400180	Realign the Data Nodes	校准数据节点		review
 #str_400181	Some of the data nodes are out of alignment and may impede progress. You will need to realign these nodes to allow access to the roof.	部分数据节点发生错位，可能会阻碍你前进。你需要重新校准这些节点，才能通往屋顶。		review
 #str_400182	Raise the bridge	升起桥梁		review
-#str_400183	Help Scorpion Squad raise the bridge. From there you can proceed to the tram hub area.	协助 Scorpion 小队升起桥梁。之后你就可以前往电车枢纽区。		review
+#str_400183	Help Scorpion Squad raise the bridge. From there you can proceed to the tram hub area.	协助「天蝎」小队升起桥梁。之后你就可以前往电车枢纽区。		review
 #str_400184	MISSION FAILED	任务失败		review
 #str_400185	Squadmate Fatality	队友阵亡		review
-#str_400186	The Makron has shutdown access to your position.  You'll have to find a way into the security tower to shut down the alarm to gain further access to the Core.	Makron 已封锁通往你所在位置的通道。你必须设法进入安保塔关闭警报，才能继续深入核心。		review
+#str_400186	The Makron has shutdown access to your position.  You'll have to find a way into the security tower to shut down the alarm to gain further access to the Core.	「马克龙」已封锁通往你所在位置的通道。你必须设法进入安保塔关闭警报，才能继续深入核心。		review
 #str_400187	Scan Failed: Lock Down	扫描失败：封锁启动		review
-#str_400188	Protect Strauss	保护 Strauss		review
-#str_400189	Escort Strauss to the temperature controls.	护送 Strauss 前往温度控制装置。		review
-#str_400190	Return to Rhino Squad	返回 Rhino 小队		review
-#str_400191	Return to Rhino Squad.	返回 Rhino 小队。		review
+#str_400188	Protect Strauss	保护施特劳斯		review
+#str_400189	Escort Strauss to the temperature controls.	护送施特劳斯前往温度控制装置。		review
+#str_400190	Return to Rhino Squad	返回「犀牛」小队		review
+#str_400191	Return to Rhino Squad.	返回「犀牛」小队。		review
 #str_400192	Deactivate the Forcefield	关闭力场		review
 #str_400193	Find the console that will deactivate the forcefield and allow the convoy to pull forward.	找到可以关闭力场的控制台，让车队得以继续前进。		review
 #str_400194	Return to the Convoy	返回车队		review
 #str_400195	Return to the convoy.	返回车队。		review
-#str_400196	Escort Anderson	护送 Anderson		review
-#str_400197	Protect Anderson and bring him back to the wounded marine near Sgt. Miller.	保护 Anderson，把他带回 Miller 中士附近那名受伤的陆战队员身边。		review
-#str_400198	Escort Newberry	护送 Newberry		review
-#str_400199	Guide Newberry back up the elevator and locate the locked door that he needs to open.	带 Newberry 乘电梯返回上层，找到需要他打开的那扇上锁大门。		review
+#str_400196	Escort Anderson	护送安德森		review
+#str_400197	Protect Anderson and bring him back to the wounded marine near Sgt. Miller.	保护安德森，把他带回米勒中士附近那名受伤的陆战队员身边。		review
+#str_400198	Escort Newberry	护送纽伯里		review
+#str_400199	Guide Newberry back up the elevator and locate the locked door that he needs to open.	带纽伯里乘电梯返回上层，找到需要他打开的那扇上锁大门。		review
 #str_400200	Return to Tram Station	返回电车站		review
 #str_400201	Take the elevator located in the central shaft back down to the tram station and make your way to the Data Processing Tower.	乘中央竖井内的电梯下到电车站，然后前往数据处理塔。		review
-#str_400202	Meet Rhodes.	与 Rhodes 会合。		review
-#str_400203	Return to the elevator and meet Rhodes, the Rhino Squad Engineer.	返回电梯处，与 Rhino 小队的工程师 Rhodes 会合。		review
-#str_400204	Locate Bidwell	找到 Bidwell		review
-#str_400205	Find Bidwell in the corridors ahead to receive your next mission objective.	在前方的走廊里找到 Bidwell，接收你的下一个任务目标。		review
-#str_400206	PFC Hillstrom	Hillstrom 一等兵		review
-#str_400207	Badger Squad	Badger 小队		review
-#str_400208	PVT Webb	Webb 列兵		review
-#str_400209	CPL Pierce	Pierce 下士		review
-#str_400210	Condor Squad	Condor 小队		review
-#str_400211	SGT Watson	Watson 中士		review
-#str_400212	Kodiak Squad	Kodiak 小队		review
-#str_400213	Medic Anderson	Anderson 医疗兵		review
-#str_400214	Rhino Squad	Rhino 小队		review
-#str_400215	SGT Morris	Morris 中士		review
+#str_400202	Meet Rhodes.	与罗兹会合。		review
+#str_400203	Return to the elevator and meet Rhodes, the Rhino Squad Engineer.	返回电梯处，与「犀牛」小队的工程师罗兹会合。		review
+#str_400204	Locate Bidwell	找到比德威尔		review
+#str_400205	Find Bidwell in the corridors ahead to receive your next mission objective.	在前方的走廊里找到比德威尔，接收你的下一个任务目标。		review
+#str_400206	PFC Hillstrom	希尔斯特罗姆一等兵		review
+#str_400207	Badger Squad	「猛獾」小队		review
+#str_400208	PVT Webb	韦伯列兵		review
+#str_400209	CPL Pierce	皮尔斯下士		review
+#str_400210	Condor Squad	「神鹰」小队		review
+#str_400211	SGT Watson	沃森中士		review
+#str_400212	Kodiak Squad	「棕熊」小队		review
+#str_400213	Medic Anderson	安德森医疗兵		review
+#str_400214	Rhino Squad	「犀牛」小队		review
+#str_400215	SGT Morris	莫里斯中士		review
 #str_400216	Large Health Pack	大型医疗包		review
-#str_400217	PVT Cortez	Cortez 列兵		review
-#str_400218	Medic Metcalf	Metcalf 医疗兵		review
-#str_400219	PFC Anderson	Anderson 一等兵		review
+#str_400217	PVT Cortez	科尔特斯列兵		review
+#str_400218	Medic Metcalf	梅特卡夫医疗兵		review
+#str_400219	PFC Anderson	安德森一等兵		review
 #str_400220	Small Health Pack	小型医疗包		review
-#str_400221	PFC Kovitch	Kovitch 一等兵		review
-#str_400222	PVT Dees	Dees 列兵		review
-#str_400223	PVT Chase	Chase 列兵		review
+#str_400221	PFC Kovitch	科维奇一等兵		review
+#str_400222	PVT Dees	迪斯列兵		review
+#str_400223	PVT Chase	蔡斯列兵		review
 #str_400224	Small Armor Vest	小型护甲背心		review
-#str_400225	PFC Ripkey	Ripkey 一等兵		review
-#str_400226	CPL Rhodes	Rhodes 下士		review
-#str_400227	SGT Bidwell	Bidwell 中士		review
-#str_400228	LCPL Sledge	Sledge 准下士		review
-#str_400229	SGT Dischler	Dischler 中士		review
-#str_400230	Raven Squad	Raven 小队		review
-#str_400231	PFC Damato	Damato 一等兵		review
-#str_400232	CPL Mahler	Mahler 下士		review
-#str_400233	Viper Squad	Viper 小队		review
+#str_400225	PFC Ripkey	里普基一等兵		review
+#str_400226	CPL Rhodes	罗兹下士		review
+#str_400227	SGT Bidwell	比德威尔中士		review
+#str_400228	LCPL Sledge	斯莱奇准下士		review
+#str_400229	SGT Dischler	迪施勒中士		review
+#str_400230	Raven Squad	「渡鸦」小队		review
+#str_400231	PFC Damato	达马托一等兵		review
+#str_400232	CPL Mahler	马勒下士		review
+#str_400233	Viper Squad	「毒蛇」小队		review
 #str_400234	Large Armor Vest	大型护甲背心		review
-#str_400235	Medic Hayes	Hayes 医疗兵		review
+#str_400235	Medic Hayes	海斯医疗兵		review
 #str_400236	Tech Li	Li 技术兵		review
 #str_400237	objClearHangar	objClearHangar		review
-#str_400238	Medic Lehr	Lehr 医疗兵		review
-#str_400239	PVT Jackson	Jackson 列兵		review
-#str_400240	PVT Salmon	Salmon 列兵		review
-#str_400241	PVT Hummer	Hummer 列兵		review
-#str_400242	PVT Sanchez	Sanchez 列兵		review
-#str_400243	1LT Cork	Cork 中尉		review
-#str_400244	PFC Houchard	Houchard 一等兵		review
-#str_400245	PVT Nicholson	Nicholson 列兵		review
-#str_400246	Tech Carlson	Carlson 技术兵		review
-#str_400247	PFC Watson	Watson 一等兵		review
-#str_400248	PVT Norman	Norman 列兵		review
-#str_400249	PVT Richards	Richards 列兵		review
-#str_400250	CPL Vainio	Vainio 下士		review
-#str_400251	PFC Singer	Singer 一等兵		review
-#str_400252	PVT Stern	Stern 列兵		review
-#str_400253	PVT Hilsabeck	Hilsabeck 列兵		review
-#str_400254	PVT Dynerman	Dynerman 列兵		review
-#str_400255	PFC Gummelt	Gummelt 一等兵		review
-#str_400256	Medic Dye	Dye 医疗兵		review
-#str_400257	PVT Law	Law 列兵		review
-#str_400258	SGT Stetson	Stetson 中士		review
-#str_400259	CPL Brandt	Brandt 下士		review
-#str_400260	Wolf Squad	Wolf 小队		review
-#str_400261	Dr. Brantly	Brantly 医生		review
-#str_400262	Dr. Jacobson	Jacobson 医生		review
-#str_400263	Tech Cossey	Cossey 技术兵		review
-#str_400264	SGT Pleva	Pleva 中士		review
-#str_400265	Tech Judd	Judd 技术兵		review
-#str_400266	Eagle Squad	Eagle 小队		review
-#str_400267	PFC Bennette	Bennette 一等兵		review
-#str_400268	Nicholson	Nicholson		review
-#str_400269	Medic McClane	McClane 医疗兵		review
-#str_400270	Evans	Evans		review
-#str_400271	Grant	Grant		review
-#str_400272	Lott	Lott		review
-#str_400273	CPL Morois	Morois 下士		review
-#str_400274	Tech Dunnigan	Dunnigan 技术兵		review
-#str_400275	Medic Ming	Ming 医疗兵		review
-#str_400276	PVT Hay	Hay 列兵		review
-#str_400277	PVT McKenzie	McKenzie 列兵		review
-#str_400278	SGT Scott	Scott 中士		review
-#str_400279	PVT Crowns	Crowns 列兵		review
-#str_400280	PFC Cordes	Cordes 一等兵		review
-#str_400281	MSGT Weldon	Weldon 军士长		review
-#str_400282	PVT McNutt	McNutt 列兵		review
-#str_400283	Tech Renner	Renner 技术兵		review
-#str_400284	MSGT Majernik	Majernik 军士长		review
-#str_400285	COL Biessman	Biessman 上校		review
-#str_400286	PVT Babcock	Babcock 列兵		review
-#str_400287	SSGT Nomo	Nomo 上士		review
-#str_400288	PFC Suzuki	Suzuki 一等兵		review
-#str_400289	SGT Miller	Miller 中士		review
-#str_400290	Cobra Squad	Cobra 小队		review
-#str_400291	Medic Egan	Egan 医疗兵		review
-#str_400292	Tech Karn	Karn 技术兵		review
-#str_400293	PVT Steinberg	Steinberg 列兵		review
-#str_400294	Warthog Squad	Warthog 小队		review
-#str_400295	Tech Luch	Luch 技术兵		review
-#str_400296	Tech Holdorf	Holdorf 技术兵		review
-#str_400297	Medic Wings	Wings 医疗兵		review
-#str_400298	Tech Lee	Lee 技术兵		review
-#str_400299	SGT Meier	Meier 中士		review
-#str_400300	PVT Stills	Stills 列兵		review
-#str_400301	Tech Davis	Davis 技术兵		review
-#str_400302	PVT Short	列兵 Short		review
-#str_400303	PVT Bettenberg	列兵 Bettenberg		review
-#str_400304	PFC Gulisano	一等兵 Gulisano		review
-#str_400305	Tech Cakovan	技术兵 Cakovan		review
-#str_400306	Tech Nash	技术兵 Nash		review
-#str_400307	Tech Groves	技术兵 Groves		review
-#str_400308	MSGT Maggiore	军士长 Maggiore		review
-#str_400309	Tech Dube	技术兵 Dube		review
-#str_400310	PFC Williams	一等兵 Williams		review
-#str_400311	Tech Peters	技术兵 Peters		review
-#str_400312	PFC Mills	一等兵 Mills		review
-#str_400313	Dr. Hinzman	Hinzman 博士		review
-#str_400314	Dr. Gantt	Gantt 博士		review
-#str_400315	Dr. Ludwig	Ludwig 博士		review
-#str_400316	Dr. Coreman	Coreman 博士		review
+#str_400238	Medic Lehr	莱尔医疗兵		review
+#str_400239	PVT Jackson	杰克逊列兵		review
+#str_400240	PVT Salmon	萨蒙列兵		review
+#str_400241	PVT Hummer	哈默列兵		review
+#str_400242	PVT Sanchez	桑切斯列兵		review
+#str_400243	1LT Cork	科克中尉		review
+#str_400244	PFC Houchard	胡沙尔一等兵		review
+#str_400245	PVT Nicholson	尼科尔森列兵		review
+#str_400246	Tech Carlson	卡尔森技术兵		review
+#str_400247	PFC Watson	沃森一等兵		review
+#str_400248	PVT Norman	诺曼列兵		review
+#str_400249	PVT Richards	理查兹列兵		review
+#str_400250	CPL Vainio	瓦伊尼奥下士		review
+#str_400251	PFC Singer	辛格一等兵		review
+#str_400252	PVT Stern	斯特恩列兵		review
+#str_400253	PVT Hilsabeck	希尔萨贝克列兵		review
+#str_400254	PVT Dynerman	迪纳曼列兵		review
+#str_400255	PFC Gummelt	古梅尔特一等兵		review
+#str_400256	Medic Dye	戴医疗兵		review
+#str_400257	PVT Law	劳列兵		review
+#str_400258	SGT Stetson	斯特森中士		review
+#str_400259	CPL Brandt	布兰特下士		review
+#str_400260	Wolf Squad	「野狼」小队		review
+#str_400261	Dr. Brantly	布兰特利医生		review
+#str_400262	Dr. Jacobson	雅各布森医生		review
+#str_400263	Tech Cossey	科西技术兵		review
+#str_400264	SGT Pleva	普列瓦中士		review
+#str_400265	Tech Judd	贾德技术兵		review
+#str_400266	Eagle Squad	「雄鹰」小队		review
+#str_400267	PFC Bennette	贝内特一等兵		review
+#str_400268	Nicholson	尼科尔森		review
+#str_400269	Medic McClane	麦克莱恩医疗兵		review
+#str_400270	Evans	埃文斯		review
+#str_400271	Grant	格兰特		review
+#str_400272	Lott	洛特		review
+#str_400273	CPL Morois	莫鲁瓦下士		review
+#str_400274	Tech Dunnigan	邓尼根技术兵		review
+#str_400275	Medic Ming	明医疗兵		review
+#str_400276	PVT Hay	海列兵		review
+#str_400277	PVT McKenzie	麦肯齐列兵		review
+#str_400278	SGT Scott	斯科特中士		review
+#str_400279	PVT Crowns	克劳恩斯列兵		review
+#str_400280	PFC Cordes	科德斯一等兵		review
+#str_400281	MSGT Weldon	韦尔登军士长		review
+#str_400282	PVT McNutt	麦克纳特列兵		review
+#str_400283	Tech Renner	伦纳技术兵		review
+#str_400284	MSGT Majernik	马杰尼克军士长		review
+#str_400285	COL Biessman	比斯曼上校		review
+#str_400286	PVT Babcock	巴布科克列兵		review
+#str_400287	SSGT Nomo	诺莫上士		review
+#str_400288	PFC Suzuki	铃木一等兵		review
+#str_400289	SGT Miller	米勒中士		review
+#str_400290	Cobra Squad	「眼镜蛇」小队		review
+#str_400291	Medic Egan	伊根医疗兵		review
+#str_400292	Tech Karn	卡恩技术兵		review
+#str_400293	PVT Steinberg	斯坦伯格列兵		review
+#str_400294	Warthog Squad	「疣猪」小队		review
+#str_400295	Tech Luch	卢赫技术兵		review
+#str_400296	Tech Holdorf	霍尔多夫技术兵		review
+#str_400297	Medic Wings	温斯医疗兵		review
+#str_400298	Tech Lee	李技术兵		review
+#str_400299	SGT Meier	迈尔中士		review
+#str_400300	PVT Stills	斯蒂尔斯列兵		review
+#str_400301	Tech Davis	戴维斯技术兵		review
+#str_400302	PVT Short	列兵肖特		review
+#str_400303	PVT Bettenberg	列兵贝滕贝格		review
+#str_400304	PFC Gulisano	一等兵古利萨诺		review
+#str_400305	Tech Cakovan	技术兵卡科万		review
+#str_400306	Tech Nash	技术兵纳什		review
+#str_400307	Tech Groves	技术兵格罗夫斯		review
+#str_400308	MSGT Maggiore	军士长马焦雷		review
+#str_400309	Tech Dube	技术兵杜布		review
+#str_400310	PFC Williams	一等兵威廉斯		review
+#str_400311	Tech Peters	技术兵彼得斯		review
+#str_400312	PFC Mills	一等兵米尔斯		review
+#str_400313	Dr. Hinzman	辛兹曼博士		review
+#str_400314	Dr. Gantt	甘特博士		review
+#str_400315	Dr. Ludwig	路德维希博士		review
+#str_400316	Dr. Coreman	科曼博士		review
 #str_400317	Dr. Wills	Wills 博士		review
-#str_400318	Dr. Shifton	Shifton 博士		review
-#str_400319	Dr. Weston	Weston 博士		review
-#str_400320	Ives	Ives		review
-#str_400321	PVT Graves	列兵 Graves		review
-#str_400322	PFC Quarles	一等兵 Quarles		review
-#str_400323	SGT Egnew	中士 Egnew		review
-#str_400324	1SGT Banks	一级军士长 Banks		review
-#str_400325	1SGT Donaldson	一级军士长 Donaldson		review
-#str_400326	SGT Swekel	中士 Swekel		review
-#str_400327	SGT Hooper	中士 Hooper		review
-#str_400328	CPL Spence	下士 Spence		review
-#str_400329	1LT Hughes	中尉 Hughes		review
-#str_400330	SGT Farnsworth	中士 Farnsworth		review
-#str_400331	PFC Wright	一等兵 Wright		review
-#str_400332	GEN Harper	将军 Harper		review
+#str_400318	Dr. Shifton	希夫顿博士		review
+#str_400319	Dr. Weston	韦斯顿博士		review
+#str_400320	Ives	艾夫斯		review
+#str_400321	PVT Graves	列兵格雷夫斯		review
+#str_400322	PFC Quarles	一等兵夸尔斯		review
+#str_400323	SGT Egnew	中士埃格纽		review
+#str_400324	1SGT Banks	一级军士长班克斯		review
+#str_400325	1SGT Donaldson	一级军士长唐纳森		review
+#str_400326	SGT Swekel	中士斯韦克尔		review
+#str_400327	SGT Hooper	中士胡珀		review
+#str_400328	CPL Spence	下士斯彭斯		review
+#str_400329	1LT Hughes	中尉休斯		review
+#str_400330	SGT Farnsworth	中士法恩斯沃思		review
+#str_400331	PFC Wright	一等兵赖特		review
+#str_400332	GEN Harper	将军哈珀		review
 #str_400333	MCC Commander	MCC 指挥官		review
-#str_400334	PFC Stevens	一等兵 Stevens		review
-#str_400335	PVT Nguyen	列兵 Nguyen		review
-#str_400336	CPL Pitman	下士 Pitman		review
-#str_400337	CPL Spencer	下士 Spencer		review
-#str_400338	PVT De Groff	列兵 De Groff		review
-#str_400339	PVT Rodeman	列兵 Rodeman		review
-#str_400340	PVT Kovak	列兵 Kovak		review
-#str_400341	CPL Hawkins	下士 Hawkins		review
-#str_400342	PFC Ness	一等兵 Ness		review
-#str_400343	PFC Yongue	一等兵 Yongue		review
-#str_400344	PVT Burns	列兵 Burns		review
-#str_400345	LCPL 'Sledge'	准下士“Sledge”		review
-#str_400346	SGT Shaw	中士 Shaw		review
-#str_400347	Tech Newberry	技术兵 Newberry		review
-#str_400348	PVT Strang	列兵 Strang		review
-#str_400349	PFC Thomas	一等兵 Thomas		review
-#str_400350	PFC Pupino	一等兵 Pupino		review
-#str_400351	PFC Jones	一等兵 Jones		review
-#str_400352	PVT Kasanoff	列兵 Kasanoff		review
-#str_400353	PFC Polman	一等兵 Polman		review
-#str_400354	PVT Wendt	列兵 Wendt		review
-#str_400355	PFC Asher	一等兵 Asher		review
-#str_400356	PVT Dundee	列兵 Dundee		review
-#str_400357	LCPL Newcamp	准下士 Newcamp		review
-#str_400358	PFC Strauss	一等兵 Strauss		review
-#str_400359	PFC Zick	一等兵 Zick		review
-#str_400360	SGT Schumacher	中士 Schumacher		review
-#str_400361	LCPL Greene	准下士 Greene		review
-#str_400362	PFC Marlin	一等兵 Marlin		review
-#str_400363	CPL Lathrop	下士 Lathrop		review
-#str_400364	1LT Voss	中尉 Voss		review
-#str_400365	PVT Rodriguez	列兵 Rodriguez		review
-#str_400366	CPL Schilder	下士 Schilder		review
-#str_400367	Tech Newquist	技术兵 Newquist		review
-#str_400368	PVT Leffler	列兵 Leffler		review
-#str_400369	PFC Blascoe	一等兵 Blascoe		review
-#str_400370	Medic Hess	医疗兵 Hess		review
-#str_400371	PVT Berry	列兵 Berry		review
-#str_400372	PVT Egan	列兵 Egan		review
-#str_400373	Medic Morte	医疗兵 Morte		review
-#str_400374	Tech Holtz	技术兵 Holtz		review
-#str_400375	Pvt. Strader	列兵 Strader		review
-#str_400376	Tech Strader	技术兵 Strader		review
-#str_400377	PVT Cleveland	列兵 Cleveland		review
-#str_400378	CPL Schwarzer	下士 Schwarzer		review
-#str_400379	PVT Eckley	列兵 Eckley		review
-#str_400380	PVT Chapman	列兵 Chapman		review
-#str_400381	SGT Monse	中士 Monse		review
+#str_400334	PFC Stevens	一等兵史蒂文斯		review
+#str_400335	PVT Nguyen	列兵阮		review
+#str_400336	CPL Pitman	下士皮特曼		review
+#str_400337	CPL Spencer	下士斯潘塞		review
+#str_400338	PVT De Groff	列兵德格罗夫		review
+#str_400339	PVT Rodeman	列兵罗德曼		review
+#str_400340	PVT Kovak	列兵科瓦克		review
+#str_400341	CPL Hawkins	下士霍金斯		review
+#str_400342	PFC Ness	一等兵内斯		review
+#str_400343	PFC Yongue	一等兵扬		review
+#str_400344	PVT Burns	列兵伯恩斯		review
+#str_400345	LCPL 'Sledge'	准下士“斯莱奇”		review
+#str_400346	SGT Shaw	中士肖		review
+#str_400347	Tech Newberry	技术兵纽伯里		review
+#str_400348	PVT Strang	列兵斯特朗		review
+#str_400349	PFC Thomas	一等兵托马斯		review
+#str_400350	PFC Pupino	一等兵普皮诺		review
+#str_400351	PFC Jones	一等兵琼斯		review
+#str_400352	PVT Kasanoff	列兵卡萨诺夫		review
+#str_400353	PFC Polman	一等兵波尔曼		review
+#str_400354	PVT Wendt	列兵文特		review
+#str_400355	PFC Asher	一等兵阿舍		review
+#str_400356	PVT Dundee	列兵邓迪		review
+#str_400357	LCPL Newcamp	准下士纽坎普		review
+#str_400358	PFC Strauss	一等兵施特劳斯		review
+#str_400359	PFC Zick	一等兵齐克		review
+#str_400360	SGT Schumacher	中士舒马赫		review
+#str_400361	LCPL Greene	准下士格林		review
+#str_400362	PFC Marlin	一等兵马林		review
+#str_400363	CPL Lathrop	下士拉斯罗普		review
+#str_400364	1LT Voss	中尉沃斯		review
+#str_400365	PVT Rodriguez	列兵罗德里格斯		review
+#str_400366	CPL Schilder	下士席尔德		review
+#str_400367	Tech Newquist	技术兵纽奎斯特		review
+#str_400368	PVT Leffler	列兵莱弗勒		review
+#str_400369	PFC Blascoe	一等兵布拉斯科		review
+#str_400370	Medic Hess	医疗兵赫斯		review
+#str_400371	PVT Berry	列兵贝里		review
+#str_400372	PVT Egan	列兵伊根		review
+#str_400373	Medic Morte	医疗兵莫特		review
+#str_400374	Tech Holtz	技术兵霍尔茨		review
+#str_400375	Pvt. Strader	列兵斯特雷德		review
+#str_400376	Tech Strader	技术兵斯特雷德		review
+#str_400377	PVT Cleveland	列兵克利夫兰		review
+#str_400378	CPL Schwarzer	下士施瓦泽		review
+#str_400379	PVT Eckley	列兵埃克利		review
+#str_400380	PVT Chapman	列兵查普曼		review
+#str_400381	SGT Monse	中士蒙斯		review
 #str_400382	Armor Shard	护甲碎片		review
-#str_400383	Tech Sasaki	技术兵 Sasaki		review
+#str_400383	Tech Sasaki	技术兵佐佐木		review
 #str_400384	system offline	系统离线		review
 #str_400385	system online	系统在线		review
 #str_400386	Sterilization	消毒		review
-#str_400387	SGT Jarlsberg	中士 Jarlsberg		review
-#str_400388	PVT Lanier	列兵 Lanier		review
-#str_400389	Tech Ruck	技术兵 Ruck		review
-#str_400390	Medic Wong	医疗兵 Wong		review
-#str_400391	Baleman	Baleman		review
-#str_400392	PFC Livingston	一等兵 Livingston		review
-#str_400393	SGT Vasker	中士 Vasker		review
-#str_400394	Tech Junge	技术兵 Junge		review
-#str_400395	MSGT Johnson	军士长 Johnson		review
-#str_400396	LCPL Dr. Wells	准下士 Wells 博士		review
-#str_400397	SSGT Dr. Allyn	上士 Allyn 博士		review
-#str_400398	Tech Long	技术兵 Long		review
-#str_400399	PFC McKinnon	一等兵 McKinnon		review
-#str_400400	PVT Harkins	列兵 Harkins		review
-#str_400401	Medic Giovanni	医疗兵 Giovanni		review
-#str_400402	PFC Showers	一等兵 Showers		review
-#str_400403	Tech Trabbold	技术兵 Trabbold		review
-#str_400404	PVT Albain	列兵 Albain		review
-#str_400405	PFC Vernon	一等兵 Vernon		review
-#str_400406	PVT Cavel	列兵 Cavel		review
-#str_400407	PFC Cimino	一等兵 Cimino		review
-#str_400408	Medic Owens	医疗兵 Owens		review
-#str_400409	Medic Hammond	医疗兵 Hammond		review
-#str_400410	1SGT Gee	一级军士长 Gee		review
-#str_400411	Dr. Wells	Wells 博士		review
-#str_400412	Dr. Allyn	Allyn 博士		review
-#str_400413	SSGT Yoshida	上士 Yoshida		review
-#str_400414	PFC Kofsky	一等兵 Kofsky		review
-#str_400415	PFC Dischler	一等兵 Dischler		review
-#str_400416	PVT Shepard	列兵 Shepard		review
-#str_400417	PFC Ekberg	一等兵 Ekberg		review
-#str_400418	PFC Whitaker	一等兵 Whitaker		review
-#str_400419	SGT Bordwell	中士 Bordwell		review
-#str_400420	LT Schwartz	中尉 Schwartz		review
-#str_400421	LT Hollenbeck	中尉 Hollenbeck		review
-#str_400422	Tech Rutger	技术兵 Rutger		review
-#str_400423	Tech Shockley	技术兵 Shockley		review
-#str_400424	PFC Glovels	一等兵 Glovels		review
-#str_400425	Tech Hart	技术兵 Hart		review
-#str_400426	PFC Ramirez	一等兵 Ramirez		review
-#str_400427	PVT Moire	列兵 Moire		review
-#str_400428	PFC Keifer	一等兵 Keifer		review
-#str_400429	PFC Holmes	一等兵 Holmes		review
-#str_400430	PFC Border	一等兵 Border		review
-#str_400431	Medic Bahr	医疗兵 Bahr		review
-#str_400432	SGT 'Sledge'	中士“Sledge”		review
-#str_400433	PVT Potts	列兵 Potts		review
-#str_400434	PVT Pearson	列兵 Pearson		review
-#str_400435	Medic Willits	医疗兵 Willits		review
-#str_400436	Tech Raffel	技术兵 Raffel		review
-#str_400437	SGT Fuchs	中士 Fuchs		review
-#str_400438	LCPL Cowling	准下士 Cowling		review
-#str_400439	Medic Duncanson	医疗兵 Duncanson		review
-#str_400440	PFC Ashworth	一等兵 Ashworth		review
-#str_400441	PVT Milage	列兵 Milage		review
-#str_400442	PFC Kruszka	一等兵 Kruszka		review
-#str_400443	Scorpion Squad	Scorpion 小队		review
-#str_400444	Tech Ashworth	技术兵 Ashworth		review
+#str_400387	SGT Jarlsberg	中士亚尔斯贝格		review
+#str_400388	PVT Lanier	列兵拉尼尔		review
+#str_400389	Tech Ruck	技术兵拉克		review
+#str_400390	Medic Wong	医疗兵王		review
+#str_400391	Baleman	巴勒曼		review
+#str_400392	PFC Livingston	一等兵利文斯顿		review
+#str_400393	SGT Vasker	中士瓦斯克		review
+#str_400394	Tech Junge	技术兵容格		review
+#str_400395	MSGT Johnson	军士长约翰逊		review
+#str_400396	LCPL Dr. Wells	准下士威尔斯博士		review
+#str_400397	SSGT Dr. Allyn	上士阿林博士		review
+#str_400398	Tech Long	技术兵朗		review
+#str_400399	PFC McKinnon	一等兵麦金农		review
+#str_400400	PVT Harkins	列兵哈金斯		review
+#str_400401	Medic Giovanni	医疗兵乔瓦尼		review
+#str_400402	PFC Showers	一等兵肖尔斯		review
+#str_400403	Tech Trabbold	技术兵特拉博尔德		review
+#str_400404	PVT Albain	列兵奥尔班		review
+#str_400405	PFC Vernon	一等兵弗农		review
+#str_400406	PVT Cavel	列兵卡维尔		review
+#str_400407	PFC Cimino	一等兵奇米诺		review
+#str_400408	Medic Owens	医疗兵欧文斯		review
+#str_400409	Medic Hammond	医疗兵哈蒙德		review
+#str_400410	1SGT Gee	一级军士长吉		review
+#str_400411	Dr. Wells	威尔斯博士		review
+#str_400412	Dr. Allyn	阿林博士		review
+#str_400413	SSGT Yoshida	上士吉田		review
+#str_400414	PFC Kofsky	一等兵科夫斯基		review
+#str_400415	PFC Dischler	一等兵迪施勒		review
+#str_400416	PVT Shepard	列兵谢泼德		review
+#str_400417	PFC Ekberg	一等兵埃克伯格		review
+#str_400418	PFC Whitaker	一等兵惠特克		review
+#str_400419	SGT Bordwell	中士博德韦尔		review
+#str_400420	LT Schwartz	中尉施瓦茨		review
+#str_400421	LT Hollenbeck	中尉霍伦贝克		review
+#str_400422	Tech Rutger	技术兵拉特格		review
+#str_400423	Tech Shockley	技术兵肖克利		review
+#str_400424	PFC Glovels	一等兵格洛弗尔斯		review
+#str_400425	Tech Hart	技术兵哈特		review
+#str_400426	PFC Ramirez	一等兵拉米雷斯		review
+#str_400427	PVT Moire	列兵莫瓦尔		review
+#str_400428	PFC Keifer	一等兵基弗		review
+#str_400429	PFC Holmes	一等兵霍姆斯		review
+#str_400430	PFC Border	一等兵博德		review
+#str_400431	Medic Bahr	医疗兵巴尔		review
+#str_400432	SGT 'Sledge'	中士“斯莱奇”		review
+#str_400433	PVT Potts	列兵波茨		review
+#str_400434	PVT Pearson	列兵皮尔逊		review
+#str_400435	Medic Willits	医疗兵威利茨		review
+#str_400436	Tech Raffel	技术兵拉弗尔		review
+#str_400437	SGT Fuchs	中士富克斯		review
+#str_400438	LCPL Cowling	准下士考林		review
+#str_400439	Medic Duncanson	医疗兵邓坎森		review
+#str_400440	PFC Ashworth	一等兵阿什沃思		review
+#str_400441	PVT Milage	列兵米利奇		review
+#str_400442	PFC Kruszka	一等兵克鲁什卡		review
+#str_400443	Scorpion Squad	「天蝎」小队		review
+#str_400444	Tech Ashworth	技术兵阿什沃思		review
 #str_400445	Security Breach	安防入侵		review
 #str_400446	Security Breach Storage Sub 01	安防入侵：仓储子层 01		review
 #str_400447	Bridge Controls	桥梁控制		review
@@ -457,17 +457,17 @@
 #str_400457	Health Shard	生命碎片		review
 #str_400458	Locate Exit	寻找出口		review
 #str_400459	Find a way out of the Strogg Medical Facility.	设法离开 Strogg 医疗设施。		review
-#str_400460	Protect Sledge	保护 Sledge		review
+#str_400460	Protect Sledge	保护斯莱奇		review
 #str_400461	Locate the Dispersal Facility	找到疏散设施		review
 #str_400462	The most direct path to the Waste facility is through the bowels of a nearby Strogg industrial processing complex, the Dispersal facility. Fight your way to the Dispersal entrance.	通往废料处理厂最直接的路线，要穿过附近一座 Strogg 工业处理综合体——疏散设施——的腹地。杀出一条血路，抵达疏散设施入口。		review
 #str_400463	Mission-critical vehicle destroyed.	任务关键载具已被摧毁。		review
-#str_400464	PVT Marshall	列兵 Marshall		review
-#str_400465	PFC Fassett	一等兵 Fassett		review
-#str_400466	PVT Gray	列兵 Gray		review
+#str_400464	PVT Marshall	列兵马歇尔		review
+#str_400465	PFC Fassett	一等兵法塞特		review
+#str_400466	PVT Gray	列兵格雷		review
 #str_400467	Fire Away	炮火开路		review
 #str_400468	Use the commandeered cannon to make your own path to the Hannibal's landing site.	使用夺来的火炮，为自己轰开一条通往汉尼拔号着陆点的道路。		review
 #str_400469	To The Core	直捣核心		review
-#str_400470	Strauss has fully deactivated Core Security.  Make your way back down to the Core Teleporter to enter the Core.	Strauss 已完全解除核心安保。返回下方的核心传送器，进入核心。		review
+#str_400470	Strauss has fully deactivated Core Security.  Make your way back down to the Core Teleporter to enter the Core.	施特劳斯已完全解除核心安保。返回下方的核心传送器，进入核心。		review
 #str_600001	CAMPGROUNDS REDUX	露营地重制版		review
 #str_600002	OUTPATIENT	门诊部		review
 #str_600003	SKELETON CREW	留守班底		review

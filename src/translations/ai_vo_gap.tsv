@@ -3,84 +3,84 @@ str_385000	vo_1_1_12_0001	building_b	What the hell? They got to main power!	搞�
 str_385001	vo_1_1_12_0003	building_b	Watch the ceilings.	注意天花板。	sndshd
 str_385002	vo_1_1_12_0005	building_b	Gimme a second.	等我一下。	sndshd
 str_385003	vo_1_1_12_0006	building_b	Scanner reads clear. They're gone.	扫描仪显示无异常。它们走了。	sndshd
-str_385004	vo_1_1_13_20_1	building_b	Corporal Kane, Voss wanted me to give you this Strogg nailgun. I bet it can sure rip the shit out of a squib.	Kane 下士，Voss 让我把这把 Strogg 钉枪交给你。我敢说这玩意儿准能把杂碎撕个稀烂。	sndshd
-str_385005	vo_1_1_1_140_1	airdefense1	This is no place to let your guard down. C'mon, let's see if we can't find my group up ahead - Badger squad.	这地方可不敢放松警惕。走，看看能不能在前头找到我的队伍——猛獾小队。	sndshd
-str_385006	vo_1_1_1_150_1	airdefense1	I heard the dropship you Rhinos were on took a direct hit. You're lucky to still be breathing.	听说你们犀牛小队坐的运输船被直接命中了。你还能喘气，算是走大运了。	sndshd
+str_385004	vo_1_1_13_20_1	building_b	Corporal Kane, Voss wanted me to give you this Strogg nailgun. I bet it can sure rip the shit out of a squib.	凯恩下士，沃斯让我把这把 Strogg 钉枪交给你。我敢说这玩意儿准能把杂碎撕个稀烂。	sndshd
+str_385005	vo_1_1_1_140_1	airdefense1	This is no place to let your guard down. C'mon, let's see if we can't find my group up ahead - Badger squad.	这地方可不敢放松警惕。走，看看能不能在前头找到我的队伍——「猛獾」小队。	sndshd
+str_385006	vo_1_1_1_150_1	airdefense1	I heard the dropship you Rhinos were on took a direct hit. You're lucky to still be breathing.	听说你们「犀牛」小队坐的运输船被直接命中了。你还能喘气，算是走大运了。	sndshd
 str_385007	vo_1_1_1_150_2	airdefense1	We lost a lot of drop ships during the initial landing. The Strogg air defense cannons ripped us apart.	首轮登陆我们损失了不少运输船。Strogg 的防空炮把我们打得七零八落。	sndshd
 str_385008	vo_1_1_1_150_3	airdefense1	But now it our turn right? It's time to kick some Strogg ass.	不过现在轮到我们了，对吧？是时候去揍扁那帮 Strogg 了。	sndshd
 str_385009	vo_1_1_1_170_1	airdefense1	My legs... I can't move 'em.	我的腿……动不了了。	sndshd
-str_385010	vo_1_1_1_170_4	airdefense1	Sorry, Sarge. I had a run-in with a Strogg. And I met this Marine from Rhino squad.	抱歉，中士。我半路跟一个 Strogg 干了一架，还碰上了这位犀牛小队的陆战队员。	sndshd
+str_385010	vo_1_1_1_170_4	airdefense1	Sorry, Sarge. I had a run-in with a Strogg. And I met this Marine from Rhino squad.	抱歉，中士。我半路跟一个 Strogg 干了一架，还碰上了这位「犀牛」小队的陆战队员。	sndshd
 str_385011	vo_1_1_1_43_1	airdefense	Come on!	快跟上！	sndshd
 str_385012	vo_1_1_1_44_1	airdefense	We're clear. Why don't you go find your squad.	安全了。你去找你的小队吧。	sndshd
-str_385013	vo_1_1_1_45_1	airdefense	Kane, we're done here. Go find Lt. Voss.	Kane，这边完事了。去找 Voss 中尉吧。	sndshd
+str_385013	vo_1_1_1_45_1	airdefense	Kane, we're done here. Go find Lt. Voss.	凯恩，这边完事了。去找沃斯中尉吧。	sndshd
 str_385014	vo_1_1_2_0001	building_b	Ahhh... aaaaah... uuuuh...	啊……啊……呃……	sndshd
 str_385015	vo_1_1_2_50_2	airdefense+airdefense1	My legs... they're numb.	我的腿……没知觉了。	sndshd
-str_385016	vo_1_1_2_50_6	airdefense	You're Rhino squad? Take that door and it'll get you to your squad.	{puzzled}你是犀牛小队的？{idle}走那扇门，就能找到你的小队。	sndshd
+str_385016	vo_1_1_2_50_6	airdefense	You're Rhino squad? Take that door and it'll get you to your squad.	{puzzled}你是「犀牛」小队的？{idle}走那扇门，就能找到你的小队。	sndshd
 str_385017	vo_1_1_3_0002	building_b	Seal it! Seal the damn window now!	封上！马上把那扇该死的窗户封上！	sndshd
 str_385018	vo_1_1_3_0003	building_b	Where the hell did that come from?	{confused}那玩意儿到底是从哪儿冒出来的？	sndshd
 str_385019	vo_1_1_3_0004	building_b	Don't know. But we better inform the Sarge.	不知道。不过最好向中士报告一声。	sndshd
 str_385020	vo_1_1_3_40_1	airdefense	Come on! Come on!!	来啊！来啊！！	sndshd
 str_385021	vo_1_1_4_0001	building_b	Sarge, we got movement on the scanner.	中士，扫描仪上有动静。	sndshd
 str_385022	vo_1_1_4_0006	building_b	Scanner's clean. Whatever it was, it's gone.	扫描仪没有异常。不管刚才是什么，已经不见了。	sndshd
-str_385023	vo_1_1_8_0005	building_b	Wait here. Jones, you take point.	在这儿等着。Jones，你打头。	sndshd
+str_385023	vo_1_1_8_0005	building_b	Wait here. Jones, you take point.	在这儿等着。琼斯，你打头。	sndshd
 str_385024	vo_1_1_8_5_0002	building_b	Primary lock is cut.	主锁已切开。	sndshd
 str_385025	vo_1_1_8_5_0003	building_b	Secondary lock is cut.	副锁已切开。	sndshd
 str_385026	vo_1_1_8_5_0004	building_b	Cutting final interlock.	正在切最后一道联锁。	sndshd
 str_385027	vo_1_1_8_5_0005	building_b	Done.	搞定。	sndshd
-str_385028	vo_1_2_0_20_1	convoy1	Hey! Hey, Corporal Kane! Get over here on the double!	嘿！嘿，Kane 下士！跑步过来，快点！	sndshd
-str_385029	vo_1_2_0_30_1	convoy1	Corporal Kane, Lieutenant Voss said you'd be riding with us. Hop on up and we'll get going.	Kane 下士，Voss 中尉说了你搭我们的车。上来吧，这就出发。	sndshd
-str_385030	vo_1_2_0_40_1	convoy1	All right, Doyle. Get this shit heap moving.	好了，Doyle，把这堆破铜烂铁开起来。	sndshd
+str_385028	vo_1_2_0_20_1	convoy1	Hey! Hey, Corporal Kane! Get over here on the double!	嘿！嘿，凯恩下士！跑步过来，快点！	sndshd
+str_385029	vo_1_2_0_30_1	convoy1	Corporal Kane, Lieutenant Voss said you'd be riding with us. Hop on up and we'll get going.	凯恩下士，沃斯中尉说了你搭我们的车。上来吧，这就出发。	sndshd
+str_385030	vo_1_2_0_40_1	convoy1	All right, Doyle. Get this shit heap moving.	好了，多伊尔，把这堆破铜烂铁开起来。	sndshd
 str_385031	vo_1_2_0_40_2	convoy1	Roger that. Let's move out.	收到。出发。	sndshd
 str_385032	vo_1_2_0_42_1	convoy1	You got any idea how far into Strogg territory these convoys are goin?	你知道这些车队要往 Strogg 的地盘里开多深吗？	sndshd
 str_385033	vo_1_2_0_42_2	convoy1	Far enough that youre gonna have to be fluent in Strogg if you wanna ask for directions.	深到你要是想问个路，就得会说一口流利的 Strogg 语。	sndshd
 str_385034	vo_1_2_0_42_3	convoy1	Guess we better not get lost, huh?	看来咱们最好别迷路，是吧？	sndshd
 str_385035	vo_1_2_0_42_4	convoy1	You got that right.	说得没错。	sndshd
-str_385036	vo_1_2_0_43_1	convoy1	Kane here was with the squad that took that cannon out.	这位 Kane，就是端掉那门炮的小队里的人。	sndshd
+str_385036	vo_1_2_0_43_1	convoy1	Kane here was with the squad that took that cannon out.	这位凯恩，就是端掉那门炮的小队里的人。	sndshd
 str_385037	vo_1_2_0_43_2	convoy1	No shit? Nice work, soldier.	真的假的？干得漂亮，士兵。	sndshd
-str_385038	vo_1_2_0_44_1	convoy1	We got nothin to worry about  Rhino squad is here. Right, Kane?	咱们没啥好担心的——犀牛小队在这儿呢。对吧，Kane？	sndshd
+str_385038	vo_1_2_0_44_1	convoy1	We got nothin to worry about  Rhino squad is here. Right, Kane?	咱们没啥好担心的——「犀牛」小队在这儿呢。对吧，凯恩？	sndshd
 str_385039	vo_1_2_0_44_2	convoy1	Yeah, you boys have pulled off all sorts of impossible shit, havent you?	是啊，你们这帮小子什么不可能的破事都干成过，不是吗？	sndshd
-str_385040	vo_1_2_0_44_3	convoy1	Theyre still talkin about what Rhino did in Dallas, during the Earth invasion.	大伙儿到现在还在念叨地球入侵战那会儿，犀牛小队在 Dallas 干的那一票。	sndshd
+str_385040	vo_1_2_0_44_3	convoy1	Theyre still talkin about what Rhino did in Dallas, during the Earth invasion.	大伙儿到现在还在念叨地球入侵战那会儿，「犀牛」小队在达拉斯干的那一票。	sndshd
 str_385041	vo_1_2_0_45_1	convoy1	Cut the chatter, gentlemen, and keep your eyes wide. Theres reports of Strogg in this area.	少闲聊，各位，眼睛都放亮点。有报告说这一带有 Strogg 出没。	sndshd
 str_385042	vo_1_2_0_46_1	convoy1	Have you heard how things are going along the front?	你听说前线的战况了吗？	sndshd
 str_385043	vo_1_2_0_46_2	convoy1	Same as usual. Soldiers are fightin and dyin and neither sides winnin.	老样子。弟兄们打着、死着，两边谁也赢不了。	sndshd
 str_385044	vo_1_2_0_46_3	convoy1	The thing is though, we cant keep this battle up much longer. Weve got to win it soon or were just gonna run out of men.	可问题是，这场仗我们撑不了多久了。必须尽快赢下来，不然人手就要打光了。	sndshd
 str_385045	vo_1_2_0_46_4	convoy1	And thats exactly why these convoys are going out - to tip the scales in our favor.	而这正是派出这些车队的原因——把天平扳向我们这边。	sndshd
-str_385046	vo_1_2_0_49_1	convoy1	Our guys are really cleaning up the fliers since you blew up the hangars, Kane.	{happy}自打你把机库炸了，咱们的人收拾起飞行器来那叫一个痛快，Kane。	sndshd
-str_385047	vo_1_2_0_64_1	convoy1	This is Walker 12 of Bison squad. Got a bogie at 6 oclock.	这里是野牛小队 「步行者」 12。六点钟方向发现不明目标。	sndshd
-str_385048	vo_1_2_0_70_10	convoy1	You can get off, Kane. This is your stop.	可以下车了，Kane。你到站了。	sndshd
+str_385046	vo_1_2_0_49_1	convoy1	Our guys are really cleaning up the fliers since you blew up the hangars, Kane.	{happy}自打你把机库炸了，咱们的人收拾起飞行器来那叫一个痛快，凯恩。	sndshd
+str_385047	vo_1_2_0_64_1	convoy1	This is Walker 12 of Bison squad. Got a bogie at 6 oclock.	这里是「野牛」小队 「步行者」 12。六点钟方向发现不明目标。	sndshd
+str_385048	vo_1_2_0_70_10	convoy1	You can get off, Kane. This is your stop.	可以下车了，凯恩。你到站了。	sndshd
 str_385049	vo_1_2_0_80_10	convoy1	See you around.	回头见。	sndshd
-str_385050	vo_1_2_14_40_3	hub1	Kane, youre assigned to Strauss. Voss out.	Kane，你被派给 Strauss 了。Voss 完毕。	sndshd
-str_385051	vo_1_2_14_80_1	hub1	All right. Convoy, move forward. Kane, get Strauss to the controls for Door 2.	好了。车队，前进。Kane，带 Strauss 去 2 号门的控制台。	sndshd
-str_385052	vo_1_2_15_10_1	hub1	Lt. Voss, uh...what should we do?	Voss 中尉，呃……我们该怎么办？	sndshd
+str_385050	vo_1_2_14_40_3	hub1	Kane, youre assigned to Strauss. Voss out.	凯恩，你被派给施特劳斯了。沃斯完毕。	sndshd
+str_385051	vo_1_2_14_80_1	hub1	All right. Convoy, move forward. Kane, get Strauss to the controls for Door 2.	好了。车队，前进。凯恩，带施特劳斯去 2 号门的控制台。	sndshd
+str_385052	vo_1_2_15_10_1	hub1	Lt. Voss, uh...what should we do?	沃斯中尉，呃……我们该怎么办？	sndshd
 str_385053	vo_1_2_15_10_2	hub1	Leave them alone, these repair bots are harmless.	别理它们，这些「维修机器人」没有危害。	sndshd
 str_385054	vo_1_2_15_10_3	hub1	Harmless, huh? Get ready, we got company!	没有危害是吧？准备好，有敌人来了！	sndshd
 str_385055	vo_1_2_15_20_1	hub1	Lieutenant, I can force this door open, but it will set off alarms.	中尉，我可以强行打开这扇门，但那样会触发警报。	sndshd
 str_385056	vo_1_2_15_20_2	hub1	Can you bypass security?	你能绕过安保系统吗？	sndshd
-str_385057	vo_1_2_15_20_3	hub1	Ja, but I will need access to a wiring junction.	Ja，不过我需要接入一处接线箱。	sndshd
-str_385058	vo_1_2_15_20_4	hub1	Kane, help Strauss locate a wiring junction. Voss, out.	Kane，帮 Strauss 找一处接线箱。Voss 完毕。	sndshd
+str_385057	vo_1_2_15_20_3	hub1	Ja, but I will need access to a wiring junction.	嗯，不过我需要接入一处接线箱。	sndshd
+str_385058	vo_1_2_15_20_4	hub1	Kane, help Strauss locate a wiring junction. Voss, out.	凯恩，帮施特劳斯找一处接线箱。沃斯完毕。	sndshd
 str_385059	vo_1_2_15_20_5	hub1	Yes, let us walk around. All by ourselves. I am certain the Strogg won't mind.	好啊，那我们就四处转转嘛。就我们俩。我敢肯定 Strogg 不会介意的。	sndshd
-str_385060	vo_1_2_16_10_1	hub1	Ja, this is what I need.	Ja，这正是我需要的。	sndshd
-str_385061	vo_1_2_16_20_1	hub1	Mist! What was that?	Mist！刚才那是什么？	sndshd
+str_385060	vo_1_2_16_10_1	hub1	Ja, this is what I need.	嗯，这正是我需要的。	sndshd
+str_385061	vo_1_2_16_20_1	hub1	Mist! What was that?	米斯特！刚才那是什么？	sndshd
 str_385062	vo_1_2_16_30_1	hub1	That's it! I just need a few minutes.	成了！我只需要几分钟。	sndshd
 str_385063	vo_1_2_16_40_1	hub1	I've located the security wiring to Door 2.	我找到通往 2 号门的安保线路了。	sndshd
 str_385064	vo_1_2_16_40_2	hub1	I've located the security wiring to Door 1.	我找到通往 1 号门的安保线路了。	sndshd
 str_385065	vo_1_2_16_40_3	hub1	Now, I merely switch Door 2 security to look at Door 1.	现在，我只要把 2 号门的安保切换去监视 1 号门就行了。	sndshd
 str_385066	vo_1_2_16_40_4	hub1	There, I'm done. Let's get back to the convoy.	好了，完工。我们回车队吧。	sndshd
-str_385067	vo_1_2_16_60_1	hub1	All clear. Those repair bots must have warned the Strogg we were here. Kane, open the door 2. If there's anything on the other side, I want Strauss out of harm's way.	安全。一定是那些「维修机器人」向 Strogg 报了信。Kane，去开 2 号门。万一那边有什么东西，我可不想让 Strauss 涉险。	sndshd
-str_385068	vo_1_2_16_80_1	hub1	Let's move it out, convoy. Strauss, stay on this side of the door in case we run into trouble.	车队，出发。Strauss，你留在门这一边，免得我们碰上麻烦。	sndshd
+str_385067	vo_1_2_16_60_1	hub1	All clear. Those repair bots must have warned the Strogg we were here. Kane, open the door 2. If there's anything on the other side, I want Strauss out of harm's way.	安全。一定是那些「维修机器人」向 Strogg 报了信。凯恩，去开 2 号门。万一那边有什么东西，我可不想让施特劳斯涉险。	sndshd
+str_385068	vo_1_2_16_80_1	hub1	Let's move it out, convoy. Strauss, stay on this side of the door in case we run into trouble.	车队，出发。施特劳斯，你留在门这一边，免得我们碰上麻烦。	sndshd
 str_385069	vo_1_2_17_10_10	hub1	You're not gonna be able to. I'm sure security locked it.	你打不开的。肯定是安保系统把它锁死了。	sndshd
 str_385070	vo_1_2_17_10_8	hub1	The sons of bitches knew we were coming.	这帮混蛋早就知道我们要来。	sndshd
-str_385071	vo_1_2_1_109_2	convoy1	Dont sweat it. Kane wont let me die . . . right, ol buddy?	别担心。Kane 不会让我死的……对吧，老伙计？	sndshd
+str_385071	vo_1_2_1_109_2	convoy1	Dont sweat it. Kane wont let me die . . . right, ol buddy?	别担心。凯恩不会让我死的……对吧，老伙计？	sndshd
 str_385072	vo_1_2_8_100_4	building_b	Take positions! This zone is hot!	各就各位！这里是交战区！	sndshd
-str_385073	vo_1_2_8_100_5	building_b	Hey, Kane!	嘿，Kane！	sndshd
-str_385074	vo_1_2_8_102_1	building_b	You go ahead and get Newberry to the door they need opened.	你先走，把 Newberry 带到那扇要开的门那儿去。	sndshd
+str_385073	vo_1_2_8_100_5	building_b	Hey, Kane!	嘿，凯恩！	sndshd
+str_385074	vo_1_2_8_102_1	building_b	You go ahead and get Newberry to the door they need opened.	你先走，把纽伯里带到那扇要开的门那儿去。	sndshd
 str_385075	vo_1_2_8_102_2	building_b	Don't worry about us. We're stayin' right here.	别担心我们，我们就守在这儿。	sndshd
 str_385076	vo_1_2_8_102_3	building_b	Really, kid. Get going.	真的，小子，快走吧。	sndshd
-str_385077	vo_1_2_8_15_1	building_b	Rhino Squad, huh? You guys are supposed to be pretty badass.	犀牛小队？听说你们都是狠角色。	sndshd
-str_385078	vo_1_2_8_15_2	building_b	Yeah, did Rhino really save Austin, back when the Strogg attacked Earth?	{puzzled}对了，当年 Strogg 打地球的时候，奥斯汀真是犀牛小队救下来的？	sndshd
-str_385079	vo_1_2_8_30_1	building_b	Just got orders from Lt.Voss. We're accompanying you to Sub-Entrance 1.	刚接到 Voss 中尉的命令。我们陪你一起去 1 号副入口。	sndshd
+str_385077	vo_1_2_8_15_1	building_b	Rhino Squad, huh? You guys are supposed to be pretty badass.	「犀牛」小队？听说你们都是狠角色。	sndshd
+str_385078	vo_1_2_8_15_2	building_b	Yeah, did Rhino really save Austin, back when the Strogg attacked Earth?	{puzzled}对了，当年 Strogg 打地球的时候，奥斯汀真是「犀牛」小队救下来的？	sndshd
+str_385079	vo_1_2_8_30_1	building_b	Just got orders from Lt.Voss. We're accompanying you to Sub-Entrance 1.	刚接到沃斯中尉的命令。我们陪你一起去 1 号副入口。	sndshd
 str_385080	vo_1_2_8_30_2	building_b	About damn time we get to frag some squibs.	妈的，可算能宰几个杂碎了。	sndshd
-str_385081	vo_1_2_8_30_5	building_b	Okay, Strauss. Open the door.	好了，Strauss，开门吧。	sndshd
+str_385081	vo_1_2_8_30_5	building_b	Okay, Strauss. Open the door.	好了，施特劳斯，开门吧。	sndshd
 str_385082	vo_1_2_8_31_1	building_b	Let's get a move on. We're in Strogg territory.	抓紧走吧，这里可是 Strogg 的地盘。	sndshd
 str_385083	vo_1_2_8_31_2	building_b	Come on. We've got orders to get to Sub-entrance 1.	走吧。我们奉命前往 1 号副入口。	sndshd
 str_385084	vo_1_2_8_31_3	building_b	Let's go. Those engineers in Sub-Entrance 1 are waiting for us.	出发。1 号副入口的工程兵还等着我们呢。	sndshd
@@ -88,7 +88,7 @@ str_385085	vo_1_2_8_32_1	building_b	Stay quiet or the Strogg will hear us.	保�
 str_385086	vo_1_2_8_32_2	building_b	Let's get down to Sub-entrance 1 pronto.	麻利点，赶紧下到 1 号副入口去。	sndshd
 str_385087	vo_1_2_8_32_3	building_b	We got our orders. Keep moving toward Sub-entrance 1.	命令已经下了。继续朝 1 号副入口前进。	sndshd
 str_385088	vo_1_2_8_40_1	building_b	Hit that console and get the elevator up here now!	快按那个控制台，把电梯升上来！	sndshd
-str_385089	vo_1_2_8_50_1	building_b	Damn. It's locked. Strauss, can you open this door?	该死，锁住了。Strauss，这扇门你能打开吗？	sndshd
+str_385089	vo_1_2_8_50_1	building_b	Damn. It's locked. Strauss, can you open this door?	该死，锁住了。施特劳斯，这扇门你能打开吗？	sndshd
 str_385090	vo_1_2_8_51_1	building_b	This door's open. Let's go.	这扇门开了，走。	sndshd
 str_385091	vo_1_2_9_42_1	building_b	Shit, did you see that? I thought I was dead meat.	{scared}妈的，你看见没？{idle}我还以为自己死定了。	sndshd
 str_385092	vo_1_2_9_42_2	building_b	The squibs are tryin' to psyche us out - and it's starting to work.	那帮杂碎想吓垮我们——而且还真开始起作用了。	sndshd
@@ -101,8 +101,6 @@ str_385098	vo_3_1_2_160_2	storage	Something about that gives me the creeps. Don'
 str_385099	vo_3_1_2_190_1	storage	Wish all our missions were this easy. Hey, what's that?	要是每次任务都这么轻松就好了。嘿，那是什么？	sndshd
 str_385100	vo_3_1_2_85_1	storage	I know a little about Strogg weaponry. Mind if I take a look at your rail gun?	我对 Strogg 的武器略知一二。介意我看看你的轨道炮吗？	sndshd
 str_385101	vo_3_1_2_85_2	storage	I just upped the field output by 300%. Now that rail gun is gonna really kick ass.  You'll be able to shoot straight through guys.	我刚把力场输出调高了 300%。现在这把轨道炮可真有得瞧了——你能一枪把那些家伙打个对穿。	sndshd
-str_385102	vo_3_2_9_30_10	monster_makron	laugh	哈哈哈哈……	sndshd
-str_385103	vo_3_2_9_30_9	monster_makron	laugh	哈哈哈哈……	sndshd
 str_385104	vo_9_10_130_1_h	persona	Thanks, Marine. I would have died.	谢了，弟兄。差点就没命了。	sndshd
 str_385105	vo_9_10_130_2_h	persona	I should have seen that one comin'.	我早该防着那一手的。	sndshd
 str_385106	vo_9_10_130_3_h	persona	Thanks for the assistance. He had me dead in his sights.	多谢支援。刚才它已经死死瞄住我了。	sndshd
@@ -152,10 +150,10 @@ str_385149	vo_9_10_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385150	vo_9_10_290_1_h	persona	Hold up, Marine. I'm a medic.	站住别动，弟兄。我是医疗兵。	sndshd
 str_385151	vo_9_10_290_2_h	persona	Stay right there. I'll give you a medpack.	待在原地。我给你上个医疗包。	sndshd
 str_385152	vo_9_10_290_3_h	persona	Don't move from there. I'll heal you.	别乱动，我来给你治疗。	sndshd
-str_385153	vo_9_10_300_1_h	persona	Stay there, Kane. I'm a medic!	待在那儿，Kane。我是医疗兵！	sndshd
-str_385154	vo_9_10_300_2_h	persona	Don't move from there, Kane. I'll fix you up.	别动，Kane。我来给你包扎。	sndshd
-str_385155	vo_9_10_300_3_h	persona	I'm comin' over to patch you up, Kane.	我这就过来给你包扎，Kane。	sndshd
-str_385156	vo_9_10_300_4_h	persona	Kane, I'm a medic! Stay right where you are!	Kane，我是医疗兵！待在原地别动！	sndshd
+str_385153	vo_9_10_300_1_h	persona	Stay there, Kane. I'm a medic!	待在那儿，凯恩。我是医疗兵！	sndshd
+str_385154	vo_9_10_300_2_h	persona	Don't move from there, Kane. I'll fix you up.	别动，凯恩。我来给你包扎。	sndshd
+str_385155	vo_9_10_300_3_h	persona	I'm comin' over to patch you up, Kane.	我这就过来给你包扎，凯恩。	sndshd
+str_385156	vo_9_10_300_4_h	persona	Kane, I'm a medic! Stay right where you are!	凯恩，我是医疗兵！待在原地别动！	sndshd
 str_385157	vo_9_10_30_1_h	persona	Sorry. Can't talk right now.	抱歉，现在没空说话。	sndshd
 str_385158	vo_9_10_30_2_h	persona	I can't talk right now.	{furrow}我现在没空说话。	sndshd
 str_385159	vo_9_10_310_1_h	persona	Stop movin' around.	别乱动了。	sndshd
@@ -167,9 +165,9 @@ str_385164	vo_9_10_320_1_h	persona	All done. Go give 'em hell. Marine.	搞定。
 str_385165	vo_9_10_320_2_h	persona	There, you're fixed.	好了，治好了。	sndshd
 str_385166	vo_9_10_320_3_h	persona	Finished! Now go kill some Strogg.	完事了！去多杀几个 Strogg 吧。	sndshd
 str_385167	vo_9_10_320_4_h	persona	That's it. Get goin'!	就这样。走吧！	sndshd
-str_385168	vo_9_10_360_1_h	persona	Wait there, Kane. Ill fix your armor.	在那儿等着，Kane。我来修你的护甲。	sndshd
-str_385169	vo_9_10_360_2_h	persona	Hold up a second, Kane. I can repair your body armor.	稍等一下，Kane。我能修好你的护甲。	sndshd
-str_385170	vo_9_10_360_3_h	persona	If you wait there, I can fix your armor, Corporal Kane.	你在那儿等着，我就能给你修护甲，Kane 下士。	sndshd
+str_385168	vo_9_10_360_1_h	persona	Wait there, Kane. Ill fix your armor.	在那儿等着，凯恩。我来修你的护甲。	sndshd
+str_385169	vo_9_10_360_2_h	persona	Hold up a second, Kane. I can repair your body armor.	稍等一下，凯恩。我能修好你的护甲。	sndshd
+str_385170	vo_9_10_360_3_h	persona	If you wait there, I can fix your armor, Corporal Kane.	你在那儿等着，我就能给你修护甲，凯恩下士。	sndshd
 str_385171	vo_9_10_370_1_h	persona	Hold still while I fix this for you.	我给你修的时候别乱动。	sndshd
 str_385172	vo_9_10_370_2_h	persona	If you stop moving, Ill fix your body armor.	你停下别动，我就帮你修好护甲。	sndshd
 str_385173	vo_9_10_370_3_h	persona	Stop moving around while I repair your armor.	我修护甲的时候你别来回晃。	sndshd
@@ -235,10 +233,10 @@ str_385232	vo_9_11_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385233	vo_9_11_290_1_h	persona	Soldier, stay there! I'll fix you up.	士兵，待在那儿！我来给你包扎。	sndshd
 str_385234	vo_9_11_290_2_h	persona	Don't move, Marine! You're hurt!	别动，弟兄！你受伤了！	sndshd
 str_385235	vo_9_11_290_3_h	persona	Stay down! I'm a medic!	趴着别动！我是医疗兵！	sndshd
-str_385236	vo_9_11_300_1_h	persona	Kane, hold up! Let me give you a medkit!	Kane，停一下！让我给你上个医疗包！	sndshd
-str_385237	vo_9_11_300_2_h	persona	Stay there, Kane. I'm a medic!	待在那儿，Kane。我是医疗兵！	sndshd
-str_385238	vo_9_11_300_3_h	persona	Kane, I'll be right there to fix you up!	Kane，我马上过去给你包扎！	sndshd
-str_385239	vo_9_11_300_4_h	persona	Wait a minute, Kane! I'll heal you.	等一下，Kane！我来治你。	sndshd
+str_385236	vo_9_11_300_1_h	persona	Kane, hold up! Let me give you a medkit!	凯恩，停一下！让我给你上个医疗包！	sndshd
+str_385237	vo_9_11_300_2_h	persona	Stay there, Kane. I'm a medic!	待在那儿，凯恩。我是医疗兵！	sndshd
+str_385238	vo_9_11_300_3_h	persona	Kane, I'll be right there to fix you up!	凯恩，我马上过去给你包扎！	sndshd
+str_385239	vo_9_11_300_4_h	persona	Wait a minute, Kane! I'll heal you.	等一下，凯恩！我来治你。	sndshd
 str_385240	vo_9_11_30_1_h	persona	Corporal, I'm a little preoccupied at the moment.	{furrow}下士，我这会儿有点忙。	sndshd
 str_385241	vo_9_11_30_2_h	persona	Move along. I'm busy.	{furrow}走开，我忙着呢。	sndshd
 str_385242	vo_9_11_310_1_h	persona	Would you be still?	你能不能别动？	sndshd
@@ -308,10 +306,10 @@ str_385305	vo_9_12_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385306	vo_9_12_290_1_h	persona	Wait a minute! I'm a medic!	等等！我是医疗兵！	sndshd
 str_385307	vo_9_12_290_2_h	persona	Don't go anywhere! I'll heal you up.	哪儿也别去！我来给你治伤。	sndshd
 str_385308	vo_9_12_290_3_h	persona	Stay there! I've got a medpack for you!	待在那儿！我这有医疗包！	sndshd
-str_385309	vo_9_12_300_1_h	persona	Kane, I'm a medic! Wait there!	Kane，我是医疗兵！在那儿等着！	sndshd
-str_385310	vo_9_12_300_2_h	persona	I'm on my way, Kane! I've got a medpack for you!	我这就来，Kane！医疗包给你备着呢！	sndshd
-str_385311	vo_9_12_300_3_h	persona	Kane, stay put. I'll patch you up!	Kane，别动。我来给你包扎！	sndshd
-str_385312	vo_9_12_300_4_h	persona	Wait right there, Kane! I'll try to fix you up.	就在那儿等着，Kane！我来想办法治好你。	sndshd
+str_385309	vo_9_12_300_1_h	persona	Kane, I'm a medic! Wait there!	凯恩，我是医疗兵！在那儿等着！	sndshd
+str_385310	vo_9_12_300_2_h	persona	I'm on my way, Kane! I've got a medpack for you!	我这就来，凯恩！医疗包给你备着呢！	sndshd
+str_385311	vo_9_12_300_3_h	persona	Kane, stay put. I'll patch you up!	凯恩，别动。我来给你包扎！	sndshd
+str_385312	vo_9_12_300_4_h	persona	Wait right there, Kane! I'll try to fix you up.	就在那儿等着，凯恩！我来想办法治好你。	sndshd
 str_385313	vo_9_12_310_1_h	persona	Damn it, hold still.	该死，别乱动。	sndshd
 str_385314	vo_9_12_310_2_h	persona	This won't hurt a bit.	一点都不疼的。	sndshd
 str_385315	vo_9_12_310_3_h	persona	Gimme a few seconds and you'll be okay.	给我几秒钟，你就没事了。	sndshd
@@ -321,7 +319,7 @@ str_385318	vo_9_12_320_1_h	persona	I've done what I can. Go get 'em soldier.	我
 str_385319	vo_9_12_320_2_h	persona	All done. Now try and keep low, would ya?	全好了。以后记得放低身子，成不？	sndshd
 str_385320	vo_9_12_320_3_h	persona	That's it! Go frag some Strogg!	好了！去痛宰 Strogg 吧！	sndshd
 str_385321	vo_9_12_320_4_h	persona	You're good to go.	你没问题了，上吧。	sndshd
-str_385322	vo_9_12_360_1_h	persona	Wait up, Kane, and I'll fix your body armor.	等等，Kane，我来修你的护甲。	sndshd
+str_385322	vo_9_12_360_1_h	persona	Wait up, Kane, and I'll fix your body armor.	等等，凯恩，我来修你的护甲。	sndshd
 str_385323	vo_9_12_370_1_h	persona	Just wait a second and I'll be done.	稍等一下，马上就好。	sndshd
 str_385324	vo_9_12_370_2_h	persona	One minute and you'll be back in the battle.	一分钟后你就能重返战场。	sndshd
 str_385325	vo_9_12_370_3_h	persona	Hold still. I'll fix your armor.	别动。我来修护甲。	sndshd
@@ -389,10 +387,10 @@ str_385386	vo_9_13_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385387	vo_9_13_290_1_h	persona	Stay right there! I'll heal you!	就待在那儿！我来治你！	sndshd
 str_385388	vo_9_13_290_2_h	persona	Keep down! I'll be right there to patch you up!	趴低点！我马上过来给你包扎！	sndshd
 str_385389	vo_9_13_290_3_h	persona	Don't move! I'm a medic!	别动！我是医疗兵！	sndshd
-str_385390	vo_9_13_300_1_h	persona	Corporal Kane, don't move! I'll heal you up!	Kane 下士，别动！我来给你治伤！	sndshd
-str_385391	vo_9_13_300_2_h	persona	I'm a medic, Kane. Stay there - I'll fix you up!	我是医疗兵，Kane。待着别动——我这就来治你！	sndshd
-str_385392	vo_9_13_300_3_h	persona	Hold up, Corporal Kane. I'm a medic!	停一下，Kane 下士。我是医疗兵！	sndshd
-str_385393	vo_9_13_300_4_h	persona	Stay at your position, Kane. I'll heal you.	待在原地，Kane。我来治你。	sndshd
+str_385390	vo_9_13_300_1_h	persona	Corporal Kane, don't move! I'll heal you up!	凯恩下士，别动！我来给你治伤！	sndshd
+str_385391	vo_9_13_300_2_h	persona	I'm a medic, Kane. Stay there - I'll fix you up!	我是医疗兵，凯恩。待着别动——我这就来治你！	sndshd
+str_385392	vo_9_13_300_3_h	persona	Hold up, Corporal Kane. I'm a medic!	停一下，凯恩下士。我是医疗兵！	sndshd
+str_385393	vo_9_13_300_4_h	persona	Stay at your position, Kane. I'll heal you.	待在原地，凯恩。我来治你。	sndshd
 str_385394	vo_9_13_30_1_h	persona	Sorry, buddy. I'm a little busy.	{furrow}抱歉，伙计。我这儿有点忙。	sndshd
 str_385395	vo_9_13_30_2_h	persona	Excuse me, but I'm busy.	{furrow}不好意思，我正忙着呢。	sndshd
 str_385396	vo_9_13_310_1_h	persona	This doesn't look so bad.	伤得不算重嘛。	sndshd
@@ -404,9 +402,9 @@ str_385401	vo_9_13_320_1_h	persona	See? That didn't hurt a bit.	瞧见没？一�
 str_385402	vo_9_13_320_2_h	persona	Go on. That's the best I can do.	去吧。我只能治到这份上了。	sndshd
 str_385403	vo_9_13_320_3_h	persona	Done. Now go ice some freaks, Marine!	好了。去干翻几个怪胎吧，陆战队员！	sndshd
 str_385404	vo_9_13_320_4_h	persona	That's it. You're back in action.	行了。你可以重返战斗了。	sndshd
-str_385405	vo_9_13_360_1_h	persona	Kane, wait. Your armor's damaged.	Kane，等等。你的护甲坏了。	sndshd
-str_385406	vo_9_13_360_2_h	persona	Corporal Kane. Wait, and I'll repair your armor.	Kane 下士。等一下，我来修你的护甲。	sndshd
-str_385407	vo_9_13_360_3_h	persona	I can fix your armor, Kane.	我能修好你的护甲，Kane。	sndshd
+str_385405	vo_9_13_360_1_h	persona	Kane, wait. Your armor's damaged.	凯恩，等等。你的护甲坏了。	sndshd
+str_385406	vo_9_13_360_2_h	persona	Corporal Kane. Wait, and I'll repair your armor.	凯恩下士。等一下，我来修你的护甲。	sndshd
+str_385407	vo_9_13_360_3_h	persona	I can fix your armor, Kane.	我能修好你的护甲，凯恩。	sndshd
 str_385408	vo_9_13_370_1_h	persona	I'l have you patched up in no time.	马上就给你修得妥妥的。	sndshd
 str_385409	vo_9_13_370_2_h	persona	This won't take long.	用不了多久。	sndshd
 str_385410	vo_9_13_370_3_h	persona	Just a few seconds and you'll be right back into the fight.	就几秒钟，你马上就能重回战斗。	sndshd
@@ -471,10 +469,10 @@ str_385468	vo_9_14_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385469	vo_9_14_290_1_h	persona	Remain there, soldier! I've got a medpack!	待在那儿，大兵！我有医疗包！	sndshd
 str_385470	vo_9_14_290_2_h	persona	Stay put! I'll fix you up!	别动！我来治好你！	sndshd
 str_385471	vo_9_14_290_3_h	persona	Marine! Hold up!	陆战队员！停一下！	sndshd
-str_385472	vo_9_14_300_1_h	persona	Corporal Kane, remain there! I'm a medic!	Kane 下士，待在那儿！我是医疗兵！	sndshd
-str_385473	vo_9_14_300_2_h	persona	I've got a medpack for you, Corporal Kane.	Kane 下士，我这有医疗包给你。	sndshd
-str_385474	vo_9_14_300_3_h	persona	Stay where you are, Kane. I'll heal you.	待在原地，Kane。我来治你。	sndshd
-str_385475	vo_9_14_300_4_h	persona	Corporal Kane, don't move. I'll be there with a medpack in a second.	Kane 下士，别动。我马上带医疗包过去。	sndshd
+str_385472	vo_9_14_300_1_h	persona	Corporal Kane, remain there! I'm a medic!	凯恩下士，待在那儿！我是医疗兵！	sndshd
+str_385473	vo_9_14_300_2_h	persona	I've got a medpack for you, Corporal Kane.	凯恩下士，我这有医疗包给你。	sndshd
+str_385474	vo_9_14_300_3_h	persona	Stay where you are, Kane. I'll heal you.	待在原地，凯恩。我来治你。	sndshd
+str_385475	vo_9_14_300_4_h	persona	Corporal Kane, don't move. I'll be there with a medpack in a second.	凯恩下士，别动。我马上带医疗包过去。	sndshd
 str_385476	vo_9_14_30_1_h	persona	Can't talk right now.	现在没空说话。	sndshd
 str_385477	vo_9_14_30_2_h	persona	Can't you find someone else to annoy?	{furrow}你就不能去烦别人吗？	sndshd
 str_385478	vo_9_14_310_1_h	persona	Marine, you gotta remember to duck once in a while.	陆战队员，你得记着时不时低头躲一躲。	sndshd
@@ -544,10 +542,10 @@ str_385541	vo_9_15_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385542	vo_9_15_290_1_h	persona	Stay at your position! I'm a medic!	待在原地！我是医疗兵！	sndshd
 str_385543	vo_9_15_290_2_h	persona	I've got a medpack for you!	我这有医疗包给你！	sndshd
 str_385544	vo_9_15_290_3_h	persona	Don't move, Marine! I'll fix you up!	别动，陆战队员！我来治好你！	sndshd
-str_385545	vo_9_15_300_1_h	persona	Corporal Kane, I have a medpack for you!	Kane 下士，我这有医疗包给你！	sndshd
-str_385546	vo_9_15_300_2_h	persona	I'll heal you, Corporal Kane.	我来治你，Kane 下士。	sndshd
-str_385547	vo_9_15_300_3_h	persona	Stay put, Kane. I'm on my way!	别动，Kane。我这就来！	sndshd
-str_385548	vo_9_15_300_4_h	persona	Corporal Kane, remain there. I'll be there in a second.	Kane 下士，待在那儿。我马上就到。	sndshd
+str_385545	vo_9_15_300_1_h	persona	Corporal Kane, I have a medpack for you!	凯恩下士，我这有医疗包给你！	sndshd
+str_385546	vo_9_15_300_2_h	persona	I'll heal you, Corporal Kane.	我来治你，凯恩下士。	sndshd
+str_385547	vo_9_15_300_3_h	persona	Stay put, Kane. I'm on my way!	别动，凯恩。我这就来！	sndshd
+str_385548	vo_9_15_300_4_h	persona	Corporal Kane, remain there. I'll be there in a second.	凯恩下士，待在那儿。我马上就到。	sndshd
 str_385549	vo_9_15_30_1_h	persona	Sorry, I'm a kinda occupied right now.	抱歉，我这会儿有点脱不开身。	sndshd
 str_385550	vo_9_15_30_2_h	persona	I can't talk right now. I'm busy.	{furrow}现在没空聊。我忙着呢。	sndshd
 str_385551	vo_9_15_30_3_h	persona	I wish I could help you, but I can't.	{furrow}我也想帮你，可实在帮不上。	sndshd
@@ -617,10 +615,10 @@ str_385614	vo_9_16_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385615	vo_9_16_290_1_h	persona	Stay put, Soldier! I'll patch you up.	别动，大兵！我来给你包扎。	sndshd
 str_385616	vo_9_16_290_2_h	persona	Don't move. I'm on my way!	别动。我这就来！	sndshd
 str_385617	vo_9_16_290_3_h	persona	Hold up. I've got medpacks!	停一下。我有医疗包！	sndshd
-str_385618	vo_9_16_300_1_h	persona	Corporal Kane, hold up! I'm a medic!	Kane 下士，停一下！我是医疗兵！	sndshd
-str_385619	vo_9_16_300_2_h	persona	I've got a medpack for you, Corporal Kane.	Kane 下士，我这有医疗包给你。	sndshd
-str_385620	vo_9_16_300_3_h	persona	Stay at your position, Kane. I'll heal you!	待在原地，Kane。我来治你！	sndshd
-str_385621	vo_9_16_300_4_h	persona	Stay there, Corporal Kane. I'll have you fixed up in no time!	待在那儿，Kane 下士。我马上就能把你治好！	sndshd
+str_385618	vo_9_16_300_1_h	persona	Corporal Kane, hold up! I'm a medic!	凯恩下士，停一下！我是医疗兵！	sndshd
+str_385619	vo_9_16_300_2_h	persona	I've got a medpack for you, Corporal Kane.	凯恩下士，我这有医疗包给你。	sndshd
+str_385620	vo_9_16_300_3_h	persona	Stay at your position, Kane. I'll heal you!	待在原地，凯恩。我来治你！	sndshd
+str_385621	vo_9_16_300_4_h	persona	Stay there, Corporal Kane. I'll have you fixed up in no time!	待在那儿，凯恩下士。我马上就能把你治好！	sndshd
 str_385622	vo_9_16_30_1_h	persona	I'm a little busy right now.	{furrow}我现在有点忙。	sndshd
 str_385623	vo_9_16_310_1_h	persona	This doesn't look so bad.	伤得不算重嘛。	sndshd
 str_385624	vo_9_16_310_2_h	persona	Stop movin' around, would ya?	别来回乱动了，行不？	sndshd
@@ -689,10 +687,10 @@ str_385686	vo_9_17_270_3_h	persona	(death yell)	（死亡音）	sndshd
 str_385687	vo_9_17_290_1_h	persona	I'm on my way, Marine!	我这就过来，坚持住！	sndshd
 str_385688	vo_9_17_290_2_h	persona	Stay down! I'm a medic!	趴着别动！我是医疗兵！	sndshd
 str_385689	vo_9_17_290_3_h	persona	Remain there. I'll fix you up!	待在原地，我来给你处理！	sndshd
-str_385690	vo_9_17_300_1_h	persona	Corporal Kane, remain there! I'll heal you!	Kane 下士，待在原地！我来治疗你！	sndshd
-str_385691	vo_9_17_300_2_h	persona	Wait there, Kane. I'm a medic!	在那儿等着，Kane。我是医疗兵！	sndshd
-str_385692	vo_9_17_300_3_h	persona	Don't move Corporal Kane. I've got a medpack for you!	别动，Kane 下士，我这儿有医疗包！	sndshd
-str_385693	vo_9_17_300_4_h	persona	I'm on my way, Corporal Kane!	我这就过来，Kane 下士！	sndshd
+str_385690	vo_9_17_300_1_h	persona	Corporal Kane, remain there! I'll heal you!	凯恩下士，待在原地！我来治疗你！	sndshd
+str_385691	vo_9_17_300_2_h	persona	Wait there, Kane. I'm a medic!	在那儿等着，凯恩。我是医疗兵！	sndshd
+str_385692	vo_9_17_300_3_h	persona	Don't move Corporal Kane. I've got a medpack for you!	别动，凯恩下士，我这儿有医疗包！	sndshd
+str_385693	vo_9_17_300_4_h	persona	I'm on my way, Corporal Kane!	我这就过来，凯恩下士！	sndshd
 str_385694	vo_9_17_30_1_h	persona	I've got no time for talkin'.	{furrow}我没工夫闲聊。	sndshd
 str_385695	vo_9_17_30_2_h	persona	Don't you have something else to do?	{furrow}你就没别的事可干了吗？	sndshd
 str_385696	vo_9_17_310_1_h	persona	Here ya go.	好了，给你。	sndshd
@@ -704,9 +702,9 @@ str_385701	vo_9_17_320_1_h	persona	Okay, I'm done. Go frag some squibs.	好了�
 str_385702	vo_9_17_320_2_h	persona	That's it. See you around.	搞定。回头见。	sndshd
 str_385703	vo_9_17_320_3_h	persona	I'm done, Marine. Remember to keep low.	好了，士兵。记得放低身子。	sndshd
 str_385704	vo_9_17_320_4_h	persona	That's as much as I can do. Watch yourself, Marine.	我只能帮你到这儿了。自己当心，士兵。	sndshd
-str_385705	vo_9_17_360_1_h	persona	Kane, wait. Your armors damaged.	Kane，等等。你的护甲受损了。	sndshd
-str_385706	vo_9_17_360_2_h	persona	Corporal Kane. Wait and Ill repair your armor	Kane 下士，等一下，我来修你的护甲。	sndshd
-str_385707	vo_9_17_360_3_h	persona	I can fix your armor, Kane.	我能修好你的护甲，Kane。	sndshd
+str_385705	vo_9_17_360_1_h	persona	Kane, wait. Your armors damaged.	凯恩，等等。你的护甲受损了。	sndshd
+str_385706	vo_9_17_360_2_h	persona	Corporal Kane. Wait and Ill repair your armor	凯恩下士，等一下，我来修你的护甲。	sndshd
+str_385707	vo_9_17_360_3_h	persona	I can fix your armor, Kane.	我能修好你的护甲，凯恩。	sndshd
 str_385708	vo_9_17_370_1_h	persona	Ill have you patched up in no time.	我马上就把你修补好。	sndshd
 str_385709	vo_9_17_370_2_h	persona	This wont take long.	用不了多久。	sndshd
 str_385710	vo_9_17_370_3_h	persona	Just a few seconds and youll right back into the fight.	就几秒钟，你马上就能重返战斗。	sndshd
@@ -731,6 +729,3 @@ str_386103	vo_3_2_9_30_3	core2	Pitiful!	可悲！	sndshd
 str_386104	vo_3_2_9_30_4	core2	You cannot win!	你赢不了的！	sndshd
 str_386105	vo_3_2_9_30_5	core2	Not good enough!	还不够！	sndshd
 str_386106	vo_3_2_9_30_6	core2	Weakling!	弱者！	sndshd
-str_386107	vo_3_2_9_30_7	core2	laugh	（笑声）	sndshd
-str_386108	vo_3_2_9_30_11	core2	laugh	（笑声）	sndshd
-str_386109	vo_3_2_9_30_12	core2	laugh	（笑声）	sndshd

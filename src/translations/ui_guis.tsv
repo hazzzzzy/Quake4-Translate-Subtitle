@@ -482,7 +482,7 @@
 #str_200496	> processor <\nsystem error	> 处理器 <\n系统错误		review
 #str_200497	stomach contents at:	胃内容物达：		review
 #str_200498	safety mechanisms prevent overfeeding	安全机制防止过度喂食		review
-#str_200499	of primary stroyent processor.	主 「斯托伊文特」 处理器。		review
+#str_200499	of primary stroyent processor.	主 「斯托伊文特」处理器。		review
 #str_200500	override?	强制执行？		review
 #str_200501	feeding status	喂食状态		review
 #str_200502	nominal	正常		review
@@ -494,7 +494,7 @@
 #str_200508	lr	lr		review
 #str_200509	vk-3	vk-3		review
 #str_200510	n-4	n-4		review
-#str_200511	raw stroyent input	「斯托伊文特」 原料输入		review
+#str_200511	raw stroyent input	「斯托伊文特」原料输入		review
 #str_200512	auxilliary	辅助		review
 #str_200513	tank capacity	储罐容量		review
 #str_200514	output	输出		review
@@ -519,7 +519,7 @@
 #str_200533	>> secondary source x5b	>> 副来源 x5b		review
 #str_200534	activate barrel process	激活储桶流程		review
 #str_200535	> sorting process active <	> 分拣流程运行中 <		review
-#str_200536	stroyent filling control 34-k	「斯托伊文特」 灌装控制 34-k		review
+#str_200536	stroyent filling control 34-k	「斯托伊文特」灌装控制 34-k		review
 #str_200537	holding cells	拘禁室		review
 #str_200538	cell 1	1 号室		review
 #str_200539	cell 3	3 号室		review
@@ -596,13 +596,13 @@
 #str_200610	how about not sucking?	那你倒是做得好吃点啊？		review
 #str_200611	(carl) 4.22 14:20	(carl) 4.22 14:20		review
 #str_200612	Carl, report to my office.	Carl，到我办公室报到。		review
-#str_200613	(LT Ranka) 4.22 14:23	(LT Ranka) 4.22 14:23		review
+#str_200613	(LT Ranka) 4.22 14:23	(LT 兰卡) 4.22 14:23		review
 #str_200614	if i could eat vatburgers everyday i would	要是能天天吃培养缸汉堡我肯定天天吃		review
 #str_200615	(dynerman) 4.22 16:30	(dynerman) 4.22 16:30		review
 #str_200616	addressing recent abuses of the community bbs.	关于近期社区 BBS 滥用行为的处理。		review
-#str_200617	(LT Ranka) 4.22 14:42	（Ranka 中尉）4.22 14:42		review
+#str_200617	(LT Ranka) 4.22 14:42	（兰卡中尉）4.22 14:42		review
 #str_200618	thank - you -N/T	谢谢 -无正文		review
-#str_200619	(chef summers) 4.22 14:50	（厨师 Summers）4.22 14:50		review
+#str_200619	(chef summers) 4.22 14:50	（厨师萨默斯）4.22 14:50		review
 #str_200620	OK, taking suggestions	好的，正在征集建议		review
 #str_200621	tech panel	技术面板		review
 #str_200622	station 1           station 2	站点 1           站点 2		review
@@ -619,14 +619,14 @@
 #str_200633	2030 MOVIE NIGHT: blood beast 5: the deadening	2030 电影之夜：血兽 5：死寂		review
 #str_200634	Join your fellow marines to watch the cult classic considered by many to be the best of the worst in the Blood Beast octology. With special effects unable to scare your grandma, and a story with plot holes big enough to drive a hovertank through, Blood Beast 5: the Deadening needs to be seen to be believed.	与战友们一起观看这部邪典经典之作——它被许多人誉为《血兽》八部曲中「最烂里的最佳」。特效吓不倒你奶奶，剧情漏洞大到能开过一辆「悬浮坦克」，《血兽 5：死寂》不看不信。		review
 #str_200635	2100 PROBALL FINALS (QUAD 3)	2100 Proball 决赛（QUAD 3）		review
-#str_200636	Come down to watch as the 482nd Airborne team battles the 379th Infantry team for Proball supremacy and the right to enter the final round robin. Your commanding officers would like to take this opportunity to remind you to watch this event.	快来观看第 482 空降队对阵第 379 步兵队，争夺 Proball 霸主地位与晋级最终循环赛的资格。各位指挥官借此机会提醒你，务必观看本场比赛。		review
+#str_200636	Come down to watch as the 482nd Airborne team battles the 379th Infantry team for Proball supremacy and the right to enter the final round robin. Your commanding officers would like to take this opportunity to remind you to watch this event.	快来观看第 482 空降队对阵第 379 「步兵」队，争夺 Proball 霸主地位与晋级最终循环赛的资格。各位指挥官借此机会提醒你，务必观看本场比赛。		review
 #str_200637	frequency	频率		review
 #str_200638	channels	频道		review
 #str_200639	encrypt	加密		review
 #str_200640	options	选项		review
 #str_200641	comm channel-	通讯频道-		review
 #str_200642	ECHO.431.1v	ECHO.431.1v		review
-#str_200643	substation charlie re-supply depot 877 SMC code C887.51.43	Charlie 分站 补给站 877 SMC 代码 C887.51.43		review
+#str_200643	substation charlie re-supply depot 877 SMC code C887.51.43	Charlie 分站补给站 877 SMC 代码 C887.51.43		review
 #str_200644	smc codes	SMC 代码		review
 #str_200645	mail	邮件		review
 #str_200646	pcapaso.smcmail.wwx	pcapaso.smcmail.wwx		review
@@ -643,14 +643,14 @@
 #str_200657	cc	抄送		review
 #str_200658	subject	主题		review
 #str_200659	kcapaso.tccmailhost.wwv	kcapaso.tccmailhost.wwv		review
-#str_200660	makes it sound like we'll be heading into hostile territory soon. I don't think the censors will let me tell you anything more than that. I know you worry, but don't. Rhino squad is the toughest fighting force in the SMC.\n\nAnyway, I'm rambling. Thanks for your last message. I miss you and your home cooking! I just wish you were in charge of meals here (no offense Summers). It's vat loaf again tonight..... 	听起来我们很快就要开进敌占区了。我想审查员不会让我透露更多。我知道你担心，但别担心。Rhino 小队是 SMC 里最能打的部队。\n\n总之，我扯远了。谢谢你上次的来信。我想你，也想念你做的家常菜！真希望这里的伙食归你管（Summers 别介意）。今晚又是培养缸肉饼……		review
+#str_200660	makes it sound like we'll be heading into hostile territory soon. I don't think the censors will let me tell you anything more than that. I know you worry, but don't. Rhino squad is the toughest fighting force in the SMC.\n\nAnyway, I'm rambling. Thanks for your last message. I miss you and your home cooking! I just wish you were in charge of meals here (no offense Summers). It's vat loaf again tonight..... 	听起来我们很快就要开进敌占区了。我想审查员不会让我透露更多。我知道你担心，但别担心。「犀牛」小队是 SMC 里最能打的部队。\n\n总之，我扯远了。谢谢你上次的来信。我想你，也想念你做的家常菜！真希望这里的伙食归你管（萨默斯别介意）。今晚又是培养缸肉饼……		review
 #str_200661	sx457.dxc	sx457.dxc		review
 #str_200662	directory	目录		review
 #str_200663	this system file is locked. obtain authorization by using the biometric thumbprint scanner.	此系统文件已锁定。请使用生物指纹扫描仪获取授权。		review
 #str_200664	scan	扫描		review
 #str_200665	dxc auxilliary dxc files	dxc 辅助 dxc 文件		review
 #str_200666	sx455.dxc sx456.dxc sx457.dxc sx458.dxc sx459.dxc sx460.dxc sx461.dxc sx462.dxc sx463.dxc	sx455.dxc sx456.dxc sx457.dxc sx458.dxc sx459.dxc sx460.dxc sx461.dxc sx462.dxc sx463.dxc		review
-#str_200667	temp overwrite temp priority dxc exec	临时覆写 临时优先 dxc 执行		review
+#str_200667	temp overwrite temp priority dxc exec	临时覆写临时优先 dxc 执行		review
 #str_200668	articles	文章		review
 #str_200669	clips	短片		review
 #str_200670	index	索引		review
@@ -660,9 +660,9 @@
 #str_200674	analysis	分析		review
 #str_200675	kwong.smcmail.wwx	kwong.smcmail.wwx		review
 #str_200676	delete	删除		review
-#str_200677	from    subject               recieved	发件人    主题               接收时间		review
+#str_200677	from    subject               recieved	发件人主题接收时间		review
 #str_200678	ssmith eholmes ssmith wwillis eholmes aranka ssmith mcase ssmith wwillis mcase staylor	ssmith eholmes ssmith wwillis eholmes aranka ssmith mcase ssmith wwillis mcase staylor		review
-#str_200679	broken code (sorry)       RE: my underlings suck    problems on d deck engineering sys crash  RE: failures in life     RE: so pathetic          data loss in terminal f4 RE: damn jokers          can't get it working   false alarm                RE: rock bottom          RE: why me lord?	代码出错（抱歉）       回复：我的手下真差劲    D 层出问题 工程系统崩溃  回复：人生的失败     回复：太可悲了          f4 终端数据丢失 回复：该死的蠢货          搞不定   虚惊一场                回复：跌到谷底          回复：主啊为何偏偏是我？		review
+#str_200679	broken code (sorry)       RE: my underlings suck    problems on d deck engineering sys crash  RE: failures in life     RE: so pathetic          data loss in terminal f4 RE: damn jokers          can't get it working   false alarm                RE: rock bottom          RE: why me lord?	代码出错（抱歉）       回复：我的手下真差劲    D 层出问题工程系统崩溃回复：人生的失败回复：太可悲了          f4 终端数据丢失回复：该死的蠢货搞不定虚惊一场回复：跌到谷底回复：主啊为何偏偏是我？		review
 #str_200680	tactical ops	战术行动		review
 #str_200681	mushroom squad	蘑菇小队		review
 #str_200682	badger squad	獾小队		review
@@ -671,7 +671,7 @@
 #str_200685	intelligence report: sector 672c	情报报告：672c 区		review
 #str_200686	stroggos	Stroggos		review
 #str_200687	sector 672c	672c 区		review
-#str_200688	verified 04/21/2245 16:53 by LT Collins 401st reconnaissance wing	已核实 04/21/2245 16:53 核实人 Collins 中尉 第 401 侦察联队		review
+#str_200688	verified 04/21/2245 16:53 by LT Collins 401st reconnaissance wing	已核实 04/21/2245 16:53 核实人柯林斯中尉第 401 侦察联队		review
 #str_200689	Praesent lorem nunc, tincidunt eget porta et interdum eget, ante. Vestibulum vestibulum dui ac ante. Donec et neque sodales augue interdum commodo. 	Praesent lorem nunc, tincidunt eget porta et interdum eget, ante. Vestibulum vestibulum dui ac ante. Donec et neque sodales augue interdum commodo. 		review
 #str_200690	In a libero. Aliquam vitae mauris eget lacus mattis porttitor. Integer nisl. Aenean at ligula ac augue ullamcorper facilisis. In lacus dolor luctus non, venenatis a, vestibulum rhoncus sem. Cras lorem. Maecenas in quam eget felis scelerisque accumsan. In molestie dapibus risus. 	In a libero. Aliquam vitae mauris eget lacus mattis porttitor. Integer nisl. Aenean at ligula ac augue ullamcorper facilisis. In lacus dolor luctus non, venenatis a, vestibulum rhoncus sem. Cras lorem. Maecenas in quam eget felis scelerisque accumsan. In molestie dapibus risus. 		review
 #str_200691	vidcomm channel	视讯通讯频道		review
@@ -686,7 +686,7 @@
 #str_200700	mute	静音		review
 #str_200701	terrain overview <<	地形概览 <<		review
 #str_200702	GRID 65X 43Y	网格 65X 43Y		review
-#str_200703	warthog squad	疣猪小队		review
+#str_200703	warthog squad	「疣猪」小队		review
 #str_200704	kodiak squad	科迪亚克小队		review
 #str_200705	logout	登出		review
 #str_200706	wwx.smc.m_prompt//	wwx.smc.m_prompt//		review
@@ -697,7 +697,7 @@
 #str_200711	codons	密码子		review
 #str_200712	cga ttc gac cgc gcc tac ggt acg ggg gac cgt aca cgg tag gtt gct act cgc cac ttg cct aga gcc acg ggt ata tag ttg aac acg	cga ttc gac cgc gcc tac ggt acg ggg gac cgt aca cgg tag gtt gct act cgc cac ttg cct aga gcc acg ggt ata tag ttg aac acg		review
 #str_200713	medlabs	医疗实验室		review
-#str_200714	Subject 0012.01a was brought in by Bravo team coming back from a recon mission around the Strogg Putrification facility. subject appeared to be a marine modified by an invasive Strogg reconstruction method. DNA anaylasis revealed that subject 0012.01a was marine Corporal Shane Huxley of Rhino squad.	对象 0012.01a 由 Bravo 小队从 Strogg 腐化设施周边侦察任务返回时带回。该对象看似是一名经 Strogg 侵入式重构手段改造的陆战队员。DNA 分析显示，对象 0012.01a 为 Rhino 小队的陆战队员 Shane Huxley 下士。		review
+#str_200714	Subject 0012.01a was brought in by Bravo team coming back from a recon mission around the Strogg Putrification facility. subject appeared to be a marine modified by an invasive Strogg reconstruction method. DNA anaylasis revealed that subject 0012.01a was marine Corporal Shane Huxley of Rhino squad.	对象 0012.01a 由 Bravo 小队从 Strogg 腐化设施周边侦察任务返回时带回。该对象看似是一名经 Strogg 侵入式重构手段改造的陆战队员。DNA 分析显示，对象 0012.01a 为「犀牛」小队的陆战队员谢恩 哈克斯利下士。		review
 #str_200715	menu	菜单		review
 #str_200716	studies	研究		review
 #str_200717	0012.01a	0012.01a		review
@@ -705,12 +705,12 @@
 #str_200719	search database	搜索数据库		review
 #str_200720	med scans	医疗扫描		review
 #str_200721	SUBJECT 7749.1	对象 7749.1		review
-#str_200722	Skeletal structure in Strogg grunts appears alien in nature. The Strogg conversion process seems to have impaired bodily function to an extent that the subject is injected with an array of drugs for short bursts of berzerker rage. Most often found solo, guarding key areas of Strogg infrastructure.	Strogg grunt（步兵）的骨骼结构呈现异族特征。Strogg 转化过程似乎已损害其身体机能，以致需向对象注射多种药物以短暂激发狂暴状态。多单独出现，守卫 Strogg 基础设施的关键区域。		review
+#str_200722	Skeletal structure in Strogg grunts appears alien in nature. The Strogg conversion process seems to have impaired bodily function to an extent that the subject is injected with an array of drugs for short bursts of berzerker rage. Most often found solo, guarding key areas of Strogg infrastructure.	Strogg grunt（「步兵」）的骨骼结构呈现异族特征。Strogg 转化过程似乎已损害其身体机能，以致需向对象注射多种药物以短暂激发狂暴状态。多单独出现，守卫 Strogg 基础设施的关键区域。		review
 #str_200723	SUBJECT 7749.2	对象 7749.2		review
-#str_200724	The basic strogg grunt includes bipedal humanoid species adapted for strogg needs. Integral arm blaster powered by fusion assures nonstop firepower. Agile and reasonably smart - the workhorse of the strogg army. Higher brain functions controlled by unknown link, while motor functions are enhanced by advanced servos and synthetic muscle groups.	基础型 Strogg 步兵是为满足 Strogg 需求而改造的双足类人物种。融合供能的内置臂载爆能枪确保火力不间断。敏捷且颇具智能——堪称 Strogg 军队的主力。其高级脑功能受未知链接控制，运动功能则由先进伺服机构与合成肌群强化。		review
+#str_200724	The basic strogg grunt includes bipedal humanoid species adapted for strogg needs. Integral arm blaster powered by fusion assures nonstop firepower. Agile and reasonably smart - the workhorse of the strogg army. Higher brain functions controlled by unknown link, while motor functions are enhanced by advanced servos and synthetic muscle groups.	基础型 Strogg 「步兵」是为满足 Strogg 需求而改造的双足类人物种。融合供能的内置臂载爆能枪确保火力不间断。敏捷且颇具智能——堪称 Strogg 军队的主力。其高级脑功能受未知链接控制，运动功能则由先进伺服机构与合成肌群强化。		review
 #str_200725	SUBJECT 0455.8	对象 0455.8		review
 #str_200726	Subject shows abnormal deterioration of nerve cells around the hippocampus and somatosensory cortex. SMC command issued a study concluding that exposure to hazardous waste in Strogg chemical facilities results in long term neurological dysfunction.	对象海马体与躯体感觉皮层周围的神经细胞出现异常退化。SMC 指挥部发布的一项研究得出结论：暴露于 Strogg 化学设施的有害废料中会导致长期神经功能障碍。		review
-#str_200727	sgt r. haloway	R. Haloway 中士		review
+#str_200727	sgt r. haloway	R. 哈洛威中士		review
 #str_200728	records	记录		review
 #str_200729	cardiac monitor	心脏监护仪		review
 #str_200730	hr	心率		review
@@ -719,9 +719,9 @@
 #str_200733	qrs qt qtc(h)qqtd    pq	qrs qt qtc(h)qqtd    pq		review
 #str_200734	80ms 362ms 358ms 24ms 156ms	80ms 362ms 358ms 24ms 156ms		review
 #str_200735	SUBJECT 1302.9	对象 1302.9		review
-#str_200736	>>uss madison	>>USS Madison 号		review
+#str_200736	>>uss madison	>>USS 麦迪逊号		review
 #str_200737	geosyncronous orbit	地球同步轨道		review
-#str_200738	>>uss iowa	>>USS Iowa 号		review
+#str_200738	>>uss iowa	>>USS 衣阿华号		review
 #str_200739	descending 30k	正在下降 30k		review
 #str_200740	tracking data	追踪数据		review
 #str_200741	1. DATA	1. 数据		review
@@ -738,10 +738,10 @@
 #str_200752	5. SYSTEM	5. 系统		review
 #str_200753	page	页		review
 #str_200754	smc schedule	SMC 日程		review
-#str_200755	0400 : rhino squad briefing\n0800 : general assembly\n1000 : medical team status\n1200 : tertiary generator offline\n1430 : vidcomm hq briefing\n1545 : turret 4 repair - tech team 3\n1730 : alpha squadron briefing\n1800 : strogg field report\n1935 : badger squad sitrep\n2030 : warthog squad briefing\n2100 : proball finals - quad 3\n2245 : assault prep - fighter wing b\n2300 : repair, refuel scouts 13-48\n2400 : final daily system check	0400：Rhino 小队简报\n0800：全体集合\n1000：医疗队状态\n1200：三号发电机离线\n1430：视讯通讯总部简报\n1545：4 号炮塔维修 - 技术组 3\n1730：Alpha 中队简报\n1800：Strogg 战地报告\n1935：獾小队战况报告\n2030：疣猪小队简报\n2100：Proball 决赛 - QUAD 3\n2245：突击准备 - B 战斗机联队\n2300：维修、加油 侦察机 13-48\n2400：每日最终系统检查		review
+#str_200755	0400 : rhino squad briefing\n0800 : general assembly\n1000 : medical team status\n1200 : tertiary generator offline\n1430 : vidcomm hq briefing\n1545 : turret 4 repair - tech team 3\n1730 : alpha squadron briefing\n1800 : strogg field report\n1935 : badger squad sitrep\n2030 : warthog squad briefing\n2100 : proball finals - quad 3\n2245 : assault prep - fighter wing b\n2300 : repair, refuel scouts 13-48\n2400 : final daily system check	0400：「犀牛」小队简报\n0800：全体集合\n1000：医疗队状态\n1200：三号发电机离线\n1430：视讯通讯总部简报\n1545：4 号炮塔维修 - 技术组 3\n1730：Alpha 中队简报\n1800：Strogg 战地报告\n1935：獾小队战况报告\n2030：「疣猪」小队简报\n2100：Proball 决赛 - QUAD 3\n2245：突击准备 - B 战斗机联队\n2300：维修、加油侦察机 13-48\n2400：每日最终系统检查		review
 #str_200756	mess hall rations	食堂配餐		review
 #str_200757	BREAKFAST\npancakes, eggs, sausages\nLUNCH\nchicken slop, rice, roast beef sandwich\nDINNER\nroast turkey, stuffing, beans, potato salad	早餐\n薄煎饼、鸡蛋、香肠\n午餐\n鸡肉糊、米饭、烤牛肉三明治\n晚餐\n烤火鸡、火鸡馅、豆子、土豆沙拉		review
-#str_200758	LT Jameson\n2LT Masters	Jameson 中尉\nMasters 少尉		review
+#str_200758	LT Jameson\n2LT Masters	嗯meson 中尉\n马斯特斯少尉		review
 #str_200759	c.o.'s on duty	值班指挥官		review
 #str_200760	info panel	信息面板		review
 #str_200761	3. ARCHIVE	3. 存档		review
@@ -753,7 +753,7 @@
 #str_200767	OPTIONS	选项		review
 #str_200768	: system offline :	：系统离线：		review
 #str_200769	connect	连接		review
-#str_200770	lt. biessman	Biessman 中尉		review
+#str_200770	lt. biessman	比斯曼中尉		review
 #str_200771	vidcomm panel	视讯通讯面板		review
 #str_200772	> established <	> 已建立 <		review
 #str_200773	marine hq	陆战队总部		review
@@ -813,7 +813,7 @@
 #str_200827	>transport failure<	>运输故障<		review
 #str_200828	barrel transport	桶体运输		review
 #str_200829	system error	系统错误		review
-#str_200830	stroyent flow	「斯托伊文特」 流量		review
+#str_200830	stroyent flow	「斯托伊文特」流量		review
 #str_200831	flowrate	流速		review
 #str_200832	console	控制台		review
 #str_200833	sys.chk	sys.chk		review
