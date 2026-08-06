@@ -147,7 +147,7 @@ jobs:
               $bodyText = "更新内容详见 CHANGELOG.md"
           }
           $notesFile = Join-Path $env:RUNNER_TEMP "release_notes.md"
-          $bodyText | Out-File -LiteralPath $notesFile -Encoding UTF8
+          [System.IO.File]::WriteAllText($notesFile, $bodyText, [System.Text.UTF8Encoding]::new($false))
 
           gh release create $env:GITHUB_REF_NAME `
               $installers[0].FullName `
