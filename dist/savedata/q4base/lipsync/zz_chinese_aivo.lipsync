@@ -4964,13 +4964,13 @@ lipSync vo_3_1_2_10_2
 lipSync failedtransfer_alert
 {
 	description	"failedtransfer_alert"
-	text		"我看见你了"
+	text		"我看到你了"
 }
 
 lipSync gunner_alert
 {
 	description	"gunner_alert"
-	text		"机炮兵发现目标"
+	text		"我看到你了"
 }
 
 lipSync iron_maiden_alert
@@ -4982,21 +4982,14 @@ lipSync iron_maiden_alert
 lipSync scientist_alert
 {
 	description	"scientist_alert"
-	text		"科学家发现目标"
+	text		"我看到你了"
 }
 
 lipSync slimytransfer_alert
 {
 	description	"slimytransfer_alert"
-	text		"我看见你了"
+	text		"我看到你了"
 }
-
-lipSync teleportdropper_alert
-{
-	description	"teleportdropper_alert"
-	text		"我必须咬你了"
-}
-
 lipSync vo_3_2_9_30_2
 {
 	description	"vo_3_2_9_30_2"
@@ -5027,3 +5020,10 @@ lipSync vo_3_2_9_30_6
 	text		"#str_386106"
 }
 
+
+
+lipSync berserker_alert
+{
+	description	"aha, prepare to die"
+	text		"啊哈，准备受死吧"
+}

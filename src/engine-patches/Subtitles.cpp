@@ -794,7 +794,7 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs, su
 		color = SUB_COLOR_NORMAL;	// 无说话人(无名环境音) — 白
 	} else if ( strstr( speaker, "\xE8\x88\xB0\xE8\xBD\xBD\xE5\xB9\xBF\xE6\x92\xAD" ) != NULL ) { // 舰载广播
 		color = SUB_COLOR_HUMANCAST;	// 人类/舰船广播 — 绿
-	} else if ( idStr::Cmp( speaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) == 0			// 广播
+	} else if ( strstr( speaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) != NULL			// 含"广播"（敌军广播/广播）
 	        || idStr::Icmp( speaker, "PA" ) == 0
 	        || strstr( speaker, "\xE6\x92\xAD\xE6\x8A\xA5" ) != NULL ) {		// 含"播报"
 		color = SUB_COLOR_BROADCAST;	// Strogg广播 — 黄
@@ -807,6 +807,13 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs, su
 		color = SUB_COLOR_ENEMY;		// 敌军语音 — 红
 	} else {
 		color = SUB_COLOR_NORMAL;	// 角色对白 — 白
+		// 敌人单位名（步兵/机炮兵/角斗士等）→ 红
+		for ( int i = 0; enemyUnitNames[i]; i++ ) {
+			if ( idStr::Cmp( speaker, enemyUnitNames[i] ) == 0 ) {
+				color = SUB_COLOR_ENEMY;
+				break;
+			}
+		}
 	}
 
 	if ( harm_g_subtitleDebug.GetBool() ) {
@@ -987,6 +994,49 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 			if ( mapped ) speaker = mapped;
 		}
 	}
+	// 武器改造声音 → 粉红色标志（speaker 保持说话人推断，不覆盖）
+	bool isWeaponMod = false;
+	if ( shader ) {
+		const char *sn = shader->GetName();
+		static const char *weaponModSounds[] = {
+			"vo_1_1_11_565_1", "vo_1_2_12_10_1", "vo_2_2_10_335_1",
+			"vo_2_2_4_45_1", "vo_2_2_4_45_2", "vo_2_2_4_75_1",
+			"vo_2_2_4_75_2", "vo_2_2_7_171_1", "vo_3_1_5_3_1",
+			"vo_3_1_3_25_1", "vo_1_1_13_20_1", "vo_1_1_5_40_1", NULL
+		};
+		for ( int i = 0; weaponModSounds[i]; i++ ) {
+			if ( idStr::Cmp( sn, weaponModSounds[i] ) == 0 ) {
+				isWeaponMod = true;
+				break;
+			}
+		}
+	}
+	// 敌人怪物：从 spawnclass 推断中文名（步兵/机炮兵等），显示具体怪物名而非"舰载广播"
+	if ( !speaker.Length() && bodyEnt && bodyEnt->IsType( idActor::GetClassType() ) ) {
+		idPlayer *pl = gameLocal.GetLocalPlayer();
+		if ( pl && static_cast<idActor *>( bodyEnt )->team != pl->team ) {
+			const char *cls = bodyEnt->spawnArgs.GetString( "spawnclass", "" );
+			static const struct { const char *cls; const char *cn; } monMap[] = {
+				{ "rvMonsterGrunt", "\xE6\xAD\xA5\xE5\x85\xB5" },
+				{ "rvMonsterGunner", "\xE6\x9C\xBA\xE7\x82\xAE\xE5\x85\xB5" },
+				{ "rvMonsterBerserker", "\xE7\x8B\x82\xE6\x88\x98\xE5\xA3\xAB" },
+				{ "rvMonsterGladiator", "\xE8\xA7\x92\xE6\x96\x97\xE5\xA3\xAB" },
+				{ "rvMonsterIronMaiden", "\xE9\x93\x81\xE5\xA8\x98\xE5\xAD\x90" },
+				{ "rvMonsterFailedTransfer", "\xE5\xA4\xB1\xE8\xB4\xA5\xE6\x94\xB9\xE9\x80\xA0\xE4\xBD\x93" },
+				{ "rvMonsterScientist", "\xE7\xA7\x91\xE5\xAD\xA6\xE5\xAE\xB6" },
+				{ "rvMonsterSentry", "\xE5\x93\xA8\xE5\x8D\xAB" },
+				{ "rvMonsterStroggMarine", "\xE9\x99\x86\xE6\x88\x98\xE5\x85\xB5" },
+				{ "rvMonsterSlimyTransfer", "\xE5\xA4\xB1\xE8\xB4\xA5\xE6\x94\xB9\xE9\x80\xA0\xE4\xBD\x93" },
+				{ NULL, NULL }
+			};
+			for ( int i = 0; monMap[i].cls; i++ ) {
+				if ( idStr::Icmp( cls, monMap[i].cls ) == 0 ) {
+					speaker = monMap[i].cn;
+					break;
+				}
+			}
+		}
+	}
 	if ( !speaker.Length() && fallbackSpeaker && fallbackSpeaker[0] ) {
 		// 区分 Strogg 广播(vo_pa_*)与人类/舰船广播：前者黄色，后者绿色
 		if ( shader && idStr::Cmp( fallbackSpeaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) == 0 ) {
@@ -994,14 +1044,14 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 			if ( sn && idStr::Cmpn( sn, "vo_pa_", 6 ) != 0 ) {
 				speaker = "\xE8\x88\xB0\xE8\xBD\xBD\xE5\xB9\xBF\xE6\x92\xAD"; // 舰载广播
 			} else {
-				speaker = fallbackSpeaker;
+				speaker = "\xE6\x95\x8C\xE5\x86\x9B\xE5\xB9\xBF\xE6\x92\xAD"; // 敌军广播（vo_pa_）
 			}
 		} else {
 			speaker = fallbackSpeaker;
 		}
 	}
 
-	Add( speaker.Length() ? speaker.c_str() : NULL, text, durationMs );
+	Add( speaker.Length() ? speaker.c_str() : NULL, text, durationMs, isWeaponMod ? SUB_COLOR_WEAPONMOD : SUB_COLOR_NORMAL );
 }
 
 /*
@@ -1189,6 +1239,7 @@ void rvSubtitles::Draw( void ) {
 				case SUB_COLOR_MAKRON:    subR = 0.75f; subG = 0.35f; subB = 1.0f;  break;
 				case SUB_COLOR_HUMANCAST: subR = 0.35f; subG = 0.60f; subB = 1.0f;  break;
 				case SUB_COLOR_ENEMY:     subR = 1.0f;  subG = 0.35f; subB = 0.35f; break;
+			case SUB_COLOR_WEAPONMOD: subR = 1.0f;  subG = 0.4f;  subB = 0.7f;  break; // 武器升级 — 粉红
 				default:                   subR = 0.95f; subG = 0.95f; subB = 0.95f; break;
 			}
 			gui->SetStateFloat( va( "subTxtR%d", i ), subR );

@@ -1,0 +1,20 @@
+// 汉化项目自建：启用原版未使用的 gib 模型（脑浆 + 碎肉片）
+// 原版有 brain_pork1/2.lwo + effects_bit.lwo 但无 moveable 定义，此处补上
+
+entityDef moveable_gib_brain1
+{
+	"inherit"					"moveable_gib_base"
+	"model"						"models/gibs/brain_pork1.lwo"
+}
+
+entityDef moveable_gib_brain2
+{
+	"inherit"					"moveable_gib_base"
+	"model"						"models/gibs/brain_pork2.lwo"
+}
+
+entityDef moveable_gib_flesh_bit
+{
+	"inherit"					"moveable_gib_base"
+	"model"						"models/gibs/effects_bit.lwo"
+}

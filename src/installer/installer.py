@@ -48,7 +48,7 @@ from build_dist_extras import build_assets  # noqa: E402
 from _logos import GITHUB_B64, BILI_B64, APP_ICON_B64  # noqa: E402
 
 
-APP_NAME = "Quake 4 简体中文汉化安装器 v1.3.3"
+APP_NAME = "Quake 4 简体中文汉化安装器 v1.3.4"
 INSTALL_DIRECTORY_NAME = "Quake4-Chinese"
 LAUNCHER_NAME = "Quake4中文启动器.exe"
 # 英文模式共用同一启动器二进制，按文件名含"英文"分流（见 launcher/main.cpp）
@@ -575,13 +575,15 @@ def install_localization(
                 f.write('\nseta harm_g_cnNames "1"\n')
             report("已启用人名汉化（角色名、小队名中文显示）")
 
+    # 击杀碎尸：勾选写1，不勾选显式写0（覆盖旧配置，避免残留导致误碎）
+    autoexec = install_directory / savedata_name / "q4base" / "autoexec.cfg"
+    existing_lines = autoexec.read_text(encoding="utf-8").splitlines() if autoexec.exists() else []
+    filtered = [l for l in existing_lines if "harm_g_gibOnDeath" not in l]
+    filtered.append('seta harm_g_gibOnDeath "' + ("1" if gib_on_death else "0") + '"')
+    with open(autoexec, "w", encoding="utf-8") as f:
+        f.write("\n".join(filtered) + "\n")
     if gib_on_death:
-        autoexec = install_directory / savedata_name / "q4base" / "autoexec.cfg"
-        existing = autoexec.read_text(encoding="utf-8") if autoexec.exists() else ""
-        if "harm_g_gibOnDeath" not in existing:
-            with open(autoexec, "a", encoding="utf-8") as f:
-                f.write('\nseta harm_g_gibOnDeath "1"\n')
-            report("已启用击杀碎尸（武器击杀敌人后碎成肉块）")
+        report("已启用击杀碎尸（武器击杀敌人后碎成肉块）")
 
     report(f"启动器：{launcher_target}")
     progress(100, "英文字幕安装完成" if english_mode else "汉化安装完成")
@@ -798,7 +800,7 @@ class InstallerWindow:
         title_row = ttk.Frame(main)
         title_row.pack(fill=X)
         ttk.Label(title_row, text="Quake 4 简体中文汉化", font=("Microsoft YaHei UI", 17, "bold")).pack(side=LEFT)
-        ttk.Label(title_row, text="v1.3.3", font=("Microsoft YaHei UI", 10), foreground="#888888").pack(side=LEFT, padx=(8, 0), pady=(6, 0))
+        ttk.Label(title_row, text="v1.3.4", font=("Microsoft YaHei UI", 10), foreground="#888888").pack(side=LEFT, padx=(8, 0), pady=(6, 0))
 
         # 开发者链接区（右侧）
         link_area = ttk.Frame(title_row)

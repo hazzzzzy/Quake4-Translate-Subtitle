@@ -12,7 +12,8 @@ enum subColor_t {
 	SUB_COLOR_RADIO,		// 无线电 — 青
 	SUB_COLOR_MAKRON,		// Makron — 紫
 	SUB_COLOR_HUMANCAST,	// 人类/舰船广播 — 绿
-	SUB_COLOR_ENEMY			// 敌军语音 — 红
+	SUB_COLOR_ENEMY,		// 敌军语音 — 红
+	SUB_COLOR_WEAPONMOD		// 武器升级 — 粉
 };
 
 class idSoundShader;

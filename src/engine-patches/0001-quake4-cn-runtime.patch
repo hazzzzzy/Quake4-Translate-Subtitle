@@ -396,7 +396,7 @@ index 5c4464026..ebf1a76d1 100644
  
  	if ( player && player->GetHud() ) {
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
-index f755e1344..ee9336a6d 100644
+index f755e1344..268c0e82b 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 @@ -1,4 +1,4 @@
@@ -515,7 +515,7 @@ index f755e1344..ee9336a6d 100644
  	if ( newEnt->IsType( rvAIMedic::GetClassType() ) ) {
  		if ( ((rvAIMedic*)newEnt)->isTech ) {
  			cursor->SetStateInt( "npc_medictech", 2 );
-@@ -9449,6 +9496,43 @@ Called every tic for each player
+@@ -9449,6 +9496,42 @@ Called every tic for each player
  ==============
  */
  void idPlayer::Think( void ) {
@@ -523,7 +523,6 @@ index f755e1344..ee9336a6d 100644
 +	if ( harm_g_gibTest.GetInteger() > 0 ) {
 +		int tier = harm_g_gibTest.GetInteger();
 +		harm_g_gibTest.SetInteger( 0 );
-+		gameLocal.Printf( "[GIBTEST] triggered tier=%d\n", tier );
 +		static const char *stdGibs[] = {
 +			"moveable_gib_head_pork","moveable_gib_torso_pork","moveable_gib_rup_arm_pork",
 +			"moveable_gib_left_waist_pork","moveable_gib_rup_leg_pork","moveable_gib_lup_leg_pork",
@@ -559,7 +558,7 @@ index f755e1344..ee9336a6d 100644
  #ifdef _MOD_FULL_BODY_AWARENESS
  	if(!harm_pm_fullBodyAwareness.GetBool() || pm_thirdPerson.GetBool() || IsInVehicle() || zoomed || focusUI)
  	{
-@@ -11556,7 +11640,15 @@ void idPlayer::SetLastHitTime( int time, bool armorHit ) {
+@@ -11556,7 +11639,15 @@ void idPlayer::SetLastHitTime( int time, bool armorHit ) {
  
  	if ( lastHitTime != time ) {
  		if ( cursor ) {
@@ -575,7 +574,7 @@ index f755e1344..ee9336a6d 100644
  		}
  		if ( gameLocal.isMultiplayer ) {			
  			// spectated so we get sounds for a client we're following
-@@ -13821,6 +13913,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
+@@ -13821,6 +13912,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
  idPlayer::SaveMessage
  =====================
  */
@@ -588,7 +587,7 @@ index f755e1344..ee9336a6d 100644
  void idPlayer::SaveMessage( void ) {
  #ifndef _XENON
  	if ( GetHud( ) ) {
-@@ -13830,6 +13928,18 @@ void idPlayer::SaveMessage( void ) {
+@@ -13830,6 +13927,18 @@ void idPlayer::SaveMessage( void ) {
  	if ( objectiveSystem ) {
  		objectiveSystem->HandleNamedEvent( "saveMessage" );
  	}
@@ -732,10 +731,10 @@ index 5c9d2262c..051cc1010 100644
  		StopSound( SND_CHANNEL_ANY, true );
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
 new file mode 100644
-index 000000000..07962bac8
+index 000000000..2d3fdc05a
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
-@@ -0,0 +1,1206 @@
+@@ -0,0 +1,1257 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— 语音字幕（Apex/HL2 风格整块面板）
 +// 面板底部锚定，新行从下方顶入，高度平滑伸缩，行淡入淡出
 +// GUI 资产: guis/subtitles.gui
@@ -1545,6 +1544,13 @@ index 000000000..07962bac8
 +		color = SUB_COLOR_ENEMY;		// 敌军语音 — 红
 +	} else {
 +		color = SUB_COLOR_NORMAL;	// 角色对白 — 白
++		// 敌人单位名（步兵/机炮兵/角斗士等）→ 红
++		for ( int i = 0; enemyUnitNames[i]; i++ ) {
++			if ( idStr::Cmp( speaker, enemyUnitNames[i] ) == 0 ) {
++				color = SUB_COLOR_ENEMY;
++				break;
++			}
++		}
 +	}
 +
 +	if ( harm_g_subtitleDebug.GetBool() ) {
@@ -1725,6 +1731,49 @@ index 000000000..07962bac8
 +			if ( mapped ) speaker = mapped;
 +		}
 +	}
++	// 武器改造声音 → 粉红色标志（speaker 保持说话人推断，不覆盖）
++	bool isWeaponMod = false;
++	if ( shader ) {
++		const char *sn = shader->GetName();
++		static const char *weaponModSounds[] = {
++			"vo_1_1_11_565_1", "vo_1_2_12_10_1", "vo_2_2_10_335_1",
++			"vo_2_2_4_45_1", "vo_2_2_4_45_2", "vo_2_2_4_75_1",
++			"vo_2_2_4_75_2", "vo_2_2_7_171_1", "vo_3_1_5_3_1",
++			"vo_3_1_3_25_1", "vo_1_1_13_20_1", "vo_1_1_5_40_1", NULL
++		};
++		for ( int i = 0; weaponModSounds[i]; i++ ) {
++			if ( idStr::Cmp( sn, weaponModSounds[i] ) == 0 ) {
++				isWeaponMod = true;
++				break;
++			}
++		}
++	}
++	// 敌人怪物：从 spawnclass 推断中文名（步兵/机炮兵等），显示具体怪物名而非"舰载广播"
++	if ( !speaker.Length() && bodyEnt && bodyEnt->IsType( idActor::GetClassType() ) ) {
++		idPlayer *pl = gameLocal.GetLocalPlayer();
++		if ( pl && static_cast<idActor *>( bodyEnt )->team != pl->team ) {
++			const char *cls = bodyEnt->spawnArgs.GetString( "spawnclass", "" );
++			static const struct { const char *cls; const char *cn; } monMap[] = {
++				{ "rvMonsterGrunt", "\xE6\xAD\xA5\xE5\x85\xB5" },
++				{ "rvMonsterGunner", "\xE6\x9C\xBA\xE7\x82\xAE\xE5\x85\xB5" },
++				{ "rvMonsterBerserker", "\xE7\x8B\x82\xE6\x88\x98\xE5\xA3\xAB" },
++				{ "rvMonsterGladiator", "\xE8\xA7\x92\xE6\x96\x97\xE5\xA3\xAB" },
++				{ "rvMonsterIronMaiden", "\xE9\x93\x81\xE5\xA8\x98\xE5\xAD\x90" },
++				{ "rvMonsterFailedTransfer", "\xE5\xA4\xB1\xE8\xB4\xA5\xE6\x94\xB9\xE9\x80\xA0\xE4\xBD\x93" },
++				{ "rvMonsterScientist", "\xE7\xA7\x91\xE5\xAD\xA6\xE5\xAE\xB6" },
++				{ "rvMonsterSentry", "\xE5\x93\xA8\xE5\x8D\xAB" },
++				{ "rvMonsterStroggMarine", "\xE9\x99\x86\xE6\x88\x98\xE5\x85\xB5" },
++				{ "rvMonsterSlimyTransfer", "\xE5\xA4\xB1\xE8\xB4\xA5\xE6\x94\xB9\xE9\x80\xA0\xE4\xBD\x93" },
++				{ NULL, NULL }
++			};
++			for ( int i = 0; monMap[i].cls; i++ ) {
++				if ( idStr::Icmp( cls, monMap[i].cls ) == 0 ) {
++					speaker = monMap[i].cn;
++					break;
++				}
++			}
++		}
++	}
 +	if ( !speaker.Length() && fallbackSpeaker && fallbackSpeaker[0] ) {
 +		// 区分 Strogg 广播(vo_pa_*)与人类/舰船广播：前者黄色，后者绿色
 +		if ( shader && idStr::Cmp( fallbackSpeaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) == 0 ) {
@@ -1739,7 +1788,7 @@ index 000000000..07962bac8
 +		}
 +	}
 +
-+	Add( speaker.Length() ? speaker.c_str() : NULL, text, durationMs );
++	Add( speaker.Length() ? speaker.c_str() : NULL, text, durationMs, isWeaponMod ? SUB_COLOR_WEAPONMOD : SUB_COLOR_NORMAL );
 +}
 +
 +/*
@@ -1927,6 +1976,7 @@ index 000000000..07962bac8
 +				case SUB_COLOR_MAKRON:    subR = 0.75f; subG = 0.35f; subB = 1.0f;  break;
 +				case SUB_COLOR_HUMANCAST: subR = 0.35f; subG = 0.60f; subB = 1.0f;  break;
 +				case SUB_COLOR_ENEMY:     subR = 1.0f;  subG = 0.35f; subB = 0.35f; break;
++			case SUB_COLOR_WEAPONMOD: subR = 1.0f;  subG = 0.4f;  subB = 0.7f;  break; // 武器升级 — 粉红
 +				default:                   subR = 0.95f; subG = 0.95f; subB = 0.95f; break;
 +			}
 +			gui->SetStateFloat( va( "subTxtR%d", i ), subR );
@@ -1944,10 +1994,10 @@ index 000000000..07962bac8
 +}
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h
 new file mode 100644
-index 000000000..a9599a521
+index 000000000..8258d7a0c
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h
-@@ -0,0 +1,70 @@
+@@ -0,0 +1,71 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— HL 风格语音字幕
 +// 文本来源: rvDeclLipSync::GetTranscribeText()（经 GetLocalizedString 本地化）
 +#ifndef __GAME_SUBTITLES_H__
@@ -1962,7 +2012,8 @@ index 000000000..a9599a521
 +	SUB_COLOR_RADIO,		// 无线电 — 青
 +	SUB_COLOR_MAKRON,		// Makron — 紫
 +	SUB_COLOR_HUMANCAST,	// 人类/舰船广播 — 绿
-+	SUB_COLOR_ENEMY			// 敌军语音 — 红
++	SUB_COLOR_ENEMY,		// 敌军语音 — 红
++	SUB_COLOR_WEAPONMOD		// 武器升级 — 粉
 +};
 +
 +class idSoundShader;
@@ -2019,7 +2070,7 @@ index 000000000..a9599a521
 +
 +#endif /* !__GAME_SUBTITLES_H__ */
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp b/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
-index 8fce0d71e..caf607d2c 100644
+index 8fce0d71e..2e283bf17 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
 @@ -1,4 +1,4 @@
@@ -2035,7 +2086,7 @@ index 8fce0d71e..caf607d2c 100644
 +#include "../Subtitles.h"
 +
 +// HAZ: auto-gib enemies on death (skips boss to preserve death animation, skips friendly marines)
-+idCVar harm_g_gibOnDeath( "harm_g_gibOnDeath", "1", CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "auto-gib Strogg enemies on death (skip boss and friendly)" );
++idCVar harm_g_gibOnDeath( "harm_g_gibOnDeath", "0", CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "auto-gib Strogg enemies on death (skip boss and friendly)" );
  
  const char* aiTalkMessageString [ ] = {
  	"None",
@@ -2079,48 +2130,48 @@ index 8fce0d71e..caf607d2c 100644
 +					spawnArgs.Set( "gib", "1" );
 +					spawnArgs.Set( "fx_gib", "effects/monsters/gib.fx" );
 +					if ( large ) {
-+						// 15 big_ chunks (heavy: gladiator/light_tank)
-+						spawnArgs.Set( "def_dropGibItem1", "moveable_gib_big_head_pork" );
-+						spawnArgs.Set( "def_dropGibItem2", "moveable_gib_big_torso_pork" );
-+						spawnArgs.Set( "def_dropGibItem3", "moveable_gib_big_rup_arm_pork" );
-+						spawnArgs.Set( "def_dropGibItem4", "moveable_gib_big_left_waist_pork" );
-+						spawnArgs.Set( "def_dropGibItem5", "moveable_gib_big_rup_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem6", "moveable_gib_big_lup_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem7", "moveable_gib_big_rup2_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem8", "moveable_gib_big_pelvis_pork" );
-+						spawnArgs.Set( "def_dropGibItem9", "moveable_gib_skull" );
-+						spawnArgs.Set( "def_dropGibItem10", "moveable_gib_big_torso_pork" );
-+						spawnArgs.Set( "def_dropGibItem11", "moveable_gib_big_rup_arm_pork" );
-+						spawnArgs.Set( "def_dropGibItem12", "moveable_gib_big_left_waist_pork" );
-+						spawnArgs.Set( "def_dropGibItem13", "moveable_gib_big_rup_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem14", "moveable_gib_big_lup_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem15", "moveable_gib_big_rup2_leg_pork" );
++						// 15 chunks (heavy: recognizable parts — head/torso/skull/brain/leg/pelvis + repeats)
++						spawnArgs.Set( "def_dropGibItem1", "moveable_gib_head_pork" );
++						spawnArgs.Set( "def_dropGibItem2", "moveable_gib_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem3", "moveable_gib_skull" );
++						spawnArgs.Set( "def_dropGibItem4", "moveable_gib_brain1" );
++						spawnArgs.Set( "def_dropGibItem5", "moveable_gib_brain2" );
++						spawnArgs.Set( "def_dropGibItem6", "moveable_gib_lup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem7", "moveable_gib_pelvis_pork" );
++						spawnArgs.Set( "def_dropGibItem8", "moveable_gib_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem9", "moveable_gib_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem10", "moveable_gib_left_waist_pork" );
++						spawnArgs.Set( "def_dropGibItem11", "moveable_gib_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem12", "moveable_gib_head_pork" );
++						spawnArgs.Set( "def_dropGibItem13", "moveable_gib_brain1" );
++						spawnArgs.Set( "def_dropGibItem14", "moveable_gib_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem15", "moveable_gib_skull" );
 +					} else if ( medium ) {
-+						// 12 big_ chunks (elite: gunner/berserker/iron_maiden)
-+						spawnArgs.Set( "def_dropGibItem1", "moveable_gib_big_head_pork" );
-+						spawnArgs.Set( "def_dropGibItem2", "moveable_gib_big_torso_pork" );
-+						spawnArgs.Set( "def_dropGibItem3", "moveable_gib_big_rup_arm_pork" );
-+						spawnArgs.Set( "def_dropGibItem4", "moveable_gib_big_left_waist_pork" );
-+						spawnArgs.Set( "def_dropGibItem5", "moveable_gib_big_rup_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem6", "moveable_gib_big_lup_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem7", "moveable_gib_big_rup2_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem8", "moveable_gib_big_pelvis_pork" );
-+						spawnArgs.Set( "def_dropGibItem9", "moveable_gib_skull" );
-+						spawnArgs.Set( "def_dropGibItem10", "moveable_gib_big_torso_pork" );
-+						spawnArgs.Set( "def_dropGibItem11", "moveable_gib_big_rup_arm_pork" );
-+						spawnArgs.Set( "def_dropGibItem12", "moveable_gib_big_left_waist_pork" );
++						// 12 chunks (elite: recognizable base + repeats)
++						spawnArgs.Set( "def_dropGibItem1", "moveable_gib_head_pork" );
++						spawnArgs.Set( "def_dropGibItem2", "moveable_gib_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem3", "moveable_gib_skull" );
++						spawnArgs.Set( "def_dropGibItem4", "moveable_gib_brain1" );
++						spawnArgs.Set( "def_dropGibItem5", "moveable_gib_brain2" );
++						spawnArgs.Set( "def_dropGibItem6", "moveable_gib_lup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem7", "moveable_gib_pelvis_pork" );
++						spawnArgs.Set( "def_dropGibItem8", "moveable_gib_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem9", "moveable_gib_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem10", "moveable_gib_left_waist_pork" );
++						spawnArgs.Set( "def_dropGibItem11", "moveable_gib_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem12", "moveable_gib_head_pork" );
 +					} else {
-+						// 10 big_ chunks (small: grunt/marine/tactical)
-+						spawnArgs.Set( "def_dropGibItem1", "moveable_gib_big_head_pork" );
-+						spawnArgs.Set( "def_dropGibItem2", "moveable_gib_big_torso_pork" );
-+						spawnArgs.Set( "def_dropGibItem3", "moveable_gib_big_rup_arm_pork" );
-+						spawnArgs.Set( "def_dropGibItem4", "moveable_gib_big_left_waist_pork" );
-+						spawnArgs.Set( "def_dropGibItem5", "moveable_gib_big_rup_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem6", "moveable_gib_big_lup_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem7", "moveable_gib_big_rup2_leg_pork" );
-+						spawnArgs.Set( "def_dropGibItem8", "moveable_gib_big_pelvis_pork" );
-+						spawnArgs.Set( "def_dropGibItem9", "moveable_gib_skull" );
-+						spawnArgs.Set( "def_dropGibItem10", "moveable_gib_big_torso_pork" );
++						// 10 chunks (small: head/torso/skull/brain/leg/pelvis + 2 arms + flesh)
++						spawnArgs.Set( "def_dropGibItem1", "moveable_gib_head_pork" );
++						spawnArgs.Set( "def_dropGibItem2", "moveable_gib_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem3", "moveable_gib_skull" );
++						spawnArgs.Set( "def_dropGibItem4", "moveable_gib_brain1" );
++						spawnArgs.Set( "def_dropGibItem5", "moveable_gib_brain2" );
++						spawnArgs.Set( "def_dropGibItem6", "moveable_gib_lup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem7", "moveable_gib_pelvis_pork" );
++						spawnArgs.Set( "def_dropGibItem8", "moveable_gib_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem9", "moveable_gib_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem10", "moveable_gib_left_waist_pork" );
 +					}
 +				}
 +				// defer to next frame — spawning inside Killed chain stalls scripted sequences
@@ -2132,7 +2183,7 @@ index 8fce0d71e..caf607d2c 100644
  }
  
  /***********************************************************************
-@@ -2207,7 +2297,21 @@ bool idAI::SetEnemy( idEntity *newEnemy ) {
+@@ -2207,7 +2297,42 @@ bool idAI::SetEnemy( idEntity *newEnemy ) {
  	if ( enemy.ent != oldEnemy ) {
  		OnEnemyChange ( oldEnemy );
  	}
@@ -2144,8 +2195,29 @@ index 8fce0d71e..caf607d2c 100644
 +		if ( alertSnd && *alertSnd ) {
 +			const rvDeclLipSync *ls = declManager->FindLipSync( alertSnd, false );
 +			if ( ls && ls->GetTranscribeText() && ls->GetTranscribeText()[0] ) {
-+				// "敌军" speaker -> SUB_COLOR_ENEMY (红色)
-+				gameSubtitles.Add( "\xE6\x95\x8C\xE5\x86\x9B", ls->GetTranscribeText(), 3000, SUB_COLOR_ENEMY );
++				// 从 spawnclass 推断怪物中文名（步兵/机炮兵等），默认"敌军"
++				const char *alertSpeaker = "\xE6\x95\x8C\xE5\x86\x9B";
++				const char *alertCls = spawnArgs.GetString( "spawnclass", "" );
++				static const struct { const char *cls; const char *cn; } alertMonMap[] = {
++					{ "rvMonsterGrunt", "\xE6\xAD\xA5\xE5\x85\xB5" },
++					{ "rvMonsterGunner", "\xE6\x9C\xBA\xE7\x82\xAE\xE5\x85\xB5" },
++					{ "rvMonsterBerserker", "\xE7\x8B\x82\xE6\x88\x9C\xE5\xA3\xAB" },
++					{ "rvMonsterGladiator", "\xE8\xA7\x92\xE6\x96\x97\xE5\xA3\xAB" },
++					{ "rvMonsterIronMaiden", "\xE9\x93\x81\xE5\xA8\x98\xE5\xAD\x90" },
++					{ "rvMonsterFailedTransfer", "\xE5\xA4\xB1\xE8\xB4\xA5\xE6\x94\xB9\xE9\x80\xA0\xE4\xBD\x93" },
++					{ "rvMonsterSlimyTransfer", "\xE5\xA4\xB1\xE8\xB4\xA5\xE6\x94\xB9\xE9\x80\xA0\xE4\xBD\x93" },
++					{ "rvMonsterScientist", "\xE7\xA7\x91\xE5\xAD\xA6\xE5\xAE\xB6" },
++					{ "rvMonsterSentry", "\xE5\x93\xA8\xE5\x8D\xAB" },
++					{ "rvMonsterStroggMarine", "\xE9\x99\x86\xE6\x88\x98\xE5\x85\xB5" },
++					{ NULL, NULL }
++				};
++				for ( int ami = 0; alertMonMap[ami].cls; ami++ ) {
++					if ( idStr::Icmp( alertCls, alertMonMap[ami].cls ) == 0 ) {
++						alertSpeaker = alertMonMap[ami].cn;
++						break;
++					}
++				}
++				gameSubtitles.Add( alertSpeaker, ls->GetTranscribeText(), 3000, SUB_COLOR_ENEMY );
 +			} else if ( harm_g_subtitleDebug.GetBool() ) {
 +				gameLocal.Printf( "[SUB] alert: no lipsync decl for '%s'\n", alertSnd );
 +			}
@@ -2155,7 +2227,7 @@ index 8fce0d71e..caf607d2c 100644
  	return true;
  }
  
-@@ -4511,8 +4615,17 @@ bool idAI::Speak( const char *lipsync, bool random ){
+@@ -4511,8 +4636,17 @@ bool idAI::Speak( const char *lipsync, bool random ){
  	if ( head ) {
  		speakTime = head->StartLipSyncing( lipsync );
  	} else {
