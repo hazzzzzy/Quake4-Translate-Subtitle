@@ -29,8 +29,48 @@ index dadf7c489..40e43dceb 100644
  		Game_Debug.cpp
  		Game_Log.cpp
  		Healing_Station.cpp
+diff --git a/Q3E/src/main/jni/doom3/neo/quake4/AFEntity.cpp b/Q3E/src/main/jni/doom3/neo/quake4/AFEntity.cpp
+index c07739e88..814ff89d4 100644
+--- a/Q3E/src/main/jni/doom3/neo/quake4/AFEntity.cpp
++++ b/Q3E/src/main/jni/doom3/neo/quake4/AFEntity.cpp
+@@ -1558,10 +1558,21 @@ void idAFEntity_Gibbable::SpawnGibs( const idVec3 &dir, const char *damageDefNam
+ 		} else {
+ 			list[i]->GetPhysics()->SetContents( CONTENTS_CORPSE );
+ 			list[i]->GetPhysics()->SetClipMask( CONTENTS_SOLID );
++			// HAZ: directional gib spray — chunks fly toward enemy back (bullets)
++			// or blast tail (explosives), with upward arc so they launch not roll
++			idVec3 useDir = dir;
++			spawnArgs.GetVector( "harm_gibDir", "", useDir );
+ 			velocity = list[i]->GetPhysics()->GetAbsBounds().GetCenter() - entityCenter;
+ 			velocity.NormalizeFast();
+-			velocity += ( i & 1 ) ? dir : -dir;
+-			list[i]->GetPhysics()->SetLinearVelocity( velocity * 225.0f );
++			if ( useDir.LengthSqr() > 0.001f ) {
++				useDir.NormalizeFast();
++				velocity = velocity * 0.3f + useDir * 0.9f;
++				velocity.z += 0.6f;		// upward arc so chunks fly up and out
++			} else {
++				velocity.z += 0.5f;
++			}
++			velocity.NormalizeFast();
++			list[i]->GetPhysics()->SetLinearVelocity( velocity * 380.0f );
+ 		}
+ 		list[i]->GetRenderEntity()->noShadow = true;
+ 		list[i]->GetRenderEntity()->shaderParms[ SHADERPARM_TIME_OF_DEATH ] = gameLocal.time * 0.001f;
+diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Actor.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Actor.cpp
+index 5b97abf8c..1267fd2f5 100644
+--- a/Q3E/src/main/jni/doom3/neo/quake4/Actor.cpp
++++ b/Q3E/src/main/jni/doom3/neo/quake4/Actor.cpp
+@@ -2508,6 +2508,7 @@ void idActor::Damage( idEntity *inflictor, idEntity *attacker, const idVec3 &dir
+ 					gibbed = true;
+ 				}
+ 			}
++			spawnArgs.Set( "harm_lastDmgDef", damageDefName );
+ 			Killed( inflictor, attacker, damage, dir, location );
+ 			gibbed = saveGibbed;
+ 			if ( health < -20 )
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
-index 6331dede4..70af17123 100644
+index 6331dede4..93c3ec578 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Entity.cpp
 @@ -2,6 +2,7 @@
@@ -41,7 +81,72 @@ index 6331dede4..70af17123 100644
  
  // RAVEN BEGIN
  // bdube: client effects
-@@ -3716,6 +3717,11 @@ void idEntity::AddDamageEffect( const trace_t &collision, const idVec3 &velocity
+@@ -38,6 +39,11 @@ const idEventDef EV_SpawnBind( "<spawnbind>", NULL );
+ const idEventDef EV_SetOwner( "setOwner", "e" );
+ const idEventDef EV_SetModel( "setModel", "s" );
+ const idEventDef EV_SetSkin( "setSkin", "s" );
++#ifdef _QUAKE4
++// karin: hit \xE6\x97\xA5\xE5\xBF\x97\xE5\xBC\x80\xE5\x85\xB3
++static idCVar harm_g_hitLog( "harm_g_hitLog", "0", CVAR_GAME | CVAR_BOOL, "debug: log every entity that takes damage" );
++#endif
++
+ const idEventDef EV_GetWorldOrigin( "getWorldOrigin", NULL, 'v' );
+ const idEventDef EV_SetWorldOrigin( "setWorldOrigin", "v" );
+ const idEventDef EV_GetOrigin( "getOrigin", NULL, 'v' );
+@@ -2017,7 +2023,29 @@ bool idEntity::StartSound( const char *soundName, const s_channelType channel, i
+ 	}
+ 
+ 	shader = declManager->FindSound( sound );
+-	return StartSoundShader( shader, channel, soundShaderFlags, broadcast, length );
++	int __subLen = 0;
++	bool __sndResult = StartSoundShader( shader, channel, soundShaderFlags, broadcast, length ? length : &__subLen );
++	int __actualLen = length ? *length : __subLen;
++
++	// karin: \xE5\xAD\x97\xE5\xB9\x95\xE6\x8C\x82\xE9\x92\xA9\xE2\x80\x94\xE2\x80\x94snd_*/lipsync_* \xE9\x94\xAE\xE7\x9A\x84\xE5\xA3\xB0\xE9\x9F\xB3\xEF\xBC\x88\xE5\x8A\xA8\xE7\x94\xBB\xE5\xB8\xA7\xE4\xBA\x8B\xE4\xBB\xB6 + \xE8\x84\x9A\xE6\x9C\xAC startSound\xEF\xBC\x89\xE3\x80\x82
++	// AI::Speak \xE8\xB5\xB0 StartSoundShader \xE7\x9B\xB4\xE6\x8E\xA5\xEF\xBC\x88\xE4\xB8\x8D\xE7\xBB\x8F StartSound\xEF\xBC\x89\xEF\xBC\x8C\xE4\xB8\x8D\xE4\xBC\x9A\xE9\x87\x8D\xE5\xA4\x8D\xE3\x80\x82
++	if ( __sndResult && __actualLen > 0 && !( soundShaderFlags & SSF_IS_VO ) && shader ) {
++		const char *sndName = shader->GetName();
++		idStr sndNameStr2 = sndName;
++		sndNameStr2.ToLower();
++		// \xE8\xB7\xB3\xE8\xBF\x87\xE7\x96\xBC\xE7\x97\x9B/\xE6\xAD\xBB\xE4\xBA\xA1\xE5\xA3\xB0\xE9\x9F\xB3\xEF\xBC\x8C\xE4\xB8\x8D\xE5\x87\xBA\xE5\xAD\x97\xE5\xB9\x95
++		if ( sndNameStr2.Find( "pain" ) < 0 && sndNameStr2.Find( "death" ) < 0 ) {
++			const rvDeclLipSync *ls = declManager->FindLipSync( sndName, false );
++			if ( !ls ) {
++				ls = declManager->FindLipSync( va( "lipsync_%s", sndName ), false );
++			}
++			if ( ls && ls->GetTranscribeText() && ls->GetTranscribeText()[0] ) {
++				gameSubtitles.AddFromEntity( this, ls->GetTranscribeText(), __actualLen, shader, NULL );
++			}
++		}
++	}
++
++	return __sndResult;
+ }
+ 
+ /*
+@@ -3629,8 +3657,20 @@ inflictor, attacker, dir, and point can be NULL for environmental effects
+ 
+ ============
+ */
+-void idEntity::Damage( idEntity *inflictor, idEntity *attacker, const idVec3 &dir, 
++void idEntity::Damage( idEntity *inflictor, idEntity *attacker, const idVec3 &dir,
+ 					  const char *damageDefName, const float damageScale, const int location ) {
++#ifdef _QUAKE4
++	// karin: hit \xE6\x97\xA5\xE5\xBF\x97\xEF\xBC\x9A\xE8\xAE\xB0\xE5\xBD\x95\xE5\x8F\x97\xE5\x87\xBB\xE5\xAE\x9E\xE4\xBD\x93\xE7\x9A\x84\xE5\x90\x8D\xE7\xA7\xB0\xE3\x80\x81\xE7\xB1\xBB\xE5\x9E\x8B\xE5\x92\x8C\xE4\xBC\xA4\xE5\xAE\xB3\xE5\xAE\x9A\xE4\xB9\x89
++	if ( harm_g_hitLog.GetBool() ) {
++		const char *clsName = GetClassname();
++		const char *entName = GetName();
++		gameLocal.Printf( "[HIT] ent='%s' cls='%s' dmgDef='%s' loc=%d\n",
++			entName ? entName : "(null)",
++			clsName ? clsName : "(null)",
++			damageDefName ? damageDefName : "(null)",
++			location );
++	}
++#endif
+ 	if ( forwardDamageEnt.IsValid() ) {
+ 		forwardDamageEnt->Damage( inflictor, attacker, dir, damageDefName, damageScale, location );
+ 		return;
+@@ -3716,6 +3756,11 @@ void idEntity::AddDamageEffect( const trace_t &collision, const idVec3 &velocity
  	}
  
  	const char *materialType = gameLocal.sufaceTypeNames[ collision.c.material->GetSurfaceType() ];
@@ -53,7 +158,7 @@ index 6331dede4..70af17123 100644
  
  	// start impact sound based on material type
  	key = va( "snd_%s", materialType );
-@@ -5166,8 +5172,30 @@ idEntity::Event_StartSound
+@@ -5166,8 +5211,11 @@ idEntity::Event_StartSound
  */
  void idEntity::Event_StartSound( const char *soundName, int channel, int netSync ) {
  	int time;
@@ -61,43 +166,43 @@ index 6331dede4..70af17123 100644
 +
  	StartSound( soundName, ( s_channelType )channel, 0, ( netSync != 0 ), &time );
 +
-+	// karin: subtitle hook for script-triggered sounds (startSound).
-+	// Catches snd_*/lipsync_*/vo_* keys that bypass StartLipSyncing.
-+	// Does NOT fire for StartLipSyncing/AI Speak/speaker entities (those have own hooks).
-+	if ( time > 0 && soundName && soundName[0] ) {
-+		const char *shaderName = NULL;
-+		if ( idStr::Cmpn( soundName, "lipsync_", 8 ) == 0 ) {
-+			shaderName = spawnArgs.GetString( soundName );
-+			if ( !shaderName[0] ) shaderName = soundName + 8;
-+		} else if ( idStr::Cmpn( soundName, "snd_", 4 ) == 0 ) {
-+			shaderName = spawnArgs.GetString( soundName );
-+		} else if ( idStr::Cmpn( soundName, "vo_", 3 ) == 0 ) {
-+			shaderName = soundName;
-+		}
-+		if ( shaderName && shaderName[0] ) {
-+			const rvDeclLipSync *ls = declManager->FindLipSync( shaderName, false );
-+			if ( ls && ls->GetTranscribeText()[0] ) {
-+				gameSubtitles.AddFromEntity( this, ls->GetTranscribeText(), time );
-+			}
-+		}
-+	}
++	// karin: 字幕挂钩已移至 idEntity::StartSound（统一覆盖帧事件 + 脚本事件）
 +
  	idThread::ReturnFloat( MS2SEC( time ) );
  }
  
-@@ -6601,7 +6629,11 @@ idAnimatedEntity::GetDefaultSurfaceType
+@@ -6517,6 +6565,17 @@ void idAnimatedEntity::AddDamageEffect( const trace_t &collision, const idVec3 &
+ #ifdef _QUAKE4 //karin: model == NULL 2025
+     if( !collision.c.material )
+         return;
++	// karin: hit \xE6\x97\xA5\xE5\xBF\x97\xEF\xBC\x9A\xE8\xAE\xB0\xE5\xBD\x95\xE5\x8F\x97\xE5\x87\xBB\xE6\x95\x88\xE6\x9E\x9C\xEF\xBC\x88\xE6\xAD\xA4\xE5\x87\xBD\xE6\x95\xB0\xE5\xA4\x84\xE7\x90\x86\xE5\x96\xB7\xE8\xA1\x80/\xE8\xB4\xB4\xE8\x8A\xB1\xE6\x95\x88\xE6\x9E\x9C\xEF\xBC\x89
++	if ( harm_g_hitLog.GetBool() ) {
++		int surfType = collision.c.material ? collision.c.material->GetSurfaceType() : -1;
++		gameLocal.Printf( "[HIT] AddDamageEffect ent='%s' cls='%s' bleed=%d dmgDef='%s' surfType=%d mat='%s'\n",
++			GetName() ? GetName() : "(null)",
++			GetClassname() ? GetClassname() : "(null)",
++			spawnArgs.GetBool( "bleed" ),
++			damageDefName ? damageDefName : "(null)",
++			surfType,
++			collision.c.material ? collision.c.material->GetName() : "(null)" );
++	}
+ #endif
+ 	const idDeclEntityDef *def = gameLocal.FindEntityDef( damageDefName, false );
+ 	if ( def == NULL || !def->dict.GetBool ( "bleed" ) ) {
+@@ -6601,6 +6660,13 @@ idAnimatedEntity::GetDefaultSurfaceType
  ==============
  */
  int	idAnimatedEntity::GetDefaultSurfaceType( void ) const {
--	return SURFTYPE_METAL;
-+	// karin: 原版返回 SURFTYPE_METAL，依赖材质 .mtr 里的 surfacetype 覆盖。
-+	// idTech4A++ 不总能正确读取实体模型的材质表面类型，导致生命补给器/
-+	// 被俘人类尸体射击时冒火花而非喷血。改为 FLESH 作为默认（角色类
-+	// idActor 已单独覆盖为 FLESH，关卡 BSP 几何体由材质系统处理不受影响）。
-+	return SURFTYPE_FLESH;
++	// karin: idActor 子类自行覆盖为 FLESH。此处只处理非角色的 idAnimatedEntity。
++	// bleed=true 或 rvHealingStation（生命补给器）→ FLESH（喷血），其余 → METAL（火花）。
++	// rvVehicle 继承 idActor 但应喷火花，由 HitScan/Projectile 的 spawnclass 检查排除。
++	const char *cls = spawnArgs.GetString( "spawnclass", "" );
++	if ( spawnArgs.GetBool( "bleed" ) || idStr::Icmp( cls, "rvHealingStation" ) == 0 ) {
++		return SURFTYPE_FLESH;
++	}
+ 	return SURFTYPE_METAL;
  }
  
- /*
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/GameEdit.cpp b/Q3E/src/main/jni/doom3/neo/quake4/GameEdit.cpp
 index 2ec6b8724..220915c2c 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/GameEdit.cpp
@@ -135,7 +240,7 @@ index 2ec6b8724..220915c2c 100644
  // RAVEN END
  
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
-index fbb6731ab..589fa735e 100644
+index fbb6731ab..9cb3162ef 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Game_local.cpp
 @@ -1,6 +1,8 @@
@@ -173,7 +278,7 @@ index fbb6731ab..589fa735e 100644
  	if ( !idStr::Icmp( menuCommand, "initCreateServerSettings" ) ) {
  		int	guiValue = 0;
  
-@@ -7904,21 +7917,28 @@ idEntity* idGameLocal::HitScan(
+@@ -7904,21 +7917,32 @@ idEntity* idGameLocal::HitScan(
  		// Play a different effect when reflecting
  		if ( !reflect || ent->fl.takedamage ) {
  			idMat3 axis;
@@ -192,7 +297,11 @@ index fbb6731ab..589fa735e 100644
 +			// karin: idActor 命中强制走默认 flesh 效果（血），不读 tr.c.materialType
 +			// （idTech4A++ 材质 type 读取异常，Strogg 模型被误判 metal 冒火花）
 +			const rvDeclMatType *harm_matType = tr.c.materialType;
-+			if ( ent->spawnArgs.GetBool("bleed") || ent->IsType ( idAnimatedEntity::GetClassType() ) ) {
++			bool harm_isVehicle = ( idStr::Icmpn( ent->spawnArgs.GetString( "spawnclass", "" ), "rvVehicle", 8 ) == 0 );
++			bool harm_isOrganic = ent->spawnArgs.GetBool("bleed");
++			if ( harm_isOrganic || (ent->IsType ( idActor::GetClassType() ) && !harm_isVehicle) ) {
++				harm_matType = declManager->FindMaterialType( "flesh" );
++			} else if ( ent->IsType ( idAnimatedEntity::GetClassType() ) && !harm_isVehicle ) {
 +				harm_matType = declManager->FindMaterialType( "flesh" );
 +			}
 +
@@ -250,7 +359,7 @@ index 2854fcf06..c85cbb394 100644
  		// Start the default emotion
  		anim = "emotion_";
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Misc.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Misc.cpp
-index 5c4464026..db60ef681 100644
+index 5c4464026..ebf1a76d1 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Misc.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Misc.cpp
 @@ -1,4 +1,4 @@
@@ -279,7 +388,7 @@ index 5c4464026..db60ef681 100644
 +		if ( radioLipSync ) {
 +			// 查角色映射:有映射=角色台词(如"Voss",正常亮色), 无映射=环境无线电("无线电"+淡色)
 +			const char *radioSpeaker = rvSubtitles::LookupSpeaker( sound );
-+			gameSubtitles.Add( radioSpeaker ? radioSpeaker : "\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5", radioLipSync->GetTranscribeText(), length );
++			gameSubtitles.Add( radioSpeaker ? radioSpeaker : "\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5", radioLipSync->GetTranscribeText(), length, SUB_COLOR_RADIO );
 +		} else if ( harm_g_subtitleDebug.GetBool() ) {
 +			gameLocal.Printf( "[SUB] radio: no lipsync decl for '%s'\n", sound );
 +		}
@@ -287,7 +396,7 @@ index 5c4464026..db60ef681 100644
  
  	if ( player && player->GetHud() ) {
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
-index f755e1344..e54374090 100644
+index f755e1344..ee9336a6d 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 @@ -1,4 +1,4 @@
@@ -304,7 +413,15 @@ index f755e1344..e54374090 100644
  
  #include "ai/AI.h"
  #include "ai/AI_Manager.h"
-@@ -21,8 +22,6 @@
+@@ -17,12 +18,14 @@
+ #include "ai/AAS_tactical.h"
+ #include "Healing_Station.h"
+ #include "ai/AI_Medic.h"
++#include "Subtitles.h"
++
++// HAZ: gib visual test demo (1=standard 8, 2=medium 10, 3=large 12 big_)
++idCVar harm_g_gibTest( "harm_g_gibTest", "0", CVAR_GAME | CVAR_INTEGER, "spawn giblets in front of player to preview gib (1=small,2=medium,3=large)" );
+ 
  // RAVEN BEGIN
  // nrausch: support for turning the weapon change ui on and off
  #ifdef _XENON
@@ -313,7 +430,7 @@ index f755e1344..e54374090 100644
  // nrausch: support for direct button input
  #include "../sys/xenon/xen_input.h"
  #endif
-@@ -30,8 +29,25 @@
+@@ -30,8 +33,25 @@
  #ifdef _MOD_VIEW_BODY
  #include "ViewBody.cpp"
  #endif
@@ -332,14 +449,14 @@ index f755e1344..e54374090 100644
 +
  #ifdef _QUAKE4 //karin: allow fire when focus NPC
  static idCVar harm_g_allowFireWhenFocusNPC( "harm_g_allowFireWhenFocusNPC", "0", CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "allow fire when focus NPC" );
-+// 准心命中变红：利用 cursor.gui weaponChange 事件（set matcolor = $gui::crossColor）
-+// 不需要改 cursor.gui 或编译 Quake4.exe，纯 q4game.dll 层面实现
++// \xE5\x87\x86\xE5\xBF\x83\xE5\x91\xBD\xE4\xB8\xAD\xE5\x8F\x98\xE7\xBA\xA2\xEF\xBC\x9A\xE5\x88\xA9\xE7\x94\xA8 cursor.gui weaponChange \xE4\xBA\x8B\xE4\xBB\xB6\xEF\xBC\x88set matcolor = $gui::crossColor\xEF\xBC\x89
++// \xE4\xB8\x8D\xE9\x9C\x80\xE8\xA6\x81\xE6\x94\xB9 cursor.gui \xE6\x88\x96\xE7\xBC\x96\xE8\xAF\x91 Quake4.exe\xEF\xBC\x8C\xE7\xBA\xAF q4game.dll \xE5\xB1\x82\xE9\x9D\xA2\xE5\xAE\x9E\xE7\x8E\xB0
 +static idStr	harm_origCrossColor;
 +static int		harm_hitFlashTime = 0;
  #endif
  
  idCVar net_predictionErrorDecay( "net_predictionErrorDecay", "112", CVAR_FLOAT | CVAR_GAME | CVAR_NOCHEAT, "time in milliseconds it takes to fade away prediction errors", 0.0f, 200.0f );
-@@ -2457,10 +2473,14 @@ void idPlayer::Restore( idRestoreGame *savefile ) {
+@@ -2457,10 +2477,14 @@ void idPlayer::Restore( idRestoreGame *savefile ) {
  	weaponViewModel.Restore( savefile );	
  	weaponWorldModel.Restore( savefile );	
  
@@ -355,7 +472,7 @@ index f755e1344..e54374090 100644
  	savefile->ReadBool( objectiveSystemOpen );
  
  #ifdef _XENON
-@@ -3759,8 +3779,24 @@ void idPlayer::DrawHUD( idUserInterface *_hud ) {
+@@ -3759,8 +3783,24 @@ void idPlayer::DrawHUD( idUserInterface *_hud ) {
  
  	if ( gameLocal.isMultiplayer ) {
  		_hud->SetStateBool( "mp", true );
@@ -380,15 +497,69 @@ index f755e1344..e54374090 100644
  	}
  
  	// Draw the cinematic hud when in a cinematic
-@@ -9449,6 +9485,7 @@ Called every tic for each player
+@@ -7468,8 +7508,15 @@ void idPlayer::UpdateFocusCharacter( idEntity* newEnt ) {
+ 		return;
+ 	}
+ 	// Handle character interaction
+-	cursor->SetStateString( "npc", common->GetLocalizedString(newEnt->spawnArgs.GetString( "npc_name", "Joe" )) );
+-	cursor->SetStateString( "npcdesc", common->GetLocalizedString(newEnt->spawnArgs.GetString( "npc_description", "" )) );
++	// karin: \xE5\x87\x86\xE5\xBF\x83\xE5\x90\x8D\xE5\xAD\x97\xE4\xBA\xBA\xE5\x90\x8D\xE6\xB1\x89\xE5\x8C\x96 + \xE5\xB0\x8F\xE9\x98\x9F\xE5\x90\x8D\xE6\xB1\x89\xE5\x8C\x96
++	{
++		idStr npcName( common->GetLocalizedString(newEnt->spawnArgs.GetString( "npc_name", "Joe" )) );
++		rvSubtitles::LocalizeText( npcName );
++		cursor->SetStateString( "npc", npcName.c_str() );
++		idStr npcDesc( common->GetLocalizedString(newEnt->spawnArgs.GetString( "npc_description", "" )) );
++		rvSubtitles::LocalizeText( npcDesc );
++		cursor->SetStateString( "npcdesc", npcDesc.c_str() );
++	}
+ 	if ( newEnt->IsType( rvAIMedic::GetClassType() ) ) {
+ 		if ( ((rvAIMedic*)newEnt)->isTech ) {
+ 			cursor->SetStateInt( "npc_medictech", 2 );
+@@ -9449,6 +9496,43 @@ Called every tic for each player
  ==============
  */
  void idPlayer::Think( void ) {
++	// HAZ: gib test demo — spawn giblets in front to preview the visual effect
++	if ( harm_g_gibTest.GetInteger() > 0 ) {
++		int tier = harm_g_gibTest.GetInteger();
++		harm_g_gibTest.SetInteger( 0 );
++		gameLocal.Printf( "[GIBTEST] triggered tier=%d\n", tier );
++		static const char *stdGibs[] = {
++			"moveable_gib_head_pork","moveable_gib_torso_pork","moveable_gib_rup_arm_pork",
++			"moveable_gib_left_waist_pork","moveable_gib_rup_leg_pork","moveable_gib_lup_leg_pork",
++			"moveable_gib_pelvis_pork","moveable_gib_skull","moveable_gib_rup2_leg_pork",
++			"moveable_gib_rup_arm_pork"
++		};
++		static const char *bigGibs[] = {
++			"moveable_gib_big_head_pork","moveable_gib_big_torso_pork","moveable_gib_big_rup_arm_pork",
++			"moveable_gib_big_left_waist_pork","moveable_gib_big_rup_leg_pork","moveable_gib_big_lup_leg_pork",
++			"moveable_gib_big_rup2_leg_pork","moveable_gib_big_pelvis_pork","moveable_gib_big_torso_pork",
++			"moveable_gib_big_rup_arm_pork","moveable_gib_big_left_waist_pork","moveable_gib_skull"
++		};
++		const char **gibs = ( tier >= 3 ) ? bigGibs : stdGibs;
++		int count = ( tier >= 3 ) ? 12 : ( ( tier == 2 ) ? 10 : 8 );
++		idVec3 fwd = viewAngles.ToForward();
++		idVec3 center = GetPhysics()->GetOrigin() + fwd * 256.0f + idVec3( 0, 0, 32 );
++		for ( int i = 0; i < count; i++ ) {
++			idDict args;
++			args.Set( "classname", gibs[i] );
++			args.Set( "origin", center.ToString() );
++			idEntity *g = NULL;
++			if ( gameLocal.SpawnEntityDef( args, &g ) && g && g->GetPhysics() ) {
++				float ang = i * ( 2.0f * 3.14159265f / count );
++				idVec3 vel( idMath::Cos( ang ), idMath::Sin( ang ), 0.0f );
++				vel *= 300.0f;
++				vel.z += 150.0f;
++				g->GetPhysics()->SetLinearVelocity( vel );
++				g->PostEventSec( &EV_Remove, 3.0f );
++			}
++		}
++	}
 +	SaveMessageWatchdog();
  #ifdef _MOD_FULL_BODY_AWARENESS
  	if(!harm_pm_fullBodyAwareness.GetBool() || pm_thirdPerson.GetBool() || IsInVehicle() || zoomed || focusUI)
  	{
-@@ -11556,7 +11593,15 @@ void idPlayer::SetLastHitTime( int time, bool armorHit ) {
+@@ -11556,7 +11640,15 @@ void idPlayer::SetLastHitTime( int time, bool armorHit ) {
  
  	if ( lastHitTime != time ) {
  		if ( cursor ) {
@@ -404,7 +575,7 @@ index f755e1344..e54374090 100644
  		}
  		if ( gameLocal.isMultiplayer ) {			
  			// spectated so we get sounds for a client we're following
-@@ -13821,6 +13866,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
+@@ -13821,6 +13913,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
  idPlayer::SaveMessage
  =====================
  */
@@ -417,7 +588,7 @@ index f755e1344..e54374090 100644
  void idPlayer::SaveMessage( void ) {
  #ifndef _XENON
  	if ( GetHud( ) ) {
-@@ -13830,6 +13881,18 @@ void idPlayer::SaveMessage( void ) {
+@@ -13830,6 +13928,18 @@ void idPlayer::SaveMessage( void ) {
  	if ( objectiveSystem ) {
  		objectiveSystem->HandleNamedEvent( "saveMessage" );
  	}
@@ -456,7 +627,7 @@ index 31d63795f..0230ad9fa 100644
  	// mekberg: set pm_ cvars
  	void					SetPMCVars( void );
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Projectile.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Projectile.cpp
-index d3e1eaf79..383e96f0e 100644
+index d3e1eaf79..803a1394d 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Projectile.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Projectile.cpp
 @@ -1017,7 +1017,7 @@ idProjectile::DefaultDamageEffect
@@ -468,7 +639,7 @@ index d3e1eaf79..383e96f0e 100644
  
  	// Make sure we want to play effects
  	if  ( (!*spawnArgs.GetString( "def_splash_damage" ) || spawnArgs.GetBool( "bloodyImpactEffect" ))
-@@ -1025,16 +1025,24 @@ void idProjectile::DefaultDamageEffect( const trace_t &tr, const idVec3 &velocit
+@@ -1025,16 +1025,28 @@ void idProjectile::DefaultDamageEffect( const trace_t &tr, const idVec3 &velocit
  		return;
  	}
  
@@ -476,9 +647,13 @@ index d3e1eaf79..383e96f0e 100644
 +	// karin: idActor/idAFAttachment 命中强制走 flesh 效果（喷血），不读 tr.c.materialType
 +	// （idTech4A++ 材质 type 读取异常，Strogg 模型被误判 metal 冒火花）
 +	const rvDeclMatType *harm_matType = tr.c.materialType;
-+	bool harm_isActor = ent->IsType( idAnimatedEntity::GetClassType() ) || ent->IsType( idAFAttachment::GetClassType() ) || ent->spawnArgs.GetBool("bleed");
++	bool harm_isVehicle = ( idStr::Icmpn( ent->spawnArgs.GetString( "spawnclass", "" ), "rvVehicle", 8 ) == 0 );
++	bool harm_isOrganic = ent->spawnArgs.GetBool("bleed");
++	bool harm_isActor = harm_isOrganic || (!harm_isVehicle && ent->IsType( idActor::GetClassType() )) || ent->IsType( idAFAttachment::GetClassType() ) || (!harm_isVehicle && ent->IsType( idAnimatedEntity::GetClassType() ));
 +	if ( harm_isActor ) {
 +		harm_matType = declManager->FindMaterialType( "flesh" );
++	} else if ( ent->IsType( idAnimatedEntity::GetClassType() ) ) {
++		harm_matType = declManager->FindMaterialType( "metal" );
 +	}
 +
 +	// Effect axis when hitting actors is along the direction of impact because actor models are
@@ -497,7 +672,7 @@ index d3e1eaf79..383e96f0e 100644
  		if ( actorImpactEffect ) {
  			gameLocal.PlayEffect( actorImpactEffect, tr.c.point, axis, false, vec3_origin, true );
  			return;
-@@ -1042,12 +1050,12 @@ void idProjectile::DefaultDamageEffect( const trace_t &tr, const idVec3 &velocit
+@@ -1042,12 +1054,12 @@ void idProjectile::DefaultDamageEffect( const trace_t &tr, const idVec3 &velocit
  	} else {
  		axis = tr.c.normal.ToMat3();
  	}
@@ -557,10 +732,10 @@ index 5c9d2262c..051cc1010 100644
  		StopSound( SND_CHANNEL_ANY, true );
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
 new file mode 100644
-index 000000000..7f8b70540
+index 000000000..07962bac8
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp
-@@ -0,0 +1,768 @@
+@@ -0,0 +1,1206 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— 语音字幕（Apex/HL2 风格整块面板）
 +// 面板底部锚定，新行从下方顶入，高度平滑伸缩，行淡入淡出
 +// GUI 资产: guis/subtitles.gui
@@ -577,6 +752,381 @@ index 000000000..7f8b70540
 +idCVar harm_g_subtitleMinTime( "harm_g_subtitleMinTime", "1500", CVAR_GAME | CVAR_INTEGER | CVAR_ARCHIVE, "minimum time(ms) a subtitle stays" );
 +idCVar harm_g_subtitleTest( "harm_g_subtitleTest", "", CVAR_GAME, "debug: push a test subtitle line" );
 +idCVar harm_g_subtitleDebug( "harm_g_subtitleDebug", "0", CVAR_GAME | CVAR_BOOL, "debug: print subtitle add/skip decisions to console" );
++// karin: \xE5\xAD\x97\xE5\xB9\x95\xE6\xBC\x94\xE7\xA4\xBA\xE6\xA8\xA1\xE5\xBC\x8F \xE2\x80\x94\xE2\x80\x94 \xE5\xBE\xAA\xE7\x8E\xAF\xE6\xBC\x94\xE7\xA4\xBA\xE6\x89\x80\xE6\x9C\x89\xE5\xAD\x97\xE5\xB9\x95\xE7\xB1\xBB\xE5\x9E\x8B\xEF\xBC\x88\xE6\x95\x8C\xE5\x86\x9B/\xE8\xA7\x92\xE8\x89\xB2/\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5/\xE5\xB9\xBF\xE6\x92\xAD/\xE9\xA9\xAC\xE5\x85\x8B\xE9\xBE\x99\xEF\xBC\x89
++idCVar harm_g_subtitleDemo( "harm_g_subtitleDemo", "0", CVAR_GAME | CVAR_BOOL, "demo: cycle through all subtitle types for visual testing" );
++// karin: \xE4\xBA\xBA\xE5\x90\x8D\xE6\xB1\x89\xE5\x8C\x96\xE5\xBC\x80\xE5\x85\xB3\xEF\xBC\x88\xE9\xBB\x98\xE8\xAE\xA4 0 = \xE4\xBF\x9D\xE7\x95\x99\xE8\x8B\xB1\xE6\x96\x87\xE5\x90\x8D\xEF\xBC\x89
++idCVar harm_g_cnNames( "harm_g_cnNames", "0", CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "localize character names to Chinese in subtitles" );
++
++// \xE4\xBA\xBA\xE5\x90\x8D\xE6\x98\xA0\xE5\xB0\x84\xE8\xA1\xA8\xEF\xBC\x88\xE8\x8B\xB1\xE6\x96\x87 \xE2\x86\x92 \xE4\xB8\xAD\xE6\x96\x87\xEF\xBC\x89
++struct NameMap { const char *en; const char *cn; };
++static const NameMap nameMap[] = {
++	{ "Kane", "\xe5\x87\xaf\xe6\x81\xa9" },					// \xe5\x87\xaf\xe6\x81\xa9
++	{ "Voss", "\xe6\xb2\x83\xe6\x96\xaf" },					// \xe6\xb2\x83\xe6\x96\xaf
++	{ "Bidwell", "\xe6\xaf\x94\xe5\xbe\xb7\xe5\xa8\x81\xe5\xb0\x94" },		// \xe6\xaf\x94\xe5\xbe\xb7\xe5\xa8\x81\xe5\xb0\x94
++	{ "Morris", "\xe8\x8e\xab\xe9\x87\x8c\xe6\x96\xaf" },				// \xe8\x8e\xab\xe9\x87\x8c\xe6\x96\xaf
++	{ "Strauss", "\xe6\x96\xbd\xe7\x89\xb9\xe5\x8a\xb3\xe6\x96\xaf" },		// \xe6\x96\xbd\xe7\x89\xb9\xe5\x8a\xb3\xe6\x96\xaf
++	{ "Rhodes", "\xe7\xbd\x97\xe5\x85\xb9" },					// \xe7\xbd\x97\xe5\x85\xb9
++	{ "Anderson", "\xe5\xae\x89\xe5\xbe\xb7\xe6\xa3\xae" },			// \xe5\xae\x89\xe5\xbe\xb7\xe6\xa3\xae
++	{ "Cortez", "\xe7\xa7\x91\xe5\xb0\x94\xe7\x89\xb9\xe6\x96\xaf" },		// \xe7\xa7\x91\xe5\xb0\x94\xe7\x89\xb9\xe6\x96\xaf
++	{ "Miller", "\xe7\xb1\xb3\xe5\x8b\x92" },					// \xe7\xb1\xb3\xe5\x8b\x92
++	{ "Richards", "\xe7\x90\x86\xe6\x9f\xa5\xe5\x85\xb9" },			// \xe7\x90\x86\xe6\x9f\xa5\xe5\x85\xb9
++	{ "Hollenbeck", "\xe9\x9c\x8d\xe4\xbc\xa6\xe8\xb4\x9d\xe5\x85\x8b" },		// \xe9\x9c\x8d\xe4\xbc\xa6\xe8\xb4\x9d\xe5\x85\x8b
++	{ "Looms", "\xe5\x8d\xa2\xe5\xa7\x86\xe6\x96\xaf" },				// \xe5\x8d\xa2\xe5\xa7\x86\xe6\x96\xaf
++	{ "Sledge", "\xe6\x96\xaf\xe8\x8e\xb1\xe5\xa5\x87" },				// \xe6\x96\xaf\xe8\x8e\xb1\xe5\xa5\x87
++	{ "Mahler", "\xe9\xa9\xac\xe5\x8b\x92" },					// \xe9\xa9\xac\xe5\x8b\x92
++	{ "Silverman", "\xe8\xa5\xbf\xe5\xb0\x94\xe5\xbc\x97\xe6\x9b\xbc" },		// \xe8\xa5\xbf\xe5\xb0\x94\xe5\xbc\x97\xe6\x9b\xbc
++	{ "Harper", "\xe5\x93\x88\xe7\x8f\x80" },					// \xe5\x93\x88\xe7\x8f\x80
++	{ "Scott", "\xe6\x96\xaf\xe7\xa7\x91\xe7\x89\xb9" },				// \xe6\x96\xaf\xe7\xa7\x91\xe7\x89\xb9
++	{ "Walker", "\xe6\xb2\x83\xe5\x85\x8b" },					// \xe6\xb2\x83\xe5\x85\x8b
++	{ "Makron", "\xe9\xa9\xac\xe5\x85\x8b\xe9\xbe\x99" },				// \xe9\xa9\xac\xe5\x85\x8b\xe9\xbe\x99
++	{ "Webb", "\xe9\x9f\xa6\xe4\xbc\xaf" },					// \xe9\x9f\xa6\xe4\xbc\xaf
++	{ "Jones", "\xe7\x90\xbc\xe6\x96\xaf" },					// \xe7\x90\xbc\xe6\x96\xaf
++	{ "Doyle", "\xe5\xa4\x9a\xe4\xbc\x8a\xe5\xb0\x94" },				// \xe5\xa4\x9a\xe4\xbc\x8a\xe5\xb0\x94
++	{ "Newberry", "\xe7\xba\xbd\xe4\xbc\xaf\xe9\x87\x8c" },			// \xe7\xba\xbd\xe4\xbc\xaf\xe9\x87\x8c
++	{ "Westmore", "\xe5\xa8\x81\xe6\x96\xaf\xe7\x89\xb9\xe6\x91\xa9" },		// \xe5\xa8\x81\xe6\x96\xaf\xe7\x89\xb9\xe6\x91\xa9
++	{ "Holtz", "\xe9\x9c\x8d\xe5\xb0\x94\xe8\x8c\xa8" },				// \xe9\x9c\x8d\xe5\xb0\x94\xe8\x8c\xa8
++	{ "Spencer", "\xe6\x96\xaf\xe6\xbd\x98\xe5\xa1\x9e" },			// \xe6\x96\xaf\xe6\xbd\x98\xe5\xa1\x9e
++	{ "Slidjonovitch", "\xe6\x96\xaf\xe5\x88\xa9\xe5\xbe\xb7\xe7\xba\xa6\xe8\xaf\xba\xe7\xbb\xb4\xe5\xa5\x87" },	// \xe6\x96\xaf\xe5\x88\xa9\xe5\xbe\xb7\xe7\xba\xa6\xe8\xaf\xba\xe7\xbb\xb4\xe5\xa5\x87
++	{ "Nikolai", "\xe5\xb0\xbc\xe5\x8f\xa4\xe6\x8b\x89" },			// \xe5\xb0\xbc\xe5\x8f\xa4\xe6\x8b\x89
++	{ "Lorenzi", "\xe6\xb4\x9b\xe4\xbc\xa6\xe9\xbd\x90" },			// \xe6\xb4\x9b\xe4\xbc\xa6\xe9\xbd\x90
++	{ "Hammond", "\xe5\x93\x88\xe8\x92\x99\xe5\xbe\xb7" },			// \xe5\x93\x88\xe8\x92\x99\xe5\xbe\xb7
++	{ "Hanks", "\xe6\xb1\x89\xe5\x85\x8b\xe6\x96\xaf" },				// \xe6\xb1\x89\xe5\x85\x8b\xe6\x96\xaf
++	{ "Herman", "\xe8\xb5\xab\xe5\xb0\x94\xe6\x9b\xbc" },			// \xe8\xb5\xab\xe5\xb0\x94\xe6\x9b\xbc
++	{ "Leonard", "\xe4\xbc\xa6\xe7\xba\xb3\xe5\xbe\xb7" },			// \xe4\xbc\xa6\xe7\xba\xb3\xe5\xbe\xb7
++	{ "Terrance", "\xe7\x89\xb9\xe4\xbc\xa6\xe6\x96\xaf" },			// \xe7\x89\xb9\xe4\xbc\xa6\xe6\x96\xaf
++	{ "Garr", "\xe5\x8a\xa0\xe5\xb0\x94" },					// \xe5\x8a\xa0\xe5\xb0\x94
++	{ "Rutger", "\xe6\x8b\x89\xe7\x89\xb9\xe6\xa0\xbc" },			// \xe6\x8b\x89\xe7\x89\xb9\xe6\xa0\xbc
++	{ "Mills", "\xe7\xb1\xb3\xe5\xb0\x94\xe6\x96\xaf" },			// \xe7\xb1\xb3\xe5\xb0\x94\xe6\x96\xaf
++	{ "Banks", "\xe7\x8f\xad\xe5\x85\x8b\xe6\x96\xaf" },			// \xe7\x8f\xad\xe5\x85\x8b\xe6\x96\xaf
++	{ "Alex", "\xe4\xba\x9a\xe5\x8e\x86\xe5\x85\x8b\xe6\x96\xaf" },		// \xe4\xba\x9a\xe5\x8e\x86\xe5\x85\x8b\xe6\x96\xaf
++	{ "Biessman", "\xe6\xaf\x94\xe6\x96\xaf\xe6\x9b\xbc" },			// \xe6\xaf\x94\xe6\x96\xaf\xe6\x9b\xbc
++	{ "Friedman", "\xe5\xbc\x97\xe9\x87\x8c\xe5\xbe\xb7\xe6\x9b\xbc" },		// \xe5\xbc\x97\xe9\x87\x8c\xe5\xbe\xb7\xe6\x9b\xbc
++	{ "Coppel", "\xe7\xa7\x91\xe4\xbd\xa9\xe5\xb0\x94" },			// \xe7\xa7\x91\xe4\xbd\xa9\xe5\xb0\x94
++	{ "Matthew", "\xe9\xa9\xac\xe4\xbf\xae" },					// \xe9\xa9\xac\xe4\xbf\xae
++	{ "Paul", "\xe4\xbf\x9d\xe7\xbd\x97" },					// \xe4\xbf\x9d\xe7\xbd\x97
++	{ "Mark", "\xe9\xa9\xac\xe5\x85\x8b" },					// \xe9\xa9\xac\xe5\x85\x8b
++	{ "Kovitch", "\xe7\xa7\x91\xe7\xbb\xb4\xe5\xa5\x87" },			// \xe7\xa7\x91\xe7\xbb\xb4\xe5\xa5\x87 (Slidjonovitch \xe7\x9a\x84\xe7\xae\x80\xe7\xa7\xb0)
++	{ "Marin", "\xe9\xa9\xac\xe6\x9e\x97" },					// \xe9\xa9\xac\xe6\x9e\x97
++	{ "Chase", "\xe8\x94\xa1\xe6\x96\xaf" },					// \xe8\x94\xa1\xe6\x96\xaf
++	{ "Mist", "\xe7\xb1\xb3\xe6\x96\xaf\xe7\x89\xb9" },				// \xe7\xb1\xb3\xe6\x96\xaf\xe7\x89\xb9
++	{ "Ways", "\xe9\x9f\xa6\xe6\x96\xaf" },					// \xe9\x9f\xa6\xe6\x96\xaf
++	{ "Dallas", "\xe8\xbe\xbe\xe6\x8b\x89\xe6\x96\xaf" },			// \xe8\xbe\xbe\xe6\x8b\x89\xe6\x96\xaf
++	{ "Aldrin", "\xe5\xa5\xa5\xe5\xb0\x94\xe5\xbe\xb7\xe6\x9e\x97" },		// \xe5\xa5\xa5\xe5\xb0\x94\xe5\xbe\xb7\xe6\x9e\x97
++	{ "Portsmith", "\xe6\xb3\xa2\xe7\x89\xb9\xe5\x8f\xb2\xe5\xaf\x86\xe6\x96\xaf" },	// \xe6\xb3\xa2\xe7\x89\xb9\xe5\x8f\xb2\xe5\xaf\x86\xe6\x96\xaf
++	{ "Berlin", "\xe6\x9f\x8f\xe6\x9e\x97" },					// \xe6\x9f\x8f\xe6\x9e\x97
++	{ "Pierce", "\xe7\x9a\xae\xe5\xb0\x94\xe6\x96\xaf" },			// \xe7\x9a\xae\xe5\xb0\x94\xe6\x96\xaf
++	{ "Alejandro", "\xe4\xba\x9a\xe5\x8e\x86\xe6\x9d\xad\xe5\xbe\xb7\xe7\xbd\x97" },	// \xe4\xba\x9a\xe5\x8e\x86\xe6\x9d\xad\xe5\xbe\xb7\xe7\xbd\x97
++	{ "Madison", "\xe9\xba\xa6\xe8\xbf\xaa\xe9\x80\x8a" },			// \xe9\xba\xa6\xe8\xbf\xaa\xe9\x80\x8a
++	{ "Patton", "\xe5\xb7\xb4\xe9\xa1\xbf" },				// \xe5\xb7\xb4\xe9\xa1\xbf
++	{ "Ja", "\xe5\x97\xaf" },						// \xe5\x97\xaf (Strauss \xe5\xbe\xb7\xe8\xaf\xad\xe5\x8f\xa3\xe5\xa4\xb4\xe7\xa6\x85)
++	{ "Hillstrom", "\xe5\xb8\x8c\xe5\xb0\x94\xe6\x96\xaf\xe7\x89\xb9\xe7\xbd\x97\xe5\xa7\x86" },
++	{ "Marshall", "\xe9\xa9\xac\xe6\xad\x87\xe5\xb0\x94" },
++	{ "Watson", "\xe6\xb2\x83\xe6\xa3\xae" },
++	{ "Dees", "\xe8\xbf\xaa\xe6\x96\xaf" },
++	{ "Ripkey", "\xe9\x87\x8c\xe6\x99\xae\xe5\x9f\xba" },
++	{ "Dischler", "\xe8\xbf\xaa\xe6\x96\xbd\xe5\x8b\x92" },
++	{ "Damato", "\xe8\xbe\xbe\xe9\xa9\xac\xe6\x89\x98" },
++	{ "Jackson", "\xe6\x9d\xb0\xe5\x85\x8b\xe9\x80\x8a" },
++	{ "Salmon", "\xe8\x90\xa8\xe8\x92\x99" },
++	{ "Hummer", "\xe5\x93\x88\xe9\xbb\x98" },
++	{ "Sanchez", "\xe6\xa1\x91\xe5\x88\x87\xe6\x96\xaf" },
++	{ "Houchard", "\xe8\x83\xa1\xe6\xb2\x99\xe5\xb0\x94" },
++	{ "Nicholson", "\xe5\xb0\xbc\xe7\xa7\x91\xe5\xb0\x94\xe6\xa3\xae" },
++	{ "Vainio", "\xe7\x93\xa6\xe4\xbc\x8a\xe5\xb0\xbc\xe5\xa5\xa5" },
++	{ "Singer", "\xe8\xbe\x9b\xe6\xa0\xbc" },
++	{ "Stern", "\xe6\x96\xaf\xe7\x89\xb9\xe6\x81\xa9" },
++	{ "Hilsabeck", "\xe5\xb8\x8c\xe5\xb0\x94\xe8\x90\xa8\xe8\xb4\x9d\xe5\x85\x8b" },
++	{ "Dynerman", "\xe8\xbf\xaa\xe7\xba\xb3\xe6\x9b\xbc" },
++	{ "Gummelt", "\xe5\x8f\xa4\xe6\xa2\x85\xe5\xb0\x94\xe7\x89\xb9" },
++	{ "Law", "\xe5\x8a\xb3" },
++	{ "Stetson", "\xe6\x96\xaf\xe7\x89\xb9\xe6\xa3\xae" },
++	{ "Brandt", "\xe5\xb8\x83\xe5\x85\xb0\xe7\x89\xb9" },
++	{ "Pleva", "\xe6\x99\xae\xe5\x88\x97\xe7\x93\xa6" },
++	{ "Bennette", "\xe8\xb4\x9d\xe5\x86\x85\xe7\x89\xb9" },
++	{ "Morois", "\xe8\x8e\xab\xe9\xb2\x81\xe7\x93\xa6" },
++	{ "Hay", "\xe6\xb5\xb7" },
++	{ "McKenzie", "\xe9\xba\xa6\xe8\x82\xaf\xe9\xbd\x90" },
++	{ "Crowns", "\xe5\x85\x8b\xe5\x8a\xb3\xe6\x81\xa9\xe6\x96\xaf" },
++	{ "Cordes", "\xe7\xa7\x91\xe5\xbe\xb7\xe6\x96\xaf" },
++	{ "McNutt", "\xe9\xba\xa6\xe5\x85\x8b\xe7\xba\xb3\xe7\x89\xb9" },
++	{ "Babcock", "\xe5\xb7\xb4\xe5\xb8\x83\xe7\xa7\x91\xe5\x85\x8b" },
++	{ "Suzuki", "\xe9\x93\x83\xe6\x9c\xa8" },
++	{ "Steinberg", "\xe6\x96\xaf\xe5\x9d\xa6\xe4\xbc\xaf\xe6\xa0\xbc" },
++	{ "Meier", "\xe8\xbf\x88\xe5\xb0\x94" },
++	{ "Stills", "\xe6\x96\xaf\xe8\x92\x82\xe5\xb0\x94\xe6\x96\xaf" },
++	{ "Short", "\xe8\x82\x96\xe7\x89\xb9" },
++	{ "Bettenberg", "\xe8\xb4\x9d\xe6\xbb\x95\xe8\xb4\x9d\xe6\xa0\xbc" },
++	{ "Gulisano", "\xe5\x8f\xa4\xe5\x88\xa9\xe8\x90\xa8\xe8\xaf\xba" },
++	{ "Williams", "\xe5\xa8\x81\xe5\xbb\x89\xe6\x96\xaf" },
++	{ "Graves", "\xe6\xa0\xbc\xe9\x9b\xb7\xe5\xa4\xab\xe6\x96\xaf" },
++	{ "Quarles", "\xe5\xa4\xb8\xe5\xb0\x94\xe6\x96\xaf" },
++	{ "Egnew", "\xe5\x9f\x83\xe6\xa0\xbc\xe7\xba\xbd" },
++	{ "Swekel", "\xe6\x96\xaf\xe9\x9f\xa6\xe5\x85\x8b\xe5\xb0\x94" },
++	{ "Hooper", "\xe8\x83\xa1\xe7\x8f\x80" },
++	{ "Spence", "\xe6\x96\xaf\xe5\xbd\xad\xe6\x96\xaf" },
++	{ "Farnsworth", "\xe6\xb3\x95\xe6\x81\xa9\xe6\x96\xaf\xe6\xb2\x83\xe6\x80\x9d" },
++	{ "Wright", "\xe8\xb5\x96\xe7\x89\xb9" },
++	{ "Stevens", "\xe5\x8f\xb2\xe8\x92\x82\xe6\x96\x87\xe6\x96\xaf" },
++	{ "Nguyen", "\xe9\x98\xae" },
++	{ "Pitman", "\xe7\x9a\xae\xe7\x89\xb9\xe6\x9b\xbc" },
++	{ "Rodeman", "\xe7\xbd\x97\xe5\xbe\xb7\xe6\x9b\xbc" },
++	{ "Kovak", "\xe7\xa7\x91\xe7\x93\xa6\xe5\x85\x8b" },
++	{ "Hawkins", "\xe9\x9c\x8d\xe9\x87\x91\xe6\x96\xaf" },
++	{ "Ness", "\xe5\x86\x85\xe6\x96\xaf" },
++	{ "Yongue", "\xe6\x89\xac" },
++	{ "Burns", "\xe4\xbc\xaf\xe6\x81\xa9\xe6\x96\xaf" },
++	{ "Shaw", "\xe8\x82\x96" },
++	{ "Strang", "\xe6\x96\xaf\xe7\x89\xb9\xe6\x9c\x97" },
++	{ "Thomas", "\xe6\x89\x98\xe9\xa9\xac\xe6\x96\xaf" },
++	{ "Pupino", "\xe6\x99\xae\xe7\x9a\xae\xe8\xaf\xba" },
++	{ "Kasanoff", "\xe5\x8d\xa1\xe8\x90\xa8\xe8\xaf\xba\xe5\xa4\xab" },
++	{ "Polman", "\xe6\xb3\xa2\xe5\xb0\x94\xe6\x9b\xbc" },
++	{ "Wendt", "\xe6\x96\x87\xe7\x89\xb9" },
++	{ "Asher", "\xe9\x98\xbf\xe8\x88\x8d" },
++	{ "Dundee", "\xe9\x82\x93\xe8\xbf\xaa" },
++	{ "Zick", "\xe9\xbd\x90\xe5\x85\x8b" },
++	{ "Schumacher", "\xe8\x88\x92\xe9\xa9\xac\xe8\xb5\xab" },
++	{ "Marlin", "\xe9\xa9\xac\xe6\x9e\x97" },
++	{ "Lathrop", "\xe6\x8b\x89\xe6\x96\xaf\xe7\xbd\x97\xe6\x99\xae" },
++	{ "Rodriguez", "\xe7\xbd\x97\xe5\xbe\xb7\xe9\x87\x8c\xe6\xa0\xbc\xe6\x96\xaf" },
++	{ "Schilder", "\xe5\xb8\xad\xe5\xb0\x94\xe5\xbe\xb7" },
++	{ "Leffler", "\xe8\x8e\xb1\xe5\xbc\x97\xe5\x8b\x92" },
++	{ "Blascoe", "\xe5\xb8\x83\xe6\x8b\x89\xe6\x96\xaf\xe7\xa7\x91" },
++	{ "Berry", "\xe8\xb4\x9d\xe9\x87\x8c" },
++	{ "Egan", "\xe4\xbc\x8a\xe6\xa0\xb9" },
++	{ "Cleveland", "\xe5\x85\x8b\xe5\x88\xa9\xe5\xa4\xab\xe5\x85\xb0" },
++	{ "Schwarzer", "\xe6\x96\xbd\xe7\x93\xa6\xe6\xb3\xbd" },
++	{ "Eckley", "\xe5\x9f\x83\xe5\x85\x8b\xe5\x88\xa9" },
++	{ "Chapman", "\xe6\x9f\xa5\xe6\x99\xae\xe6\x9b\xbc" },
++	{ "Monse", "\xe8\x92\x99\xe6\x96\xaf" },
++	{ "Jarlsberg", "\xe4\xba\x9a\xe5\xb0\x94\xe6\x96\xaf\xe8\xb4\x9d\xe6\xa0\xbc" },
++	{ "Lanier", "\xe6\x8b\x89\xe5\xb0\xbc\xe5\xb0\x94" },
++	{ "Livingston", "\xe5\x88\xa9\xe6\x96\x87\xe6\x96\xaf\xe9\xa1\xbf" },
++	{ "Vasker", "\xe7\x93\xa6\xe6\x96\xaf\xe5\x85\x8b" },
++	{ "McKinnon", "\xe9\xba\xa6\xe9\x87\x91\xe5\x86\x9c" },
++	{ "Harkins", "\xe5\x93\x88\xe9\x87\x91\xe6\x96\xaf" },
++	{ "Showers", "\xe8\x82\x96\xe5\xb0\x94\xe6\x96\xaf" },
++	{ "Albain", "\xe5\xa5\xa5\xe5\xb0\x94\xe7\x8f\xad" },
++	{ "Vernon", "\xe5\xbc\x97\xe5\x86\x9c" },
++	{ "Cavel", "\xe5\x8d\xa1\xe7\xbb\xb4\xe5\xb0\x94" },
++	{ "Cimino", "\xe5\xa5\x87\xe7\xb1\xb3\xe8\xaf\xba" },
++	{ "Kofsky", "\xe7\xa7\x91\xe5\xa4\xab\xe6\x96\xaf\xe5\x9f\xba" },
++	{ "Shepard", "\xe8\xb0\xa2\xe6\xb3\xbc\xe5\xbe\xb7" },
++	{ "Ekberg", "\xe5\x9f\x83\xe5\x85\x8b\xe4\xbc\xaf\xe6\xa0\xbc" },
++	{ "Whitaker", "\xe6\x83\xa0\xe7\x89\xb9\xe5\x85\x8b" },
++	{ "Bordwell", "\xe5\x8d\x9a\xe5\xbe\xb7\xe9\x9f\xa6\xe5\xb0\x94" },
++	{ "Schwartz", "\xe6\x96\xbd\xe7\x93\xa6\xe8\x8c\xa8" },
++	{ "Glovels", "\xe6\xa0\xbc\xe6\xb4\x9b\xe5\xbc\x97\xe5\xb0\x94\xe6\x96\xaf" },
++	{ "Ramirez", "\xe6\x8b\x89\xe7\xb1\xb3\xe9\x9b\xb7\xe6\x96\xaf" },
++	{ "Moire", "\xe8\x8e\xab\xe7\x93\xa6\xe5\xb0\x94" },
++	{ "Keifer", "\xe5\x9f\xba\xe5\xbc\x97" },
++	{ "Holmes", "\xe9\x9c\x8d\xe5\xa7\x86\xe6\x96\xaf" },
++	{ "Border", "\xe5\x8d\x9a\xe5\xbe\xb7" },
++	{ "Potts", "\xe6\xb3\xa2\xe8\x8c\xa8" },
++	{ "Pearson", "\xe7\x9a\xae\xe5\xb0\x94\xe9\x80\x8a" },
++	{ "Fuchs", "\xe5\xaf\x8c\xe5\x85\x8b\xe6\x96\xaf" },
++	{ "Ashworth", "\xe9\x98\xbf\xe4\xbb\x80\xe6\xb2\x83\xe6\x80\x9d" },
++	{ "Milage", "\xe7\xb1\xb3\xe5\x88\xa9\xe5\xa5\x87" },
++	{ "Kruszka", "\xe5\x85\x8b\xe9\xb2\x81\xe4\xbb\x80\xe5\x8d\xa1" },
++	{ "Fassett", "\xe6\xb3\x95\xe5\xa1\x9e\xe7\x89\xb9" },
++	{ "Gray", "\xe6\xa0\xbc\xe9\x9b\xb7" },
++	// === Squad compound replacements ===
++	{ "Rhino Squad", "\xe7\x8a\x80\xe7\x89\x9b\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Scorpion Squad", "\xe5\xa4\xa9\xe8\x9d\x8e\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Badger Squad", "\xe7\x8c\x9b\xe7\x8d\xbe\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Condor Squad", "\xe7\xa5\x9e\xe9\xb9\xb0\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Kodiak Squad", "\xe6\xa3\x95\xe7\x86\x8a\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Raven Squad", "\xe6\xb8\xa1\xe9\xb8\xa6\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Viper Squad", "\xe6\xaf\x92\xe8\x9b\x87\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Wolf Squad", "\xe9\x87\x8e\xe7\x8b\xbc\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Eagle Squad", "\xe9\x9b\x84\xe9\xb9\xb0\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Cobra Squad", "\xe7\x9c\xbc\xe9\x95\x9c\xe8\x9b\x87\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Warthog Squad", "\xe7\x96\xa3\xe7\x8c\xaa\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Bison Squad", "\xe9\x87\x8e\xe7\x89\x9b\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Hyena Squad", "\xe9\xac\xa3\xe7\x8b\x97\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Cougar Squad", "\xe7\xbe\x8e\xe6\xb4\xb2\xe7\x8b\xae\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Mantis Squad", "\xe8\x9e\xb3\xe8\x9e\x82\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Grizzly Squad", "\xe7\x81\xb0\xe7\x86\x8a\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Armadillo Squad", "\xe7\x8a\xb0\xe7\x8b\xb3\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Fox Squad", "\xe7\x8b\x90\xe7\x8b\xb8\xe5\xb0\x8f\xe9\x98\x9f" },
++	{ "Falcon Squad", "\xe7\x8c\x8e\xe9\xb9\xb0\xe5\xb0\x8f\xe9\x98\x9f" },
++	// === Squad animal names (\xE5\x8D\x95\xE7\x8B\xAC\xE6\x9B\xBF\xE6\x8D\xA2\xEF\xBC\x8C\xE7\x94\xA8\xE4\xBA\x8E "Rhino \xE5\xB0\x8F\xE9\x98\x9F" \xE8\xBF\x99\xE7\xA7\x8D\xE6\xB7\xB7\xE5\x90\x88\xE6\x96\x87\xE6\x9C\xAC) ===
++	{ "Rhino", "\xe7\x8a\x80\xe7\x89\x9b" },
++	{ "Scorpion", "\xe5\xa4\xa9\xe8\x9d\x8e" },
++	{ "Badger", "\xe7\x8c\x9b\xe7\x8d\xbe" },
++	{ "Condor", "\xe7\xa5\x9e\xe9\xb9\xb0" },
++	{ "Kodiak", "\xe6\xa3\x95\xe7\x86\x8a" },
++	{ "Raven", "\xe6\xb8\xa1\xe9\xb8\xa6" },
++	{ "Viper", "\xe6\xaf\x92\xe8\x9b\x87" },
++	{ "Wolf", "\xe9\x87\x8e\xe7\x8b\xbc" },
++	{ "Eagle", "\xe9\x9b\x84\xe9\xb9\xb0" },
++	{ "Cobra", "\xe7\x9c\xbc\xe9\x95\x9c\xe8\x9b\x87" },
++	{ "Warthog", "\xe7\x96\xa3\xe7\x8c\xaa" },
++	{ "Bison", "\xe9\x87\x8e\xe7\x89\x9b" },
++	{ "Hyena", "\xe9\xac\xa3\xe7\x8b\x97" },
++	{ "Cougar", "\xe7\xbe\x8e\xe6\xb4\xb2\xe7\x8b\xae" },
++	{ "Mantis", "\xe8\x9e\xb3\xe8\x9e\x82" },
++	{ "Grizzly", "\xe7\x81\xb0\xe7\x86\x8a" },
++	{ "Armadillo", "\xe7\x8a\xb0\xe7\x8b\xb3" },
++	{ "Fox", "\xe7\x8b\x90\xe7\x8b\xb8" },
++	{ "Falcon", "\xe7\x8c\x8e\xe9\xb9\xb0" },
++	{ "McClane", "\xe9\xba\xa6\xe5\x85\x8b\xe8\x8e\xb1\xe6\x81\xa9" },
++	{ "Collins", "\xe6\x9f\xaf\xe6\x9e\x97\xe6\x96\xaf" },
++	{ "Haloway", "\xe5\x93\x88\xe6\xb4\x9b\xe5\xa8\x81" },
++	{ "Huxley", "\xe5\x93\x88\xe5\x85\x8b\xe6\x96\xaf\xe5\x88\xa9" },
++	{ "Shane", "\xe8\xb0\xa2\xe6\x81\xa9" },
++	{ "Masters", "\xe9\xa9\xac\xe6\x96\xaf\xe7\x89\xb9\xe6\x96\xaf" },
++	{ "Meuller", "\xe7\xa9\x86\xe5\x8b\x92" },
++	{ "Morte", "\xe8\x8e\xab\xe7\x89\xb9" },
++	{ "Ranka", "\xe5\x85\xb0\xe5\x8d\xa1" },
++	{ "Summers", "\xe8\x90\xa8\xe9\xbb\x98\xe6\x96\xaf" },
++	{ "Iowa", "\xe8\xa1\xa3\xe9\x98\xbf\xe5\x8d\x8e" },
++	{ NULL, NULL }
++};
++
++// \xE5\xB0\x86\xE8\xAF\xB4\xE8\xAF\x9D\xE4\xBA\xBA\xE5\x90\x8D\xEF\xBC\x88\xE5\x89\x8D\xE7\xBC\x80\xEF\xBC\x89\xE7\xBF\xBB\xE8\xAF\x91\xE4\xB8\xBA\xE4\xB8\xAD\xE6\x96\x87\xEF\xBC\x88\xE5\xA4\xA7\xE5\xB0\x8F\xE5\x86\x99\xE4\xB8\x8D\xE6\x95\x8F\xE6\x84\x9F\xEF\xBC\x89
++static const char *TranslateSpeakerName( const char *speaker ) {
++	if ( !harm_g_cnNames.GetBool() || !speaker || !speaker[0] ) {
++		return speaker;
++	}
++	for ( int i = 0; nameMap[i].en; i++ ) {
++		if ( idStr::Icmp( speaker, nameMap[i].en ) == 0 ) {
++			return nameMap[i].cn;
++		}
++	}
++	return speaker;
++}
++
++// \xE5\xB0\x86\xE5\xAD\x97\xE5\xB9\x95\xE6\x96\x87\xE6\x9C\xAC\xE4\xB8\xAD\xE7\x9A\x84\xE8\x8B\xB1\xE6\x96\x87\xE4\xBA\xBA\xE5\x90\x8D\xE6\x9B\xBF\xE6\x8D\xA2\xE4\xB8\xBA\xE4\xB8\xAD\xE6\x96\x87\xEF\xBC\x8C\xE5\xB9\xB6\xE5\x8E\xBB\xE9\x99\xA4\xE5\xA4\x9A\xE4\xBD\x99\xE7\xA9\xBA\xE6\xA0\xBC
++// \xE5\x90\x8C\xE6\x97\xB6\xE7\x94\xA8\xE4\xBA\x8E\xE5\x89\x8D\xE7\xBC\x80\xEF\xBC\x88\xE5\xA4\x84\xE7\x90\x86\xE2\x80\x9C\xE4\xB8\xAD\xE5\xA3\xAB Morris\xE2\x80\x9D\xE2\x86\x92\xE2\x80\x9C\xE4\xB8\xAD\xE5\xA3\xAB\xE8\x8E\xAB\xE9\x87\x8C\xE6\x96\xAF\xE2\x80\x9D\xEF\xBC\x89
++static void TranslateNamesInText( idStr &text ) {
++	if ( !harm_g_cnNames.GetBool() ) {
++		return;
++	}
++	// \xE5\xA4\x8D\xE5\x90\x88\xE5\x9C\xB0\xE5\x90\x8D\xE5\x85\x88\xE5\xA4\x84\xE7\x90\x86\xEF\xBC\x88\xE9\x81\xBF\xE5\x85\x8D "New" \xE5\x92\x8C "Berlin" \xE5\x88\x86\xE5\xBC\x80\xE6\x9B\xBF\xE6\x8D\xA2\xEF\xBC\x89
++	text.Replace( "New Berlin", "\xe6\x96\xb0\xe6\x9f\x8f\xe6\x9e\x97" );		// \xe6\x96\xb0\xe6\x9f\x8f\xe6\x9e\x97
++	// \xE5\x85\xA8\xE5\x90\x8D\xE5\xA4\x8D\xE5\x90\x88\xE6\x9B\xBF\xE6\x8D\xA2\xEF\xBC\x88\xE5\x90\x8D+\xE5\xA7\x93\xE7\x94\xA8\xE9\x97\xB4\xE9\x9A\x94\xE5\x8F\xB7 \xC2\xB7 \xE5\x88\x86\xE9\x9A\x94\xEF\xBC\x89
++	text.Replace( "Alejandro Cortez", "\xe4\xba\x9a\xe5\x8e\x86\xe6\x9d\xad\xe5\xbe\xb7\xe7\xbd\x97\xc2\xb7\xe7\xa7\x91\xe5\xb0\x94\xe7\x89\xb9\xe6\x96\xaf" );
++	text.Replace( "Matthew Kane", "\xe9\xa9\xac\xe4\xbf\xae\xc2\xb7\xe5\x87\xaf\xe6\x81\xa9" );
++	text.Replace( "Nikolai Slidjonovitch", "\xe5\xb0\xbc\xe5\x8f\xa4\xe6\x8b\x89\xc2\xb7\xe6\x96\xaf\xe5\x88\xa9\xe5\xbe\xb7\xe7\xba\xa6\xe8\xaf\xba\xe7\xbb\xb4\xe5\xa5\x87" );
++	text.Replace( "Herman Ways", "\xe8\xb5\xab\xe5\xb0\x94\xe6\x9b\xbc\xc2\xb7\xe9\x9f\xa6\xe6\x96\xaf" );
++	text.Replace( "Paul Herman", "\xe4\xbf\x9d\xe7\xbd\x97\xc2\xb7\xe8\xb5\xab\xe5\xb0\x94\xe6\x9b\xbc" );
++	text.Replace( "Terrance Garr", "\xe7\x89\xb9\xe4\xbc\xa6\xe6\x96\xaf\xc2\xb7\xe5\x8a\xa0\xe5\xb0\x94" );
++	text.Replace( "Mark Lorenzi", "\xe9\xa9\xac\xe5\x85\x8b\xc2\xb7\xe6\xb4\x9b\xe4\xbc\xa6\xe9\xbd\x90" );
++	for ( int i = 0; nameMap[i].en; i++ ) {
++		// \xE6\x9B\xBF\xE6\x8D\xA2\xE9\xA1\xBA\xE5\xBA\x8F\xEF\xBC\x9A\xE5\x85\x88\xE5\xA4\x84\xE7\x90\x86\xE5\xB8\xA6\xE6\x9B\xB4\xE5\xA4\x9A\xE7\xA9\xBA\xE6\xA0\xBC\xE7\x9A\x84\xEF\xBC\x8C\xE9\x81\xBF\xE5\x85\x8D\xE6\x8F\x90\xE5\x89\x8D\xE6\x9B\xBF\xE6\x8D\xA2\xE5\x90\x8E\xE6\x89\xBE\xE4\xB8\x8D\xE5\x88\xB0
++		idStr both    = va( " %s ", nameMap[i].en );	// " Miller "
++		idStr trailing = va( "%s ", nameMap[i].en );	// "Miller "
++		idStr leading  = va( " %s", nameMap[i].en );	// " Miller"
++		text.Replace( both.c_str(), nameMap[i].cn );		// " Miller " -> "中文名"
++		text.Replace( trailing.c_str(), nameMap[i].cn );	// "Miller " -> "中文名"
++		text.Replace( leading.c_str(), nameMap[i].cn );		// " Miller" -> "中文名"
++		text.Replace( nameMap[i].en, nameMap[i].cn );		// "Miller" -> "中文名"
++	}
++}
++
++// \xE5\x86\x9B\xE8\xA1\x94\xE5\x88\x97\xE8\xA1\xA8\xEF\xBC\x88\xE7\x94\xA8\xE4\xBA\x8E\xE5\x89\x8D\xE7\xBC\x80\xE8\xA7\x84\xE8\x8C\x83\xE5\x8C\x96\xEF\xBC\x89
++static const char *cnRanks[] = {
++	"\xe5\x88\x97\xe5\x85\xb5",						// \xe5\x88\x97\xe5\x85\xb5
++	"\xe4\xb8\x8b\xe5\xa3\xab",						// \xe4\xb8\x8b\xe5\xa3\xab
++	"\xe4\xb8\xad\xe5\xa3\xab",						// \xe4\xb8\xad\xe5\xa3\xab
++	"\xe4\xb8\x8a\xe5\xa3\xab",						// \xe4\xb8\x8a\xe5\xa3\xab
++	"\xe4\xb8\x80\xe7\xad\x89\xe5\x85\xb5",				// \xe4\xb8\x80\xe7\xad\x89\xe5\x85\xb5
++	"\xe4\xba\x8c\xe7\xad\x89\xe5\x85\xb5",				// \xe4\xba\x8c\xe7\xad\x89\xe5\x85\xb5
++	"\xe4\xb8\xad\xe5\xb0\x89",						// \xe4\xb8\xad\xe5\xb0\x89
++	"\xe4\xb8\x8a\xe5\xb0\x89",						// \xe4\xb8\x8a\xe5\xb0\x89
++	"\xe5\xb0\x91\xe6\xa0\xa1",						// \xe5\xb0\x91\xe6\xa0\xa1
++	"\xe4\xb8\xad\xe6\xa0\xa1",						// \xe4\xb8\xad\xe6\xa0\xa1
++	"\xe4\xb8\x8a\xe6\xa0\xa1",						// \xe4\xb8\x8a\xe6\xa0\xa1
++	"\xe5\xb0\x91\xe5\xb0\x86",						// \xe5\xb0\x91\xe5\xb0\x86
++	"\xe4\xb8\xad\xe5\xb0\x86",						// \xe4\xb8\xad\xe5\xb0\x86
++	"\xe4\xb8\x8a\xe5\xb0\x86",						// \xe4\xb8\x8a\xe5\xb0\x86
++	"\xe5\xa4\xa7\xe5\xb0\x86",						// \xe5\xa4\xa7\xe5\xb0\x86
++	"\xe5\xb0\x86\xe5\x86\x9b",						// \xe5\xb0\x86\xe5\x86\x9b
++	NULL
++};
++
++// \xE5\x89\x8D\xE7\xBC\x80\xE5\x86\x9B\xE8\xA1\x94\xE8\xA7\x84\xE8\x8C\x83\xE5\x8C\x96\xEF\xBC\x9A\xE5\x86\x9B\xE8\xA1\x94\xE5\x9C\xA8\xE5\x89\x8D\xE7\x9A\x84\xE7\xA7\xBB\xE5\x88\xB0\xE5\x90\x8E\xE9\x9D\xA2
++static void NormalizeRank( idStr &speaker ) {
++	if ( !harm_g_cnNames.GetBool() ) {
++		return;
++	}
++	for ( int i = 0; cnRanks[i]; i++ ) {
++		int len = (int)strlen( cnRanks[i] );
++		if ( speaker.Length() > len && idStr::Cmpn( speaker.c_str(), cnRanks[i], len ) == 0 ) {
++			idStr name = speaker.Mid( len, speaker.Length() - len );
++			speaker = va( "%s%s", name.c_str(), cnRanks[i] );
++			return;
++		}
++	}
++}
++
++// \xE5\x85\xAC\xE5\xBC\x80\xE6\x8E\xA5\xE5\x8F\xA3\xEF\xBC\x9A\xE7\xBB\x99 Player.cpp \xE5\x87\x86\xE5\xBF\x83\xE7\xAD\x89\xE5\x9C\xBA\xE6\x99\xAF\xE8\xB0\x83\xE7\x94\xA8
++static void BracketEnemyNames( idStr &text );	// forward declaration
++void rvSubtitles::LocalizeText( idStr &text ) {
++	TranslateNamesInText( text );
++	NormalizeRank( text );
++	BracketEnemyNames( text );
++}
++
++// Strogg \xE6\x95\x8C\xE6\x96\xB9\xE5\x8D\x95\xE4\xBD\x8D\xE5\x90\x8D\xE5\x88\x97\xE8\xA1\xA8\xEF\xBC\x88\xE5\x86\x85\xE5\xAE\xB9\xE4\xB8\xAD\xE5\x87\xBA\xE7\x8E\xB0\xE6\x97\xB6\xE7\x94\xA8\xE3\x80\x8C\xE3\x80\x8D\xE5\x8C\x85\xE8\xA3\xB9\xEF\xBC\x89
++static const char *enemyUnitNames[] = {
++	"\xe6\xad\xa5\xe5\x85\xb5",						// \xe6\xad\xa5\xe5\x85\xb5
++	"\xe6\x9c\xba\xe7\x82\xae\xe5\x85\xb5",					// \xe6\x9c\xba\xe7\x82\xae\xe5\x85\xb5
++	"\xe7\x8b\x82\xe6\x88\x98\xe5\xa3\xab",					// \xe7\x8b\x82\xe6\x88\x98\xe5\xa3\xab
++	"\xe8\xa7\x92\xe6\x96\x97\xe5\xa3\xab",					// \xe8\xa7\x92\xe6\x96\x97\xe5\xa3\xab
++	"\xe9\x93\x81\xe5\xa8\x98\xe5\xad\x90",					// \xe9\x93\x81\xe5\xa8\x98\xe5\xad\x90
++	"\xe5\xa4\xb1\xe8\xb4\xa5\xe6\x94\xb9\xe9\x80\xa0\xe4\xbd\x93",		// \xe5\xa4\xb1\xe8\xb4\xa5\xe6\x94\xb9\xe9\x80\xa0\xe4\xbd\x93
++	"\xe7\xa7\x91\xe5\xad\xa6\xe5\xae\xb6",					// \xe7\xa7\x91\xe5\xad\xa6\xe5\xae\xb6
++	"\xe5\x93\xa8\xe5\x8d\xab",							// \xe5\x93\xa8\xe5\x8d\xab
++	"\xe6\x94\xb6\xe5\x89\xb2\xe8\x80\x85",					// \xe6\x94\xb6\xe5\x89\xb2\xe8\x80\x85
++	"\xe8\xbd\xbb\xe5\x9e\x8b\xe5\x9d\xa6\xe5\x85\x8b",				// \xe8\xbd\xbb\xe5\x9e\x8b\xe5\x9d\xa6\xe5\x85\x8b
++	"\xe6\x82\xac\xe6\xb5\xae\xe5\x9d\xa6\xe5\x85\x8b",				// \xe6\x82\xac\xe6\xb5\xae\xe5\x9d\xa6\xe5\x85\x8b
++	"\xe6\x95\xb0\xe6\x8d\xae\xe6\xb5\x81\xe5\xae\x88\xe5\x8d\xab",		// \xe6\x95\xb0\xe6\x8d\xae\xe6\xb5\x81\xe5\xae\x88\xe5\x8d\xab
++	"\xe7\xbd\x91\xe7\xbb\x9c\xe5\xae\x88\xe5\x8d\xab",				// \xe7\xbd\x91\xe7\xbb\x9c\xe5\xae\x88\xe5\x8d\xab
++	"\xe4\xbc\xa0\xe9\x80\x81\xe6\x8a\x95\xe6\x94\xbe\xe5\x99\xa8",		// \xe4\xbc\xa0\xe9\x80\x81\xe6\x8a\x95\xe6\x94\xbe\xe5\x99\xa8
++	"\xe7\xbb\xb4\xe4\xbf\xae\xe6\x9c\xba\xe5\x99\xa8\xe4\xba\xba",		// \xe7\xbb\xb4\xe4\xbf\xae\xe6\x9c\xba\xe5\x99\xa8\xe4\xba\xba
++	"\xe6\x88\x98\xe6\x9c\xaf\xe5\x85\xb5",					// \xe6\x88\x98\xe6\x9c\xaf\xe5\x85\xb5
++	"\xe7\x9c\xbc\xe6\x9f\x84",							// \xe7\x9c\xbc\xe6\x9f\x84
++	"\xe9\xa9\xac\xe5\x85\x8b\xe9\xbe\x99",					// \xe9\xa9\xac\xe5\x85\x8b\xe9\xbe\x99
++	NULL
++};
++
++// \xE5\xB0\x86\xE5\x86\x85\xE5\xAE\xB9\xE4\xB8\xAD\xE7\x9A\x84\xE6\x95\x8C\xE6\x96\xB9\xE5\x8D\x95\xE4\xBD\x8D\xE5\x90\x8D\xE7\x94\xA8\xE3\x80\x8C\xE3\x80\x8D\xE5\x8C\x85\xE8\xA3\xB9\xEF\xBC\x8C\xE9\x81\xBF\xE5\x85\x8D\xE9\x87\x8D\xE5\xA4\x8D\xE5\x8C\x85\xE8\xA3\xB9
++static void BracketEnemyNames( idStr &text ) {
++	for ( int i = 0; enemyUnitNames[i]; i++ ) {
++		idStr bracketed = va( "\xe3\x80\x8c%s\xe3\x80\x8d", enemyUnitNames[i] );
++		text.Replace( bracketed.c_str(), enemyUnitNames[i] );
++		text.Replace( enemyUnitNames[i], bracketed.c_str() );
++	}
++	// \xE5\xB0\x8F\xE9\x98\x9F\xE5\x90\x8D\xEF\xBC\x9A\xE7\x8A\x80\xE7\x89\x9B\xE5\xB0\x8F\xE9\x98\x9F \xE2\x86\x92 \xE3\x80\x8C\xE7\x8A\x80\xE7\x89\x9B\xE3\x80\x8D\xE5\xB0\x8F\xE9\x98\x9F
++	static const struct { const char *plain; const char *bracketed; } squadNames[] = {
++		{ "\xe7\x8a\x80\xe7\x89\x9b\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe7\x8a\x80\xe7\x89\x9b\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe5\xa4\xa9\xe8\x9d\x8e\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe5\xa4\xa9\xe8\x9d\x8e\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe7\x8c\x9b\xe7\x8d\xbe\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe7\x8c\x9b\xe7\x8d\xbe\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe7\xa5\x9e\xe9\xb9\xb0\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe7\xa5\x9e\xe9\xb9\xb0\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe6\xa3\x95\xe7\x86\x8a\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe6\xa3\x95\xe7\x86\x8a\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe6\xb8\xa1\xe9\xb8\xa6\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe6\xb8\xa1\xe9\xb8\xa6\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe6\xaf\x92\xe8\x9b\x87\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe6\xaf\x92\xe8\x9b\x87\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe9\x87\x8e\xe7\x8b\xbc\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe9\x87\x8e\xe7\x8b\xbc\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe9\x9b\x84\xe9\xb9\xb0\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe9\x9b\x84\xe9\xb9\xb0\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe7\x9c\xbc\xe9\x95\x9c\xe8\x9b\x87\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe7\x9c\xbc\xe9\x95\x9c\xe8\x9b\x87\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe7\x96\xa3\xe7\x8c\xaa\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe7\x96\xa3\xe7\x8c\xaa\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe9\x87\x8e\xe7\x89\x9b\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe9\x87\x8e\xe7\x89\x9b\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe9\xac\xa3\xe7\x8b\x97\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe9\xac\xa3\xe7\x8b\x97\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe7\xbe\x8e\xe6\xb4\xb2\xe7\x8b\xae\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe7\xbe\x8e\xe6\xb4\xb2\xe7\x8b\xae\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe8\x9e\xb3\xe8\x9e\x82\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe8\x9e\xb3\xe8\x9e\x82\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe7\x81\xb0\xe7\x86\x8a\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe7\x81\xb0\xe7\x86\x8a\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe7\x8a\xb0\xe7\x8b\xb3\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe7\x8a\xb0\xe7\x8b\xb3\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe9\xbb\x84\xe8\xb2\x82\xe9\xb1\xbc\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe9\xbb\x84\xe8\xb2\x82\xe9\xb1\xbc\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ "\xe7\x8b\x90\xe7\x8b\xb8\xe5\xb0\x8f\xe9\x98\x9f", "\xe3\x80\x8c\xe7\x8b\x90\xe7\x8b\xb8\xe3\x80\x8d\xe5\xb0\x8f\xe9\x98\x9f" },
++		{ NULL, NULL }
++	};
++	for ( int i = 0; squadNames[i].plain; i++ ) {
++		text.Replace( squadNames[i].bracketed, squadNames[i].plain );
++		text.Replace( squadNames[i].plain, squadNames[i].bracketed );
++	}
++}
 +idCVar harm_g_subtitlePVSCheck( "harm_g_subtitlePVSCheck", "1", CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "hide subtitles of speakers outside player PVS (occluded)" );
 +idCVar harm_g_resIndex( "harm_g_resIndex", "-1", CVAR_GAME | CVAR_INTEGER | CVAR_ARCHIVE, "resolution selector index (100-series=4:3, 200-series=16:9, 300-series=16:10)" );
 +
@@ -920,7 +1470,7 @@ index 000000000..7f8b70540
 +优先在空格处断行；拆出的各行共享同一个到期时间。
 +================
 +*/
-+void rvSubtitles::Add( const char *speaker, const char *text, int durationMs ) {
++void rvSubtitles::Add( const char *speaker, const char *text, int durationMs, subColor_t colorOverride ) {
 +	if ( !harm_g_subtitles.GetBool() || !text || !text[0] ) {
 +		return;
 +	}
@@ -933,32 +1483,56 @@ index 000000000..7f8b70540
 +		return;
 +	}
 +
++	// karin: \xE4\xBA\xBA\xE5\x90\x8D\xE6\xB1\x89\xE5\x8C\x96 \xE2\x80\x94\xE2\x80\x94 \xE7\xBF\xBB\xE8\xAF\x91\xE5\x89\x8D\xE7\xBC\x80\xE5\x92\x8C\xE5\x86\x85\xE5\xAE\xB9\xE4\xB8\xAD\xE7\x9A\x84\xE4\xBA\xBA\xE5\x90\x8D
++	idStr speakerStr = speaker ? speaker : "";
++	if ( harm_g_cnNames.GetBool() && speakerStr.Length() ) {
++		// \xE5\x85\x88\xE5\xB0\x9D\xE8\xAF\x95\xE7\xB2\xBE\xE7\xA1\xAE\xE5\x8C\xB9\xE9\x85\x8D\xEF\xBC\x88\xE5\xA4\x84\xE7\x90\x86 knownSpeakers \xE8\xBF\x94\xE5\x9B\x9E\xE7\x9A\x84\xE5\xB0\x8F\xE5\x86\x99\xE5\xAE\x9E\xE4\xBD\x93\xE5\x90\x8D\xEF\xBC\x89
++		const char *exact = TranslateSpeakerName( speakerStr.c_str() );
++		if ( exact != speakerStr.c_str() ) {
++			speakerStr = exact;
++		} else {
++			// \xE5\x90\xAB\xE5\x86\x9B\xE8\xA1\x94\xE7\x9A\x84\xE5\xA4\x8D\xE5\x90\x88\xE5\x89\x8D\xE7\xBC\x80\xEF\xBC\x88\xE2\x80\x9C\xE4\xB8\xAD\xE5\xA3\xAB Morris\xE2\x80\x9D\xE2\x86\x92\xE2\x80\x9C\xE4\xB8\xAD\xE5\xA3\xAB\xE8\x8E\xAB\xE9\x87\x8C\xE6\x96\xAF\xE2\x80\x9D\xEF\xBC\x89
++			TranslateNamesInText( speakerStr );
++		}
++		NormalizeRank( speakerStr );
++	}
++	TranslateNamesInText( clean );
++	// \xE6\x95\x8C\xE6\x96\xB9\xE5\x8D\x95\xE4\xBD\x8D\xE5\x90\x8D\xE7\x94\xA8\xE3\x80\x8C\xE3\x80\x8D\xE5\x8C\x85\xE8\xA3\xB9
++	BracketEnemyNames( clean );
++
++	const char *translatedSpeaker = speakerStr.Length() ? speakerStr.c_str() : NULL;
++
 +	idStr full;
-+	if ( speaker && speaker[0] && speaker[0] != '#' ) {
-+		// 2026-07-18 用户要求：说话人与内容之间用全角中文冒号，不留空格
-+		// （原半角冒号 + 空格视觉突兀）。UTF-8 转义 \xEF\xBC\x9A = U+FF1A "："
-+		// MSVC 窄字符字面量按系统码页编译，必须写转义否则等价 GBK 字节序列。
-+		full = va( "%s\xEF\xBC\x9A%s", speaker, clean.c_str() );
++	if ( translatedSpeaker && translatedSpeaker[0] && translatedSpeaker[0] != '#' ) {
++		full = va( "%s\xEF\xBC\x9A%s", translatedSpeaker, clean.c_str() );
 +	} else {
 +		full = clean;
 +	}
 +
-+	// karin: 去重——同一字幕 300ms 内不重复添加（catch-all hook 可能与
-+	// LipSync/Sound 等 hook 同时触发同一声音）
++	// karin: 去重——同一内容 300ms 内不重复添加。
++	// 比较纯内容（不含前缀），避免不同挂钩以不同前缀添加同一声音时绕过去重
++	// （如 AI alert hook 加"敌军：xxx"，Entity StartSound hook 加"monster：xxx"）
 +	if ( numLines > 0 ) {
 +		subLine_t &last = lines[numLines - 1];
-+		if ( last.text == full && gameLocal.time - last.startTime < 300 ) {
++		if ( gameLocal.time - last.startTime < 300
++			&& last.text.Length() >= clean.Length()
++			&& last.text.Right( clean.Length() ) == clean ) {
++			if ( harm_g_subtitleDebug.GetBool() ) {
++				gameLocal.Printf( "[SUB] dedup: skipped duplicate content '%s'\n", clean.c_str() );
++			}
 +			return;
 +		}
 +	}
 +
 +	// 按说话人来源分配字幕配色(2026-08-01 用户要求：广播黄/无线电青/其余白,统一正常亮度)
 +	subColor_t color;
-+	if ( !speaker || !speaker[0] || speaker[0] == '#' ) {
++	if ( colorOverride != SUB_COLOR_NORMAL ) {
++		color = colorOverride;
++	} else if ( !speaker || !speaker[0] || speaker[0] == '#' ) {
 +		color = SUB_COLOR_NORMAL;	// 无说话人(无名环境音) — 白
 +	} else if ( strstr( speaker, "\xE8\x88\xB0\xE8\xBD\xBD\xE5\xB9\xBF\xE6\x92\xAD" ) != NULL ) { // 舰载广播
 +		color = SUB_COLOR_HUMANCAST;	// 人类/舰船广播 — 绿
-+	} else if ( idStr::Cmp( speaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) == 0			// 广播
++	} else if ( strstr( speaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) != NULL			// 含"广播"（敌军广播/广播）
 +	        || idStr::Icmp( speaker, "PA" ) == 0
 +	        || strstr( speaker, "\xE6\x92\xAD\xE6\x8A\xA5" ) != NULL ) {		// 含"播报"
 +		color = SUB_COLOR_BROADCAST;	// Strogg广播 — 黄
@@ -967,12 +1541,14 @@ index 000000000..7f8b70540
 +		color = SUB_COLOR_RADIO;		// 无线电 — 青
 +	} else if ( idStr::Icmp( speaker, "Makron" ) == 0 ) {
 +		color = SUB_COLOR_MAKRON;		// Makron — 紫
++	} else if ( idStr::Cmp( speaker, "\xE6\x95\x8C\xE5\x86\x9B" ) == 0 ) {	// 敌军
++		color = SUB_COLOR_ENEMY;		// 敌军语音 — 红
 +	} else {
 +		color = SUB_COLOR_NORMAL;	// 角色对白 — 白
 +	}
 +
 +	if ( harm_g_subtitleDebug.GetBool() ) {
-+		gameLocal.Printf( "[SUB] show (%dms): %s\n", durationMs, full.c_str() );
++		gameLocal.Printf( "[SUB] show (%dms) color=%d: %s\n", durationMs, color, full.c_str() );
 +	}
 +
 +	int dur = durationMs;
@@ -1156,7 +1732,7 @@ index 000000000..7f8b70540
 +			if ( sn && idStr::Cmpn( sn, "vo_pa_", 6 ) != 0 ) {
 +				speaker = "\xE8\x88\xB0\xE8\xBD\xBD\xE5\xB9\xBF\xE6\x92\xAD"; // 舰载广播
 +			} else {
-+				speaker = fallbackSpeaker;
++				speaker = "\xE6\x95\x8C\xE5\x86\x9B\xE5\xB9\xBF\xE6\x92\xAD"; // 敌军广播（vo_pa_）
 +			}
 +		} else {
 +			speaker = fallbackSpeaker;
@@ -1229,6 +1805,42 @@ index 000000000..7f8b70540
 +	if ( harm_g_subtitleTest.GetString()[0] ) {
 +		Add( NULL, harm_g_subtitleTest.GetString(), 4000 );
 +		harm_g_subtitleTest.SetString( "" );
++	}
++
++	// karin: \xE5\xAD\x97\xE5\xB9\x95\xE6\xBC\x94\xE7\xA4\xBA\xE6\xA8\xA1\xE5\xBC\x8F \xE2\x80\x94\xE2\x80\x94 \xE5\xBE\xAA\xE7\x8E\xAF\xE6\xBC\x94\xE7\xA4\xBA\xE6\x89\x80\xE6\x9C\x89\xE7\xB1\xBB\xE5\x9E\x8B
++	if ( harm_g_subtitleDemo.GetBool() ) {
++		// \xE6\xBC\x94\xE7\xA4\xBA\xE7\x94\xA8\xE4\xBE\x8B\xEF\xBC\x9A\xE8\xA6\x86\xE7\x9B\x96\xxE5\x90\x84\xE7\xA7\x8D\xE5\xAD\x97\xE5\xB9\x95\xE7\xB1\xBB\xE5\x9E\x8B\xE5\x92\x8C\xE9\x85\x8D\xE8\x89\xB2
++		struct DemoCase { const char *speaker; const char *text; subColor_t color; };
++		static const DemoCase cases[] = {
++			// \xE6\x95\x8C\xE5\x86\x9B\xE8\xAF\xAD\xE9\x9F\xB3\xEF\xBC\x88\xE7\xBA\xA2\xE8\x89\xB2\xEF\xBC\x89
++			{ "\xE6\x95\x8C\xE5\x86\x9B", "\xE6\x9C\xBA\xE7\x82\xAE\xE5\x85\xB5\xE5\x8F\x91\xE7\x8E\xB0\xE7\x9B\xAE\xE6\xA0\x87\xEF\xBC\x81", SUB_COLOR_ENEMY },				// 敌军：机炮兵发现目标！
++			{ "\xE6\x95\x8C\xE5\x86\x9B", "\xE7\x8B\x82\xE6\x88\x98\xE5\xA3\xAB\xE6\xAD\xA3\xE5\x9C\xA8\xE9\x9D\xA0\xE8\xBF\x91\xEF\xBC\x81", SUB_COLOR_ENEMY },				// 敌军：狂战士正在靠近！
++			{ "\xE6\x95\x8C\xE5\x86\x9B", "\xE8\xA7\x92\xE6\x96\x97\xE5\xA3\xAB\xE5\xB7\xB2\xE9\x94\x81\xE5\xAE\x9A\xE4\xBD\xA0\xEF\xBC\x81", SUB_COLOR_ENEMY },				// 敌军：角斗士已锁定你！
++			// \xE8\xA7\x92\xE8\x89\xB2\xE5\xAF\xB9\xE7\x99\xBD\xEF\xBC\x88\xE7\x99\xBD\xE8\x89\xB2\xEF\xBC\x89
++			{ "Bidwell", "Kane\xEF\xBC\x81\xE6\x88\x91\xE4\xBB\xAC\xE9\x9C\x80\xE8\xA6\x81\xE4\xBD\xA0\xEF\xBC\x81", SUB_COLOR_NORMAL },				// Bidwell：Kane！我们需要你！
++			{ "Voss", "\xE6\x89\x80\xE6\x9C\x89\xE5\xB0\x8F\xE9\x98\x9F\xEF\xBC\x8C\xE5\x89\x8D\xE8\xBF\x9B\xEF\xBC\x81", SUB_COLOR_NORMAL },					// Voss：所有小队，前进！
++			{ "Strauss", "Kane\xE4\xB8\x8B\xE5\xA3\xAB\xEF\xBC\x8C\xE8\xBF\x87\xE6\x9D\xA5\xE3\x80\x82", SUB_COLOR_NORMAL },					// Strauss：Kane下士，过来。
++			// \xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5\xEF\xBC\x88\xE9\x9D\x92\xE8\x89\xB2\xEF\xBC\x89
++			{ "\xE6\x97\xA0\xE7\xBA\xBF\xE7\x94\xB5", "\xE6\xB1\x82\xE6\x95\x91\xEF\xBC\x81\xE8\xBF\x99\xE9\x87\x8C\xE6\x98\xAF\xE5\xB7\xB4\xE9\xA1\xBF\xE5\x8F\xB7\xE2\x80\x94\xE2\x80\x94", SUB_COLOR_RADIO },	// 无线电：求救！这里是巴顿号——
++			// \xE5\xB9\xBF\xE6\x92\xAD\xEF\xBC\x88\xE9\xBB\x84\xE8\x89\xB2\xEF\xBC\x89
++			{ "\xE5\xB9\xBF\xE6\x92\xAD", "\xE5\x85\xA5\xE4\xBE\xB5\xE6\xA3\x80\xE6\xB5\x8B\xE3\x80\x82\xE5\xB0\x81\xE9\x94\x81\xE6\x89\x80\xE6\x9C\x89\xE9\x80\x9A\xE9\x81\x93\xE3\x80\x82", SUB_COLOR_BROADCAST },	// 广播：入侵检测。封锁所有通道。
++			// Makron\xEF\xBC\x88\xE7\xB4\xAB\xE8\x89\xB2\xEF\xBC\x89
++			{ "makron", "\xE4\xBD\xA0\xE4\xBC\x9A\xE5\xA4\xB1\xE8\xB4\xA5\xE7\x9A\x84\xEF\xBC\x81", SUB_COLOR_MAKRON },					// makron：你会失败的！
++			// \xE9\x97\xB4\xE9\x9A\x94\xE5\x8F\xB7\xE6\xB5\x8B\xE8\xAF\x95
++			{ NULL, "\xE6\xB5\x8B\xE8\xAF\x95\xC2\xB7\xE9\x97\xB4\xE9\x9A\x94\xE5\x8F\xB7\xC2\xB7\xE6\xB5\x8B\xE8\xAF\x95", SUB_COLOR_NORMAL },				// 测试·间隔号·测试
++		};
++		static const int numCases = sizeof(cases) / sizeof(cases[0]);
++		static int demoIdx = 0;
++		static int demoNextTime = 0;
++		if ( now >= demoNextTime ) {
++			const DemoCase &dc = cases[demoIdx];
++			Add( dc.speaker, dc.text, 3000, dc.color );
++			demoIdx = (demoIdx + 1) % numCases;
++			demoNextTime = now + 3500;	// \xE6\xAF\x8F 3.5 \xE7\xA7\x92\xE5\x88\x87\xE6\x8D\xA2
++			if ( demoIdx == 0 ) {
++				gameLocal.Printf( "[SUB DEMO] \xE5\xBE\xAA\xE7\x8E\xAF\xE9\x87\x8D\xE6\x96\xB0\xE5\xBC\x80\xE5\xA7\x8B\n" );
++			}
++		}
 +	}
 +
 +	// 过期或跨地图残留（startTime 超前于当前时间）的行删除
@@ -1311,9 +1923,10 @@ index 000000000..7f8b70540
 +			float subR, subG, subB;
 +			switch ( lines[i].color ) {
 +				case SUB_COLOR_BROADCAST: subR = 1.0f;  subG = 0.80f; subB = 0.15f; break;
-+				case SUB_COLOR_RADIO:     subR = 0.35f; subG = 0.85f; subB = 1.0f;  break;
++				case SUB_COLOR_RADIO:     subR = 0.40f; subG = 0.90f; subB = 0.40f; break;
 +				case SUB_COLOR_MAKRON:    subR = 0.75f; subG = 0.35f; subB = 1.0f;  break;
-+				case SUB_COLOR_HUMANCAST: subR = 0.40f; subG = 0.90f; subB = 0.40f; break;
++				case SUB_COLOR_HUMANCAST: subR = 0.35f; subG = 0.60f; subB = 1.0f;  break;
++				case SUB_COLOR_ENEMY:     subR = 1.0f;  subG = 0.35f; subB = 0.35f; break;
 +				default:                   subR = 0.95f; subG = 0.95f; subB = 0.95f; break;
 +			}
 +			gui->SetStateFloat( va( "subTxtR%d", i ), subR );
@@ -1331,10 +1944,10 @@ index 000000000..7f8b70540
 +}
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h
 new file mode 100644
-index 000000000..4a65b51c1
+index 000000000..a9599a521
 --- /dev/null
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,70 @@
 +﻿// karin: Quake 4 简体中文汉化项目新增 —— HL 风格语音字幕
 +// 文本来源: rvDeclLipSync::GetTranscribeText()（经 GetLocalizedString 本地化）
 +#ifndef __GAME_SUBTITLES_H__
@@ -1348,7 +1961,8 @@ index 000000000..4a65b51c1
 +	SUB_COLOR_BROADCAST,	// Strogg广播(PA) — 黄
 +	SUB_COLOR_RADIO,		// 无线电 — 青
 +	SUB_COLOR_MAKRON,		// Makron — 紫
-+	SUB_COLOR_HUMANCAST		// 人类/舰船广播 — 绿
++	SUB_COLOR_HUMANCAST,	// 人类/舰船广播 — 绿
++	SUB_COLOR_ENEMY			// 敌军语音 — 红
 +};
 +
 +class idSoundShader;
@@ -1359,13 +1973,16 @@ index 000000000..4a65b51c1
 +
 +	void				Clear( void );
 +	// speaker 可为 NULL；durationMs 为语音时长（毫秒）
-+	void				Add( const char *speaker, const char *text, int durationMs );
++	void				Add( const char *speaker, const char *text, int durationMs, subColor_t colorOverride = SUB_COLOR_NORMAL );
 +	// 从说话实体推断说话人名后加入；shader 非 NULL 时做可听性门控；
 +	// fallbackSpeaker：推断不出名字时的兜底前缀（如 speaker 实体传"广播"）
 +	void				AddFromEntity( idEntity *bodyEnt, const char *text, int durationMs, const idSoundShader *shader = NULL, const char *fallbackSpeaker = NULL );
 +	// 查声音 shader 名 → 说话人映射（speaker_map.txt）。返回非空=角色台词（用角色名），
 +	// 返回 NULL=环境音（fallback 到"广播"/"无线电"默认前缀+淡色）。供 Sound.cpp/Misc.cpp 挂钩调用
 +	static const char *	LookupSpeaker( const char *shaderName );
++	// \xE5\xB0\x86\xE6\x96\x87\xE6\x9C\xAC\xE4\xB8\xAD\xE7\x9A\x84\xE8\x8B\xB1\xE6\x96\x87\xE4\xBA\xBA\xE5\x90\x8D\xE7\xBF\xBB\xE8\xAF\x91\xE4\xB8\xBA\xE4\xB8\xAD\xE6\x96\x87\xEF\xBC\x8C\xE5\x86\x9B\xE8\xA1\x94\xE8\xA7\x84\xE8\x8C\x83\xE5\x8C\x96
++	// \xE4\xBE\x9B Player.cpp \xE5\x87\x86\xE5\xBF\x83\xE5\x90\x8D\xE5\xAD\x97\xE7\xAD\x89\xE5\x9C\xBA\xE6\x99\xAF\xE8\xB0\x83\xE7\x94\xA8\xEF\xBC\x8C\xE5\x8F\x97 harm_g_cnNames \xE6\x8E\xA7\xE5\x88\xB6
++	static void			LocalizeText( idStr &text );
 +	// 每帧在 idGameLocal::Draw 尾部调用
 +	void				Draw( void );
 +
@@ -1402,7 +2019,7 @@ index 000000000..4a65b51c1
 +
 +#endif /* !__GAME_SUBTITLES_H__ */
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp b/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
-index 8fce0d71e..fc0d2cccd 100644
+index 8fce0d71e..caf607d2c 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/ai/AI.cpp
 @@ -1,4 +1,4 @@
@@ -1411,15 +2028,134 @@ index 8fce0d71e..fc0d2cccd 100644
  ================
  
  AI.cpp
-@@ -17,6 +17,7 @@ AI.cpp
+@@ -17,6 +17,10 @@ AI.cpp
  #include "../Projectile.h"
  #include "../spawner.h"
  #include "AI_Tactical.h"
 +#include "../Subtitles.h"
++
++// HAZ: auto-gib enemies on death (skips boss to preserve death animation, skips friendly marines)
++idCVar harm_g_gibOnDeath( "harm_g_gibOnDeath", "1", CVAR_GAME | CVAR_BOOL | CVAR_ARCHIVE, "auto-gib Strogg enemies on death (skip boss and friendly)" );
  
  const char* aiTalkMessageString [ ] = {
  	"None",
-@@ -4511,8 +4512,17 @@ bool idAI::Speak( const char *lipsync, bool random ){
+@@ -1753,6 +1757,92 @@ void idAI::Killed( idEntity *inflictor, idEntity *attacker, int damage, const id
+ 		}
+ 		kv = spawnArgs.MatchPrefix( "def_drops", kv );
+ 	}
++
++	// HAZ: auto-gib on death — weapon-gated, size-scaled, bio Strogg only.
++	if ( harm_g_gibOnDeath.GetBool() && team == AITEAM_STROGG ) {
++		const char *gibcls = spawnArgs.GetString( "spawnclass", "" );
++		// exclude: bosses (preserve scripted death) + mechanical/flyer/device + splitting monster
++		static const char *noGibClass[] = {
++			"rvMonsterBossMakron", "rvMonsterNetworkGuardian",
++			"rvMonsterHarvester", "rvMonsterHeavyHoverTank",
++			"rvMonsterStreamProtector", "rvMonsterFailedTransfer",
++			"rvMonsterRepairBot", "rvMonsterStroggFlyer",
++			"rvMonsterStroggHover", "rvMonsterTeleportDropper",
++			"rvMonsterTurret", "rvMonsterConvoyGround",
++			"rvMonsterConvoyHover", NULL
++		};
++		bool skipGib = false;
++		for ( int i = 0; noGibClass[i]; i++ ) {
++			if ( idStr::Icmp( gibcls, noGibClass[i] ) == 0 ) { skipGib = true; break; }
++		}
++		if ( !skipGib ) {
++			// weapon whitelist: only shotgun/grenade/nailgun/railgun/rocket/lightning gib
++			const char *dmg = spawnArgs.GetString( "harm_lastDmgDef", "" );
++			bool canGibWpn = ( idStr::Icmpn( dmg, "damage_pellet", 13 ) == 0
++				|| idStr::Icmpn( dmg, "damage_grenade", 14 ) == 0
++				|| idStr::Icmpn( dmg, "damage_nail", 11 ) == 0
++				|| idStr::Icmpn( dmg, "damage_railgun", 14 ) == 0
++				|| idStr::Icmpn( dmg, "damage_rocket", 13 ) == 0
++				|| idStr::Icmpn( dmg, "damage_lightninggun", 19 ) == 0 );
++			if ( canGibWpn ) {
++				// size tier by def health (unaffected by difficulty — skill only scales AI aggression)
++				int mh = spawnArgs.GetInt( "health", "100" );
++				bool large = ( mh > 500 );
++				bool medium = ( mh > 200 );
++				if ( !spawnArgs.GetString( "def_dropGibItem1", "" )[0] ) {
++					spawnArgs.Set( "gib", "1" );
++					spawnArgs.Set( "fx_gib", "effects/monsters/gib.fx" );
++					if ( large ) {
++						// 15 big_ chunks (heavy: gladiator/light_tank)
++						spawnArgs.Set( "def_dropGibItem1", "moveable_gib_big_head_pork" );
++						spawnArgs.Set( "def_dropGibItem2", "moveable_gib_big_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem3", "moveable_gib_big_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem4", "moveable_gib_big_left_waist_pork" );
++						spawnArgs.Set( "def_dropGibItem5", "moveable_gib_big_rup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem6", "moveable_gib_big_lup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem7", "moveable_gib_big_rup2_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem8", "moveable_gib_big_pelvis_pork" );
++						spawnArgs.Set( "def_dropGibItem9", "moveable_gib_skull" );
++						spawnArgs.Set( "def_dropGibItem10", "moveable_gib_big_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem11", "moveable_gib_big_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem12", "moveable_gib_big_left_waist_pork" );
++						spawnArgs.Set( "def_dropGibItem13", "moveable_gib_big_rup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem14", "moveable_gib_big_lup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem15", "moveable_gib_big_rup2_leg_pork" );
++					} else if ( medium ) {
++						// 12 big_ chunks (elite: gunner/berserker/iron_maiden)
++						spawnArgs.Set( "def_dropGibItem1", "moveable_gib_big_head_pork" );
++						spawnArgs.Set( "def_dropGibItem2", "moveable_gib_big_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem3", "moveable_gib_big_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem4", "moveable_gib_big_left_waist_pork" );
++						spawnArgs.Set( "def_dropGibItem5", "moveable_gib_big_rup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem6", "moveable_gib_big_lup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem7", "moveable_gib_big_rup2_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem8", "moveable_gib_big_pelvis_pork" );
++						spawnArgs.Set( "def_dropGibItem9", "moveable_gib_skull" );
++						spawnArgs.Set( "def_dropGibItem10", "moveable_gib_big_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem11", "moveable_gib_big_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem12", "moveable_gib_big_left_waist_pork" );
++					} else {
++						// 10 big_ chunks (small: grunt/marine/tactical)
++						spawnArgs.Set( "def_dropGibItem1", "moveable_gib_big_head_pork" );
++						spawnArgs.Set( "def_dropGibItem2", "moveable_gib_big_torso_pork" );
++						spawnArgs.Set( "def_dropGibItem3", "moveable_gib_big_rup_arm_pork" );
++						spawnArgs.Set( "def_dropGibItem4", "moveable_gib_big_left_waist_pork" );
++						spawnArgs.Set( "def_dropGibItem5", "moveable_gib_big_rup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem6", "moveable_gib_big_lup_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem7", "moveable_gib_big_rup2_leg_pork" );
++						spawnArgs.Set( "def_dropGibItem8", "moveable_gib_big_pelvis_pork" );
++						spawnArgs.Set( "def_dropGibItem9", "moveable_gib_skull" );
++						spawnArgs.Set( "def_dropGibItem10", "moveable_gib_big_torso_pork" );
++					}
++				}
++				// defer to next frame — spawning inside Killed chain stalls scripted sequences
++				spawnArgs.Set( "harm_gibDir", dir.ToString() );
++				PostEventMS( &EV_Gib, 0, "damage_gib" );
++			}
++		}
++	}
+ }
+ 
+ /***********************************************************************
+@@ -2207,7 +2297,21 @@ bool idAI::SetEnemy( idEntity *newEnemy ) {
+ 	if ( enemy.ent != oldEnemy ) {
+ 		OnEnemyChange ( oldEnemy );
+ 	}
+-	
++
++	// karin: AI 首次发现敌人时为 alert 声音添加字幕（snd_alert -> lipsync decl -> 字幕）
++	if ( !oldEnemy && newEnemy && enemy.ent == newEnemy ) {
++		const char *alertSnd = spawnArgs.GetString( "snd_alert", "" );
++		if ( alertSnd && *alertSnd ) {
++			const rvDeclLipSync *ls = declManager->FindLipSync( alertSnd, false );
++			if ( ls && ls->GetTranscribeText() && ls->GetTranscribeText()[0] ) {
++				// "敌军" speaker -> SUB_COLOR_ENEMY (红色)
++				gameSubtitles.Add( "\xE6\x95\x8C\xE5\x86\x9B", ls->GetTranscribeText(), 3000, SUB_COLOR_ENEMY );
++			} else if ( harm_g_subtitleDebug.GetBool() ) {
++				gameLocal.Printf( "[SUB] alert: no lipsync decl for '%s'\n", alertSnd );
++			}
++		}
++	}
++
+ 	return true;
+ }
+ 
+@@ -4511,8 +4615,17 @@ bool idAI::Speak( const char *lipsync, bool random ){
  	if ( head ) {
  		speakTime = head->StartLipSyncing( lipsync );
  	} else {
@@ -1439,6 +2175,39 @@ index 8fce0d71e..fc0d2cccd 100644
  	}
  
  	speakTime += gameLocal.time;
+diff --git a/Q3E/src/main/jni/doom3/neo/quake4/ai/Monster_Sentry.cpp b/Q3E/src/main/jni/doom3/neo/quake4/ai/Monster_Sentry.cpp
+index fedb7a459..3178cce7c 100644
+--- a/Q3E/src/main/jni/doom3/neo/quake4/ai/Monster_Sentry.cpp
++++ b/Q3E/src/main/jni/doom3/neo/quake4/ai/Monster_Sentry.cpp
+@@ -154,7 +154,27 @@ rvMonsterSentry::Think
+ ================
+ */
+ void rvMonsterSentry::Think ( void ) {
+-	// Explode whenever we hit something 
++	// idTech4A++ 物理保护：Sentry 飞行速度在引擎物理积分中可能溢出，
++	// 触发 TestHugeTranslation 后卡在异常位置→碰撞/寻路计算爆炸→3FPS。
++	// 钳制速度 + 位置保护（离出生点太远则重置）。
++	idVec3 sentryVel = physicsObj.GetLinearVelocity();
++	float sentryMaxSpeed = Max( move.fly_speed * 3.0f, 500.0f );
++	float sentrySpeedSqr = sentryVel.LengthSqr();
++	if ( sentrySpeedSqr > Square( sentryMaxSpeed ) ) {
++		sentryVel *= sentryMaxSpeed * idMath::InvSqrt( sentrySpeedSqr );
++		physicsObj.SetLinearVelocity( sentryVel );
++	}
++	// 位置保护：TestHugeTranslation 残留导致 Sentry 卡在异常位置
++	idVec3 sentryOrg = physicsObj.GetOrigin();
++	idVec3 sentrySpawnOrg;
++	if ( spawnArgs.GetVector( "origin", "0 0 0", sentrySpawnOrg ) ) {
++		if ( ( sentryOrg - sentrySpawnOrg ).LengthSqr() > Square( 5000.0f ) ) {
++			physicsObj.SetOrigin( sentrySpawnOrg );
++			physicsObj.SetLinearVelocity( vec3_zero );
++		}
++	}
++
++	// Explode whenever we hit something
+ 	if ( kamakaziHealth == 0 && physicsObj.GetSlideMoveEntity () ) {
+ 		Explode ( );
+ 	} else {
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/gamesys/SysCvar.cpp b/Q3E/src/main/jni/doom3/neo/quake4/gamesys/SysCvar.cpp
 index 670f8073f..dfa694637 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/gamesys/SysCvar.cpp
@@ -1453,30 +2222,31 @@ index 670f8073f..dfa694637 100644
  idCVar g_skipViewEffects(			"g_skipViewEffects",		"0",			CVAR_GAME | CVAR_BOOL, "skip damage and other view effects" );
  idCVar g_mpWeaponAngleScale(		"g_mpWeaponAngleScale",		"0",			CVAR_GAME | CVAR_FLOAT, "Control the weapon sway in MP" );
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp b/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
-index 337d964b3..fc77da6ae 100644
+index 337d964b3..a9b287b6c 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/physics/Clip.cpp
 @@ -1366,10 +1366,20 @@ ID_INLINE bool TestHugeTranslation( trace_t &results, const idClipModel *mdl, co
  		results.c.point = start;
  		results.c.entityNum = ENTITYNUM_WORLD;
  
-+		// karin: hub1 关卡 rvMonsterSentry 物理故障（坐标/速度溢出），每帧触发
-+		// TestHugeTranslation 被内联调用 3 处。仅限 Printf 无法解决掉帧——物理引擎
-+		// 仍每帧尝试巨型位移计算。此处直接清零实体速度，打断「速度→huge位移→
-+		// fraction=0→速度保留→下帧重复」死循环。
- 		if ( mdl->GetEntity() ) {
+-		if ( mdl->GetEntity() ) {
 -			gameLocal.Printf( "huge translation for clip model %d on entity %d '%s'\n", mdl->GetId(), mdl->GetEntity()->entityNumber, mdl->GetEntity()->GetName() );
 -		} else {
 -			gameLocal.Printf( "huge translation for clip model %d\n", mdl->GetId() );
-+			idPhysics *phys = mdl->GetEntity()->GetPhysics();
-+			if ( phys ) {
-+				phys->SetLinearVelocity( vec3_origin );
-+			}
++		// karin: hub1/hub2 关卡 rvMonsterSentry 物理故障（坐标/速度溢出）。
++		// 清零速度 + 禁用碰撞。卡顿不在 RunFrame 内（0.1ms），而在引擎主循环
++		// 的物理世界更新环节（RunFrame 之后）——对异常碰撞模型做海量碰撞检测。
++		// SetContents(0) 让物理世界更新永久跳过此实体 → 不卡。
++		// 代价：触发此保护的实体穿墙/无法被击中，但物理状态已异常本就不正常。
++		idEntity *ent = mdl->GetEntity();
++		if ( ent ) {
 +			static int hugeTranslationWarnCount = 0;
 +			if ( hugeTranslationWarnCount < 5 ) {
 +				hugeTranslationWarnCount++;
-+				gameLocal.Printf( "huge translation for clip model %d on entity %d '%s'\n", mdl->GetId(), mdl->GetEntity()->entityNumber, mdl->GetEntity()->GetName() );
++				gameLocal.Printf( "huge translation for clip model %d on entity %d '%s'\n", mdl->GetId(), ent->entityNumber, ent->GetName() );
 +			}
++			ent->GetPhysics()->SetLinearVelocity( vec3_zero );
++			ent->GetPhysics()->SetContents( 0 );
  		}
  		return true;
  	}

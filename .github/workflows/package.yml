@@ -73,7 +73,12 @@ jobs:
               "/Q3E/src/main/jni/doom3/neo/ui/DeviceContext.cpp",
               "/Q3E/src/main/jni/doom3/neo/ui/Window.cpp",
               "/Q3E/src/main/jni/doom3/neo/quake4/Projectile.cpp",
-              "/Q3E/src/main/jni/doom3/neo/quake4/gamesys/SysCvar.cpp"
+              "/Q3E/src/main/jni/doom3/neo/quake4/gamesys/SysCvar.cpp",
+              "/Q3E/src/main/jni/doom3/neo/quake4/AFEntity.cpp",
+              "/Q3E/src/main/jni/doom3/neo/quake4/Actor.cpp",
+              "/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.cpp",
+              "/Q3E/src/main/jni/doom3/neo/quake4/Subtitles.h",
+              "/Q3E/src/main/jni/doom3/neo/quake4/ai/Monster_Sentry.cpp"
           ) | Set-Content -LiteralPath (Join-Path $engine ".git\info\sparse-checkout") -Encoding ASCII
           git -C $engine checkout
           git -C $engine apply --check "$env:GITHUB_WORKSPACE\src\engine-patches\0001-quake4-cn-runtime.patch"
