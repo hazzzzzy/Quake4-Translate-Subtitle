@@ -252,6 +252,8 @@ cp savedata/q4base/speaker_map.txt dist/savedata/q4base/
 
 **教训（v1.3.2）**：改了 lang/TSV/字体后只部署到 `savedata/` 和用户目录，忘了同步 `dist/savedata/`，导致安装器打包的 lang 文件是旧版（无人名汉化），用户安装后看不到改动。
 
+**教训（v1.3.3）**：部署到用户游玩目录时，lang/lipsync/speaker_map 必须放 `savedata/q4base/`（fs_savepath），**不是 `qbase/`**。引擎 `fileSystem->ReadFile` 只搜 savepath，`qbase/` 的文件游戏根本不读。曾整个会话误部署到 `qbase/`，导致用户一直看到旧内容（"广播"前缀、"（受伤音）"字幕）。`speaker_map.txt` 改后须完全退出进程重进（启动时一次性加载，读档不重新读）。
+
 ### Quake4.exe 编译（改 UI 代码时）
 
 Quake4.exe 编译需要 `RAVEN=ON`，并额外依赖 SDL2 和 ZLIB（q4game.dll 不需要）：

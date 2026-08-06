@@ -462,3 +462,21 @@ lipSync vo_pa_waste_60
 	description	"Station 48 security grid deactivated."
 	text		"#str_385842"
 }
+
+lipSync storage_voice_floor
+{
+	description	"Hanger floor damage reaching critical levels."
+	text		"#str_386110"
+}
+
+lipSync storage_voice_repairdroid
+{
+	description	"Repair Droid to fire hazard in section 1."
+	text		"#str_386111"
+}
+
+lipSync storage_voice_tactical
+{
+	description	"Multiple Human squads detected on hanger floor. Tactical teams dispatched."
+	text		"#str_386112"
+}
