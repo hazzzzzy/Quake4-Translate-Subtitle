@@ -396,7 +396,7 @@ index 5c4464026..ebf1a76d1 100644
  
  	if ( player && player->GetHud() ) {
 diff --git a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
-index f755e1344..268c0e82b 100644
+index f755e1344..38dfb95ae 100644
 --- a/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 +++ b/Q3E/src/main/jni/doom3/neo/quake4/Player.cpp
 @@ -1,4 +1,4 @@
@@ -413,7 +413,7 @@ index f755e1344..268c0e82b 100644
  
  #include "ai/AI.h"
  #include "ai/AI_Manager.h"
-@@ -17,12 +18,14 @@
+@@ -17,12 +18,15 @@
  #include "ai/AAS_tactical.h"
  #include "Healing_Station.h"
  #include "ai/AI_Medic.h"
@@ -421,6 +421,7 @@ index f755e1344..268c0e82b 100644
 +
 +// HAZ: gib visual test demo (1=standard 8, 2=medium 10, 3=large 12 big_)
 +idCVar harm_g_gibTest( "harm_g_gibTest", "0", CVAR_GAME | CVAR_INTEGER, "spawn giblets in front of player to preview gib (1=small,2=medium,3=large)" );
++idCVar harm_g_killSentry( "harm_g_killSentry", "0", CVAR_GAME | CVAR_BOOL, "remove all sentries in current map (fix sentry physics stutter)" );
  
  // RAVEN BEGIN
  // nrausch: support for turning the weapon change ui on and off
@@ -430,7 +431,7 @@ index f755e1344..268c0e82b 100644
  // nrausch: support for direct button input
  #include "../sys/xenon/xen_input.h"
  #endif
-@@ -30,8 +33,25 @@
+@@ -30,8 +34,25 @@
  #ifdef _MOD_VIEW_BODY
  #include "ViewBody.cpp"
  #endif
@@ -456,7 +457,7 @@ index f755e1344..268c0e82b 100644
  #endif
  
  idCVar net_predictionErrorDecay( "net_predictionErrorDecay", "112", CVAR_FLOAT | CVAR_GAME | CVAR_NOCHEAT, "time in milliseconds it takes to fade away prediction errors", 0.0f, 200.0f );
-@@ -2457,10 +2477,14 @@ void idPlayer::Restore( idRestoreGame *savefile ) {
+@@ -2457,10 +2478,14 @@ void idPlayer::Restore( idRestoreGame *savefile ) {
  	weaponViewModel.Restore( savefile );	
  	weaponWorldModel.Restore( savefile );	
  
@@ -472,7 +473,7 @@ index f755e1344..268c0e82b 100644
  	savefile->ReadBool( objectiveSystemOpen );
  
  #ifdef _XENON
-@@ -3759,8 +3783,24 @@ void idPlayer::DrawHUD( idUserInterface *_hud ) {
+@@ -3759,8 +3784,24 @@ void idPlayer::DrawHUD( idUserInterface *_hud ) {
  
  	if ( gameLocal.isMultiplayer ) {
  		_hud->SetStateBool( "mp", true );
@@ -497,7 +498,7 @@ index f755e1344..268c0e82b 100644
  	}
  
  	// Draw the cinematic hud when in a cinematic
-@@ -7468,8 +7508,15 @@ void idPlayer::UpdateFocusCharacter( idEntity* newEnt ) {
+@@ -7468,8 +7509,15 @@ void idPlayer::UpdateFocusCharacter( idEntity* newEnt ) {
  		return;
  	}
  	// Handle character interaction
@@ -515,7 +516,7 @@ index f755e1344..268c0e82b 100644
  	if ( newEnt->IsType( rvAIMedic::GetClassType() ) ) {
  		if ( ((rvAIMedic*)newEnt)->isTech ) {
  			cursor->SetStateInt( "npc_medictech", 2 );
-@@ -9449,6 +9496,42 @@ Called every tic for each player
+@@ -9449,6 +9497,57 @@ Called every tic for each player
  ==============
  */
  void idPlayer::Think( void ) {
@@ -554,11 +555,26 @@ index f755e1344..268c0e82b 100644
 +			}
 +		}
 +	}
++	// HAZ: kill all sentries (fix sentry physics stutter)
++	if ( harm_g_killSentry.GetBool() ) {
++		harm_g_killSentry.SetBool( false );
++		int killed = 0;
++		for ( int i = 0; i < gameLocal.num_entities; i++ ) {
++			idEntity *ent = gameLocal.entities[i];
++			if ( ent && ent->IsType( idAI::GetClassType() ) ) {
++				if ( idStr::Icmp( ent->spawnArgs.GetString( "spawnclass", "" ), "rvMonsterSentry" ) == 0 ) {
++					ent->PostEventMS( &EV_Remove, 0 );
++					killed++;
++				}
++			}
++		}
++		gameLocal.Printf( "[KILLSENTRY] removed %d sentries\n", killed );
++	}
 +	SaveMessageWatchdog();
  #ifdef _MOD_FULL_BODY_AWARENESS
  	if(!harm_pm_fullBodyAwareness.GetBool() || pm_thirdPerson.GetBool() || IsInVehicle() || zoomed || focusUI)
  	{
-@@ -11556,7 +11639,15 @@ void idPlayer::SetLastHitTime( int time, bool armorHit ) {
+@@ -11556,7 +11655,15 @@ void idPlayer::SetLastHitTime( int time, bool armorHit ) {
  
  	if ( lastHitTime != time ) {
  		if ( cursor ) {
@@ -574,7 +590,7 @@ index f755e1344..268c0e82b 100644
  		}
  		if ( gameLocal.isMultiplayer ) {			
  			// spectated so we get sounds for a client we're following
-@@ -13821,6 +13912,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
+@@ -13821,6 +13928,12 @@ void idPlayer::SetHudOverlay( idUserInterface* overlay, int duration ) {
  idPlayer::SaveMessage
  =====================
  */
@@ -587,7 +603,7 @@ index f755e1344..268c0e82b 100644
  void idPlayer::SaveMessage( void ) {
  #ifndef _XENON
  	if ( GetHud( ) ) {
-@@ -13830,6 +13927,18 @@ void idPlayer::SaveMessage( void ) {
+@@ -13830,6 +13943,18 @@ void idPlayer::SaveMessage( void ) {
  	if ( objectiveSystem ) {
  		objectiveSystem->HandleNamedEvent( "saveMessage" );
  	}

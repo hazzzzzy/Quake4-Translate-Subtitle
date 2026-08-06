@@ -9,6 +9,7 @@
 - teleportdropper 占位文本删除（"我必须咬你了"）
 - 安装器：碎尸选项默认关 + 修人名汉化 disabled + 不勾选写 0
 - 部署位置修复（savedata/q4base，fs_savepath）
+- killSentry 命令：控制台 harm_g_killSentry 1 移除当前关卡所有哨卫（解决 sentry 物理卡顿，不影响其他怪）
 
 ## v1.3.3 — 2026-08-06
 
