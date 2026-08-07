@@ -666,13 +666,43 @@ bool rvSubtitles::IsAudible( idEntity *bodyEnt, const idSoundShader *shader ) co
 	// 过场对白(func_animate/head attachment 无 cinematic 标志)被误杀。
 	// (2026-08-01 修复)
 	if ( gameLocal.inCinematic ) {
-		if ( bodyEnt->IsType( idSound::GetClassType() ) && !bodyEnt->cinematic ) {
-			if ( harm_g_subtitleDebug.GetBool() ) {
-				gameLocal.Printf( "[SUB] skip (non-cinematic speaker in cinematic): %s\n", bodyEnt->GetName() );
-			}
-			return false;
+		// Global sounds (e.g. intro ship broadcast vo_1_1_0_01_2) play worldwide and
+		// the speaker often sits far from the camera — keep them regardless of distance.
+		if ( shader->GetParms()->soundShaderFlags & SSF_GLOBAL ) {
+			return true;
 		}
-		return true;
+		// mcc_2 末尾"飞船被攻击"过场广播(radioWarnings vo_2_2_10_251_*): Raven 未设
+		// global 且 maxDist 仅 600, 但它是过场高潮的剧情广播, 镜头离 speaker 远会被
+		// 下面的距离门控误杀, 这里强制放行。后续发现同类过场广播可按此前缀扩展。
+		const char *cineSn = shader->GetName();
+		if ( cineSn && idStr::Cmpn( cineSn, "vo_2_2_10_251_", 14 ) == 0 ) {
+			return true;
+		}
+		idPlayer *cinPlayer = gameLocal.GetLocalPlayer();
+		// Cutscene actors (flagged "cinematic" "1"; head attachments inherit via
+		// Actor::Attach) and the player always pass.
+		if ( bodyEnt == cinPlayer || bodyEnt->cinematic ) {
+			return true;
+		}
+		// Other entities (background speakers, outdoor NPCs) are gated by distance to
+		// the cutscene camera. Stock cutscene dialogue plays through standalone speakers
+		// (spkr_voss_intro etc.) that carry no cinematic flag but sit beside the camera;
+		// bleed-through sources (talkLooms etc. in far hallways) exceed the sound's own
+		// maxDistance and are dropped. The flag can't tell them apart (both are unflagged
+		// vo_ speakers) — only space can.
+		idCamera *cam = gameLocal.GetCamera();
+		if ( cam ) {
+			float cdist = ( cam->GetPhysics()->GetOrigin() - bodyEnt->GetPhysics()->GetOrigin() ).LengthFast();
+			float cmax = shader->GetParms()->maxDistance;
+			if ( cmax > 0.0f && cdist > cmax ) {
+				if ( harm_g_subtitleDebug.GetBool() ) {
+					gameLocal.Printf( "[SUB] skip (far from camera %.0f > %.0f): %s\n", cdist, cmax, bodyEnt->GetName() );
+				}
+				return false;
+			}
+			return true;
+		}
+		return false;
 	}
 	idPlayer *player = gameLocal.GetLocalPlayer();
 	if ( !player || bodyEnt == player ) {
@@ -786,14 +816,14 @@ void rvSubtitles::Add( const char *speaker, const char *text, int durationMs, su
 		}
 	}
 
-	// 按说话人来源分配字幕配色(2026-08-01 用户要求：广播黄/无线电青/其余白,统一正常亮度)
+	// 按说话人来源分配字幕配色(舰载广播蓝/敌方广播黄/无线电绿/其余白,统一正常亮度)
 	subColor_t color;
 	if ( colorOverride != SUB_COLOR_NORMAL ) {
 		color = colorOverride;
 	} else if ( !speaker || !speaker[0] || speaker[0] == '#' ) {
 		color = SUB_COLOR_NORMAL;	// 无说话人(无名环境音) — 白
 	} else if ( strstr( speaker, "\xE8\x88\xB0\xE8\xBD\xBD\xE5\xB9\xBF\xE6\x92\xAD" ) != NULL ) { // 舰载广播
-		color = SUB_COLOR_HUMANCAST;	// 人类/舰船广播 — 绿
+		color = SUB_COLOR_HUMANCAST;	// 人类/舰船广播 — 蓝
 	} else if ( strstr( speaker, "\xE5\xB9\xBF\xE6\x92\xAD" ) != NULL			// 含"广播"（敌军广播/广播）
 	        || idStr::Icmp( speaker, "PA" ) == 0
 	        || strstr( speaker, "\xE6\x92\xAD\xE6\x8A\xA5" ) != NULL ) {		// 含"播报"
