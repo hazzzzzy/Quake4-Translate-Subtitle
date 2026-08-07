@@ -4961,35 +4961,40 @@ lipSync vo_3_1_2_10_2
 	text		"#str_386075"
 }
 
-lipSync failedtransfer_alert
-{
-	description	"failedtransfer_alert"
-	text		"我看到你了"
-}
+// [DISABLED monster alert subtitle]
+// lipSync failedtransfer_alert
+// {
+// 	description	"failedtransfer_alert"
+// 	text		"我看到你了"
+// }
 
-lipSync gunner_alert
-{
-	description	"gunner_alert"
-	text		"我看到你了"
-}
+// [DISABLED monster alert subtitle]
+// lipSync gunner_alert
+// {
+// 	description	"gunner_alert"
+// 	text		"我看到你了"
+// }
 
-lipSync iron_maiden_alert
-{
-	description	"iron_maiden_alert"
-	text		"必须……杀……"
-}
+// [DISABLED monster alert subtitle]
+// lipSync iron_maiden_alert
+// {
+// 	description	"iron_maiden_alert"
+// 	text		"必须……杀……"
+// }
 
-lipSync scientist_alert
-{
-	description	"scientist_alert"
-	text		"我看到你了"
-}
+// [DISABLED monster alert subtitle]
+// lipSync scientist_alert
+// {
+// 	description	"scientist_alert"
+// 	text		"我看到你了"
+// }
 
-lipSync slimytransfer_alert
-{
-	description	"slimytransfer_alert"
-	text		"我看到你了"
-}
+// [DISABLED monster alert subtitle]
+// lipSync slimytransfer_alert
+// {
+// 	description	"slimytransfer_alert"
+// 	text		"我看到你了"
+// }
 lipSync vo_3_2_9_30_2
 {
 	description	"vo_3_2_9_30_2"
@@ -5022,8 +5027,32 @@ lipSync vo_3_2_9_30_6
 
 
 
-lipSync berserker_alert
+// [DISABLED monster alert subtitle]
+// lipSync berserker_alert
+// {
+// 	description	"aha, prepare to die"
+// 	text		"啊哈，准备受死吧"
+// }
+
+
+// 改造后 Voss boss 残存意识对白(monster_bossbuddy, 原版 waste.lipsync 的 decl 无 text, 这里补中文)
+lipSync vo_2_2_7_174_4_cin
 {
-	description	"aha, prepare to die"
-	text		"啊哈，准备受死吧"
+	description	"Kane"
+	text		"å¯æ©"
+}
+lipSync vo_2_2_7_172_1_cin
+{
+	description	"you have to get out of here"
+	text		"å¯æ©ï¼ä½ å¿é¡»ç¦»å¼è¿éï¼"
+}
+lipSync vo_2_2_7_172_2_cin
+{
+	description	"Go! Get out of here"
+	text		"å¿«èµ°ï¼ç¦»å¼è¿éï¼"
+}
+lipSync vo_2_2_7_172_3_cin
+{
+	description	"I can't control it RUN"
+	text		"ææ§å¶ä¸ä½äºâ¦â¦å¿«è·ï¼ï¼ï¼"
 }

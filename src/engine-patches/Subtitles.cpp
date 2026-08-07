@@ -1020,8 +1020,33 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 		// speaker 实体(广播 PA / 画面外角色如机甲检修 Morois)按 shader 名查角色映射:
 		// 有映射=角色台词(如"Morois 下士",正常亮色), 无映射=环境广播(fallback"广播"+淡色)
 		if ( !speaker.Length() && shader && bodyEnt->IsType( idSound::GetClassType() ) ) {
-			const char *mapped = LookupSpeaker( shader->GetName() );
-			if ( mapped ) speaker = mapped;
+			const char *sn = shader->GetName();
+			// alert 类声音(关卡 speaker 播放的怪物发现喊话, 如 berserker_alert):
+			// bodyEnt 是 speaker 而非怪物, spawnclass 推断不适用; 从 shader 名推断怪物名,
+			// 否则落 fallback "舰载广播" 显示成蓝色广播(应为红色怪物名)
+			static const struct { const char *shader; const char *cn; } alertMap[] = {
+				{ "berserker_alert", "\xE7\x8B\x82\xE6\x88\x98\xE5\xA3\xAB" },
+				{ "gunner_alert", "\xE6\x9C\xBA\xE7\x82\xAE\xE5\x85\xB5" },
+				{ "iron_maiden_alert", "\xE9\x93\x81\xE5\xA8\x98\xE5\xAD\x90" },
+				{ "gladiator_alert", "\xE8\xA7\x92\xE6\x96\x97\xE5\xA3\xAB" },
+				{ "failedtransfer_alert", "\xE5\xA4\xB1\xE8\xB4\xA5\xE6\x94\xB9\xE9\x80\xA0\xE4\xBD\x93" },
+				{ "slimytransfer_alert", "\xE5\xA4\xB1\xE8\xB4\xA5\xE6\x94\xB9\xE9\x80\xA0\xE4\xBD\x93" },
+				{ "scientist_alert", "\xE7\xA7\x91\xE5\xAD\xA6\xE5\xAE\xB6" },
+				{ "grunt_alert", "\xE6\xAD\xA5\xE5\x85\xB5" },
+				{ "sentry_alert", "\xE5\x93\xA8\xE5\x8D\xAB" },
+				{ "smarine_alert", "\xE9\x99\x86\xE6\x88\x98\xE5\x85\xB5" },
+				{ NULL, NULL }
+			};
+			for ( int i = 0; alertMap[i].shader; i++ ) {
+				if ( idStr::Cmp( sn, alertMap[i].shader ) == 0 ) {
+					speaker = alertMap[i].cn;
+					break;
+				}
+			}
+			if ( !speaker.Length() ) {
+				const char *mapped = LookupSpeaker( sn );
+				if ( mapped ) speaker = mapped;
+			}
 		}
 	}
 	// 武器改造声音 → 粉红色标志（speaker 保持说话人推断，不覆盖）
@@ -1057,6 +1082,7 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 				{ "rvMonsterSentry", "\xE5\x93\xA8\xE5\x8D\xAB" },
 				{ "rvMonsterStroggMarine", "\xE9\x99\x86\xE6\x88\x98\xE5\x85\xB5" },
 				{ "rvMonsterSlimyTransfer", "\xE5\xA4\xB1\xE8\xB4\xA5\xE6\x94\xB9\xE9\x80\xA0\xE4\xBD\x93" },
+				{ "rvMonsterBossBuddy", "\xE6\xB2\x83\xE6\x96\xAF" },	// 改造后 Voss boss 残存意识对白
 				{ NULL, NULL }
 			};
 			for ( int i = 0; monMap[i].cls; i++ ) {
