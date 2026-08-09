@@ -611,7 +611,7 @@ def registry_install_locations() -> list[Path]:
                                 location = winreg.QueryValueEx(subkey, "InstallLocation")[0]
                                 if location:
                                     locations.append(Path(location))
-                        except (FileNotFoundError, OSError):
+                        except (FileNotFoundError, OSError, ValueError):
                             continue
             except (FileNotFoundError, OSError):
                 continue
