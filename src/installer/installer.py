@@ -48,7 +48,7 @@ from build_dist_extras import build_assets  # noqa: E402
 from _logos import GITHUB_B64, BILI_B64, APP_ICON_B64  # noqa: E402
 
 
-APP_NAME = "Quake 4 简体中文汉化安装器 v1.3.5"
+APP_NAME = "Quake 4 简体中文汉化安装器 v1.3.6"
 INSTALL_DIRECTORY_NAME = "Quake4-Chinese"
 LAUNCHER_NAME = "Quake4中文启动器.exe"
 # 英文模式共用同一启动器二进制，按文件名含"英文"分流（见 launcher/main.cpp）
