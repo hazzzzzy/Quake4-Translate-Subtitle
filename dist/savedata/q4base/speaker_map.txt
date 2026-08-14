@@ -154,6 +154,7 @@ vo_pa_waste_60	敌军广播
 storage_voice_floor	敌军广播
 storage_voice_repairdroid	敌军广播
 storage_voice_tactical	敌军广播
+vo_2_1_1_05_1	敌军广播
 vo_1_1_11_340_2	Looms
 vo_1_1_11_350_2	Looms
 vo_1_1_11_350_4	Looms
@@ -176,4 +177,7 @@ vo_1_1_7_110_2	Strauss
 vo_1_1_7_110_4	Strauss
 vo_1_1_7_110_6	Strauss
 vo_1_2_12_30_1	野牛 8
+vo_1_2_12_30_2	斑马 2
+vo_1_2_12_30_3	野牛 8
+vo_1_2_12_30_4	野牛 8
 vo_2_2_20_50_4	42 号舱

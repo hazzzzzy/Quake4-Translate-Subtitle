@@ -671,12 +671,25 @@ bool rvSubtitles::IsAudible( idEntity *bodyEnt, const idSoundShader *shader ) co
 		if ( shader->GetParms()->soundShaderFlags & SSF_GLOBAL ) {
 			return true;
 		}
-		// mcc_2 末尾"飞船被攻击"过场广播(radioWarnings vo_2_2_10_251_*): Raven 未设
-		// global 且 maxDist 仅 600, 但它是过场高潮的剧情广播, 镜头离 speaker 远会被
-		// 下面的距离门控误杀, 这里强制放行。后续发现同类过场广播可按此前缀扩展。
+		// 过场高潮的剧情广播/无线电但 Raven 未设 global 且 maxDist 仅 600, 镜头离
+		// speaker 远会被下面的距离门控误杀, 按前缀强制放行:
+		// - vo_2_2_10_251_* mcc_2 末尾"飞船被攻击"广播(radioWarnings)
+		// - vo_1_2_12_30_* convoy2b"收割者登场"过场坦克无线电(Zebra 2/Bison 8,
+		//   speaker 挂 s_global 全场可听但 shader decl 无 global 标志, 镜头距
+		//   speaker 1100+ > 600 被误杀, 2026-08-14)
+		// 后续发现同类过场广播可按此前缀数组扩展。
+		static const char *cineWhitelist[] = {
+			"vo_2_2_10_251_",
+			"vo_1_2_12_30_",
+			NULL
+		};
 		const char *cineSn = shader->GetName();
-		if ( cineSn && idStr::Cmpn( cineSn, "vo_2_2_10_251_", 14 ) == 0 ) {
-			return true;
+		if ( cineSn ) {
+			for ( int ci = 0; cineWhitelist[ci]; ci++ ) {
+				if ( idStr::Cmpn( cineSn, cineWhitelist[ci], (int)strlen( cineWhitelist[ci] ) ) == 0 ) {
+					return true;
+				}
+			}
 		}
 		idPlayer *cinPlayer = gameLocal.GetLocalPlayer();
 		// Cutscene actors (flagged "cinematic" "1"; head attachments inherit via
@@ -966,8 +979,8 @@ rvSubtitles::AddFromEntity
 
 从说话实体推断说话人名：
 1. npc_name 有效且非占位名（Unnamed/未命名）→ 用之（本地化后）
-2. 否则在实体名里识别已知角色（过场演出实体常以角色命名，如 cin_voss）
-3. speaker 实体(广播/画面外角色)按 shader 名查 speaker_map → 角色名
+2. speaker 实体(广播/画面外角色)优先按 shader 名查 speaker_map → 角色名/广播名
+3. 否则在实体名里识别已知角色（过场演出实体常以角色命名，如 cin_voss）
 4. 都失败 → 用 fallbackSpeaker（如"广播"）或留空
 ================
 */
@@ -994,6 +1007,16 @@ void rvSubtitles::AddFromEntity( idEntity *bodyEnt, const char *text, int durati
 				 idStr::Icmp( loc, "Unnamed" ) != 0 &&
 				 idStr::Cmp( loc, "\xE6\x9C\xAA\xE5\x91\xBD\xE5\x90\x8D" ) != 0 ) {
 				speaker = loc;
+			}
+		}
+		// speaker 实体优先按声音名查 speaker_map（build_lang 生成）：声音语义比实体名
+		// 可靠。walkerPA_1 实体名含地图名"walker"，被下面的 knownSpeakers 子串匹配误判
+		// 成角色 Walker → 字幕显示"沃克："+白色，实为敌军 PA 广播（2026-08-14 用户反馈）。
+		// 提前查映射让"敌军广播"等声音映射优先生效；无映射的声音仍走实体名/兜底。
+		if ( !speaker.Length() && shader && bodyEnt->IsType( idSound::GetClassType() ) ) {
+			const char *sndMapped = LookupSpeaker( shader->GetName() );
+			if ( sndMapped && sndMapped[0] ) {
+				speaker = sndMapped;
 			}
 		}
 		if ( !speaker.Length() ) {

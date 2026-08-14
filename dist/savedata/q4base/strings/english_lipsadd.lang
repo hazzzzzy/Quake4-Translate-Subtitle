@@ -1051,6 +1051,7 @@
 	"#str_386110"	"Hanger floor damage reaching critical levels."
 	"#str_386111"	"Repair Droid to fire hazard in section 1."
 	"#str_386112"	"Multiple Human squads detected on hanger floor. Tactical teams dispatched."
+	"#str_386113"	"Behavioral program downloaded to neurocyte."
 	"#str_386000"	"Report to life support services immediately - they're having a problem with a purification unit."
 	"#str_386001"	"Reroute the energy stabilizers. Wait two seconds and then purge 'em. The hit will cause the system to depolarize."
 	"#str_386002"	"Kid, I know what this ship can and can't do."
@@ -1128,6 +1129,4 @@
 	"#str_386073"	"Does he represent a threat?"
 	"#str_386074"	"Keep a close eye on him. Section 13, out."
 	"#str_386075"	"Don't let the Strogg makeup fool ya - he's a damn fine Marine."
-	"#str_386113"	"Warning!  Incoming attack!"
-	"#str_386114"	"We're hit! Another missile's locked on. Firing counter measures."
 }

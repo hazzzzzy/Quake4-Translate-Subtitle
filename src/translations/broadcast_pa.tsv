@@ -160,3 +160,4 @@ str_386111	storage_voice_repairdroid	broadcast	Repair Droid to fire hazard in se
 
 str_386112	storage_voice_tactical	broadcast	Multiple Human squads detected on hanger floor. Tactical teams dispatched.	机库地面检测到多支人类小队。战术部队已派遣。	sndshd	敌军广播
 
+str_386113	vo_2_1_1_05_1	broadcast	Behavioral program downloaded to neurocyte.	行为程序已下载至神经控制体。	sndshd	敌军广播
