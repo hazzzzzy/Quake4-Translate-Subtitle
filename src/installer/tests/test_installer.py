@@ -84,6 +84,7 @@ class InstallerTests(unittest.TestCase):
                     make_wide_fontdat(size, [0x4E00, 0x6C14]))
                 (output / f"r_strogg_{size}.fontdat").write_bytes(
                     make_wide_fontdat(size, [0x4E00, 0x6C14]))
+            readable_reference = (output / "r_strogg_12.fontdat").read_bytes()
             with zipfile.ZipFile(pak, "w") as archive:
                 for name in expected:
                     if name.endswith(".fontdat"):
@@ -111,9 +112,13 @@ class InstallerTests(unittest.TestCase):
             _height, readable_indexes, _glyphs, glyph_offset = parse_wide_fontdat(
                 readable)
             self.assertGreaterEqual(readable_indexes[0x6C14], 0)
-            record = struct.unpack_from("<9f", readable, glyph_offset)
-            self.assertEqual(record[1], 13)
-            self.assertAlmostEqual(record[6], 2 / 2048)
+            # 宽表段必须逐字节来自预置 r_strogg 参考（与预置宽表 TGA 一一对应），
+            # 曾误用 marine 宽表段导致 UV 错位乱码（2026-08-22 修复）
+            self.assertEqual(
+                readable,
+                source_fontdats["r_strogg_12.fontdat"]
+                + readable_reference[FONTDAT_BASE_SIZE:],
+            )
 
     def test_strogg_font_extraction_rejects_missing_files(self):
         with tempfile.TemporaryDirectory() as temporary:

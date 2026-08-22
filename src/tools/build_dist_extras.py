@@ -34,7 +34,6 @@ from typing import Callable
 FONTDAT_BASE_SIZE = 256 * 36 + 20
 FONTDAT_MAGIC = 0x69647466
 FONTDAT_VERSION = 0x00010001
-R_STROGG_DROP_DELTA = {12: 1, 24: 1, 48: 2}
 
 
 # ---- med1_textchange.gui 补丁：按 windowDef 名字定位，避免行号/上下文歧义 ----
@@ -550,28 +549,6 @@ def extend_strogg_fontdat(original: bytes, codes: list[int], size: int) -> bytes
     return output.getvalue()
 
 
-def build_readable_strogg_fontdat(
-    original: bytes,
-    chinese_reference: bytes,
-    size: int,
-) -> bytes:
-    """组合原版 r_strogg 基础段与可复用 marine 图集的中文宽表。"""
-    if len(original) != FONTDAT_BASE_SIZE:
-        raise RuntimeError(f"原版 r_strogg_{size}.fontdat 尺寸异常")
-    result = bytearray(original + chinese_reference[FONTDAT_BASE_SIZE:])
-    page_height, _indexes, num_glyphs, glyph_offset = parse_wide_fontdat(result)
-    if page_height <= 0:
-        raise RuntimeError(f"r_strogg_{size} 中文参考图集高度异常")
-    drop_delta = R_STROGG_DROP_DELTA[size]
-    for index in range(num_glyphs):
-        offset = glyph_offset + index * 68
-        values = list(struct.unpack_from("<9f", result, offset))
-        if values[0] > 0 and values[1] >= drop_delta:
-            values[1] -= drop_delta
-            values[6] += drop_delta * 2 / page_height
-            struct.pack_into("<9f", result, offset, *values)
-    return bytes(result)
-
 
 def patch_readable_strogg_materials(material_path: Path) -> None:
     """r_strogg 基础页使用现场提取的原版贴图，宽表页继续复用 marine。"""
@@ -651,9 +628,15 @@ def extract_strogg_fonts(pak001: Path, out_fonts: Path) -> None:
                 zf.read(f"fonts/english/strogg_{size}.tga"))
 
             readable_base = zf.read(f"fonts/english/r_strogg_{size}.fontdat")
+            # r_strogg fontdat = pak 原版基础段 + payload 预置宽表段。
+            # 宽表段必须取自预置 r_strogg fontdat（其字形表与预置 r_strogg 宽表
+            # TGA 一一对应）；此前误用 marine 宽表段（字形表对应 marine 图集），
+            # 与部署的 r_strogg TGA 组合后 UV 错位 → 安装器安装的玩家 Strogg 化
+            # 后 HUD/面板文字呈"汉字部件拼接"乱码（2026-08-22 Steam 版实测定位，
+            # 零售手动部署目录用预置版所以从未暴露）。预置版基础段与 pak 原版逐
+            # 字节相同，拼接结果 == 开发机预置版。
             (out_fonts / f"r_strogg_{size}.fontdat").write_bytes(
-                build_readable_strogg_fontdat(
-                    readable_base, marine_references[size], size))
+                readable_base + readable_references[size][FONTDAT_BASE_SIZE:])
             (out_fonts / f"r_strogg_{size}.tga").write_bytes(
                 zf.read(f"fonts/english/r_strogg_{size}.tga"))
 

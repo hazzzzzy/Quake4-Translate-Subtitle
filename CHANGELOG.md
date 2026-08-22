@@ -1,4 +1,14 @@
 # Changelog
+## v1.3.7 — 2026-08-22
+
+### 重大修复：安装器安装的玩家 Strogg 化后文字乱码
+
+- 根因：安装器现场生成 `r_strogg_*.fontdat`（改造后可读 Strogg 字体）时误用 **marine 字体宽表段**拼接（字形表对应 marine 图集），而部署的宽表 TGA 是 r_strogg 独立图集——fontdat 与 TGA 的 UV 错位，渲染出"不同汉字部件拼接"的乱码。仅主角 Strogg 化之后大量使用该字体（HUD 换肤、各类面板），故症状在章节中段才爆发；开发机/手动部署目录使用预置版 fontdat 从未暴露
+- 定位过程（2026-08-22）：Steam 版安装目录 65 个字体文件中仅 3 个 r_strogg fontdat 与基线不一致（时间戳证实为现场生成产物）；pak001 源哈希与零售版逐字节相同；本地复跑现场生成即复现异常产物
+- 修复：`build_dist_extras.py` 的 r_strogg fontdat 改为 **pak 原版基础段 + payload 预置宽表段**直接拼接，产物与开发机预置版字节级一致（三档 SHA-256 全等）；删除失效的 `build_readable_strogg_fontdat` 与 `R_STROGG_DROP_DELTA`；安装器测试改为断言宽表段逐字节来自预置参考（12 用例全绿）
+- 受影响玩家修复方式：用 v1.3.7 安装器重装即可（现场生成将产出正确版本）
+- 验证：`extract_strogg_fonts` 三档产物 == 预置版（fad92916/cc591799/f8c43568）；Steam 版安装目录现场已手工修复并验证
+
 ## v1.3.6 — 2026-08-14
 
 ### 字幕修复：收割者过场 + 说话人误识别
